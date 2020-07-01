@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bsp.server.mapper.PckPackageInfoMapper">
+  <resultMap id="BaseResultMap" type="com.bsp.server.domain.PckPackageInfo">
+    <id column="PCK_ID" jdbcType="INTEGER" property="pckId" />
+    <result column="WAR_ID" jdbcType="INTEGER" property="warId" />
+    <result column="PRO_ID" jdbcType="INTEGER" property="proId" />
+    <result column="TYPE_CD" jdbcType="CHAR" property="typeCd" />
+    <result column="WIDTH" jdbcType="DECIMAL" property="width" />
+    <result column="HEIGHT" jdbcType="DECIMAL" property="height" />
+    <result column="LENGTH" jdbcType="DECIMAL" property="length" />
+    <result column="WEIGHT" jdbcType="DECIMAL" property="weight" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="CREATION_DATE" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="LAST_UPDATE_BY" jdbcType="VARCHAR" property="lastUpdateBy" />
+    <result column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+    <result column="CALL_CNT" jdbcType="INTEGER" property="callCnt" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="STS_CD" jdbcType="CHAR" property="stsCd" />
+    <result column="HEAVY_CARGO" jdbcType="VARCHAR" property="heavyCargo" />
+    <result column="LOGISTICS_COMPANY" jdbcType="VARCHAR" property="logisticsCompany" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PCK_ID, WAR_ID, PRO_ID, TYPE_CD, WIDTH, HEIGHT, `LENGTH`, WEIGHT, CREATED_BY, CREATION_DATE, 
+    LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, REMARK, STS_CD, HEAVY_CARGO, LOGISTICS_COMPANY, 
+    deleted
+  </sql>
+  <select id="selectByExample" parameterType="com.bsp.server.domain.PckPackageInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pck_package_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleSelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <if test="example.distinct">
+      distinct
+    </if>
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from pck_package_info
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pck_package_info
+    where PCK_ID = #{pckId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from pck_package_info
+    where PCK_ID = #{pckId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pck_package_info
+    where PCK_ID = #{pckId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bsp.server.domain.PckPackageInfoExample">
+    delete from pck_package_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bsp.server.domain.PckPackageInfo">
+    insert into pck_package_info (PCK_ID, WAR_ID, PRO_ID, 
+      TYPE_CD, WIDTH, HEIGHT, 
+      `LENGTH`, WEIGHT, CREATED_BY, 
+      CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
+      CALL_CNT, REMARK, STS_CD, 
+      HEAVY_CARGO, LOGISTICS_COMPANY, deleted
+      )
+    values (#{pckId,jdbcType=INTEGER}, #{warId,jdbcType=INTEGER}, #{proId,jdbcType=INTEGER}, 
+      #{typeCd,jdbcType=CHAR}, #{width,jdbcType=DECIMAL}, #{height,jdbcType=DECIMAL}, 
+      #{length,jdbcType=DECIMAL}, #{weight,jdbcType=DECIMAL}, #{createdBy,jdbcType=VARCHAR}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
+      #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, 
+      #{heavyCargo,jdbcType=VARCHAR}, #{logisticsCompany,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bsp.server.domain.PckPackageInfo">
+    insert into pck_package_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pckId != null">
+        PCK_ID,
+      </if>
+      <if test="warId != null">
+        WAR_ID,
+      </if>
+      <if test="proId != null">
+        PRO_ID,
+      </if>
+      <if test="typeCd != null">
+        TYPE_CD,
+      </if>
+      <if test="width != null">
+        WIDTH,
+      </if>
+      <if test="height != null">
+        HEIGHT,
+      </if>
+      <if test="length != null">
+        `LENGTH`,
+      </if>
+      <if test="weight != null">
+        WEIGHT,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE,
+      </if>
+      <if test="lastUpdateBy != null">
+        LAST_UPDATE_BY,
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE,
+      </if>
+      <if test="callCnt != null">
+        CALL_CNT,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="stsCd != null">
+        STS_CD,
+      </if>
+      <if test="heavyCargo != null">
+        HEAVY_CARGO,
+      </if>
+      <if test="logisticsCompany != null">
+        LOGISTICS_COMPANY,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pckId != null">
+        #{pckId,jdbcType=INTEGER},
+      </if>
+      <if test="warId != null">
+        #{warId,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null">
+        #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="typeCd != null">
+        #{typeCd,jdbcType=CHAR},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callCnt != null">
+        #{callCnt,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="stsCd != null">
+        #{stsCd,jdbcType=CHAR},
+      </if>
+      <if test="heavyCargo != null">
+        #{heavyCargo,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompany != null">
+        #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bsp.server.domain.PckPackageInfoExample" resultType="java.lang.Long">
+    select count(*) from pck_package_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pck_package_info
+    <set>
+      <if test="record.pckId != null">
+        PCK_ID = #{record.pckId,jdbcType=INTEGER},
+      </if>
+      <if test="record.warId != null">
+        WAR_ID = #{record.warId,jdbcType=INTEGER},
+      </if>
+      <if test="record.proId != null">
+        PRO_ID = #{record.proId,jdbcType=INTEGER},
+      </if>
+      <if test="record.typeCd != null">
+        TYPE_CD = #{record.typeCd,jdbcType=CHAR},
+      </if>
+      <if test="record.width != null">
+        WIDTH = #{record.width,jdbcType=DECIMAL},
+      </if>
+      <if test="record.height != null">
+        HEIGHT = #{record.height,jdbcType=DECIMAL},
+      </if>
+      <if test="record.length != null">
+        `LENGTH` = #{record.length,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weight != null">
+        WEIGHT = #{record.weight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createdBy != null">
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creationDate != null">
+        CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdateBy != null">
+        LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdateDate != null">
+        LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.callCnt != null">
+        CALL_CNT = #{record.callCnt,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stsCd != null">
+        STS_CD = #{record.stsCd,jdbcType=CHAR},
+      </if>
+      <if test="record.heavyCargo != null">
+        HEAVY_CARGO = #{record.heavyCargo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsCompany != null">
+        LOGISTICS_COMPANY = #{record.logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pck_package_info
+    set PCK_ID = #{record.pckId,jdbcType=INTEGER},
+      WAR_ID = #{record.warId,jdbcType=INTEGER},
+      PRO_ID = #{record.proId,jdbcType=INTEGER},
+      TYPE_CD = #{record.typeCd,jdbcType=CHAR},
+      WIDTH = #{record.width,jdbcType=DECIMAL},
+      HEIGHT = #{record.height,jdbcType=DECIMAL},
+      `LENGTH` = #{record.length,jdbcType=DECIMAL},
+      WEIGHT = #{record.weight,jdbcType=DECIMAL},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
+      LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      CALL_CNT = #{record.callCnt,jdbcType=INTEGER},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      STS_CD = #{record.stsCd,jdbcType=CHAR},
+      HEAVY_CARGO = #{record.heavyCargo,jdbcType=VARCHAR},
+      LOGISTICS_COMPANY = #{record.logisticsCompany,jdbcType=VARCHAR},
+      deleted = #{record.deleted,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.PckPackageInfo">
+    update pck_package_info
+    <set>
+      <if test="warId != null">
+        WAR_ID = #{warId,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null">
+        PRO_ID = #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="typeCd != null">
+        TYPE_CD = #{typeCd,jdbcType=CHAR},
+      </if>
+      <if test="width != null">
+        WIDTH = #{width,jdbcType=DECIMAL},
+      </if>
+      <if test="height != null">
+        HEIGHT = #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="length != null">
+        `LENGTH` = #{length,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null">
+        WEIGHT = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callCnt != null">
+        CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="stsCd != null">
+        STS_CD = #{stsCd,jdbcType=CHAR},
+      </if>
+      <if test="heavyCargo != null">
+        HEAVY_CARGO = #{heavyCargo,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompany != null">
+        LOGISTICS_COMPANY = #{logisticsCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where PCK_ID = #{pckId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.PckPackageInfo">
+    update pck_package_info
+    set WAR_ID = #{warId,jdbcType=INTEGER},
+      PRO_ID = #{proId,jdbcType=INTEGER},
+      TYPE_CD = #{typeCd,jdbcType=CHAR},
+      WIDTH = #{width,jdbcType=DECIMAL},
+      HEIGHT = #{height,jdbcType=DECIMAL},
+      `LENGTH` = #{length,jdbcType=DECIMAL},
+      WEIGHT = #{weight,jdbcType=DECIMAL},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      STS_CD = #{stsCd,jdbcType=CHAR},
+      HEAVY_CARGO = #{heavyCargo,jdbcType=VARCHAR},
+      LOGISTICS_COMPANY = #{logisticsCompany,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=BIT}
+    where PCK_ID = #{pckId,jdbcType=INTEGER}
+  </update>
+  <select id="selectOneByExample" parameterType="com.bsp.server.domain.PckPackageInfoExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pck_package_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <select id="selectOneByExampleSelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from pck_package_info
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>

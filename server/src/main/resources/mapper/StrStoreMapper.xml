@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bsp.server.mapper.StrStoreMapper">
+  <resultMap id="BaseResultMap" type="com.bsp.server.domain.StrStore">
+    <id column="STR_ID" jdbcType="INTEGER" property="strId" />
+    <result column="DSR_ID" jdbcType="INTEGER" property="dsrId" />
+    <result column="PLATAEFORM_TYPE" jdbcType="VARCHAR" property="plataeformType" />
+    <result column="STORE_NAME" jdbcType="VARCHAR" property="storeName" />
+    <result column="STORE_STS_CD" jdbcType="VARCHAR" property="storeStsCd" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="CREATION_DATE" jdbcType="TIMESTAMP" property="creationDate" />
+    <result column="LAST_UPDATE_BY" jdbcType="VARCHAR" property="lastUpdateBy" />
+    <result column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" property="lastUpdateDate" />
+    <result column="CALL_CNT" jdbcType="INTEGER" property="callCnt" />
+    <result column="STS_CD" jdbcType="CHAR" property="stsCd" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    STR_ID, DSR_ID, PLATAEFORM_TYPE, STORE_NAME, STORE_STS_CD, CREATED_BY, CREATION_DATE, 
+    LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, STS_CD, REMARK, deleted
+  </sql>
+  <select id="selectByExample" parameterType="com.bsp.server.domain.StrStoreExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from str_store
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleSelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <if test="example.distinct">
+      distinct
+    </if>
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from str_store
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from str_store
+    where STR_ID = #{strId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from str_store
+    where STR_ID = #{strId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from str_store
+    where STR_ID = #{strId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bsp.server.domain.StrStoreExample">
+    delete from str_store
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bsp.server.domain.StrStore">
+    insert into str_store (STR_ID, DSR_ID, PLATAEFORM_TYPE, 
+      STORE_NAME, STORE_STS_CD, CREATED_BY, 
+      CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
+      CALL_CNT, STS_CD, REMARK, 
+      deleted)
+    values (#{strId,jdbcType=INTEGER}, #{dsrId,jdbcType=INTEGER}, #{plataeformType,jdbcType=VARCHAR}, 
+      #{storeName,jdbcType=VARCHAR}, #{storeStsCd,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
+      #{callCnt,jdbcType=INTEGER}, #{stsCd,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bsp.server.domain.StrStore">
+    insert into str_store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="strId != null">
+        STR_ID,
+      </if>
+      <if test="dsrId != null">
+        DSR_ID,
+      </if>
+      <if test="plataeformType != null">
+        PLATAEFORM_TYPE,
+      </if>
+      <if test="storeName != null">
+        STORE_NAME,
+      </if>
+      <if test="storeStsCd != null">
+        STORE_STS_CD,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE,
+      </if>
+      <if test="lastUpdateBy != null">
+        LAST_UPDATE_BY,
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE,
+      </if>
+      <if test="callCnt != null">
+        CALL_CNT,
+      </if>
+      <if test="stsCd != null">
+        STS_CD,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="strId != null">
+        #{strId,jdbcType=INTEGER},
+      </if>
+      <if test="dsrId != null">
+        #{dsrId,jdbcType=INTEGER},
+      </if>
+      <if test="plataeformType != null">
+        #{plataeformType,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null">
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeStsCd != null">
+        #{storeStsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callCnt != null">
+        #{callCnt,jdbcType=INTEGER},
+      </if>
+      <if test="stsCd != null">
+        #{stsCd,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bsp.server.domain.StrStoreExample" resultType="java.lang.Long">
+    select count(*) from str_store
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update str_store
+    <set>
+      <if test="record.strId != null">
+        STR_ID = #{record.strId,jdbcType=INTEGER},
+      </if>
+      <if test="record.dsrId != null">
+        DSR_ID = #{record.dsrId,jdbcType=INTEGER},
+      </if>
+      <if test="record.plataeformType != null">
+        PLATAEFORM_TYPE = #{record.plataeformType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeName != null">
+        STORE_NAME = #{record.storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeStsCd != null">
+        STORE_STS_CD = #{record.storeStsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdBy != null">
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creationDate != null">
+        CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdateBy != null">
+        LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdateDate != null">
+        LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.callCnt != null">
+        CALL_CNT = #{record.callCnt,jdbcType=INTEGER},
+      </if>
+      <if test="record.stsCd != null">
+        STS_CD = #{record.stsCd,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update str_store
+    set STR_ID = #{record.strId,jdbcType=INTEGER},
+      DSR_ID = #{record.dsrId,jdbcType=INTEGER},
+      PLATAEFORM_TYPE = #{record.plataeformType,jdbcType=VARCHAR},
+      STORE_NAME = #{record.storeName,jdbcType=VARCHAR},
+      STORE_STS_CD = #{record.storeStsCd,jdbcType=VARCHAR},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
+      LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
+      CALL_CNT = #{record.callCnt,jdbcType=INTEGER},
+      STS_CD = #{record.stsCd,jdbcType=CHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      deleted = #{record.deleted,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.StrStore">
+    update str_store
+    <set>
+      <if test="dsrId != null">
+        DSR_ID = #{dsrId,jdbcType=INTEGER},
+      </if>
+      <if test="plataeformType != null">
+        PLATAEFORM_TYPE = #{plataeformType,jdbcType=VARCHAR},
+      </if>
+      <if test="storeName != null">
+        STORE_NAME = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeStsCd != null">
+        STORE_STS_CD = #{storeStsCd,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callCnt != null">
+        CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      </if>
+      <if test="stsCd != null">
+        STS_CD = #{stsCd,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where STR_ID = #{strId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.StrStore">
+    update str_store
+    set DSR_ID = #{dsrId,jdbcType=INTEGER},
+      PLATAEFORM_TYPE = #{plataeformType,jdbcType=VARCHAR},
+      STORE_NAME = #{storeName,jdbcType=VARCHAR},
+      STORE_STS_CD = #{storeStsCd,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      STS_CD = #{stsCd,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=BIT}
+    where STR_ID = #{strId,jdbcType=INTEGER}
+  </update>
+  <select id="selectOneByExample" parameterType="com.bsp.server.domain.StrStoreExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from str_store
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <select id="selectOneByExampleSelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from str_store
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>

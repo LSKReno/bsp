@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bsp.server.mapper.WtrWalletTransactionRecordMapper">
+  <resultMap id="BaseResultMap" type="com.bsp.server.domain.WtrWalletTransactionRecord">
+    <id column="TRANSACTION_ID" jdbcType="INTEGER" property="transactionId" />
+    <result column="BUYER_ID" jdbcType="INTEGER" property="buyerId" />
+    <result column="BANK_CARD_ID" jdbcType="INTEGER" property="bankCardId" />
+    <result column="TRANSACTION_NUMBER" jdbcType="VARCHAR" property="transactionNumber" />
+    <result column="TRANSACTION_TYPE" jdbcType="TINYINT" property="transactionType" />
+    <result column="ACCOUNT_NAME" jdbcType="VARCHAR" property="accountName" />
+    <result column="TRANSACTION_MONEY" jdbcType="DECIMAL" property="transactionMoney" />
+    <result column="COMMISSION" jdbcType="DECIMAL" property="commission" />
+    <result column="DISCOUNT_COMMISSION" jdbcType="DECIMAL" property="discountCommission" />
+    <result column="TRANSACTION_METHOD" jdbcType="TINYINT" property="transactionMethod" />
+    <result column="COMPLETE_TIME" jdbcType="TIMESTAMP" property="completeTime" />
+    <result column="STATUS" jdbcType="TINYINT" property="status" />
+    <result column="ACTUAL_MONEY" jdbcType="DECIMAL" property="actualMoney" />
+    <result column="ACTUAL_COMMISSION" jdbcType="DECIMAL" property="actualCommission" />
+    <result column="ACTUAL_DISCOUNT_COMMISSION" jdbcType="DECIMAL" property="actualDiscountCommission" />
+    <result column="BALANCE" jdbcType="DECIMAL" property="balance" />
+    <result column="BUSINESS_ID" jdbcType="INTEGER" property="businessId" />
+    <result column="FINANCE_TYPE" jdbcType="TINYINT" property="financeType" />
+    <result column="NOTE" jdbcType="VARCHAR" property="note" />
+    <result column="OPERATOR_NAME" jdbcType="VARCHAR" property="operatorName" />
+    <result column="OPERATOR_IP" jdbcType="VARCHAR" property="operatorIp" />
+    <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="LAST_UPDATE_BY" jdbcType="VARCHAR" property="lastUpdateBy" />
+    <result column="LAST_UPDATE_TIME" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="BANK_RECEIPT_URL" jdbcType="VARCHAR" property="bankReceiptUrl" />
+    <result column="EXCHANGE_RATE" jdbcType="DECIMAL" property="exchangeRate" />
+    <result column="TRANSACTION_DESC" jdbcType="VARCHAR" property="transactionDesc" />
+    <result column="FOREIGN_EXCHANGE_FEE" jdbcType="DECIMAL" property="foreignExchangeFee" />
+    <result column="WITHDRAW_FEE" jdbcType="DECIMAL" property="withdrawFee" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    TRANSACTION_ID, BUYER_ID, BANK_CARD_ID, TRANSACTION_NUMBER, TRANSACTION_TYPE, ACCOUNT_NAME, 
+    TRANSACTION_MONEY, COMMISSION, DISCOUNT_COMMISSION, TRANSACTION_METHOD, COMPLETE_TIME, 
+    `STATUS`, ACTUAL_MONEY, ACTUAL_COMMISSION, ACTUAL_DISCOUNT_COMMISSION, BALANCE, BUSINESS_ID, 
+    FINANCE_TYPE, NOTE, OPERATOR_NAME, OPERATOR_IP, CREATE_BY, CREATE_TIME, LAST_UPDATE_BY, 
+    LAST_UPDATE_TIME, BANK_RECEIPT_URL, EXCHANGE_RATE, TRANSACTION_DESC, FOREIGN_EXCHANGE_FEE, 
+    WITHDRAW_FEE, deleted
+  </sql>
+  <select id="selectByExample" parameterType="com.bsp.server.domain.WtrWalletTransactionRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wtr_wallet_transaction_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExampleSelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <if test="example.distinct">
+      distinct
+    </if>
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from wtr_wallet_transaction_record
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wtr_wallet_transaction_record
+    where TRANSACTION_ID = #{transactionId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from wtr_wallet_transaction_record
+    where TRANSACTION_ID = #{transactionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wtr_wallet_transaction_record
+    where TRANSACTION_ID = #{transactionId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bsp.server.domain.WtrWalletTransactionRecordExample">
+    delete from wtr_wallet_transaction_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bsp.server.domain.WtrWalletTransactionRecord">
+    insert into wtr_wallet_transaction_record (TRANSACTION_ID, BUYER_ID, BANK_CARD_ID, 
+      TRANSACTION_NUMBER, TRANSACTION_TYPE, ACCOUNT_NAME, 
+      TRANSACTION_MONEY, COMMISSION, DISCOUNT_COMMISSION, 
+      TRANSACTION_METHOD, COMPLETE_TIME, `STATUS`, 
+      ACTUAL_MONEY, ACTUAL_COMMISSION, ACTUAL_DISCOUNT_COMMISSION, 
+      BALANCE, BUSINESS_ID, FINANCE_TYPE, 
+      NOTE, OPERATOR_NAME, OPERATOR_IP, 
+      CREATE_BY, CREATE_TIME, LAST_UPDATE_BY, 
+      LAST_UPDATE_TIME, BANK_RECEIPT_URL, EXCHANGE_RATE, 
+      TRANSACTION_DESC, FOREIGN_EXCHANGE_FEE, WITHDRAW_FEE, 
+      deleted)
+    values (#{transactionId,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, #{bankCardId,jdbcType=INTEGER}, 
+      #{transactionNumber,jdbcType=VARCHAR}, #{transactionType,jdbcType=TINYINT}, #{accountName,jdbcType=VARCHAR}, 
+      #{transactionMoney,jdbcType=DECIMAL}, #{commission,jdbcType=DECIMAL}, #{discountCommission,jdbcType=DECIMAL}, 
+      #{transactionMethod,jdbcType=TINYINT}, #{completeTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, 
+      #{actualMoney,jdbcType=DECIMAL}, #{actualCommission,jdbcType=DECIMAL}, #{actualDiscountCommission,jdbcType=DECIMAL}, 
+      #{balance,jdbcType=DECIMAL}, #{businessId,jdbcType=INTEGER}, #{financeType,jdbcType=TINYINT}, 
+      #{note,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{operatorIp,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{bankReceiptUrl,jdbcType=VARCHAR}, #{exchangeRate,jdbcType=DECIMAL}, 
+      #{transactionDesc,jdbcType=VARCHAR}, #{foreignExchangeFee,jdbcType=DECIMAL}, #{withdrawFee,jdbcType=DECIMAL}, 
+      #{deleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bsp.server.domain.WtrWalletTransactionRecord">
+    insert into wtr_wallet_transaction_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transactionId != null">
+        TRANSACTION_ID,
+      </if>
+      <if test="buyerId != null">
+        BUYER_ID,
+      </if>
+      <if test="bankCardId != null">
+        BANK_CARD_ID,
+      </if>
+      <if test="transactionNumber != null">
+        TRANSACTION_NUMBER,
+      </if>
+      <if test="transactionType != null">
+        TRANSACTION_TYPE,
+      </if>
+      <if test="accountName != null">
+        ACCOUNT_NAME,
+      </if>
+      <if test="transactionMoney != null">
+        TRANSACTION_MONEY,
+      </if>
+      <if test="commission != null">
+        COMMISSION,
+      </if>
+      <if test="discountCommission != null">
+        DISCOUNT_COMMISSION,
+      </if>
+      <if test="transactionMethod != null">
+        TRANSACTION_METHOD,
+      </if>
+      <if test="completeTime != null">
+        COMPLETE_TIME,
+      </if>
+      <if test="status != null">
+        `STATUS`,
+      </if>
+      <if test="actualMoney != null">
+        ACTUAL_MONEY,
+      </if>
+      <if test="actualCommission != null">
+        ACTUAL_COMMISSION,
+      </if>
+      <if test="actualDiscountCommission != null">
+        ACTUAL_DISCOUNT_COMMISSION,
+      </if>
+      <if test="balance != null">
+        BALANCE,
+      </if>
+      <if test="businessId != null">
+        BUSINESS_ID,
+      </if>
+      <if test="financeType != null">
+        FINANCE_TYPE,
+      </if>
+      <if test="note != null">
+        NOTE,
+      </if>
+      <if test="operatorName != null">
+        OPERATOR_NAME,
+      </if>
+      <if test="operatorIp != null">
+        OPERATOR_IP,
+      </if>
+      <if test="createBy != null">
+        CREATE_BY,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="lastUpdateBy != null">
+        LAST_UPDATE_BY,
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME,
+      </if>
+      <if test="bankReceiptUrl != null">
+        BANK_RECEIPT_URL,
+      </if>
+      <if test="exchangeRate != null">
+        EXCHANGE_RATE,
+      </if>
+      <if test="transactionDesc != null">
+        TRANSACTION_DESC,
+      </if>
+      <if test="foreignExchangeFee != null">
+        FOREIGN_EXCHANGE_FEE,
+      </if>
+      <if test="withdrawFee != null">
+        WITHDRAW_FEE,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transactionId != null">
+        #{transactionId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null">
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="bankCardId != null">
+        #{bankCardId,jdbcType=INTEGER},
+      </if>
+      <if test="transactionNumber != null">
+        #{transactionNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionType != null">
+        #{transactionType,jdbcType=TINYINT},
+      </if>
+      <if test="accountName != null">
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionMoney != null">
+        #{transactionMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="discountCommission != null">
+        #{discountCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="transactionMethod != null">
+        #{transactionMethod,jdbcType=TINYINT},
+      </if>
+      <if test="completeTime != null">
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="actualMoney != null">
+        #{actualMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="actualCommission != null">
+        #{actualCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="actualDiscountCommission != null">
+        #{actualDiscountCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="businessId != null">
+        #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="financeType != null">
+        #{financeType,jdbcType=TINYINT},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorIp != null">
+        #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankReceiptUrl != null">
+        #{bankReceiptUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangeRate != null">
+        #{exchangeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="transactionDesc != null">
+        #{transactionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="foreignExchangeFee != null">
+        #{foreignExchangeFee,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawFee != null">
+        #{withdrawFee,jdbcType=DECIMAL},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bsp.server.domain.WtrWalletTransactionRecordExample" resultType="java.lang.Long">
+    select count(*) from wtr_wallet_transaction_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update wtr_wallet_transaction_record
+    <set>
+      <if test="record.transactionId != null">
+        TRANSACTION_ID = #{record.transactionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.buyerId != null">
+        BUYER_ID = #{record.buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bankCardId != null">
+        BANK_CARD_ID = #{record.bankCardId,jdbcType=INTEGER},
+      </if>
+      <if test="record.transactionNumber != null">
+        TRANSACTION_NUMBER = #{record.transactionNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transactionType != null">
+        TRANSACTION_TYPE = #{record.transactionType,jdbcType=TINYINT},
+      </if>
+      <if test="record.accountName != null">
+        ACCOUNT_NAME = #{record.accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transactionMoney != null">
+        TRANSACTION_MONEY = #{record.transactionMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.commission != null">
+        COMMISSION = #{record.commission,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discountCommission != null">
+        DISCOUNT_COMMISSION = #{record.discountCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="record.transactionMethod != null">
+        TRANSACTION_METHOD = #{record.transactionMethod,jdbcType=TINYINT},
+      </if>
+      <if test="record.completeTime != null">
+        COMPLETE_TIME = #{record.completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null">
+        `STATUS` = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.actualMoney != null">
+        ACTUAL_MONEY = #{record.actualMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.actualCommission != null">
+        ACTUAL_COMMISSION = #{record.actualCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="record.actualDiscountCommission != null">
+        ACTUAL_DISCOUNT_COMMISSION = #{record.actualDiscountCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="record.balance != null">
+        BALANCE = #{record.balance,jdbcType=DECIMAL},
+      </if>
+      <if test="record.businessId != null">
+        BUSINESS_ID = #{record.businessId,jdbcType=INTEGER},
+      </if>
+      <if test="record.financeType != null">
+        FINANCE_TYPE = #{record.financeType,jdbcType=TINYINT},
+      </if>
+      <if test="record.note != null">
+        NOTE = #{record.note,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatorName != null">
+        OPERATOR_NAME = #{record.operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operatorIp != null">
+        OPERATOR_IP = #{record.operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createBy != null">
+        CREATE_BY = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdateBy != null">
+        LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastUpdateTime != null">
+        LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bankReceiptUrl != null">
+        BANK_RECEIPT_URL = #{record.bankReceiptUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exchangeRate != null">
+        EXCHANGE_RATE = #{record.exchangeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.transactionDesc != null">
+        TRANSACTION_DESC = #{record.transactionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.foreignExchangeFee != null">
+        FOREIGN_EXCHANGE_FEE = #{record.foreignExchangeFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.withdrawFee != null">
+        WITHDRAW_FEE = #{record.withdrawFee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update wtr_wallet_transaction_record
+    set TRANSACTION_ID = #{record.transactionId,jdbcType=INTEGER},
+      BUYER_ID = #{record.buyerId,jdbcType=INTEGER},
+      BANK_CARD_ID = #{record.bankCardId,jdbcType=INTEGER},
+      TRANSACTION_NUMBER = #{record.transactionNumber,jdbcType=VARCHAR},
+      TRANSACTION_TYPE = #{record.transactionType,jdbcType=TINYINT},
+      ACCOUNT_NAME = #{record.accountName,jdbcType=VARCHAR},
+      TRANSACTION_MONEY = #{record.transactionMoney,jdbcType=DECIMAL},
+      COMMISSION = #{record.commission,jdbcType=DECIMAL},
+      DISCOUNT_COMMISSION = #{record.discountCommission,jdbcType=DECIMAL},
+      TRANSACTION_METHOD = #{record.transactionMethod,jdbcType=TINYINT},
+      COMPLETE_TIME = #{record.completeTime,jdbcType=TIMESTAMP},
+      `STATUS` = #{record.status,jdbcType=TINYINT},
+      ACTUAL_MONEY = #{record.actualMoney,jdbcType=DECIMAL},
+      ACTUAL_COMMISSION = #{record.actualCommission,jdbcType=DECIMAL},
+      ACTUAL_DISCOUNT_COMMISSION = #{record.actualDiscountCommission,jdbcType=DECIMAL},
+      BALANCE = #{record.balance,jdbcType=DECIMAL},
+      BUSINESS_ID = #{record.businessId,jdbcType=INTEGER},
+      FINANCE_TYPE = #{record.financeType,jdbcType=TINYINT},
+      NOTE = #{record.note,jdbcType=VARCHAR},
+      OPERATOR_NAME = #{record.operatorName,jdbcType=VARCHAR},
+      OPERATOR_IP = #{record.operatorIp,jdbcType=VARCHAR},
+      CREATE_BY = #{record.createBy,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
+      LAST_UPDATE_TIME = #{record.lastUpdateTime,jdbcType=TIMESTAMP},
+      BANK_RECEIPT_URL = #{record.bankReceiptUrl,jdbcType=VARCHAR},
+      EXCHANGE_RATE = #{record.exchangeRate,jdbcType=DECIMAL},
+      TRANSACTION_DESC = #{record.transactionDesc,jdbcType=VARCHAR},
+      FOREIGN_EXCHANGE_FEE = #{record.foreignExchangeFee,jdbcType=DECIMAL},
+      WITHDRAW_FEE = #{record.withdrawFee,jdbcType=DECIMAL},
+      deleted = #{record.deleted,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.WtrWalletTransactionRecord">
+    update wtr_wallet_transaction_record
+    <set>
+      <if test="buyerId != null">
+        BUYER_ID = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="bankCardId != null">
+        BANK_CARD_ID = #{bankCardId,jdbcType=INTEGER},
+      </if>
+      <if test="transactionNumber != null">
+        TRANSACTION_NUMBER = #{transactionNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionType != null">
+        TRANSACTION_TYPE = #{transactionType,jdbcType=TINYINT},
+      </if>
+      <if test="accountName != null">
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionMoney != null">
+        TRANSACTION_MONEY = #{transactionMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="commission != null">
+        COMMISSION = #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="discountCommission != null">
+        DISCOUNT_COMMISSION = #{discountCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="transactionMethod != null">
+        TRANSACTION_METHOD = #{transactionMethod,jdbcType=TINYINT},
+      </if>
+      <if test="completeTime != null">
+        COMPLETE_TIME = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        `STATUS` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="actualMoney != null">
+        ACTUAL_MONEY = #{actualMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="actualCommission != null">
+        ACTUAL_COMMISSION = #{actualCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="actualDiscountCommission != null">
+        ACTUAL_DISCOUNT_COMMISSION = #{actualDiscountCommission,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null">
+        BALANCE = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="businessId != null">
+        BUSINESS_ID = #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="financeType != null">
+        FINANCE_TYPE = #{financeType,jdbcType=TINYINT},
+      </if>
+      <if test="note != null">
+        NOTE = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorName != null">
+        OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorIp != null">
+        OPERATOR_IP = #{operatorIp,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankReceiptUrl != null">
+        BANK_RECEIPT_URL = #{bankReceiptUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="exchangeRate != null">
+        EXCHANGE_RATE = #{exchangeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="transactionDesc != null">
+        TRANSACTION_DESC = #{transactionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="foreignExchangeFee != null">
+        FOREIGN_EXCHANGE_FEE = #{foreignExchangeFee,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawFee != null">
+        WITHDRAW_FEE = #{withdrawFee,jdbcType=DECIMAL},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where TRANSACTION_ID = #{transactionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.WtrWalletTransactionRecord">
+    update wtr_wallet_transaction_record
+    set BUYER_ID = #{buyerId,jdbcType=INTEGER},
+      BANK_CARD_ID = #{bankCardId,jdbcType=INTEGER},
+      TRANSACTION_NUMBER = #{transactionNumber,jdbcType=VARCHAR},
+      TRANSACTION_TYPE = #{transactionType,jdbcType=TINYINT},
+      ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      TRANSACTION_MONEY = #{transactionMoney,jdbcType=DECIMAL},
+      COMMISSION = #{commission,jdbcType=DECIMAL},
+      DISCOUNT_COMMISSION = #{discountCommission,jdbcType=DECIMAL},
+      TRANSACTION_METHOD = #{transactionMethod,jdbcType=TINYINT},
+      COMPLETE_TIME = #{completeTime,jdbcType=TIMESTAMP},
+      `STATUS` = #{status,jdbcType=TINYINT},
+      ACTUAL_MONEY = #{actualMoney,jdbcType=DECIMAL},
+      ACTUAL_COMMISSION = #{actualCommission,jdbcType=DECIMAL},
+      ACTUAL_DISCOUNT_COMMISSION = #{actualDiscountCommission,jdbcType=DECIMAL},
+      BALANCE = #{balance,jdbcType=DECIMAL},
+      BUSINESS_ID = #{businessId,jdbcType=INTEGER},
+      FINANCE_TYPE = #{financeType,jdbcType=TINYINT},
+      NOTE = #{note,jdbcType=VARCHAR},
+      OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      OPERATOR_IP = #{operatorIp,jdbcType=VARCHAR},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      BANK_RECEIPT_URL = #{bankReceiptUrl,jdbcType=VARCHAR},
+      EXCHANGE_RATE = #{exchangeRate,jdbcType=DECIMAL},
+      TRANSACTION_DESC = #{transactionDesc,jdbcType=VARCHAR},
+      FOREIGN_EXCHANGE_FEE = #{foreignExchangeFee,jdbcType=DECIMAL},
+      WITHDRAW_FEE = #{withdrawFee,jdbcType=DECIMAL},
+      deleted = #{deleted,jdbcType=BIT}
+    where TRANSACTION_ID = #{transactionId,jdbcType=INTEGER}
+  </update>
+  <select id="selectOneByExample" parameterType="com.bsp.server.domain.WtrWalletTransactionRecordExample" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wtr_wallet_transaction_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    limit 1
+  </select>
+  <select id="selectOneByExampleSelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from wtr_wallet_transaction_record
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+    <if test="example.orderByClause != null">
+      order by ${example.orderByClause}
+    </if>
+    limit 1
+  </select>
+</mapper>
