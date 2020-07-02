@@ -31,7 +31,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.course</groupId>
+            <groupId>com.bsp</groupId>
             <artifactId>server</artifactId>
         </dependency>
     </dependencies>
