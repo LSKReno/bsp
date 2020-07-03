@@ -4,6 +4,8 @@ import com.bsp.server.domain.StrStore;
 import com.bsp.server.domain.StrStoreExample;
 
 import java.util.List;
+
+import com.bsp.server.dto.StrStoreDto;
 import org.apache.ibatis.annotations.Param;
 
 public interface StrStoreMapper {
@@ -36,4 +38,6 @@ public interface StrStoreMapper {
     int updateByPrimaryKeySelective(StrStore record);
 
     int updateByPrimaryKey(StrStore record);
+
+    List<StrStoreDto> selectByDSRId(Integer dsrId);
 }

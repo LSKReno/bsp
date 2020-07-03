@@ -35,21 +35,7 @@ public class CompanyInformationController {
     public ResponseDto saveCompanyInfo(@RequestBody ManManufacturerDto manManufacturerDto) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ResponseDto responseDto = new ResponseDto();
-//        ManManufacturer manManufacturer = new ManManufacturer();
-//        manManufacturer.setCallCnt(manManufacturerDto.getCallCnt());
-//        manManufacturer.setCreatedBy(manManufacturerDto.getCreatedBy());
-//        manManufacturer.setCreationDate(simpleDateFormat.parse(manManufacturerDto.getCreationDate()));
-//        manManufacturer.setDeleted(manManufacturerDto.getDeleted() == 1);
-//        manManufacturer.setDescription(manManufacturerDto.getDescription());
-//        manManufacturer.setGmcReportType(manManufacturerDto.getGmcReportType());
-//        manManufacturer.setGmcReportUrl(manManufacturerDto.getGmcReportUrl());
-//        manManufacturer.setLastUpdateBy(manManufacturerDto.getLastUpdateBy());
-//        manManufacturer.setLastUpdateDate(simpleDateFormat.parse(manManufacturerDto.getLastUpdateDate()));
-//        manManufacturer.setStsCd(manManufacturerDto.getStsCd());
-//        manManufacturer.setRemark(manManufacturerDto.getRemark());
-//        manManufacturer.setNameEn(manManufacturerDto.getNameEn());
-//        manManufacturer.setNameCn(manManufacturerDto.getNameCn());
-//        manManufacturer.setManId(manManufacturerDto.getManId());
+
         int result = manManufacturerService.save(manManufacturerDto);
         if(result == 0){
             responseDto.setSuccess(false);

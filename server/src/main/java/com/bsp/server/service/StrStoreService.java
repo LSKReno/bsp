@@ -46,6 +46,12 @@ public class StrStoreService {
     }
 
     /**
+     * select by id
+     */
+    public List<StrStoreDto> selectByDSRId(Integer dsrId) {
+        return strStoreMapper.selectByDSRId(dsrId);
+    }
+    /**
      * 新增
      */
     private void insert(StrStore strStore) {
@@ -65,4 +71,5 @@ public class StrStoreService {
     public void delete(Integer id) {
         strStoreMapper.deleteByPrimaryKey(id);
     }
+
 }

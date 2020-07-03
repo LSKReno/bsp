@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    STR_ID, DSR_ID, PLATAEFORM_TYPE, STORE_NAME, STORE_STS_CD, CREATED_BY, CREATION_DATE, 
+    STR_ID, DSR_ID, PLATAEFORM_TYPE, STORE_NAME, STORE_STS_CD, CREATED_BY, CREATION_DATE,
     LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, STS_CD, REMARK, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.StrStoreExample" resultMap="BaseResultMap">
@@ -116,10 +116,16 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from str_store
     where STR_ID = #{strId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByDSRId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from str_store
+    where DSR_ID = #{dsrId, jdbcType=INIEGER}
   </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
@@ -147,15 +153,15 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.StrStore">
-    insert into str_store (STR_ID, DSR_ID, PLATAEFORM_TYPE, 
-      STORE_NAME, STORE_STS_CD, CREATED_BY, 
-      CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
-      CALL_CNT, STS_CD, REMARK, 
+    insert into str_store (STR_ID, DSR_ID, PLATAEFORM_TYPE,
+      STORE_NAME, STORE_STS_CD, CREATED_BY,
+      CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,
+      CALL_CNT, STS_CD, REMARK,
       deleted)
-    values (#{strId,jdbcType=INTEGER}, #{dsrId,jdbcType=INTEGER}, #{plataeformType,jdbcType=VARCHAR}, 
-      #{storeName,jdbcType=VARCHAR}, #{storeStsCd,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
-      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
-      #{callCnt,jdbcType=INTEGER}, #{stsCd,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
+    values (#{strId,jdbcType=INTEGER}, #{dsrId,jdbcType=INTEGER}, #{plataeformType,jdbcType=VARCHAR},
+      #{storeName,jdbcType=VARCHAR}, #{storeStsCd,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR},
+      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP},
+      #{callCnt,jdbcType=INTEGER}, #{stsCd,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR},
       #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.StrStore">
