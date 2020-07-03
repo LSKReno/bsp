@@ -36,27 +36,33 @@ public class DsrDropshipperService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(DsrDropshipperDto dsrDropshipperDto) {
+    public int save(DsrDropshipperDto dsrDropshipperDto) {
         DsrDropshipper dsrDropshipper = CopyUtil.copy(dsrDropshipperDto, DsrDropshipper.class);
         if (StringUtils.isEmpty(dsrDropshipperDto.getDsrId())) {
-            this.insert(dsrDropshipper);
+            return this.insert(dsrDropshipper);
         } else {
-            this.update(dsrDropshipper);
+            return this.update(dsrDropshipper);
         }
     }
 
     /**
+     * select by primary key
+     */
+    public DsrDropshipper selectByPrimaryKey(Integer dsrId){
+        return dsrDropshipperMapper.selectByPrimaryKey(dsrId);
+    }
+    /**
      * 新增
      */
-    private void insert(DsrDropshipper dsrDropshipper) {
-        dsrDropshipperMapper.insert(dsrDropshipper);
+    private int insert(DsrDropshipper dsrDropshipper) {
+        return dsrDropshipperMapper.insert(dsrDropshipper);
     }
 
     /**
      * 更新
      */
-    private void update(DsrDropshipper dsrDropshipper) {
-        dsrDropshipperMapper.updateByPrimaryKey(dsrDropshipper);
+    private int update(DsrDropshipper dsrDropshipper) {
+        return dsrDropshipperMapper.updateByPrimaryKey(dsrDropshipper);
     }
 
     /**
