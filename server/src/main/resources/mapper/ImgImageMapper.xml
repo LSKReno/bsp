@@ -228,10 +228,10 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="width != null">
-        #{width,jdbcType=INTEGER},
+        #{imgWidth,jdbcType=INTEGER},
       </if>
       <if test="height != null">
-        #{height,jdbcType=INTEGER},
+        #{imgHeight,jdbcType=INTEGER},
       </if>
       <if test="uri != null">
         #{uri,jdbcType=VARCHAR},

@@ -9,6 +9,10 @@
 POST http://127.0.0.1:9001/system/mvopro/listByManid
 Content-Type: application/json
 
-{}
+{"manId": "1"}
+
+###
+
+
 
 ###

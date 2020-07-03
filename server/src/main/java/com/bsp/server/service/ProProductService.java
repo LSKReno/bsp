@@ -38,9 +38,9 @@ public class ProProductService {
     /**
      * 列表查询，根据man_id
      */
-    public void listByManid(PageDto pageDto, ManManufacturerDto manManufacturerDto) {
+    public void listByManid(PageDto pageDto, int manID) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
-        List<Map<String,Object>> productInfoList=proProductMapper.listByManid(manManufacturerDto.getManId());
+        List<Map<String,Object>> productInfoList=proProductMapper.listByManid(manID);
         PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(productInfoList);
         pageDto.setTotal(pageInfo.getTotal());
         pageDto.setList(productInfoList);

@@ -6,10 +6,7 @@ import com.bsp.server.dto.ManManufacturerDto;
 import com.bsp.server.dto.PageDto;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.service.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -34,9 +31,9 @@ public class MVOProductController {
      * 商品信息录入，商品分类主图的数据
      */
     @PostMapping("/listByManid")
-    public ResponseDto listByManid(@RequestBody PageDto pageDto, @RequestBody ManManufacturerDto manManufacturerDto) {
+    public ResponseDto listByManid(PageDto pageDto, @RequestBody ManManufacturerDto manManufacturerDto) {
         ResponseDto responseDto = new ResponseDto();
-        proProductService.listByManid(pageDto,manManufacturerDto);
+        proProductService.listByManid(pageDto,manManufacturerDto.getManId());
         if(pageDto.getTotal()==0){
             responseDto.setSuccess(false);
         }else{
@@ -76,6 +73,7 @@ public class MVOProductController {
         int f2=ofpOfferPriceService.insertSelective(mp);
         int f3=pckPackageInfoService.insertSelective(mp);
         int f4=pdnProductDescritionService.insertSelective(mp);
+        mp.put("entityId",mp.get("proId"));
         int f5=imgImageService.insertSelective(mp);
         if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
             responseDto.setCode("200");

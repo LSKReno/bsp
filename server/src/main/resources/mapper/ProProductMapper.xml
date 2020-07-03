@@ -690,6 +690,6 @@
         join pck_package_info pck on pro.pro_id=pck.pro_id
         join pdn_product_descrition pdn on pro.pro_id=pdn.pro_id
         join img_image img on pro.pro_id=img.entity_id
-        where pro.man_id=#{manid} and pro.deleted=0
+        where pro.man_id=#{manId} and pro.deleted=0
   </select>
 </mapper>
