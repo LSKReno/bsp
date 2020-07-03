@@ -164,7 +164,8 @@
       #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, 
       #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.ImgImage">
+<!--  com.bsp.server.domain.ImgImage-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into img_image
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="imgId != null">

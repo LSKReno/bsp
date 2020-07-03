@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PckPackageInfoService {
@@ -52,6 +53,10 @@ public class PckPackageInfoService {
         pckPackageInfoMapper.insert(pckPackageInfo);
     }
 
+    public int insertSelective(Map<String,Object> mp) {
+        return pckPackageInfoMapper.insertSelective(mp);
+    }
+
     /**
      * 更新
      */
@@ -65,4 +70,9 @@ public class PckPackageInfoService {
     public void delete(Integer id) {
         pckPackageInfoMapper.deleteByPrimaryKey(id);
     }
+
+    public int updateByPrimaryKeySelective(Map<String,Object> mp) {
+        return pckPackageInfoMapper.updateByPrimaryKeySelective(mp);
+    }
+
 }

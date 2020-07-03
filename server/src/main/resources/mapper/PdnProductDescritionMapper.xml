@@ -184,7 +184,8 @@
       #{stsCd,jdbcType=CHAR}, #{deleted,jdbcType=BIT}, #{descrition,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.PdnProductDescrition">
+<!--  com.bsp.server.domain.PdnProductDescrition-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into pdn_product_descrition
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="pdnId != null">

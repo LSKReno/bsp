@@ -1,0 +1,32 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+POST  http://127.0.0.1:9001/system/mvopro/insert
+Content-Type: application/json
+
+{
+  "title": "title",
+  "skuCd": "skucd",
+  "upc": "upc",
+  "ean": "ean",
+  "model": "model",
+  "warrantyDay": "20200703",
+  "descrition": "ddddddddd",
+  "price": "9.9",
+  "length": "7.7",
+  "weight": "4.5",
+  "height": "5.5",
+  "width": "2.2",
+  "manId": "001",
+  "createdBy": "username",
+  "lastUpdateBy": "username"
+}
+
+
+
+
+

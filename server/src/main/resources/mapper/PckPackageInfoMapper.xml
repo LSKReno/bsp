@@ -168,7 +168,8 @@
       #{heavyCargo,jdbcType=VARCHAR}, #{logisticsCompany,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.PckPackageInfo">
+<!--  com.bsp.server.domain.PckPackageInfo-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into pck_package_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="pckId != null">

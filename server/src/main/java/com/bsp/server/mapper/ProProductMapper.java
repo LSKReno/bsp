@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.bsp.server.dto.ManManufacturerDto;
-import com.bsp.server.dto.ProductInfoDto;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProProductMapper {
@@ -21,6 +20,8 @@ public interface ProProductMapper {
     int insert(ProProduct record);
 
     int insertSelective(ProProduct record);
+
+    int insertSelective(Map<String,Object> mp); //根据map插入
 
     ProProduct selectOneByExample(ProProductExample example);
 
@@ -46,10 +47,12 @@ public interface ProProductMapper {
 
     int updateByPrimaryKeySelective(ProProduct record);
 
+    int updateByPrimaryKeySelective(Map<String,Object> mp); //根据map更新
+
     int updateByPrimaryKeyWithBLOBs(ProProduct record);
 
     int updateByPrimaryKey(ProProduct record);
 
-    List<ProductInfoDto> listByManid(int manid);
+    List<Map<String,Object>> listByManid(int manid);
 
 }

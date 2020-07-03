@@ -4,6 +4,8 @@ import com.bsp.server.domain.PckPackageInfo;
 import com.bsp.server.domain.PckPackageInfoExample;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PckPackageInfoMapper {
@@ -16,6 +18,8 @@ public interface PckPackageInfoMapper {
     int insert(PckPackageInfo record);
 
     int insertSelective(PckPackageInfo record);
+
+    int insertSelective(Map<String,Object> mp); //根据map插入
 
     PckPackageInfo selectOneByExample(PckPackageInfoExample example);
 
@@ -34,6 +38,8 @@ public interface PckPackageInfoMapper {
     int updateByExample(@Param("record") PckPackageInfo record, @Param("example") PckPackageInfoExample example);
 
     int updateByPrimaryKeySelective(PckPackageInfo record);
+
+    int updateByPrimaryKeySelective(Map<String,Object> mp); //根据map更新
 
     int updateByPrimaryKey(PckPackageInfo record);
 }

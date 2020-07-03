@@ -246,6 +246,7 @@ public class ProProduct {
         this.warranty = warranty;
     }
 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

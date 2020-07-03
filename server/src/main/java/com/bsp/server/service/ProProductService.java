@@ -3,7 +3,6 @@ package com.bsp.server.service;
 import com.bsp.server.dto.ManManufacturerDto;
 import com.bsp.server.dto.PageDto;
 import com.bsp.server.dto.ProProductDto;
-import com.bsp.server.dto.ProductInfoDto;
 import com.bsp.server.util.CopyUtil;
 import com.bsp.server.domain.ProProduct;
 import com.bsp.server.domain.ProProductExample;
@@ -37,19 +36,21 @@ public class ProProductService {
         pageDto.setList(proProductDtoList);
     }
     /**
-     * 列表查询——根据MAN_ID
+     * 列表查询，根据man_id
      */
     public void listByManid(PageDto pageDto, ManManufacturerDto manManufacturerDto) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
-        List<ProductInfoDto> productInfoList=proProductMapper.listByManid(manManufacturerDto.getManId());
-        PageInfo<ProductInfoDto> pageInfo = new PageInfo<>(productInfoList);
+        List<Map<String,Object>> productInfoList=proProductMapper.listByManid(manManufacturerDto.getManId());
+        PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(productInfoList);
         pageDto.setTotal(pageInfo.getTotal());
         pageDto.setList(productInfoList);
 
     }
 
+
+
     /**
-     * 列表查询——根据pro状态
+     * 列表查询，根据pro状态
      */
     public void listBySts(PageDto pageDto) {
 
@@ -66,7 +67,6 @@ public class ProProductService {
             this.update(proProduct);
         }
     }
-
     /**
      * 新增
      */
@@ -74,11 +74,19 @@ public class ProProductService {
         proProductMapper.insert(proProduct);
     }
 
+    public int insertSelective(Map<String,Object> mp) {
+        return proProductMapper.insertSelective(mp);
+    }
+
     /**
      * 更新
      */
     private void update(ProProduct proProduct) {
         proProductMapper.updateByPrimaryKey(proProduct);
+    }
+
+    public int updateByPrimaryKeySelective(Map<String,Object> mp) {
+        return proProductMapper.updateByPrimaryKeySelective(mp);
     }
 
     /**

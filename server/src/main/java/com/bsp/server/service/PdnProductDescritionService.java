@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PdnProductDescritionService {
@@ -51,6 +52,11 @@ public class PdnProductDescritionService {
     private void insert(PdnProductDescrition pdnProductDescrition) {
         pdnProductDescritionMapper.insert(pdnProductDescrition);
     }
+
+    public int insertSelective(Map<String,Object> mp) {
+        return pdnProductDescritionMapper.insertSelective(mp);
+    }
+
 
     /**
      * 更新

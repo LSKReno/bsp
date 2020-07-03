@@ -205,7 +205,11 @@
       #{stockseting,jdbcType=INTEGER}, #{deleted,jdbcType=BIT}, #{warranty,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.ProProduct">
+<!--  com.bsp.server.domain.ProProduct-->
+  <insert id="insertSelective" parameterType="java.util.Map">
+    <selectKey keyProperty="pro_id" resultType="int" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into pro_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="proId != null">
@@ -501,7 +505,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.ProProduct">
+<!--  com.bsp.server.domain.ProProduct-->
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
     update pro_product
     <set>
       <if test="skuCd != null">
@@ -679,7 +684,7 @@
     limit 1
   </select>
 
-  <select id="listByManid" resultType="com.bsp.server.dto.ProductInfoDto">
+  <select id="listByManid" resultType="java.util.Map">
         select *
         from pro_product pro join ofp_offer_price ofp on pro.pro_id=ofp.pro_id
         join pck_package_info pck on pro.pro_id=pck.pro_id

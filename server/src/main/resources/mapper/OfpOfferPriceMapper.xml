@@ -165,7 +165,8 @@
       #{callCnt,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=VARCHAR}, 
       #{period,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.OfpOfferPrice">
+<!--  com.bsp.server.domain.OfpOfferPrice-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into ofp_offer_price
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="ofpId != null">
@@ -252,7 +253,7 @@
         #{creationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="lastUpdateBy != null">
-        #{lastUpdateBy,jdbcType=TIMESTAMP},
+        #{lastUpdateBy,jdbcType=VARCHAR},
       </if>
       <if test="lastUpdateDate != null">
         #{lastUpdateDate,jdbcType=TIMESTAMP},
@@ -362,7 +363,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.OfpOfferPrice">
+<!--  com.bsp.server.domain.OfpOfferPrice-->
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
     update ofp_offer_price
     <set>
       <if test="manId != null">
@@ -374,9 +376,9 @@
       <if test="effectiveEndDate != null">
         EFFECTIVE_END_DATE = #{effectiveEndDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="proId != null">
-        PRO_ID = #{proId,jdbcType=VARCHAR},
-      </if>
+<!--      <if test="proId != null">-->
+<!--        PRO_ID = #{proId,jdbcType=VARCHAR},-->
+<!--      </if>-->
       <if test="price != null">
         PRICE = #{price,jdbcType=VARCHAR},
       </if>
@@ -414,8 +416,9 @@
         deleted = #{deleted,jdbcType=BIT},
       </if>
     </set>
-    where OFP_ID = #{ofpId,jdbcType=INTEGER}
+    where pro_id=#{pro_id}
   </update>
+<!--  OFP_ID = #{ofpId,jdbcType=INTEGER}-->
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.OfpOfferPrice">
     update ofp_offer_price
     set MAN_ID = #{manId,jdbcType=VARCHAR},
