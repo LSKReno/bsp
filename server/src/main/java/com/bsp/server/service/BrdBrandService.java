@@ -36,33 +36,40 @@ public class BrdBrandService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(BrdBrandDto brdBrandDto) {
+    public int save(BrdBrandDto brdBrandDto) {
         BrdBrand brdBrand = CopyUtil.copy(brdBrandDto, BrdBrand.class);
         if (StringUtils.isEmpty(brdBrandDto.getBrdId())) {
-            this.insert(brdBrand);
+            return this.insert(brdBrand);
         } else {
-            this.update(brdBrand);
+            return this.update(brdBrand);
         }
     }
 
     /**
      * 新增
      */
-    private void insert(BrdBrand brdBrand) {
-        brdBrandMapper.insert(brdBrand);
+    private int insert(BrdBrand brdBrand) {
+        return brdBrandMapper.insert(brdBrand);
     }
 
     /**
      * 更新
      */
-    private void update(BrdBrand brdBrand) {
-        brdBrandMapper.updateByPrimaryKey(brdBrand);
+    private int update(BrdBrand brdBrand) {
+        return brdBrandMapper.updateByPrimaryKey(brdBrand);
     }
 
     /**
      * 删除
      */
-    public void delete(Integer id) {
-        brdBrandMapper.deleteByPrimaryKey(id);
+    public int delete(Integer id) {
+        return brdBrandMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * select by manId
+     */
+    public List<BrdBrand> selectByCompanyId(Integer manId){
+        return brdBrandMapper.selectByCompanyId(manId);
     }
 }
