@@ -39,5 +39,5 @@ public interface StrStoreMapper {
 
     int updateByPrimaryKey(StrStore record);
 
-    List<StrStoreDto> selectByDSRId(Integer dsrId);
+    List<StrStore> selectByDSRId(Integer dsrId);
 }

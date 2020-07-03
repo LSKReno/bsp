@@ -36,12 +36,12 @@ public class StrStoreService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(StrStoreDto strStoreDto) {
+    public int save(StrStoreDto strStoreDto) {
         StrStore strStore = CopyUtil.copy(strStoreDto, StrStore.class);
         if (StringUtils.isEmpty(strStoreDto.getStrId())) {
-            this.insert(strStore);
+            return this.insert(strStore);
         } else {
-            this.update(strStore);
+            return this.update(strStore);
         }
     }
 
@@ -49,20 +49,22 @@ public class StrStoreService {
      * select by id
      */
     public List<StrStoreDto> selectByDSRId(Integer dsrId) {
-        return strStoreMapper.selectByDSRId(dsrId);
+        List<StrStore> strStoreList = strStoreMapper.selectByDSRId(dsrId);
+        List<StrStoreDto> strStoreDtoList = CopyUtil.copyList(strStoreList, StrStoreDto.class);
+        return strStoreDtoList;
     }
     /**
      * 新增
      */
-    private void insert(StrStore strStore) {
-        strStoreMapper.insert(strStore);
+    private int insert(StrStore strStore) {
+        return strStoreMapper.insert(strStore);
     }
 
     /**
      * 更新
      */
-    private void update(StrStore strStore) {
-        strStoreMapper.updateByPrimaryKey(strStore);
+    private int update(StrStore strStore) {
+        return strStoreMapper.updateByPrimaryKey(strStore);
     }
 
     /**

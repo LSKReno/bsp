@@ -20,12 +20,12 @@ public class BrdBrandController {
     @RequestMapping("/getBrandsList")
     public ResponseDto getBrandsList(@RequestBody ManManufacturerDto manManufacturerDto){
         ResponseDto responseDto = new ResponseDto();
-        List<BrdBrand> brdBrands = brdBrandService.selectByCompanyId(manManufacturerDto.getManId());
-        if(brdBrands == null){
+        List<BrdBrandDto> brdBrandDtos = brdBrandService.selectByCompanyId(manManufacturerDto.getManId());
+        if(brdBrandDtos == null){
             responseDto.setSuccess(false);
         }else{
             responseDto.setSuccess(true);
-            responseDto.setContent(brdBrands);
+            responseDto.setContent(brdBrandDtos);
         }
         return responseDto;
     }

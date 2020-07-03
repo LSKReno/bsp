@@ -69,7 +69,9 @@ public class BrdBrandService {
     /**
      * select by manId
      */
-    public List<BrdBrand> selectByCompanyId(Integer manId){
-        return brdBrandMapper.selectByCompanyId(manId);
+    public List<BrdBrandDto> selectByCompanyId(Integer manId){
+        List<BrdBrand> brdBrandList = brdBrandMapper.selectByCompanyId(manId);
+        List<BrdBrandDto> brdBrandDtoList = CopyUtil.copyList(brdBrandList, BrdBrandDto.class);
+        return brdBrandDtoList;
     }
 }
