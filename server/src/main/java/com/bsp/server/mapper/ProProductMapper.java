@@ -1,9 +1,14 @@
 package com.bsp.server.mapper;
 
+import com.bsp.server.domain.ManManufacturer;
 import com.bsp.server.domain.ProProduct;
 import com.bsp.server.domain.ProProductExample;
 
 import java.util.List;
+import java.util.Map;
+
+import com.bsp.server.dto.ManManufacturerDto;
+import com.bsp.server.dto.ProductInfoDto;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProProductMapper {
@@ -44,4 +49,7 @@ public interface ProProductMapper {
     int updateByPrimaryKeyWithBLOBs(ProProduct record);
 
     int updateByPrimaryKey(ProProduct record);
+
+    List<ProductInfoDto> listByManid(int manid);
+
 }

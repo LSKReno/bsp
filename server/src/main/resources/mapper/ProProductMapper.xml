@@ -678,4 +678,13 @@
     </if>
     limit 1
   </select>
+
+  <select id="listByManid" resultType="com.bsp.server.dto.ProductInfoDto">
+        select *
+        from pro_product pro join ofp_offer_price ofp on pro.pro_id=ofp.pro_id
+        join pck_package_info pck on pro.pro_id=pck.pro_id
+        join pdn_product_descrition pdn on pro.pro_id=pdn.pro_id
+        join img_image img on pro.pro_id=img.entity_id
+        where pro.man_id=#{manid} and pro.deleted=0
+  </select>
 </mapper>
