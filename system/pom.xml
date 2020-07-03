@@ -33,15 +33,21 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.bsp</groupId>
+            <artifactId>server</artifactId>
+        </dependency>
+
         <!-- 热部署DevTools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
+        <!--单元测试-->
         <dependency>
-            <groupId>com.bsp</groupId>
-            <artifactId>server</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
 
