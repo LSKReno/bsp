@@ -25,6 +25,8 @@ public class StrStoreController {
             responseDto.setSuccess(false);
         }else{
             List<StrStoreDto> strStoreDtoList = strStoreService.selectByDSRId(sysUserDto.getManBuyerId());
+            responseDto.setSuccess(true);
+            responseDto.setContent(strStoreDtoList);
         }
         return responseDto;
     }
