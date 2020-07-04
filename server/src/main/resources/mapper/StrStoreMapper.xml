@@ -125,7 +125,7 @@
     select
     <include refid="Base_Column_List" />
     from str_store
-    where DSR_ID = #{dsrId, jdbcType=INIEGER}
+    where DSR_ID = #{dsrId, jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
