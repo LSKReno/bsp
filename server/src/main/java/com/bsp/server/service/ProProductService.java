@@ -36,7 +36,7 @@ public class ProProductService {
         pageDto.setList(proProductDtoList);
     }
     /**
-     * 列表查询，根据man_id
+     * 列表查询，根据man_id, (title)
      */
     public void list(PageDto pageDto, Map<String,Object> mp) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());

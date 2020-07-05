@@ -1,8 +1,5 @@
 package com.bsp.system.controller.MVO;
 
-import com.bsp.server.domain.OfpOfferPrice;
-import com.bsp.server.domain.ProProduct;
-import com.bsp.server.dto.ManManufacturerDto;
 import com.bsp.server.dto.PageDto;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.service.*;
@@ -12,8 +9,12 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * 商品信息CRUD，不包括图片，图片在分类&主图中上传
+ * 填写完商品信息应自动跳转到分类&主图界面
+ */
 @RestController
-@RequestMapping("/mvoproduct")
+@RequestMapping("/mvo/product")
 public class MVOProductController {
     @Resource
     private ProProductService proProductService;
@@ -23,12 +24,12 @@ public class MVOProductController {
     private PckPackageInfoService pckPackageInfoService;
     @Resource
     private PdnProductDescritionService pdnProductDescritionService;
-    @Resource
-    private ImgImageService imgImageService;
+//    @Resource
+//    private ImgImageService imgImageService;
 
     /**
-     * 列表查询，根据man_id，（title）
-     * 商品信息，商品分类主图的数据
+     * 列表查询，根据man_id, (title)
+     * 商品信息
      */
     @PostMapping("/list")
     public ResponseDto list(PageDto pageDto, @RequestBody Map<String,Object> mp) {
@@ -58,8 +59,8 @@ public class MVOProductController {
         int f3=pckPackageInfoService.updateSelective(mp);
         int f4=pdnProductDescritionService.updateSelective(mp);
         mp.put("entityId",mp.get("proId"));
-        int f5=imgImageService.updateSelective(mp);
-        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
+       // int f5=imgImageService.updateSelective(mp);
+        if(f1>0&&f2>0&&f3>0&&f4>0){
             responseDto.setCode("200");
         }else{
             responseDto.setSuccess(false);
@@ -81,8 +82,8 @@ public class MVOProductController {
         int f3=pckPackageInfoService.updateSelective(mp);
         int f4=pdnProductDescritionService.updateSelective(mp);
         mp.put("entityId",mp.get("proId"));
-        int f5=imgImageService.updateSelective(mp);
-        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
+        //int f5=imgImageService.updateSelective(mp);
+        if(f1>0&&f2>0&&f3>0&&f4>0){
             responseDto.setCode("200");
         }else{
             responseDto.setSuccess(false);
@@ -103,9 +104,9 @@ public class MVOProductController {
         int f2=ofpOfferPriceService.insertSelective(mp);
         int f3=pckPackageInfoService.insertSelective(mp);
         int f4=pdnProductDescritionService.insertSelective(mp);
-        mp.put("entityId",mp.get("proId"));
-        int f5=imgImageService.insertSelective(mp);
-        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
+//        mp.put("entityId",mp.get("proId"));
+//        int f5=imgImageService.insertSelective(mp);
+        if(f1>0&&f2>0&&f3>0&&f4>0){
             responseDto.setCode("200");
         }else{
             responseDto.setSuccess(false);

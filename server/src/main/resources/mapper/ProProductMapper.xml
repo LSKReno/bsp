@@ -689,7 +689,6 @@
     from pro_product pro join ofp_offer_price ofp on pro.pro_id=ofp.pro_id
     join pck_package_info pck on pro.pro_id=pck.pro_id
     join pdn_product_descrition pdn on pro.pro_id=pdn.pro_id
-    join img_image img on pro.pro_id=img.entity_id
     where pro.pro_id in
     (select pro_id from pro_product where pro.man_id=#{manId}
     and pro.deleted=0

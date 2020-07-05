@@ -47,7 +47,7 @@ public interface ProProductMapper {
 
     int updateByPrimaryKeySelective(ProProduct record);
 
-    int updateByPrimaryKeySelective(Map<String,Object> mp); //根据map更新
+    int updateByPrimaryKeySelective(Map<String,Object> mp); //根据map中的pro_id更新
 
     int updateByPrimaryKeyWithBLOBs(ProProduct record);
 

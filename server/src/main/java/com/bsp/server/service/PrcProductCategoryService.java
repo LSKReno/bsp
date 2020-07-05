@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PrcProductCategoryService {
@@ -32,6 +33,18 @@ public class PrcProductCategoryService {
         List<PrcProductCategoryDto> prcProductCategoryDtoList = CopyUtil.copyList(prcProductCategoryList, PrcProductCategoryDto.class);
         pageDto.setList(prcProductCategoryDtoList);
     }
+    /**
+     * 列表查询，根据man_id, (title)
+     */
+    public void list(PageDto pageDto, Map<String,Object> mp) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
+        List<Map<String,Object>> prcProductCategoryList=prcProductCategoryMapper.list(mp);
+        PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(prcProductCategoryList);
+        pageDto.setTotal(pageInfo.getTotal());
+        pageDto.setList(prcProductCategoryList);
+
+    }
+
 
     /**
      * 保存，id有值时更新，无值时新增
@@ -52,11 +65,19 @@ public class PrcProductCategoryService {
         prcProductCategoryMapper.insert(prcProductCategory);
     }
 
+    public int insertSelective(Map<String,Object> mp) {
+        return prcProductCategoryMapper.insertSelective(mp);
+    }
+
     /**
      * 更新
      */
     private void update(PrcProductCategory prcProductCategory) {
         prcProductCategoryMapper.updateByPrimaryKey(prcProductCategory);
+    }
+
+    public int updateByPrimaryKeySelective(Map<String,Object> mp) {
+        return prcProductCategoryMapper.updateByPrimaryKeySelective(mp);
     }
 
     /**
