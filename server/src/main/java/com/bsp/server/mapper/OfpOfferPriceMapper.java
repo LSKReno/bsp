@@ -39,7 +39,7 @@ public interface OfpOfferPriceMapper {
 
     int updateByPrimaryKeySelective(OfpOfferPrice record);
 
-    int updateByPrimaryKeySelective(Map<String,Object> mp); //根据map更新
+    int updateSelective(Map<String,Object> mp); //根据map更新，mapper里直接改的updateByPrimaryKeySelective
 
     int updateByPrimaryKey(OfpOfferPrice record);
 }

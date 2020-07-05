@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/mvopro")
+@RequestMapping("/mvoproduct")
 public class MVOProductController {
     @Resource
     private ProProductService proProductService;
@@ -27,13 +27,13 @@ public class MVOProductController {
     private ImgImageService imgImageService;
 
     /**
-     * 列表查询，根据man_id
-     * 商品信息录入，商品分类主图的数据
+     * 列表查询，根据man_id，（title）
+     * 商品信息，商品分类主图的数据
      */
-    @PostMapping("/listByManid")
-    public ResponseDto listByManid(PageDto pageDto, @RequestBody ManManufacturerDto manManufacturerDto) {
+    @PostMapping("/list")
+    public ResponseDto list(PageDto pageDto, @RequestBody Map<String,Object> mp) {
         ResponseDto responseDto = new ResponseDto();
-        proProductService.listByManid(pageDto,manManufacturerDto.getManId());
+        proProductService.list(pageDto,mp);
         if(pageDto.getTotal()==0){
             responseDto.setSuccess(false);
         }else{
@@ -43,18 +43,49 @@ public class MVOProductController {
         return responseDto;
     }
 
+
+
     /**
      *更新商品信息
      */
     @PostMapping("/update")
     public ResponseDto update(@RequestBody Map<String,Object> mp){
         ResponseDto responseDto = new ResponseDto();
-
-        int f=proProductService.updateByPrimaryKeySelective(mp);
-        if(f==0){
-            responseDto.setSuccess(false);
-        }else{
+        mp.put("lastUpdateDate",new Date());
+        mp.put("deleted","0");
+        int f1=proProductService.updateByPrimaryKeySelective(mp);
+        int f2=ofpOfferPriceService.updateSelective(mp);
+        int f3=pckPackageInfoService.updateSelective(mp);
+        int f4=pdnProductDescritionService.updateSelective(mp);
+        mp.put("entityId",mp.get("proId"));
+        int f5=imgImageService.updateSelective(mp);
+        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
             responseDto.setCode("200");
+        }else{
+            responseDto.setSuccess(false);
+        }
+        return responseDto;
+
+    }
+
+    /**
+     *逻辑删除商品信息
+     */
+    @PostMapping("/delete")
+    public ResponseDto delete(@RequestBody Map<String,Object> mp){
+        ResponseDto responseDto = new ResponseDto();
+        mp.put("lastUpdateDate",new Date());
+        mp.put("deleted","1");
+        int f1=proProductService.updateByPrimaryKeySelective(mp);
+        int f2=ofpOfferPriceService.updateSelective(mp);
+        int f3=pckPackageInfoService.updateSelective(mp);
+        int f4=pdnProductDescritionService.updateSelective(mp);
+        mp.put("entityId",mp.get("proId"));
+        int f5=imgImageService.updateSelective(mp);
+        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
+            responseDto.setCode("200");
+        }else{
+            responseDto.setSuccess(false);
         }
         return responseDto;
 
@@ -69,7 +100,6 @@ public class MVOProductController {
         mp.put("creationDate",new Date());
         mp.put("deleted","0");
         int f1=proProductService.insertSelective(mp);
-        mp.put("proId",f1);
         int f2=ofpOfferPriceService.insertSelective(mp);
         int f3=pckPackageInfoService.insertSelective(mp);
         int f4=pdnProductDescritionService.insertSelective(mp);

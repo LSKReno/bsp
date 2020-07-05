@@ -66,8 +66,8 @@ public class OfpOfferPriceService {
         ofpOfferPriceMapper.updateByPrimaryKey(ofpOfferPrice);
     }
 
-    public int updateByPrimaryKeySelective(Map<String,Object> mp) {
-        return ofpOfferPriceMapper.updateByPrimaryKeySelective(mp);
+    public int updateSelective(Map<String,Object> mp) {
+        return ofpOfferPriceMapper.updateSelective(mp);
     }
 
     /**

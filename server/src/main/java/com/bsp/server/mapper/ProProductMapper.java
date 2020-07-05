@@ -53,6 +53,8 @@ public interface ProProductMapper {
 
     int updateByPrimaryKey(ProProduct record);
 
-    List<Map<String,Object>> listByManid(int manid);
+    List<Map<String,Object>> list(Map<String,Object> mp);
+
+
 
 }

@@ -349,7 +349,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.PdnProductDescrition">
+<!--  updateByPrimaryKeySelective com.bsp.server.domain.PdnProductDescrition-->
+  <update id="updateSelective" parameterType="java.util.Map">
     update pdn_product_descrition
     <set>
       <if test="proId != null">
@@ -386,8 +387,9 @@
         DESCRITION = #{descrition,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where PDN_ID = #{pdnId,jdbcType=INTEGER}
+    where PRO_ID = #{proId,jdbcType=INTEGER}
   </update>
+<!--  where PDN_ID = #{pdnId,jdbcType=INTEGER}-->
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bsp.server.domain.PdnProductDescrition">
     update pdn_product_descrition
     set PRO_ID = #{proId,jdbcType=INTEGER},

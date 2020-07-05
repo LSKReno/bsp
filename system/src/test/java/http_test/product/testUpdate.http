@@ -6,13 +6,26 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST http://127.0.0.1:9001/system/mvopro/listByManid
+POST  http://127.0.0.1:9001/system/mvoproduct/update
 Content-Type: application/json
 
-{"manId": "1"}
-
-###
-
-
+{
+  "proId": "8",
+  "title": "woeifore",
+  "skuCd": "skrrrrr",
+  "upc": "uuppcc",
+  "ean": "eannea",
+  "model": "modellingggg",
+  "warrantyDay": "20200703",
+  "descrition": "dd",
+  "price": "9.0",
+  "length": "7.7",
+  "weight": "4.3",
+  "height": "5.6",
+  "width": "2.2",
+  "manId": "9",
+  "lastUpdateBy": "usssss",
+  "uri": "yoerihoqierwurg3"
+}
 
 ###

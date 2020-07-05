@@ -71,8 +71,8 @@ public class PckPackageInfoService {
         pckPackageInfoMapper.deleteByPrimaryKey(id);
     }
 
-    public int updateByPrimaryKeySelective(Map<String,Object> mp) {
-        return pckPackageInfoMapper.updateByPrimaryKeySelective(mp);
+    public int updateSelective(Map<String,Object> mp) {
+        return pckPackageInfoMapper.updateSelective(mp);
     }
 
 }

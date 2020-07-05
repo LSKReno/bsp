@@ -65,6 +65,10 @@ public class PdnProductDescritionService {
         pdnProductDescritionMapper.updateByPrimaryKey(pdnProductDescrition);
     }
 
+    public int updateSelective(Map<String,Object> mp) {
+        return pdnProductDescritionMapper.updateSelective(mp);
+    }
+
     /**
      * 删除
      */

@@ -64,6 +64,10 @@ public class ImgImageService {
         imgImageMapper.updateByPrimaryKey(imgImage);
     }
 
+    public int updateSelective(Map<String,Object> mp) {
+        return imgImageMapper.updateSelective(mp);
+    }
+
     /**
      * 删除
      */

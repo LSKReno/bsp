@@ -125,6 +125,7 @@
     from img_image
     where IMG_ID = #{imgId,jdbcType=INTEGER}
   </select>
+
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
     <choose>
@@ -362,17 +363,18 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.ImgImage">
+<!--  updateByPrimaryKeySelective com.bsp.server.domain.ImgImage-->
+  <update id="updateSelective" parameterType="java.util.Map">
     update img_image
     <set>
       <if test="name != null">
         `NAME` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="width != null">
-        WIDTH = #{width,jdbcType=INTEGER},
+        WIDTH = #{imgWidth,jdbcType=INTEGER},
       </if>
       <if test="height != null">
-        HEIGHT = #{height,jdbcType=INTEGER},
+        HEIGHT = #{imgHeight,jdbcType=INTEGER},
       </if>
       <if test="uri != null">
         URI = #{uri,jdbcType=VARCHAR},
@@ -414,8 +416,9 @@
         deleted = #{deleted,jdbcType=BIT},
       </if>
     </set>
-    where IMG_ID = #{imgId,jdbcType=INTEGER}
+    where ENTITY_ID = #{entityId,jdbcType=INTEGER}
   </update>
+<!--  where IMG_ID = #{imgId,jdbcType=INTEGER}-->
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.ImgImage">
     update img_image
     set `NAME` = #{name,jdbcType=VARCHAR},

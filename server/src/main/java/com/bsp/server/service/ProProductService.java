@@ -38,23 +38,15 @@ public class ProProductService {
     /**
      * 列表查询，根据man_id
      */
-    public void listByManid(PageDto pageDto, int manID) {
+    public void list(PageDto pageDto, Map<String,Object> mp) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
-        List<Map<String,Object>> productInfoList=proProductMapper.listByManid(manID);
+        List<Map<String,Object>> productInfoList=proProductMapper.list(mp);
         PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(productInfoList);
         pageDto.setTotal(pageInfo.getTotal());
         pageDto.setList(productInfoList);
 
     }
 
-
-
-    /**
-     * 列表查询，根据pro状态
-     */
-    public void listBySts(PageDto pageDto) {
-
-    }
 
     /**
      * 保存，id有值时更新，无值时新增

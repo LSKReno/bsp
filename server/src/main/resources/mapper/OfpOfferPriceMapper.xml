@@ -363,8 +363,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-<!--  com.bsp.server.domain.OfpOfferPrice-->
-  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+<!--  updateByPrimaryKeySelective com.bsp.server.domain.OfpOfferPrice-->
+  <update id="updateSelective" parameterType="java.util.Map">
     update ofp_offer_price
     <set>
       <if test="manId != null">
@@ -376,9 +376,9 @@
       <if test="effectiveEndDate != null">
         EFFECTIVE_END_DATE = #{effectiveEndDate,jdbcType=TIMESTAMP},
       </if>
-<!--      <if test="proId != null">-->
-<!--        PRO_ID = #{proId,jdbcType=VARCHAR},-->
-<!--      </if>-->
+      <if test="proId != null">
+        PRO_ID = #{proId,jdbcType=VARCHAR},
+      </if>
       <if test="price != null">
         PRICE = #{price,jdbcType=VARCHAR},
       </if>
@@ -416,7 +416,7 @@
         deleted = #{deleted,jdbcType=BIT},
       </if>
     </set>
-    where pro_id=#{pro_id}
+    where PRO_ID = #{proId,jdbcType=INTEGER}
   </update>
 <!--  OFP_ID = #{ofpId,jdbcType=INTEGER}-->
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.OfpOfferPrice">

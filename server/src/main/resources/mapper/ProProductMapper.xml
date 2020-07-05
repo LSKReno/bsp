@@ -207,7 +207,7 @@
   </insert>
 <!--  com.bsp.server.domain.ProProduct-->
   <insert id="insertSelective" parameterType="java.util.Map">
-    <selectKey keyProperty="pro_id" resultType="int" order="AFTER">
+    <selectKey keyColumn="pro_id" keyProperty="proId" resultType="int" order="AFTER">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into pro_product
@@ -684,12 +684,18 @@
     limit 1
   </select>
 
-  <select id="listByManid" resultType="java.util.Map">
-        select *
-        from pro_product pro join ofp_offer_price ofp on pro.pro_id=ofp.pro_id
-        join pck_package_info pck on pro.pro_id=pck.pro_id
-        join pdn_product_descrition pdn on pro.pro_id=pdn.pro_id
-        join img_image img on pro.pro_id=img.entity_id
-        where pro.man_id=#{manId} and pro.deleted=0
+  <select id="list" resultType="java.util.Map">
+    select  *
+    from pro_product pro join ofp_offer_price ofp on pro.pro_id=ofp.pro_id
+    join pck_package_info pck on pro.pro_id=pck.pro_id
+    join pdn_product_descrition pdn on pro.pro_id=pdn.pro_id
+    join img_image img on pro.pro_id=img.entity_id
+    where pro.pro_id in
+    (select pro_id from pro_product where pro.man_id=#{manId}
+    and pro.deleted=0
+    <if test="title != null">
+      and pro.title=#{title}
+    </if>)
   </select>
+
 </mapper>

@@ -37,6 +37,8 @@ public interface PdnProductDescritionMapper {
 
     PdnProductDescrition selectByPrimaryKey(Integer pdnId);
 
+    Map<String,Object> selectByProduct(Integer proId); //根据product id选择
+
     int updateByExampleSelective(@Param("record") PdnProductDescrition record, @Param("example") PdnProductDescritionExample example);
 
     int updateByExampleWithBLOBs(@Param("record") PdnProductDescrition record, @Param("example") PdnProductDescritionExample example);
@@ -45,7 +47,7 @@ public interface PdnProductDescritionMapper {
 
     int updateByPrimaryKeySelective(PdnProductDescrition record);
 
-    int updateByPrimaryKeySelective(Map<String,Object> mp); //根据map更新
+    int updateSelective(Map<String,Object> mp); //根据map更新，mapper里直接改的updateByPrimaryKeySelective
 
     int updateByPrimaryKeyWithBLOBs(PdnProductDescrition record);
 
