@@ -5,6 +5,7 @@ import com.bsp.server.domain.ManManufacturer;
 import com.bsp.server.domain.SysUser;
 import com.bsp.server.dto.*;
 import com.bsp.server.service.ManManufacturerService;
+import com.bsp.server.service.SysUserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,8 @@ import java.util.Map;
 public class CompanyInformationController {
     @Resource
     private ManManufacturerService manManufacturerService;
+    @Resource
+    private SysUserService sysUserService;
     @PostMapping("/getCompanyInfo")
     public ResponseDto getCompanyInfo(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
@@ -28,8 +31,13 @@ public class CompanyInformationController {
             responseDto.setSuccess(false);
         }else{
             ManManufacturer manManufacturer = manManufacturerService.selectByPrimaryKey(sysUserDto.getManBuyerId());
-            responseDto.setSuccess(true);
-            responseDto.setContent(manManufacturer);
+            if(manManufacturer != null){
+                responseDto.setSuccess(true);
+                responseDto.setContent(manManufacturer);
+            }else{
+                responseDto.setSuccess(false);
+            }
+
         }
         return responseDto;
     }
@@ -44,7 +52,13 @@ public class CompanyInformationController {
         if(result == 0){
             responseDto.setSuccess(false);
         }else{
-            responseDto.setSuccess(true);
+            sysUserDto.setManBuyerId(result);
+            if(sysUserService.save(sysUserDto) != 0){
+                responseDto.setSuccess(true);
+            }else{
+                responseDto.setSuccess(false);
+            }
+
         }
         return responseDto;
     }
