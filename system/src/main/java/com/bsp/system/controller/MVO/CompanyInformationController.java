@@ -1,9 +1,9 @@
 package com.bsp.system.controller.MVO;
 
+import com.alibaba.fastjson.JSON;
 import com.bsp.server.domain.ManManufacturer;
-import com.bsp.server.dto.ManManufacturerDto;
-import com.bsp.server.dto.PageDto;
-import com.bsp.server.dto.ResponseDto;
+import com.bsp.server.domain.SysUser;
+import com.bsp.server.dto.*;
 import com.bsp.server.service.ManManufacturerService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/CompanyInformationController")
@@ -20,19 +21,22 @@ public class CompanyInformationController {
     @Resource
     private ManManufacturerService manManufacturerService;
     @PostMapping("/getCompanyInfo")
-    public ResponseDto getCompanyInfo(@RequestBody ManManufacturerDto manManufacturerDto){
+    public ResponseDto getCompanyInfo(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
-        ManManufacturer manManufacturer = manManufacturerService.selectByPrimaryKey(manManufacturerDto);
-        if (manManufacturer != null){
+//        ManManufacturer manManufacturer = manManufacturerService.selectByPrimaryKey(manManufacturerDto);
+        if (sysUserDto.getManBuyerId() == null){
             responseDto.setSuccess(false);
         }else{
+            ManManufacturer manManufacturer = manManufacturerService.selectByPrimaryKey(sysUserDto.getManBuyerId());
             responseDto.setSuccess(true);
             responseDto.setContent(manManufacturer);
         }
         return responseDto;
     }
     @PostMapping("/saveCompanyInfo")
-    public ResponseDto saveCompanyInfo(@RequestBody ManManufacturerDto manManufacturerDto) throws ParseException {
+    public ResponseDto saveCompanyInfo(@RequestBody Map<String,Object> request) throws ParseException {
+        SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
+        ManManufacturerDto manManufacturerDto = JSON.parseObject(JSON.toJSONString(request.get("ManManufacturerDto")), ManManufacturerDto.class);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ResponseDto responseDto = new ResponseDto();
 

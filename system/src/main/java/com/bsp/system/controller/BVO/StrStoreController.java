@@ -1,5 +1,6 @@
 package com.bsp.system.controller.BVO;
 
+import com.alibaba.fastjson.JSON;
 import com.bsp.server.domain.SysUser;
 import com.bsp.server.dto.*;
 import com.bsp.server.service.DsrDropshipperService;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/StrStoreController")
@@ -42,7 +44,9 @@ public class StrStoreController {
         return responseDto;
     }
     @RequestMapping("/addOnlineStore")
-    public ResponseDto addOnlineStore(@RequestBody SysUserDto sysUserDto, @RequestBody StrStoreDto strStoreDto){
+    public ResponseDto addOnlineStore(@RequestBody Map<String, Object> request){
+        SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
+        StrStoreDto strStoreDto = JSON.parseObject(JSON.toJSONString(request.get("StrStoreDto")), StrStoreDto.class);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ResponseDto responseDto = new ResponseDto();
         if(sysUserDto.getManBuyerId() == null){

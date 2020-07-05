@@ -35,8 +35,8 @@ public class ManManufacturerService {
     /**
      * query by primary key
      */
-    public ManManufacturer selectByPrimaryKey(ManManufacturerDto manManufacturerDto){
-        return manManufacturerMapper.selectByPrimaryKey(manManufacturerDto.getManId());
+    public ManManufacturer selectByPrimaryKey(Integer primaryKey){
+        return manManufacturerMapper.selectByPrimaryKey(primaryKey);
     }
     /**
      * 保存，id有值时更新，无值时新增
