@@ -5,6 +5,7 @@ import com.bsp.server.dto.DsrDropshipperDto;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.dto.SysUserDto;
 import com.bsp.server.service.DsrDropshipperService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ import javax.annotation.Resource;
 public class DsrDropshipperController {
     @Resource
     private DsrDropshipperService dsrDropshipperService;
-    @RequestMapping("/getBVOInfo")
+    @PostMapping("/getBVOInfo")
     public ResponseDto getBVOInfo(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
         DsrDropshipper dsrDropshipper = dsrDropshipperService.selectByPrimaryKey(sysUserDto.getManBuyerId());
@@ -28,7 +29,7 @@ public class DsrDropshipperController {
         }
         return responseDto;
     }
-    @RequestMapping("/saveBVOInfo")
+    @PostMapping("/saveBVOInfo")
     public ResponseDto saveBVOInfo(@RequestBody DsrDropshipperDto dsrDropshipperDto){
         ResponseDto responseDto = new ResponseDto();
         int result = dsrDropshipperService.save(dsrDropshipperDto);

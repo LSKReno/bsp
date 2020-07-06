@@ -6,6 +6,7 @@ import com.bsp.server.domain.SysUser;
 import com.bsp.server.dto.*;
 import com.bsp.server.service.ManManufacturerService;
 import com.bsp.server.service.SysUserService;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,19 +48,27 @@ public class CompanyInformationController {
         ManManufacturerDto manManufacturerDto = JSON.parseObject(JSON.toJSONString(request.get("ManManufacturerDto")), ManManufacturerDto.class);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ResponseDto responseDto = new ResponseDto();
-
-        int result = manManufacturerService.save(manManufacturerDto);
-        if(result == 0){
-            responseDto.setSuccess(false);
-        }else{
-            sysUserDto.setManBuyerId(result);
-            if(sysUserService.save(sysUserDto) != 0){
-                responseDto.setSuccess(true);
-            }else{
+        if(StringUtils.isEmpty(manManufacturerDto.getManId())){
+            int result = manManufacturerService.save(manManufacturerDto);
+            if(result == 0){
                 responseDto.setSuccess(false);
+            }else{
+                sysUserDto.setManBuyerId(result);
+                if(sysUserService.save(sysUserDto) != 0){
+                    responseDto.setSuccess(true);
+                }else{
+                    responseDto.setSuccess(false);
+                }
             }
-
+        }else{
+            int result = manManufacturerService.save(manManufacturerDto);
+            if(result == 0){
+                responseDto.setSuccess(false);
+            }else{
+                responseDto.setSuccess(true);
+            }
         }
+
         return responseDto;
     }
 }

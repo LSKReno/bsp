@@ -2,17 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bsp.server.mapper.SysUserMapper">
   <resultMap id="BaseResultMap" type="com.bsp.server.domain.SysUser">
-    <id column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="sex" jdbcType="BIT" property="sex" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
-    <result column="last_login_time" jdbcType="INTEGER" property="lastLoginTime" />
-    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
-    <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
-    <result column="status" jdbcType="TINYINT" property="status" />
-    <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <id column="USER_ID" jdbcType="INTEGER" property="userId" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="RIGHTS" jdbcType="VARCHAR" property="rights" />
+    <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="LAST_LOGIN" jdbcType="VARCHAR" property="lastLogin" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="BZ" jdbcType="VARCHAR" property="bz" />
+    <result column="SKIN" jdbcType="VARCHAR" property="skin" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="NUMBER" jdbcType="VARCHAR" property="number" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="MAN_BUYER_ID" jdbcType="INTEGER" property="manBuyerId" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,8 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, username, `password`, sex, email, mobile, last_login_time, last_login_ip, 
-    avatar_url, `status`, create_time
+    USER_ID, USERNAME, `PASSWORD`, `NAME`, RIGHTS, ROLE_ID, LAST_LOGIN, IP, `STATUS`,
+    BZ, SKIN, EMAIL, `NUMBER`, PHONE, MAN_BUYER_ID, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.SysUserExample" resultMap="BaseResultMap">
     select
@@ -113,11 +118,11 @@
       order by ${example.orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
     <include refid="Base_Column_List" />
     from sys_user
-    where user_id = #{userId,jdbcType=BIGINT}
+    where USER_ID = #{userId,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
@@ -132,11 +137,11 @@
       </otherwise>
     </choose>
     from sys_user
-    where user_id = #{userId,jdbcType=BIGINT}
+    where USER_ID = #{userId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sys_user
-    where user_id = #{userId,jdbcType=BIGINT}
+    where USER_ID = #{userId,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.bsp.server.domain.SysUserExample">
     delete from sys_user
@@ -145,55 +150,74 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.SysUser">
-    insert into sys_user (user_id, username, `password`, 
-      sex, email, mobile, last_login_time, 
-      last_login_ip, avatar_url, `status`, 
-      create_time)
-    values (#{userId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=INTEGER}, 
-      #{lastLoginIp,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=INTEGER})
+    insert into sys_user (USER_ID, USERNAME, `PASSWORD`,
+      `NAME`, RIGHTS, ROLE_ID,
+      LAST_LOGIN, IP, `STATUS`,
+      BZ, SKIN, EMAIL, `NUMBER`,
+      PHONE, MAN_BUYER_ID, deleted
+      )
+    values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{name,jdbcType=VARCHAR}, #{rights,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR},
+      #{lastLogin,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+      #{bz,jdbcType=VARCHAR}, #{skin,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, #{manBuyerId,jdbcType=INTEGER}, #{deleted,jdbcType=BIT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.SysUser">
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        user_id,
+        USER_ID,
       </if>
       <if test="username != null">
-        username,
+        USERNAME,
       </if>
       <if test="password != null">
-        `password`,
+        `PASSWORD`,
       </if>
-      <if test="sex != null">
-        sex,
+      <if test="name != null">
+        `NAME`,
       </if>
-      <if test="email != null">
-        email,
+      <if test="rights != null">
+        RIGHTS,
       </if>
-      <if test="mobile != null">
-        mobile,
+      <if test="roleId != null">
+        ROLE_ID,
       </if>
-      <if test="lastLoginTime != null">
-        last_login_time,
+      <if test="lastLogin != null">
+        LAST_LOGIN,
       </if>
-      <if test="lastLoginIp != null">
-        last_login_ip,
-      </if>
-      <if test="avatarUrl != null">
-        avatar_url,
+      <if test="ip != null">
+        IP,
       </if>
       <if test="status != null">
-        `status`,
+        `STATUS`,
       </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="bz != null">
+        BZ,
+      </if>
+      <if test="skin != null">
+        SKIN,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="number != null">
+        `NUMBER`,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="manBuyerId != null">
+        MAN_BUYER_ID,
+      </if>
+      <if test="deleted != null">
+        deleted,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
-        #{userId,jdbcType=BIGINT},
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
@@ -201,29 +225,44 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
-        #{sex,jdbcType=BIT},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="rights != null">
+        #{rights,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLogin != null">
+        #{lastLogin,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null">
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="skin != null">
+        #{skin,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="mobile != null">
-        #{mobile,jdbcType=VARCHAR},
+      <if test="number != null">
+        #{number,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginTime != null">
-        #{lastLoginTime,jdbcType=INTEGER},
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginIp != null">
-        #{lastLoginIp,jdbcType=VARCHAR},
+      <if test="manBuyerId != null">
+        #{manBuyerId,jdbcType=INTEGER},
       </if>
-      <if test="avatarUrl != null">
-        #{avatarUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=INTEGER},
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -237,37 +276,52 @@
     update sys_user
     <set>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=BIGINT},
+        USER_ID = #{record.userId,jdbcType=INTEGER},
       </if>
       <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+        USERNAME = #{record.username,jdbcType=VARCHAR},
       </if>
       <if test="record.password != null">
-        `password` = #{record.password,jdbcType=VARCHAR},
+        `PASSWORD` = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.sex != null">
-        sex = #{record.sex,jdbcType=BIT},
+      <if test="record.name != null">
+        `NAME` = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null">
-        email = #{record.email,jdbcType=VARCHAR},
+      <if test="record.rights != null">
+        RIGHTS = #{record.rights,jdbcType=VARCHAR},
       </if>
-      <if test="record.mobile != null">
-        mobile = #{record.mobile,jdbcType=VARCHAR},
+      <if test="record.roleId != null">
+        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
       </if>
-      <if test="record.lastLoginTime != null">
-        last_login_time = #{record.lastLoginTime,jdbcType=INTEGER},
+      <if test="record.lastLogin != null">
+        LAST_LOGIN = #{record.lastLogin,jdbcType=VARCHAR},
       </if>
-      <if test="record.lastLoginIp != null">
-        last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
-      </if>
-      <if test="record.avatarUrl != null">
-        avatar_url = #{record.avatarUrl,jdbcType=VARCHAR},
+      <if test="record.ip != null">
+        IP = #{record.ip,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
-        `status` = #{record.status,jdbcType=TINYINT},
+        `STATUS` = #{record.status,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=INTEGER},
+      <if test="record.bz != null">
+        BZ = #{record.bz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skin != null">
+        SKIN = #{record.skin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.number != null">
+        `NUMBER` = #{record.number,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        PHONE = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manBuyerId != null">
+        MAN_BUYER_ID = #{record.manBuyerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -276,17 +330,22 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update sys_user
-    set user_id = #{record.userId,jdbcType=BIGINT},
-      username = #{record.username,jdbcType=VARCHAR},
-      `password` = #{record.password,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=BIT},
-      email = #{record.email,jdbcType=VARCHAR},
-      mobile = #{record.mobile,jdbcType=VARCHAR},
-      last_login_time = #{record.lastLoginTime,jdbcType=INTEGER},
-      last_login_ip = #{record.lastLoginIp,jdbcType=VARCHAR},
-      avatar_url = #{record.avatarUrl,jdbcType=VARCHAR},
-      `status` = #{record.status,jdbcType=TINYINT},
-      create_time = #{record.createTime,jdbcType=INTEGER}
+    set USER_ID = #{record.userId,jdbcType=INTEGER},
+    USERNAME = #{record.username,jdbcType=VARCHAR},
+    `PASSWORD` = #{record.password,jdbcType=VARCHAR},
+    `NAME` = #{record.name,jdbcType=VARCHAR},
+    RIGHTS = #{record.rights,jdbcType=VARCHAR},
+    ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+    LAST_LOGIN = #{record.lastLogin,jdbcType=VARCHAR},
+    IP = #{record.ip,jdbcType=VARCHAR},
+    `STATUS` = #{record.status,jdbcType=VARCHAR},
+    BZ = #{record.bz,jdbcType=VARCHAR},
+    SKIN = #{record.skin,jdbcType=VARCHAR},
+    EMAIL = #{record.email,jdbcType=VARCHAR},
+    `NUMBER` = #{record.number,jdbcType=VARCHAR},
+    PHONE = #{record.phone,jdbcType=VARCHAR},
+    MAN_BUYER_ID = #{record.manBuyerId,jdbcType=INTEGER},
+    deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -295,51 +354,71 @@
     update sys_user
     <set>
       <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
+        USERNAME = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
-        `password` = #{password,jdbcType=VARCHAR},
+        `PASSWORD` = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
-        sex = #{sex,jdbcType=BIT},
+      <if test="name != null">
+        `NAME` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
+      <if test="rights != null">
+        RIGHTS = #{rights,jdbcType=VARCHAR},
       </if>
-      <if test="mobile != null">
-        mobile = #{mobile,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginTime != null">
-        last_login_time = #{lastLoginTime,jdbcType=INTEGER},
+      <if test="lastLogin != null">
+        LAST_LOGIN = #{lastLogin,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginIp != null">
-        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      </if>
-      <if test="avatarUrl != null">
-        avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      <if test="ip != null">
+        IP = #{ip,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        `status` = #{status,jdbcType=TINYINT},
+        `STATUS` = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=INTEGER},
+      <if test="bz != null">
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="skin != null">
+        SKIN = #{skin,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        `NUMBER` = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="manBuyerId != null">
+        MAN_BUYER_ID = #{manBuyerId,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
       </if>
     </set>
-    where user_id = #{userId,jdbcType=BIGINT}
+    where USER_ID = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.SysUser">
     update sys_user
-    set username = #{username,jdbcType=VARCHAR},
-      `password` = #{password,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=BIT},
-      email = #{email,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR},
-      last_login_time = #{lastLoginTime,jdbcType=INTEGER},
-      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      avatar_url = #{avatarUrl,jdbcType=VARCHAR},
-      `status` = #{status,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=INTEGER}
-    where user_id = #{userId,jdbcType=BIGINT}
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      `PASSWORD` = #{password,jdbcType=VARCHAR},
+      `NAME` = #{name,jdbcType=VARCHAR},
+      RIGHTS = #{rights,jdbcType=VARCHAR},
+      ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      LAST_LOGIN = #{lastLogin,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      `STATUS` = #{status,jdbcType=VARCHAR},
+      BZ = #{bz,jdbcType=VARCHAR},
+      SKIN = #{skin,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      `NUMBER` = #{number,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      MAN_BUYER_ID = #{manBuyerId,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=BIT}
+    where USER_ID = #{userId,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.bsp.server.domain.SysUserExample" resultMap="BaseResultMap">
     select

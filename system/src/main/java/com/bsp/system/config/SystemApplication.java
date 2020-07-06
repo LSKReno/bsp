@@ -8,11 +8,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableEurekaClient
 @ComponentScan("com.bsp")
 @MapperScan("com.bsp.server.mapper")
+@EnableSwagger2
 public class SystemApplication {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SystemApplication.class);

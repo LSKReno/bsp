@@ -5,6 +5,8 @@ import com.bsp.server.dto.BrdBrandDto;
 import com.bsp.server.dto.ManManufacturerDto;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.service.BrdBrandService;
+import com.bsp.server.service.SysUserService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +19,9 @@ import java.util.List;
 public class BrdBrandController {
     @Resource
     private BrdBrandService brdBrandService;
-    @RequestMapping("/getBrandsList")
+    @Resource
+    private SysUserService sysUserService;
+    @PostMapping("/getBrandsList")
     public ResponseDto getBrandsList(@RequestBody ManManufacturerDto manManufacturerDto){
         ResponseDto responseDto = new ResponseDto();
         List<BrdBrandDto> brdBrandDtos = brdBrandService.selectByCompanyId(manManufacturerDto.getManId());
@@ -25,11 +29,12 @@ public class BrdBrandController {
             responseDto.setSuccess(false);
         }else{
             responseDto.setSuccess(true);
+
             responseDto.setContent(brdBrandDtos);
         }
         return responseDto;
     }
-    @RequestMapping("/saveBrand")
+    @PostMapping("/saveBrand")
     public ResponseDto saveBrand(@RequestBody BrdBrandDto brdBrandDto){
         ResponseDto responseDto = new ResponseDto();
         int result = brdBrandService.save(brdBrandDto);
@@ -40,7 +45,7 @@ public class BrdBrandController {
         }
         return responseDto;
     }
-    @RequestMapping("/removeBrand")
+    @PostMapping("/removeBrand")
     public ResponseDto removeBrand(@RequestBody BrdBrandDto brdBrandDto){
         ResponseDto responseDto = new ResponseDto();
         int result = brdBrandService.delete(brdBrandDto.getBrdId());

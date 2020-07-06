@@ -59,7 +59,13 @@ public class SysUserService {
 
         return sysUserMapper.updateByPrimaryKey(sysUser);
     }
-
+    /**
+     * update by selective
+     */
+    private int updateByPrimaryKeySelective(SysUserDto sysUserDto){
+        SysUser sysUser = CopyUtil.copy(sysUserDto, SysUser.class);
+        return sysUserMapper.updateByPrimaryKeySelective(sysUser);
+    }
     /**
      * 删除
      */
