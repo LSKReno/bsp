@@ -376,7 +376,51 @@
     </set>
     where PRC_ID = #{prcId,jdbcType=INTEGER}
   </update>
-
+  <update id="updateSelective" parameterType="java.util.Map">
+    update prc_product_category
+    <set>
+      <if test="proId != null">
+        PRO_ID = #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        CATEGORY_ID = #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null">
+        CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryPath != null">
+        CATEGORY_PATH = #{categoryPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callCnt != null">
+        CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="stsCd != null">
+        STS_CD = #{stsCd,jdbcType=CHAR},
+      </if>
+      <if test="plateformType != null">
+        PLATEFORM_TYPE = #{plateformType,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where PRO_ID = #{proId,jdbcType=INTEGER}
+  </update>
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.PrcProductCategory">
     update prc_product_category
     set PRO_ID = #{proId,jdbcType=INTEGER},

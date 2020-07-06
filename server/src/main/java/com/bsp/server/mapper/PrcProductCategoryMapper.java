@@ -43,5 +43,7 @@ public interface PrcProductCategoryMapper {
 
     int updateByPrimaryKeySelective(Map<String,Object> mp); //根据map中的prc_id更新
 
+    int updateSelective(Map<String,Object> mp); //根据map更新
+
     List<Map<String,Object>> list(Map<String,Object> mp);
 }

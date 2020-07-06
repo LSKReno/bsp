@@ -9,25 +9,16 @@ POST  http://127.0.0.1:9001/system/mvo/productCategory/insert
 Content-Type: application/json
 
 {
-  "title": "orggg",
-  "skuCd": "sekura4",
-  "upc": "unpvccc",
-  "ean": "e112345",
-  "model": "232r0x",
-  "warrantyDay": "20200705",
-  "descrition": "hbbbbuul",
-  "price": "99",
-  "length": "7.3",
-  "weight": "45",
-  "height": "5.00",
-  "width": "23.0",
-  "manId": "1",
-  "createdBy": "zeraaa",
-  "lastUpdateBy": "zeraaa"
+  "title": "orange",
+"categoryName": "electronic",
+  "createdBy": "naultilss",
+  "uri": "somimg.com",
+  "stsCd": "I"
 }
 
-###,
-#  "uri": "www9913"
+###
+
+
 
 
 

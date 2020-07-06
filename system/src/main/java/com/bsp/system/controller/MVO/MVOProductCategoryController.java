@@ -48,7 +48,6 @@ public class MVOProductCategoryController {
     public ResponseDto update(@RequestBody Map<String,Object> mp){
         ResponseDto responseDto = new ResponseDto();
         mp.put("lastUpdateDate",new Date());
-        mp.put("deleted","0");
         int f1=prcProductCategoryService.updateByPrimaryKeySelective(mp); //更新并查出对应的pro_id
         int f2=proProductService.updateByPrimaryKeySelective(mp);
         mp.put("entityId",mp.get("proId"));
@@ -89,11 +88,11 @@ public class MVOProductCategoryController {
         ResponseDto responseDto = new ResponseDto();
         mp.put("lastUpdateDate",new Date());
         mp.put("deleted","1");
-        int f1=proProductService.updateByPrimaryKeySelective(mp);
-        int f2=prcProductCategoryService.updateByPrimaryKeySelective(mp);
+        mp.put("stsCd","D");
+        int f1=prcProductCategoryService.updateByPrimaryKeySelective(mp);
         mp.put("entityId",mp.get("proId"));
-        int f3=imgImageService.updateSelective(mp);
-        if(f1>0&&f2>0&&f3>0){
+        int f2=imgImageService.updateSelective(mp);
+        if(f1>0&&f2>0){
             responseDto.setCode("200");
         }else{
             responseDto.setSuccess(false);

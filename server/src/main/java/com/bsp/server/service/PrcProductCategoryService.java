@@ -80,6 +80,9 @@ public class PrcProductCategoryService {
         return prcProductCategoryMapper.updateByPrimaryKeySelective(mp);
     }
 
+    public int updateSelective(Map<String,Object> mp) {
+        return prcProductCategoryMapper.updateSelective(mp);
+    }
     /**
      * 删除
      */

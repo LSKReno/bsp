@@ -24,8 +24,8 @@ public class MVOProductController {
     private PckPackageInfoService pckPackageInfoService;
     @Resource
     private PdnProductDescritionService pdnProductDescritionService;
-//    @Resource
-//    private ImgImageService imgImageService;
+    @Resource
+    private PrcProductCategoryService prcProductCategoryService;
 
     /**
      * 列表查询，根据man_id, (title)
@@ -48,18 +48,16 @@ public class MVOProductController {
 
     /**
      *更新商品信息
+     * 只更新商品信息页面的内容即可
      */
     @PostMapping("/update")
     public ResponseDto update(@RequestBody Map<String,Object> mp){
         ResponseDto responseDto = new ResponseDto();
         mp.put("lastUpdateDate",new Date());
-        mp.put("deleted","0");
         int f1=proProductService.updateByPrimaryKeySelective(mp);
         int f2=ofpOfferPriceService.updateSelective(mp);
         int f3=pckPackageInfoService.updateSelective(mp);
         int f4=pdnProductDescritionService.updateSelective(mp);
-        mp.put("entityId",mp.get("proId"));
-       // int f5=imgImageService.updateSelective(mp);
         if(f1>0&&f2>0&&f3>0&&f4>0){
             responseDto.setCode("200");
         }else{
@@ -71,19 +69,20 @@ public class MVOProductController {
 
     /**
      *逻辑删除商品信息
+     * 还需要把对应的商品分类也删除
      */
     @PostMapping("/delete")
     public ResponseDto delete(@RequestBody Map<String,Object> mp){
         ResponseDto responseDto = new ResponseDto();
         mp.put("lastUpdateDate",new Date());
         mp.put("deleted","1");
+        mp.put("stsCd","D");
         int f1=proProductService.updateByPrimaryKeySelective(mp);
         int f2=ofpOfferPriceService.updateSelective(mp);
         int f3=pckPackageInfoService.updateSelective(mp);
         int f4=pdnProductDescritionService.updateSelective(mp);
-        mp.put("entityId",mp.get("proId"));
-        //int f5=imgImageService.updateSelective(mp);
-        if(f1>0&&f2>0&&f3>0&&f4>0){
+        int f5=prcProductCategoryService.updateSelective(mp);
+        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
             responseDto.setCode("200");
         }else{
             responseDto.setSuccess(false);
@@ -94,6 +93,7 @@ public class MVOProductController {
 
     /**
      *插入商品信息
+     * 还需要在商品分类页面插入
      */
     @PostMapping("/insert")
     public ResponseDto insert(@RequestBody Map<String,Object> mp){
@@ -104,9 +104,8 @@ public class MVOProductController {
         int f2=ofpOfferPriceService.insertSelective(mp);
         int f3=pckPackageInfoService.insertSelective(mp);
         int f4=pdnProductDescritionService.insertSelective(mp);
-//        mp.put("entityId",mp.get("proId"));
-//        int f5=imgImageService.insertSelective(mp);
-        if(f1>0&&f2>0&&f3>0&&f4>0){
+        int f5=prcProductCategoryService.insertSelective(mp);
+        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
             responseDto.setCode("200");
         }else{
             responseDto.setSuccess(false);
