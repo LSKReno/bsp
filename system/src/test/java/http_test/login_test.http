@@ -15,16 +15,13 @@
 #  "password": "lskreno"
 #}
 
-###
-
-#
 POST  http://127.0.0.1:9000/business/manManufacturer/list
 Content-Type: application/json
 
 {
 }
 
-###
+
 
 
 
