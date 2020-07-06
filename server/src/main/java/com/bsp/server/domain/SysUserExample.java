@@ -143,1052 +143,1572 @@ public class SysUserExample {
         }
 
         public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
+            addCriterion("USER_ID is null");
             return (Criteria) this;
         }
 
         public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
+            addCriterion("USER_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Long value) {
-            addCriterion("user_id =", value, "userId");
+        public Criteria andUserIdEqualTo(Integer value) {
+            addCriterion("USER_ID =", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("user_id = ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USER_ID = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Long value) {
-            addCriterion("user_id <>", value, "userId");
+        public Criteria andUserIdNotEqualTo(Integer value) {
+            addCriterion("USER_ID <>", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("user_id <> ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USER_ID <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Long value) {
-            addCriterion("user_id >", value, "userId");
+        public Criteria andUserIdGreaterThan(Integer value) {
+            addCriterion("USER_ID >", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("user_id > ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USER_ID > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("user_id >=", value, "userId");
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("USER_ID >=", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("user_id >= ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USER_ID >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Long value) {
-            addCriterion("user_id <", value, "userId");
+        public Criteria andUserIdLessThan(Integer value) {
+            addCriterion("USER_ID <", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("user_id < ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USER_ID < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Long value) {
-            addCriterion("user_id <=", value, "userId");
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("USER_ID <=", value, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUserIdLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("user_id <= ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USER_ID <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Long> values) {
-            addCriterion("user_id in", values, "userId");
+        public Criteria andUserIdIn(List<Integer> values) {
+            addCriterion("USER_ID in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Long> values) {
-            addCriterion("user_id not in", values, "userId");
+        public Criteria andUserIdNotIn(List<Integer> values) {
+            addCriterion("USER_ID not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Long value1, Long value2) {
-            addCriterion("user_id between", value1, value2, "userId");
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("USER_ID between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Long value1, Long value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("USER_ID not between", value1, value2, "userId");
             return (Criteria) this;
         }
 
         public Criteria andUsernameIsNull() {
-            addCriterion("username is null");
+            addCriterion("USERNAME is null");
             return (Criteria) this;
         }
 
         public Criteria andUsernameIsNotNull() {
-            addCriterion("username is not null");
+            addCriterion("USERNAME is not null");
             return (Criteria) this;
         }
 
         public Criteria andUsernameEqualTo(String value) {
-            addCriterion("username =", value, "username");
+            addCriterion("USERNAME =", value, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("username = ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USERNAME = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andUsernameNotEqualTo(String value) {
-            addCriterion("username <>", value, "username");
+            addCriterion("USERNAME <>", value, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("username <> ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USERNAME <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andUsernameGreaterThan(String value) {
-            addCriterion("username >", value, "username");
+            addCriterion("USERNAME >", value, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("username > ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USERNAME > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andUsernameGreaterThanOrEqualTo(String value) {
-            addCriterion("username >=", value, "username");
+            addCriterion("USERNAME >=", value, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("username >= ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USERNAME >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andUsernameLessThan(String value) {
-            addCriterion("username <", value, "username");
+            addCriterion("USERNAME <", value, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("username < ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USERNAME < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andUsernameLessThanOrEqualTo(String value) {
-            addCriterion("username <=", value, "username");
+            addCriterion("USERNAME <=", value, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("username <= ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("USERNAME <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andUsernameLike(String value) {
-            addCriterion("username like", value, "username");
+            addCriterion("USERNAME like", value, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameNotLike(String value) {
-            addCriterion("username not like", value, "username");
+            addCriterion("USERNAME not like", value, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameIn(List<String> values) {
-            addCriterion("username in", values, "username");
+            addCriterion("USERNAME in", values, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameNotIn(List<String> values) {
-            addCriterion("username not in", values, "username");
+            addCriterion("USERNAME not in", values, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameBetween(String value1, String value2) {
-            addCriterion("username between", value1, value2, "username");
+            addCriterion("USERNAME between", value1, value2, "username");
             return (Criteria) this;
         }
 
         public Criteria andUsernameNotBetween(String value1, String value2) {
-            addCriterion("username not between", value1, value2, "username");
+            addCriterion("USERNAME not between", value1, value2, "username");
             return (Criteria) this;
         }
 
         public Criteria andPasswordIsNull() {
-            addCriterion("`password` is null");
+            addCriterion("`PASSWORD` is null");
             return (Criteria) this;
         }
 
         public Criteria andPasswordIsNotNull() {
-            addCriterion("`password` is not null");
+            addCriterion("`PASSWORD` is not null");
             return (Criteria) this;
         }
 
         public Criteria andPasswordEqualTo(String value) {
-            addCriterion("`password` =", value, "password");
+            addCriterion("`PASSWORD` =", value, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`password` = ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`PASSWORD` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andPasswordNotEqualTo(String value) {
-            addCriterion("`password` <>", value, "password");
+            addCriterion("`PASSWORD` <>", value, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`password` <> ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`PASSWORD` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andPasswordGreaterThan(String value) {
-            addCriterion("`password` >", value, "password");
+            addCriterion("`PASSWORD` >", value, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`password` > ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`PASSWORD` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andPasswordGreaterThanOrEqualTo(String value) {
-            addCriterion("`password` >=", value, "password");
+            addCriterion("`PASSWORD` >=", value, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`password` >= ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`PASSWORD` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andPasswordLessThan(String value) {
-            addCriterion("`password` <", value, "password");
+            addCriterion("`PASSWORD` <", value, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`password` < ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`PASSWORD` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andPasswordLessThanOrEqualTo(String value) {
-            addCriterion("`password` <=", value, "password");
+            addCriterion("`PASSWORD` <=", value, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`password` <= ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`PASSWORD` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
         public Criteria andPasswordLike(String value) {
-            addCriterion("`password` like", value, "password");
+            addCriterion("`PASSWORD` like", value, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordNotLike(String value) {
-            addCriterion("`password` not like", value, "password");
+            addCriterion("`PASSWORD` not like", value, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordIn(List<String> values) {
-            addCriterion("`password` in", values, "password");
+            addCriterion("`PASSWORD` in", values, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordNotIn(List<String> values) {
-            addCriterion("`password` not in", values, "password");
+            addCriterion("`PASSWORD` not in", values, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordBetween(String value1, String value2) {
-            addCriterion("`password` between", value1, value2, "password");
+            addCriterion("`PASSWORD` between", value1, value2, "password");
             return (Criteria) this;
         }
 
         public Criteria andPasswordNotBetween(String value1, String value2) {
-            addCriterion("`password` not between", value1, value2, "password");
+            addCriterion("`PASSWORD` not between", value1, value2, "password");
             return (Criteria) this;
         }
 
-        public Criteria andSexIsNull() {
-            addCriterion("sex is null");
+        public Criteria andNameIsNull() {
+            addCriterion("`NAME` is null");
             return (Criteria) this;
         }
 
-        public Criteria andSexIsNotNull() {
-            addCriterion("sex is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("`NAME` is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSexEqualTo(Boolean value) {
-            addCriterion("sex =", value, "sex");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("`NAME` =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("sex = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NAME` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSexNotEqualTo(Boolean value) {
-            addCriterion("sex <>", value, "sex");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("`NAME` <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("sex <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NAME` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSexGreaterThan(Boolean value) {
-            addCriterion("sex >", value, "sex");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("`NAME` >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("sex > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NAME` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSexGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("sex >=", value, "sex");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("`NAME` >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("sex >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NAME` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSexLessThan(Boolean value) {
-            addCriterion("sex <", value, "sex");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("`NAME` <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("sex < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NAME` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSexLessThanOrEqualTo(Boolean value) {
-            addCriterion("sex <=", value, "sex");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("`NAME` <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("sex <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andNameLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NAME` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andSexIn(List<Boolean> values) {
-            addCriterion("sex in", values, "sex");
+        public Criteria andNameLike(String value) {
+            addCriterion("`NAME` like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotIn(List<Boolean> values) {
-            addCriterion("sex not in", values, "sex");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("`NAME` not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexBetween(Boolean value1, Boolean value2) {
-            addCriterion("sex between", value1, value2, "sex");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("`NAME` in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andSexNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("sex not between", value1, value2, "sex");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("`NAME` not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andEmailIsNull() {
-            addCriterion("email is null");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("`NAME` between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andEmailIsNotNull() {
-            addCriterion("email is not null");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("`NAME` not between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andEmailEqualTo(String value) {
-            addCriterion("email =", value, "email");
+        public Criteria andRightsIsNull() {
+            addCriterion("RIGHTS is null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("email = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRightsIsNotNull() {
+            addCriterion("RIGHTS is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotEqualTo(String value) {
-            addCriterion("email <>", value, "email");
+        public Criteria andRightsEqualTo(String value) {
+            addCriterion("RIGHTS =", value, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("email <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRightsEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("RIGHTS = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andEmailGreaterThan(String value) {
-            addCriterion("email >", value, "email");
+        public Criteria andRightsNotEqualTo(String value) {
+            addCriterion("RIGHTS <>", value, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("email > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRightsNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("RIGHTS <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andEmailGreaterThanOrEqualTo(String value) {
-            addCriterion("email >=", value, "email");
+        public Criteria andRightsGreaterThan(String value) {
+            addCriterion("RIGHTS >", value, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("email >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRightsGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("RIGHTS > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andEmailLessThan(String value) {
-            addCriterion("email <", value, "email");
+        public Criteria andRightsGreaterThanOrEqualTo(String value) {
+            addCriterion("RIGHTS >=", value, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("email < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRightsGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("RIGHTS >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andEmailLessThanOrEqualTo(String value) {
-            addCriterion("email <=", value, "email");
+        public Criteria andRightsLessThan(String value) {
+            addCriterion("RIGHTS <", value, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("email <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRightsLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("RIGHTS < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andEmailLike(String value) {
-            addCriterion("email like", value, "email");
+        public Criteria andRightsLessThanOrEqualTo(String value) {
+            addCriterion("RIGHTS <=", value, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotLike(String value) {
-            addCriterion("email not like", value, "email");
+        public Criteria andRightsLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("RIGHTS <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andEmailIn(List<String> values) {
-            addCriterion("email in", values, "email");
+        public Criteria andRightsLike(String value) {
+            addCriterion("RIGHTS like", value, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotIn(List<String> values) {
-            addCriterion("email not in", values, "email");
+        public Criteria andRightsNotLike(String value) {
+            addCriterion("RIGHTS not like", value, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailBetween(String value1, String value2) {
-            addCriterion("email between", value1, value2, "email");
+        public Criteria andRightsIn(List<String> values) {
+            addCriterion("RIGHTS in", values, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andEmailNotBetween(String value1, String value2) {
-            addCriterion("email not between", value1, value2, "email");
+        public Criteria andRightsNotIn(List<String> values) {
+            addCriterion("RIGHTS not in", values, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andMobileIsNull() {
-            addCriterion("mobile is null");
+        public Criteria andRightsBetween(String value1, String value2) {
+            addCriterion("RIGHTS between", value1, value2, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andMobileIsNotNull() {
-            addCriterion("mobile is not null");
+        public Criteria andRightsNotBetween(String value1, String value2) {
+            addCriterion("RIGHTS not between", value1, value2, "rights");
             return (Criteria) this;
         }
 
-        public Criteria andMobileEqualTo(String value) {
-            addCriterion("mobile =", value, "mobile");
+        public Criteria andRoleIdIsNull() {
+            addCriterion("ROLE_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andMobileEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("mobile = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRoleIdIsNotNull() {
+            addCriterion("ROLE_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNotEqualTo(String value) {
-            addCriterion("mobile <>", value, "mobile");
+        public Criteria andRoleIdEqualTo(String value) {
+            addCriterion("ROLE_ID =", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("mobile <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRoleIdEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("ROLE_ID = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andMobileGreaterThan(String value) {
-            addCriterion("mobile >", value, "mobile");
+        public Criteria andRoleIdNotEqualTo(String value) {
+            addCriterion("ROLE_ID <>", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("mobile > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRoleIdNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("ROLE_ID <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andMobileGreaterThanOrEqualTo(String value) {
-            addCriterion("mobile >=", value, "mobile");
+        public Criteria andRoleIdGreaterThan(String value) {
+            addCriterion("ROLE_ID >", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("mobile >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRoleIdGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("ROLE_ID > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andMobileLessThan(String value) {
-            addCriterion("mobile <", value, "mobile");
+        public Criteria andRoleIdGreaterThanOrEqualTo(String value) {
+            addCriterion("ROLE_ID >=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("mobile < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRoleIdGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("ROLE_ID >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andMobileLessThanOrEqualTo(String value) {
-            addCriterion("mobile <=", value, "mobile");
+        public Criteria andRoleIdLessThan(String value) {
+            addCriterion("ROLE_ID <", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("mobile <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andRoleIdLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("ROLE_ID < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andMobileLike(String value) {
-            addCriterion("mobile like", value, "mobile");
+        public Criteria andRoleIdLessThanOrEqualTo(String value) {
+            addCriterion("ROLE_ID <=", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNotLike(String value) {
-            addCriterion("mobile not like", value, "mobile");
+        public Criteria andRoleIdLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("ROLE_ID <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andMobileIn(List<String> values) {
-            addCriterion("mobile in", values, "mobile");
+        public Criteria andRoleIdLike(String value) {
+            addCriterion("ROLE_ID like", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNotIn(List<String> values) {
-            addCriterion("mobile not in", values, "mobile");
+        public Criteria andRoleIdNotLike(String value) {
+            addCriterion("ROLE_ID not like", value, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileBetween(String value1, String value2) {
-            addCriterion("mobile between", value1, value2, "mobile");
+        public Criteria andRoleIdIn(List<String> values) {
+            addCriterion("ROLE_ID in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andMobileNotBetween(String value1, String value2) {
-            addCriterion("mobile not between", value1, value2, "mobile");
+        public Criteria andRoleIdNotIn(List<String> values) {
+            addCriterion("ROLE_ID not in", values, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeIsNull() {
-            addCriterion("last_login_time is null");
+        public Criteria andRoleIdBetween(String value1, String value2) {
+            addCriterion("ROLE_ID between", value1, value2, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeIsNotNull() {
-            addCriterion("last_login_time is not null");
+        public Criteria andRoleIdNotBetween(String value1, String value2) {
+            addCriterion("ROLE_ID not between", value1, value2, "roleId");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeEqualTo(Integer value) {
-            addCriterion("last_login_time =", value, "lastLoginTime");
+        public Criteria andLastLoginIsNull() {
+            addCriterion("LAST_LOGIN is null");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_time = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andLastLoginIsNotNull() {
+            addCriterion("LAST_LOGIN is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeNotEqualTo(Integer value) {
-            addCriterion("last_login_time <>", value, "lastLoginTime");
+        public Criteria andLastLoginEqualTo(String value) {
+            addCriterion("LAST_LOGIN =", value, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_time <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andLastLoginEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("LAST_LOGIN = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeGreaterThan(Integer value) {
-            addCriterion("last_login_time >", value, "lastLoginTime");
+        public Criteria andLastLoginNotEqualTo(String value) {
+            addCriterion("LAST_LOGIN <>", value, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_time > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andLastLoginNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("LAST_LOGIN <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("last_login_time >=", value, "lastLoginTime");
+        public Criteria andLastLoginGreaterThan(String value) {
+            addCriterion("LAST_LOGIN >", value, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_time >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andLastLoginGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("LAST_LOGIN > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeLessThan(Integer value) {
-            addCriterion("last_login_time <", value, "lastLoginTime");
+        public Criteria andLastLoginGreaterThanOrEqualTo(String value) {
+            addCriterion("LAST_LOGIN >=", value, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_time < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andLastLoginGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("LAST_LOGIN >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeLessThanOrEqualTo(Integer value) {
-            addCriterion("last_login_time <=", value, "lastLoginTime");
+        public Criteria andLastLoginLessThan(String value) {
+            addCriterion("LAST_LOGIN <", value, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_time <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andLastLoginLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("LAST_LOGIN < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeIn(List<Integer> values) {
-            addCriterion("last_login_time in", values, "lastLoginTime");
+        public Criteria andLastLoginLessThanOrEqualTo(String value) {
+            addCriterion("LAST_LOGIN <=", value, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeNotIn(List<Integer> values) {
-            addCriterion("last_login_time not in", values, "lastLoginTime");
+        public Criteria andLastLoginLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("LAST_LOGIN <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeBetween(Integer value1, Integer value2) {
-            addCriterion("last_login_time between", value1, value2, "lastLoginTime");
+        public Criteria andLastLoginLike(String value) {
+            addCriterion("LAST_LOGIN like", value, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginTimeNotBetween(Integer value1, Integer value2) {
-            addCriterion("last_login_time not between", value1, value2, "lastLoginTime");
+        public Criteria andLastLoginNotLike(String value) {
+            addCriterion("LAST_LOGIN not like", value, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpIsNull() {
-            addCriterion("last_login_ip is null");
+        public Criteria andLastLoginIn(List<String> values) {
+            addCriterion("LAST_LOGIN in", values, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpIsNotNull() {
-            addCriterion("last_login_ip is not null");
+        public Criteria andLastLoginNotIn(List<String> values) {
+            addCriterion("LAST_LOGIN not in", values, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpEqualTo(String value) {
-            addCriterion("last_login_ip =", value, "lastLoginIp");
+        public Criteria andLastLoginBetween(String value1, String value2) {
+            addCriterion("LAST_LOGIN between", value1, value2, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_ip = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andLastLoginNotBetween(String value1, String value2) {
+            addCriterion("LAST_LOGIN not between", value1, value2, "lastLogin");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpNotEqualTo(String value) {
-            addCriterion("last_login_ip <>", value, "lastLoginIp");
+        public Criteria andIpIsNull() {
+            addCriterion("IP is null");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_ip <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andIpIsNotNull() {
+            addCriterion("IP is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpGreaterThan(String value) {
-            addCriterion("last_login_ip >", value, "lastLoginIp");
+        public Criteria andIpEqualTo(String value) {
+            addCriterion("IP =", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_ip > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andIpEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IP = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpGreaterThanOrEqualTo(String value) {
-            addCriterion("last_login_ip >=", value, "lastLoginIp");
+        public Criteria andIpNotEqualTo(String value) {
+            addCriterion("IP <>", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_ip >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andIpNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IP <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpLessThan(String value) {
-            addCriterion("last_login_ip <", value, "lastLoginIp");
+        public Criteria andIpGreaterThan(String value) {
+            addCriterion("IP >", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_ip < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andIpGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IP > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpLessThanOrEqualTo(String value) {
-            addCriterion("last_login_ip <=", value, "lastLoginIp");
+        public Criteria andIpGreaterThanOrEqualTo(String value) {
+            addCriterion("IP >=", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("last_login_ip <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andIpGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IP >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpLike(String value) {
-            addCriterion("last_login_ip like", value, "lastLoginIp");
+        public Criteria andIpLessThan(String value) {
+            addCriterion("IP <", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpNotLike(String value) {
-            addCriterion("last_login_ip not like", value, "lastLoginIp");
+        public Criteria andIpLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IP < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpIn(List<String> values) {
-            addCriterion("last_login_ip in", values, "lastLoginIp");
+        public Criteria andIpLessThanOrEqualTo(String value) {
+            addCriterion("IP <=", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpNotIn(List<String> values) {
-            addCriterion("last_login_ip not in", values, "lastLoginIp");
+        public Criteria andIpLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IP <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpBetween(String value1, String value2) {
-            addCriterion("last_login_ip between", value1, value2, "lastLoginIp");
+        public Criteria andIpLike(String value) {
+            addCriterion("IP like", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andLastLoginIpNotBetween(String value1, String value2) {
-            addCriterion("last_login_ip not between", value1, value2, "lastLoginIp");
+        public Criteria andIpNotLike(String value) {
+            addCriterion("IP not like", value, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andAvatarUrlIsNull() {
-            addCriterion("avatar_url is null");
+        public Criteria andIpIn(List<String> values) {
+            addCriterion("IP in", values, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andAvatarUrlIsNotNull() {
-            addCriterion("avatar_url is not null");
+        public Criteria andIpNotIn(List<String> values) {
+            addCriterion("IP not in", values, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andAvatarUrlEqualTo(String value) {
-            addCriterion("avatar_url =", value, "avatarUrl");
+        public Criteria andIpBetween(String value1, String value2) {
+            addCriterion("IP between", value1, value2, "ip");
             return (Criteria) this;
         }
 
-        public Criteria andAvatarUrlEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("avatar_url = ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlNotEqualTo(String value) {
-            addCriterion("avatar_url <>", value, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("avatar_url <> ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlGreaterThan(String value) {
-            addCriterion("avatar_url >", value, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("avatar_url > ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlGreaterThanOrEqualTo(String value) {
-            addCriterion("avatar_url >=", value, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("avatar_url >= ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlLessThan(String value) {
-            addCriterion("avatar_url <", value, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("avatar_url < ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlLessThanOrEqualTo(String value) {
-            addCriterion("avatar_url <=", value, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("avatar_url <= ").append(column.getEscapedColumnName()).toString());
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlLike(String value) {
-            addCriterion("avatar_url like", value, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlNotLike(String value) {
-            addCriterion("avatar_url not like", value, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlIn(List<String> values) {
-            addCriterion("avatar_url in", values, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlNotIn(List<String> values) {
-            addCriterion("avatar_url not in", values, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlBetween(String value1, String value2) {
-            addCriterion("avatar_url between", value1, value2, "avatarUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andAvatarUrlNotBetween(String value1, String value2) {
-            addCriterion("avatar_url not between", value1, value2, "avatarUrl");
+        public Criteria andIpNotBetween(String value1, String value2) {
+            addCriterion("IP not between", value1, value2, "ip");
             return (Criteria) this;
         }
 
         public Criteria andStatusIsNull() {
-            addCriterion("`status` is null");
+            addCriterion("`STATUS` is null");
             return (Criteria) this;
         }
 
         public Criteria andStatusIsNotNull() {
-            addCriterion("`status` is not null");
+            addCriterion("`STATUS` is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStatusEqualTo(Byte value) {
-            addCriterion("`status` =", value, "status");
+        public Criteria andStatusEqualTo(String value) {
+            addCriterion("`STATUS` =", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`status` = ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`STATUS` = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotEqualTo(Byte value) {
-            addCriterion("`status` <>", value, "status");
+        public Criteria andStatusNotEqualTo(String value) {
+            addCriterion("`STATUS` <>", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`status` <> ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`STATUS` <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThan(Byte value) {
-            addCriterion("`status` >", value, "status");
+        public Criteria andStatusGreaterThan(String value) {
+            addCriterion("`STATUS` >", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`status` > ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`STATUS` > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andStatusGreaterThanOrEqualTo(Byte value) {
-            addCriterion("`status` >=", value, "status");
+        public Criteria andStatusGreaterThanOrEqualTo(String value) {
+            addCriterion("`STATUS` >=", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`status` >= ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`STATUS` >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThan(Byte value) {
-            addCriterion("`status` <", value, "status");
+        public Criteria andStatusLessThan(String value) {
+            addCriterion("`STATUS` <", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`status` < ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`STATUS` < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andStatusLessThanOrEqualTo(Byte value) {
-            addCriterion("`status` <=", value, "status");
+        public Criteria andStatusLessThanOrEqualTo(String value) {
+            addCriterion("`STATUS` <=", value, "status");
             return (Criteria) this;
         }
 
         public Criteria andStatusLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("`status` <= ").append(column.getEscapedColumnName()).toString());
+            addCriterion(new StringBuilder("`STATUS` <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andStatusIn(List<Byte> values) {
-            addCriterion("`status` in", values, "status");
+        public Criteria andStatusLike(String value) {
+            addCriterion("`STATUS` like", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotIn(List<Byte> values) {
-            addCriterion("`status` not in", values, "status");
+        public Criteria andStatusNotLike(String value) {
+            addCriterion("`STATUS` not like", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusBetween(Byte value1, Byte value2) {
-            addCriterion("`status` between", value1, value2, "status");
+        public Criteria andStatusIn(List<String> values) {
+            addCriterion("`STATUS` in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStatusNotBetween(Byte value1, Byte value2) {
-            addCriterion("`status` not between", value1, value2, "status");
+        public Criteria andStatusNotIn(List<String> values) {
+            addCriterion("`STATUS` not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNull() {
-            addCriterion("create_time is null");
+        public Criteria andStatusBetween(String value1, String value2) {
+            addCriterion("`STATUS` between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIsNotNull() {
-            addCriterion("create_time is not null");
+        public Criteria andStatusNotBetween(String value1, String value2) {
+            addCriterion("`STATUS` not between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Integer value) {
-            addCriterion("create_time =", value, "createTime");
+        public Criteria andBzIsNull() {
+            addCriterion("BZ is null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("create_time = ").append(column.getEscapedColumnName()).toString());
+        public Criteria andBzIsNotNull() {
+            addCriterion("BZ is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Integer value) {
-            addCriterion("create_time <>", value, "createTime");
+        public Criteria andBzEqualTo(String value) {
+            addCriterion("BZ =", value, "bz");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("create_time <> ").append(column.getEscapedColumnName()).toString());
+        public Criteria andBzEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("BZ = ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Integer value) {
-            addCriterion("create_time >", value, "createTime");
+        public Criteria andBzNotEqualTo(String value) {
+            addCriterion("BZ <>", value, "bz");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("create_time > ").append(column.getEscapedColumnName()).toString());
+        public Criteria andBzNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("BZ <> ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("create_time >=", value, "createTime");
+        public Criteria andBzGreaterThan(String value) {
+            addCriterion("BZ >", value, "bz");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("create_time >= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andBzGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("BZ > ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Integer value) {
-            addCriterion("create_time <", value, "createTime");
+        public Criteria andBzGreaterThanOrEqualTo(String value) {
+            addCriterion("BZ >=", value, "bz");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("create_time < ").append(column.getEscapedColumnName()).toString());
+        public Criteria andBzGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("BZ >= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Integer value) {
-            addCriterion("create_time <=", value, "createTime");
+        public Criteria andBzLessThan(String value) {
+            addCriterion("BZ <", value, "bz");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualToColumn(SysUser.Column column) {
-            addCriterion(new StringBuilder("create_time <= ").append(column.getEscapedColumnName()).toString());
+        public Criteria andBzLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("BZ < ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Integer> values) {
-            addCriterion("create_time in", values, "createTime");
+        public Criteria andBzLessThanOrEqualTo(String value) {
+            addCriterion("BZ <=", value, "bz");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Integer> values) {
-            addCriterion("create_time not in", values, "createTime");
+        public Criteria andBzLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("BZ <= ").append(column.getEscapedColumnName()).toString());
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Integer value1, Integer value2) {
-            addCriterion("create_time between", value1, value2, "createTime");
+        public Criteria andBzLike(String value) {
+            addCriterion("BZ like", value, "bz");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotBetween(Integer value1, Integer value2) {
-            addCriterion("create_time not between", value1, value2, "createTime");
+        public Criteria andBzNotLike(String value) {
+            addCriterion("BZ not like", value, "bz");
+            return (Criteria) this;
+        }
+
+        public Criteria andBzIn(List<String> values) {
+            addCriterion("BZ in", values, "bz");
+            return (Criteria) this;
+        }
+
+        public Criteria andBzNotIn(List<String> values) {
+            addCriterion("BZ not in", values, "bz");
+            return (Criteria) this;
+        }
+
+        public Criteria andBzBetween(String value1, String value2) {
+            addCriterion("BZ between", value1, value2, "bz");
+            return (Criteria) this;
+        }
+
+        public Criteria andBzNotBetween(String value1, String value2) {
+            addCriterion("BZ not between", value1, value2, "bz");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinIsNull() {
+            addCriterion("SKIN is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinIsNotNull() {
+            addCriterion("SKIN is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinEqualTo(String value) {
+            addCriterion("SKIN =", value, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("SKIN = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinNotEqualTo(String value) {
+            addCriterion("SKIN <>", value, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("SKIN <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinGreaterThan(String value) {
+            addCriterion("SKIN >", value, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("SKIN > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinGreaterThanOrEqualTo(String value) {
+            addCriterion("SKIN >=", value, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("SKIN >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinLessThan(String value) {
+            addCriterion("SKIN <", value, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("SKIN < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinLessThanOrEqualTo(String value) {
+            addCriterion("SKIN <=", value, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("SKIN <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinLike(String value) {
+            addCriterion("SKIN like", value, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinNotLike(String value) {
+            addCriterion("SKIN not like", value, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinIn(List<String> values) {
+            addCriterion("SKIN in", values, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinNotIn(List<String> values) {
+            addCriterion("SKIN not in", values, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinBetween(String value1, String value2) {
+            addCriterion("SKIN between", value1, value2, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkinNotBetween(String value1, String value2) {
+            addCriterion("SKIN not between", value1, value2, "skin");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNull() {
+            addCriterion("EMAIL is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNotNull() {
+            addCriterion("EMAIL is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailEqualTo(String value) {
+            addCriterion("EMAIL =", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("EMAIL = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotEqualTo(String value) {
+            addCriterion("EMAIL <>", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("EMAIL <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThan(String value) {
+            addCriterion("EMAIL >", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("EMAIL > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThanOrEqualTo(String value) {
+            addCriterion("EMAIL >=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("EMAIL >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThan(String value) {
+            addCriterion("EMAIL <", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("EMAIL < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThanOrEqualTo(String value) {
+            addCriterion("EMAIL <=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("EMAIL <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLike(String value) {
+            addCriterion("EMAIL like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotLike(String value) {
+            addCriterion("EMAIL not like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIn(List<String> values) {
+            addCriterion("EMAIL in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotIn(List<String> values) {
+            addCriterion("EMAIL not in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailBetween(String value1, String value2) {
+            addCriterion("EMAIL between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotBetween(String value1, String value2) {
+            addCriterion("EMAIL not between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberIsNull() {
+            addCriterion("`NUMBER` is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberIsNotNull() {
+            addCriterion("`NUMBER` is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberEqualTo(String value) {
+            addCriterion("`NUMBER` =", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NUMBER` = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberNotEqualTo(String value) {
+            addCriterion("`NUMBER` <>", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NUMBER` <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberGreaterThan(String value) {
+            addCriterion("`NUMBER` >", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NUMBER` > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberGreaterThanOrEqualTo(String value) {
+            addCriterion("`NUMBER` >=", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NUMBER` >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberLessThan(String value) {
+            addCriterion("`NUMBER` <", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NUMBER` < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberLessThanOrEqualTo(String value) {
+            addCriterion("`NUMBER` <=", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("`NUMBER` <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberLike(String value) {
+            addCriterion("`NUMBER` like", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberNotLike(String value) {
+            addCriterion("`NUMBER` not like", value, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberIn(List<String> values) {
+            addCriterion("`NUMBER` in", values, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberNotIn(List<String> values) {
+            addCriterion("`NUMBER` not in", values, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberBetween(String value1, String value2) {
+            addCriterion("`NUMBER` between", value1, value2, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andNumberNotBetween(String value1, String value2) {
+            addCriterion("`NUMBER` not between", value1, value2, "number");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneIsNull() {
+            addCriterion("PHONE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneIsNotNull() {
+            addCriterion("PHONE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneEqualTo(String value) {
+            addCriterion("PHONE =", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("PHONE = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneNotEqualTo(String value) {
+            addCriterion("PHONE <>", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("PHONE <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneGreaterThan(String value) {
+            addCriterion("PHONE >", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("PHONE > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("PHONE >=", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("PHONE >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneLessThan(String value) {
+            addCriterion("PHONE <", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("PHONE < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneLessThanOrEqualTo(String value) {
+            addCriterion("PHONE <=", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("PHONE <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneLike(String value) {
+            addCriterion("PHONE like", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneNotLike(String value) {
+            addCriterion("PHONE not like", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneIn(List<String> values) {
+            addCriterion("PHONE in", values, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneNotIn(List<String> values) {
+            addCriterion("PHONE not in", values, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneBetween(String value1, String value2) {
+            addCriterion("PHONE between", value1, value2, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneNotBetween(String value1, String value2) {
+            addCriterion("PHONE not between", value1, value2, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdIsNull() {
+            addCriterion("MAN_BUYER_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdIsNotNull() {
+            addCriterion("MAN_BUYER_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdEqualTo(Integer value) {
+            addCriterion("MAN_BUYER_ID =", value, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("MAN_BUYER_ID = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdNotEqualTo(Integer value) {
+            addCriterion("MAN_BUYER_ID <>", value, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("MAN_BUYER_ID <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdGreaterThan(Integer value) {
+            addCriterion("MAN_BUYER_ID >", value, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("MAN_BUYER_ID > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("MAN_BUYER_ID >=", value, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("MAN_BUYER_ID >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdLessThan(Integer value) {
+            addCriterion("MAN_BUYER_ID <", value, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("MAN_BUYER_ID < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdLessThanOrEqualTo(Integer value) {
+            addCriterion("MAN_BUYER_ID <=", value, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("MAN_BUYER_ID <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdIn(List<Integer> values) {
+            addCriterion("MAN_BUYER_ID in", values, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdNotIn(List<Integer> values) {
+            addCriterion("MAN_BUYER_ID not in", values, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdBetween(Integer value1, Integer value2) {
+            addCriterion("MAN_BUYER_ID between", value1, value2, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andManBuyerIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("MAN_BUYER_ID not between", value1, value2, "manBuyerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedIsNull() {
+            addCriterion("deleted is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedIsNotNull() {
+            addCriterion("deleted is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedEqualTo(Boolean value) {
+            addCriterion("deleted =", value, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("deleted = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedNotEqualTo(Boolean value) {
+            addCriterion("deleted <>", value, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("deleted <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedGreaterThan(Boolean value) {
+            addCriterion("deleted >", value, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("deleted > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("deleted >=", value, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("deleted >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedLessThan(Boolean value) {
+            addCriterion("deleted <", value, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("deleted < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedLessThanOrEqualTo(Boolean value) {
+            addCriterion("deleted <=", value, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("deleted <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedIn(List<Boolean> values) {
+            addCriterion("deleted in", values, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedNotIn(List<Boolean> values) {
+            addCriterion("deleted not in", values, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedBetween(Boolean value1, Boolean value2) {
+            addCriterion("deleted between", value1, value2, "deleted");
+            return (Criteria) this;
+        }
+
+        public Criteria andDeletedNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("deleted not between", value1, value2, "deleted");
             return (Criteria) this;
         }
     }
@@ -1326,6 +1846,6 @@ public class SysUserExample {
     }
 
     public interface IExampleWhen {
-        void example(SysUserExample example);
+        void example(com.bsp.server.domain.SysUserExample example);
     }
 }

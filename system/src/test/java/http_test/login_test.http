@@ -5,15 +5,26 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST  http://127.0.0.1:9002/business/manManufacturer/list
-Content-Type: application/json
 
-{
-
-}
+# 登录测试
+#POST  http://127.0.0.1:9000/system/login
+#Content-Type: application/json
+#
+#{
+#  "username": "LSKReno",
+#  "password": "lskreno"
+#}
 
 ###
 
+#
+POST  http://127.0.0.1:9000/business/manManufacturer/list
+Content-Type: application/json
+
+{
+}
+
+###
 
 
 

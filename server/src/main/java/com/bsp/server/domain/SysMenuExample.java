@@ -1056,6 +1056,6 @@ public class SysMenuExample {
     }
 
     public interface IExampleWhen {
-        void example(SysMenuExample example);
+        void example(com.bsp.server.domain.SysMenuExample example);
     }
 }
