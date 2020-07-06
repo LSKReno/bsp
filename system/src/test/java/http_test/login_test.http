@@ -15,11 +15,16 @@
 #  "password": "lskreno"
 #}
 
+###
+
 POST  http://127.0.0.1:9000/business/manManufacturer/list
 Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTk0MDE0MjgxLCJleHAiOjE1OTQwMTc4ODF9.KDyTdhXv-KRfb0afa4FCxckURRCEHwDiq0OiHwy-cDB7B4oBGd5J1jXk1i7UNU4zw5bZZnMDeOtruJpXS_2Ovg
 
 {
 }
+
+###
 
 
 

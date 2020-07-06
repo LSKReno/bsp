@@ -29,8 +29,6 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
-        System.out.println(uri + "接口需要验证");
-
         /** Token 验证 */
         String token = request.getHeader(jwtConfig.getHeader());
         if (StringUtils.isEmpty(token)) {
