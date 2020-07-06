@@ -49,13 +49,14 @@ public class CompanyInformationController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ResponseDto responseDto = new ResponseDto();
         if(StringUtils.isEmpty(manManufacturerDto.getManId())){
-            int result = manManufacturerService.save(manManufacturerDto);
+            int result = manManufacturerService.save(manManufacturerDto); // save for the first time
             if(result == 0){
                 responseDto.setSuccess(false);
             }else{
-                sysUserDto.setManBuyerId(result);
+                sysUserDto.setManBuyerId(result); //update
                 if(sysUserService.save(sysUserDto) != 0){
                     responseDto.setSuccess(true);
+                    responseDto.setContent(sysUserDto);
                 }else{
                     responseDto.setSuccess(false);
                 }
@@ -64,6 +65,7 @@ public class CompanyInformationController {
             int result = manManufacturerService.save(manManufacturerDto);
             if(result == 0){
                 responseDto.setSuccess(false);
+                responseDto.setContent(sysUserDto);
             }else{
                 responseDto.setSuccess(true);
             }
