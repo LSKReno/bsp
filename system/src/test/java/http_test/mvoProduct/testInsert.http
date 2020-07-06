@@ -22,7 +22,8 @@ Content-Type: application/json
   "height": "5.00",
   "width": "23.0",
   "manId": "1",
-  "createdBy": "zeraaa"
+  "createdBy": "zeraaa",
+  "stsCd": "A"
 }
 
 ###,

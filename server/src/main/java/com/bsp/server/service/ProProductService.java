@@ -44,7 +44,17 @@ public class ProProductService {
         PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(productInfoList);
         pageDto.setTotal(pageInfo.getTotal());
         pageDto.setList(productInfoList);
+    }
 
+    /**
+     * 列表查询，返回所有上架的商品
+     */
+    public void listA(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
+        List<Map<String,Object>> productInfoList=proProductMapper.listA();
+        PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(productInfoList);
+        pageDto.setTotal(pageInfo.getTotal());
+        pageDto.setList(productInfoList);
     }
 
 

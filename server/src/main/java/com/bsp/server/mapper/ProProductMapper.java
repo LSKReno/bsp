@@ -55,6 +55,6 @@ public interface ProProductMapper {
 
     List<Map<String,Object>> list(Map<String,Object> mp);
 
-
+    List<Map<String,Object>> listA();
 
 }

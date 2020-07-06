@@ -1,6 +1,8 @@
 package com.bsp.server.dto;
 
 
+import java.util.Date;
+
 public class WitWishlistDto {
 
     /**
@@ -31,7 +33,7 @@ public class WitWishlistDto {
      * 创建时间
 
      */
-    private String creationDate;
+    private Date creationDate;
 
     /**
      * 修改人
@@ -66,7 +68,7 @@ public class WitWishlistDto {
     /**
      * 逻辑删除
      */
-    private Integer deleted;
+    private Boolean deleted;
 
     public Integer getWitId() {
         return witId;
@@ -100,11 +102,11 @@ public class WitWishlistDto {
         this.createdBy = createdBy;
     }
 
-    public String getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -148,11 +150,11 @@ public class WitWishlistDto {
         this.stsCd = stsCd;
     }
 
-    public Integer getDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(Integer deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
 
