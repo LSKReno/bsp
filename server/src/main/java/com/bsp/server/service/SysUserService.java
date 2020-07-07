@@ -72,7 +72,6 @@ public class SysUserService {
         sysUserMapper.deleteByPrimaryKey(id);
     }
 
-
     /**
      * 根据登录名查询用户信息
      *
@@ -114,4 +113,24 @@ public class SysUserService {
             }
         }
     }
+
+    /**
+     * 注册
+     *
+     * @param sysUserDto
+     */
+    public SysUserDto signup(SysUserDto sysUserDto) {
+        // 查询该用户名是否存在
+        SysUser user = selectByUserName(sysUserDto.getUsername());
+        if (user == null) {
+            save(sysUserDto);
+            SysUser signUpUser = selectByUserName(sysUserDto.getUsername());
+            return CopyUtil.copy(signUpUser, SysUserDto.class);
+        } else {
+            LOG.info("用户名不存在,可以进行注册 {}", sysUserDto.getUsername());
+            throw new BusinessException(BusinessExceptionCode.SIGNUP_USER_ERROR);
+        }
+    }
+
+
 }
