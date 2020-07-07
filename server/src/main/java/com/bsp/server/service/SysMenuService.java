@@ -56,13 +56,13 @@ public class SysMenuService {
      * 更新
      */
     private void update(SysMenu sysMenu) {
-//        sysMenuMapper.updateByPrimaryKey(sysMenu);
+        sysMenuMapper.updateByPrimaryKey(sysMenu);
     }
 
     /**
      * 删除
      */
     public void delete(Integer id) {
-//        sysMenuMapper.deleteByPrimaryKey(id);
+        sysMenuMapper.deleteByPrimaryKey(id);
     }
 }
