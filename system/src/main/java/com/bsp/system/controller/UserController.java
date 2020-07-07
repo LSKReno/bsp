@@ -9,7 +9,6 @@ import com.bsp.server.service.SysUserService;
 import com.bsp.server.service.UllUserLoginLogoutLogService;
 import com.bsp.server.util.ValidatorUtil;
 import com.bsp.system.config.JwtConfig;
-import io.jsonwebtoken.SignatureException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;

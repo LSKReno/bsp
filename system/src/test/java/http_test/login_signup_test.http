@@ -18,13 +18,13 @@
 
 
 # 登录测试
-POST  http://127.0.0.1:9000/system/login
-Content-Type: application/json
-
-{
-  "username": "LSKReno",
-  "password": "lskreno"
-}
+#POST  http://127.0.0.1:9000/system/login
+#Content-Type: application/json
+#
+#{
+#  "username": "LSKReno",
+#  "password": "lskreno"
+#}
 
 ###
 
