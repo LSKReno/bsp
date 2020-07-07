@@ -27,7 +27,8 @@ public class DsrDropshipperController {
     @PostMapping("/getBVOInfo")
     public ResponseDto getBVOInfo(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
-        DsrDropshipper dsrDropshipper = dsrDropshipperService.selectByPrimaryKey(sysUserDto.getManBuyerId());
+        SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
+        DsrDropshipper dsrDropshipper = dsrDropshipperService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
         if(dsrDropshipper == null){
             responseDto.setSuccess(false);
         }else {
@@ -40,14 +41,15 @@ public class DsrDropshipperController {
     public ResponseDto saveBVOInfo(@RequestBody Map<String, Object> request){
         DsrDropshipperDto dsrDropshipperDto = JSON.parseObject(JSON.toJSONString(request.get("DsrDropshipperDto")), DsrDropshipperDto.class);
         SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
+        SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
         ResponseDto responseDto = new ResponseDto();
-        if(sysUserDto.getManBuyerId() == null){
+        if(sysUserDto1.getManBuyerId() == null){
             int result1 = dsrDropshipperService.save(dsrDropshipperDto);
             if(result1 == 0){
                 responseDto.setSuccess(false);
             }else{
-                sysUserDto.setManBuyerId(result1);
-                if(sysUserService.save(sysUserDto) != 0){
+                sysUserDto1.setManBuyerId(result1);
+                if(sysUserService.save(sysUserDto1) != 0){
                     responseDto.setSuccess(true);
                     responseDto.setContent(dsrDropshipperDto);
                 }else{

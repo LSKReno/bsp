@@ -72,4 +72,8 @@ public class SysUserService {
     public void delete(Integer id) {
         sysUserMapper.deleteByPrimaryKey(id);
     }
+
+    public SysUserDto selectByPrimaryKey(Integer userId) {
+        return CopyUtil.copy(sysUserMapper.selectByPrimaryKey(userId), SysUserDto.class);
+    }
 }

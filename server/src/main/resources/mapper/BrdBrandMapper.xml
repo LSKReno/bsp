@@ -356,11 +356,11 @@
       CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
       LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
-      CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      CALL_CNT = CALL_CNT+1,
       REMARK = #{remark,jdbcType=VARCHAR},
       STS_CD = #{stsCd,jdbcType=CHAR},
       deleted = #{deleted,jdbcType=BIT}
-    where BRD_ID = #{brdId,jdbcType=INTEGER}
+    where BRD_ID = #{brdId,jdbcType=INTEGER} and CALL_CNT = #{callCnt,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.bsp.server.domain.BrdBrandExample" resultMap="BaseResultMap">
     select

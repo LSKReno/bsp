@@ -35,7 +35,7 @@ public class StrStoreController {
     @PostMapping("/getOnlineStores")
     public ResponseDto getOnlineStores(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
-        if(sysUserDto.getManBuyerId() == null){
+        if(sysUserDto.getManBuyerId() == null){ // check if the user has input online Store
             responseDto.setSuccess(false);
         }else{
             List<StrStoreDto> strStoreDtoList = strStoreService.selectByDSRId(sysUserDto.getManBuyerId());
