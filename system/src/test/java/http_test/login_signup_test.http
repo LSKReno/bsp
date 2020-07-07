@@ -10,7 +10,7 @@ POST  http://127.0.0.1:9000/system/signup
 Content-Type: application/json
 
 {
-  "username": "LSKReno",
+  "username": "LSKReno1",
   "password": "lskreno"
 }
 
