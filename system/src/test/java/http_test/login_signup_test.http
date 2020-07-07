@@ -6,13 +6,15 @@
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
 # 注册测试
-POST  http://127.0.0.1:9000/system/signup
-Content-Type: application/json
-
-{
-  "username": "LSKReno1",
-  "password": "lskreno"
-}
+#POST  http://127.0.0.1:9000/system/signup
+#Content-Type: application/json
+#
+## roleId 暂时设计为 0, 1, 2，分别代表admin，MVO，BVO
+#{
+#  "username": "LSKReno2",
+#  "password": "lskreno",
+#  "roleId": "2"
+#}
 
 
 # 登录测试
@@ -24,15 +26,15 @@ Content-Type: application/json
 #  "password": "lskreno"
 #}
 
-###
-
 
 #POST  http://127.0.0.1:9000/business/manManufacturer/list
 #Content-Type: application/json
-#Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTk0MDE0MjgxLCJleHAiOjE1OTQwMTc4ODF9.KDyTdhXv-KRfb0afa4FCxckURRCEHwDiq0OiHwy-cDB7B4oBGd5J1jXk1i7UNU4zw5bZZnMDeOtruJpXS_2Ovg
+#Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJ1c2VySWRcIjoxLFwidXNlcm5hbWVcIjpcIkxTS1Jlbm9cIn0iLCJpYXQiOjE1OTQwODk2MDAsImV4cCI6MTU5NDA5MzIwMH0.J7qEUE1nZE5LgrgoyYmttvQKvqbx4RdFqjkZ5rYQamWc1es1sn8TCSf115g4cpF3EWXRZWCoPtNCBIZLovSU3A
 #
 #{
+#
 #}
+
 
 
 

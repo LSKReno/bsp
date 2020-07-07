@@ -21,7 +21,7 @@ public class ControllerExceptionHandler {
         ResponseDto responseDto = new ResponseDto();
         responseDto.setSuccess(false);
         LOG.warn(e.getMessage());
-        responseDto.setMessage("请求参数异常！");
+        responseDto.setMessage("请求参数异常！" + e.getMessage());
         return responseDto;
     }
 

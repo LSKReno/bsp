@@ -1,5 +1,6 @@
 package com.bsp.system.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.dto.SysUserDto;
@@ -35,22 +36,23 @@ public class UserController {
      */
     @PostMapping("/login")
     public ResponseDto login(@RequestBody SysUserDto sysUserDto, HttpServletRequest request) {
+        LOG.info("用户登录开始");
         // 保存校验
         ValidatorUtil.length(sysUserDto.getUsername(), "用户名，唯一", 1, 255);
         ValidatorUtil.length(sysUserDto.getPassword(), "密码", 1, 255);
-        LOG.info("用户登录开始");
-        JSONObject json = new JSONObject();
-
         ResponseDto responseDto = new ResponseDto();
-
         SysUserDto loginSysUserDto = sysUserService.login(sysUserDto);
 
-        json.put("username", loginSysUserDto.getUserId());
-        json.put("userId", loginSysUserDto.getUsername());
-        json.put("email", loginSysUserDto.getEmail());
+        JSONObject json = (JSONObject) JSONObject.toJSON(loginSysUserDto);
+        json.remove("password");
+
+        JSONObject tokenPayload = new JSONObject();
+        tokenPayload.put("userId", loginSysUserDto.getUserId());
+        tokenPayload.put("username", loginSysUserDto.getUsername());
+        tokenPayload.put("roleId", loginSysUserDto.getRoleId());
 
         // 准备生成个 JWT 放进 传输对象
-        String token = jwtConfig.createToken(String.valueOf(loginSysUserDto.getUserId()));
+        String token = jwtConfig.createToken(JSON.toJSONString(tokenPayload));
 
         if (!StringUtils.isEmpty(token)) {
             json.put("token", token);
@@ -65,15 +67,14 @@ public class UserController {
      */
     @PostMapping("/signup")
     public ResponseDto signup(@RequestBody SysUserDto sysUserDto) {
+        LOG.info("用户注册开始");
         // 保存校验
         ValidatorUtil.length(sysUserDto.getUsername(), "用户名，唯一", 1, 255);
         ValidatorUtil.length(sysUserDto.getPassword(), "密码", 1, 255);
-
-        LOG.info("用户注册开始");
-        JSONObject json = new JSONObject();
+        ValidatorUtil.require(sysUserDto.getRoleId(), "角色ID");
+        ValidatorUtil.length(sysUserDto.getRoleId(), "角色ID", 1, 100);
 
         ResponseDto responseDto = new ResponseDto();
-
         SysUserDto signUpSysUserDto = sysUserService.signup(sysUserDto);
 
         responseDto.setContent(signUpSysUserDto);
