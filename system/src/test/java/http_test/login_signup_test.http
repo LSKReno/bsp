@@ -11,21 +11,34 @@
 #
 ## roleId 暂时设计为 0, 1, 2，分别代表admin，MVO，BVO
 #{
-#  "username": "LSKReno2",
+#  "username": "LSKReno3",
 #  "password": "lskreno",
-#  "roleId": "2"
+#  "roleId": "1"
 #}
 
 
 # 登录测试
-#POST  http://127.0.0.1:9000/system/login
+POST  http://127.0.0.1:9000/system/login
+Content-Type: application/json
+
+{
+  "username": "LSKReno",
+  "password": "lskreno"
+}
+
+###
+
+# 登出测试
+#POST  http://127.0.0.1:9000/system/logout
 #Content-Type: application/json
+#Authorization:
 #
 #{
-#  "username": "LSKReno",
-#  "password": "lskreno"
+#"username": "LSKReno",
+#"password": "lskreno"
 #}
 
+###
 
 #POST  http://127.0.0.1:9000/business/manManufacturer/list
 #Content-Type: application/json

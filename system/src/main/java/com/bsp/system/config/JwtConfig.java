@@ -76,9 +76,9 @@ public class JwtConfig {
     }
 
     /**
-     * 获取用户名从token中
+     * 获取用户信息从token中
      */
-    public String getUserIdFromToken(String token) {
+    public String getSubjectFromToken(String token) {
         return getTokenClaim(token).getSubject();
     }
 

@@ -10,7 +10,7 @@
     <result column="OPERATING_DATE" jdbcType="TIMESTAMP" property="operatingDate" />
     <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
     <result column="CREATION_DATE" jdbcType="TIMESTAMP" property="creationDate" />
-    <result column="LAST_UPDATE_BY" jdbcType="TIMESTAMP" property="lastUpdateBy" />
+    <result column="LAST_UPDATE_BY" jdbcType="VARCHAR" property="lastUpdateBy" />
     <result column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" property="lastUpdateDate" />
     <result column="CALL_CNT" jdbcType="VARCHAR" property="callCnt" />
     <result column="REMARK" jdbcType="VARCHAR" property="remark" />
@@ -155,7 +155,7 @@
       STS_CD, deleted)
     values (#{ullId,jdbcType=INTEGER}, #{usiId,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
       #{terminalType,jdbcType=VARCHAR}, #{operatingType,jdbcType=VARCHAR}, #{operatingDate,jdbcType=TIMESTAMP}, 
-      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
       #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
       #{stsCd,jdbcType=CHAR}, #{deleted,jdbcType=BIT})
   </insert>
@@ -231,7 +231,7 @@
         #{creationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="lastUpdateBy != null">
-        #{lastUpdateBy,jdbcType=TIMESTAMP},
+        #{lastUpdateBy,jdbcType=VARCHAR},
       </if>
       <if test="lastUpdateDate != null">
         #{lastUpdateDate,jdbcType=TIMESTAMP},
@@ -284,7 +284,7 @@
         CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.lastUpdateBy != null">
-        LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=TIMESTAMP},
+        LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
       </if>
       <if test="record.lastUpdateDate != null">
         LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
@@ -316,7 +316,7 @@
       OPERATING_DATE = #{record.operatingDate,jdbcType=TIMESTAMP},
       CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
       CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
-      LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
       CALL_CNT = #{record.callCnt,jdbcType=VARCHAR},
       REMARK = #{record.remark,jdbcType=VARCHAR},
@@ -351,7 +351,7 @@
         CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="lastUpdateBy != null">
-        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=TIMESTAMP},
+        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       </if>
       <if test="lastUpdateDate != null">
         LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
@@ -380,7 +380,7 @@
       OPERATING_DATE = #{operatingDate,jdbcType=TIMESTAMP},
       CREATED_BY = #{createdBy,jdbcType=VARCHAR},
       CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
-      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
       CALL_CNT = #{callCnt,jdbcType=VARCHAR},
       REMARK = #{remark,jdbcType=VARCHAR},

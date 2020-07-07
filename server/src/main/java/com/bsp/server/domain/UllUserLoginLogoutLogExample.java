@@ -923,7 +923,7 @@ public class UllUserLoginLogoutLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByEqualTo(Date value) {
+        public Criteria andLastUpdateByEqualTo(String value) {
             addCriterion("LAST_UPDATE_BY =", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -933,7 +933,7 @@ public class UllUserLoginLogoutLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByNotEqualTo(Date value) {
+        public Criteria andLastUpdateByNotEqualTo(String value) {
             addCriterion("LAST_UPDATE_BY <>", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -943,7 +943,7 @@ public class UllUserLoginLogoutLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByGreaterThan(Date value) {
+        public Criteria andLastUpdateByGreaterThan(String value) {
             addCriterion("LAST_UPDATE_BY >", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -953,7 +953,7 @@ public class UllUserLoginLogoutLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByGreaterThanOrEqualTo(Date value) {
+        public Criteria andLastUpdateByGreaterThanOrEqualTo(String value) {
             addCriterion("LAST_UPDATE_BY >=", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -963,7 +963,7 @@ public class UllUserLoginLogoutLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByLessThan(Date value) {
+        public Criteria andLastUpdateByLessThan(String value) {
             addCriterion("LAST_UPDATE_BY <", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -973,7 +973,7 @@ public class UllUserLoginLogoutLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByLessThanOrEqualTo(Date value) {
+        public Criteria andLastUpdateByLessThanOrEqualTo(String value) {
             addCriterion("LAST_UPDATE_BY <=", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -983,22 +983,32 @@ public class UllUserLoginLogoutLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByIn(List<Date> values) {
+        public Criteria andLastUpdateByLike(String value) {
+            addCriterion("LAST_UPDATE_BY like", value, "lastUpdateBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastUpdateByNotLike(String value) {
+            addCriterion("LAST_UPDATE_BY not like", value, "lastUpdateBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastUpdateByIn(List<String> values) {
             addCriterion("LAST_UPDATE_BY in", values, "lastUpdateBy");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByNotIn(List<Date> values) {
+        public Criteria andLastUpdateByNotIn(List<String> values) {
             addCriterion("LAST_UPDATE_BY not in", values, "lastUpdateBy");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByBetween(Date value1, Date value2) {
+        public Criteria andLastUpdateByBetween(String value1, String value2) {
             addCriterion("LAST_UPDATE_BY between", value1, value2, "lastUpdateBy");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByNotBetween(Date value1, Date value2) {
+        public Criteria andLastUpdateByNotBetween(String value1, String value2) {
             addCriterion("LAST_UPDATE_BY not between", value1, value2, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -1617,6 +1627,6 @@ public class UllUserLoginLogoutLogExample {
     }
 
     public interface IExampleWhen {
-        void example(UllUserLoginLogoutLogExample example);
+        void example(com.bsp.server.domain.UllUserLoginLogoutLogExample example);
     }
 }

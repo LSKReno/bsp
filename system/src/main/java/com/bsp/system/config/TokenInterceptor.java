@@ -25,7 +25,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
                              Object handler) throws SignatureException {
         /** 地址过滤 */
         String uri = request.getRequestURI();
-        if (uri.contains("/login") ||uri.contains("/signup")) {
+        if (uri.contains("/login") || uri.contains("/signup")) {
             return true;
         }
 
@@ -35,6 +35,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
             token = request.getParameter(jwtConfig.getHeader());
         }
         if (StringUtils.isEmpty(token)) {
+            System.out.println("==================");
             throw new SignatureException(jwtConfig.getHeader() + "不能为空");
         }
 

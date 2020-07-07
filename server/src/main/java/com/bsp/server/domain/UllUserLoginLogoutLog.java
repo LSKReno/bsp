@@ -21,7 +21,7 @@ public class UllUserLoginLogoutLog {
 
     private Date creationDate;
 
-    private Date lastUpdateBy;
+    private String lastUpdateBy;
 
     private Date lastUpdateDate;
 
@@ -97,11 +97,11 @@ public class UllUserLoginLogoutLog {
         this.creationDate = creationDate;
     }
 
-    public Date getLastUpdateBy() {
+    public String getLastUpdateBy() {
         return lastUpdateBy;
     }
 
-    public void setLastUpdateBy(Date lastUpdateBy) {
+    public void setLastUpdateBy(String lastUpdateBy) {
         this.lastUpdateBy = lastUpdateBy;
     }
 
@@ -227,7 +227,7 @@ public class UllUserLoginLogoutLog {
         operatingDate("OPERATING_DATE", "operatingDate", "TIMESTAMP", false),
         createdBy("CREATED_BY", "createdBy", "VARCHAR", false),
         creationDate("CREATION_DATE", "creationDate", "TIMESTAMP", false),
-        lastUpdateBy("LAST_UPDATE_BY", "lastUpdateBy", "TIMESTAMP", false),
+        lastUpdateBy("LAST_UPDATE_BY", "lastUpdateBy", "VARCHAR", false),
         lastUpdateDate("LAST_UPDATE_DATE", "lastUpdateDate", "TIMESTAMP", false),
         callCnt("CALL_CNT", "callCnt", "VARCHAR", false),
         remark("REMARK", "remark", "VARCHAR", false),
