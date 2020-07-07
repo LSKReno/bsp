@@ -1,11 +1,12 @@
 package com.bsp.server.service;
 
-import com.bsp.server.dto.OfpOfferPriceDto;
-import com.bsp.server.dto.PageDto;
-import com.bsp.server.util.CopyUtil;
 import com.bsp.server.domain.OfpOfferPrice;
 import com.bsp.server.domain.OfpOfferPriceExample;
+import com.bsp.server.dto.OfpOfferPriceDto;
+import com.bsp.server.dto.PageDto;
 import com.bsp.server.mapper.OfpOfferPriceMapper;
+import com.bsp.server.util.CopyUtil;
+import com.bsp.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;

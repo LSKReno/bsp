@@ -2,7 +2,6 @@ package com.bsp.server.mapper;
 
 import com.bsp.server.domain.OfpOfferPrice;
 import com.bsp.server.domain.OfpOfferPriceExample;
-
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

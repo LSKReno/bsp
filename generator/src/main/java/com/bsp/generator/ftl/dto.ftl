@@ -1,4 +1,4 @@
-package com.course.server.dto;
+package com.bsp.server.dto;
 
 <#list typeSet as type>
 <#if type=='Date'>

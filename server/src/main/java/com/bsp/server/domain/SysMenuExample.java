@@ -232,6 +232,106 @@ public class SysMenuExample {
             return (Criteria) this;
         }
 
+        public Criteria andMenuTitleIsNull() {
+            addCriterion("MENU_TITLE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleIsNotNull() {
+            addCriterion("MENU_TITLE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleEqualTo(String value) {
+            addCriterion("MENU_TITLE =", value, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_TITLE = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleNotEqualTo(String value) {
+            addCriterion("MENU_TITLE <>", value, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleNotEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_TITLE <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleGreaterThan(String value) {
+            addCriterion("MENU_TITLE >", value, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleGreaterThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_TITLE > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("MENU_TITLE >=", value, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleGreaterThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_TITLE >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleLessThan(String value) {
+            addCriterion("MENU_TITLE <", value, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleLessThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_TITLE < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleLessThanOrEqualTo(String value) {
+            addCriterion("MENU_TITLE <=", value, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleLessThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_TITLE <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleLike(String value) {
+            addCriterion("MENU_TITLE like", value, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleNotLike(String value) {
+            addCriterion("MENU_TITLE not like", value, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleIn(List<String> values) {
+            addCriterion("MENU_TITLE in", values, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleNotIn(List<String> values) {
+            addCriterion("MENU_TITLE not in", values, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleBetween(String value1, String value2) {
+            addCriterion("MENU_TITLE between", value1, value2, "menuTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuTitleNotBetween(String value1, String value2) {
+            addCriterion("MENU_TITLE not between", value1, value2, "menuTitle");
+            return (Criteria) this;
+        }
+
         public Criteria andMenuNameIsNull() {
             addCriterion("MENU_NAME is null");
             return (Criteria) this;
@@ -829,6 +929,206 @@ public class SysMenuExample {
 
         public Criteria andMenuTypeNotBetween(String value1, String value2) {
             addCriterion("MENU_TYPE not between", value1, value2, "menuType");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectIsNull() {
+            addCriterion("MENU_REDIRECT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectIsNotNull() {
+            addCriterion("MENU_REDIRECT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectEqualTo(String value) {
+            addCriterion("MENU_REDIRECT =", value, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_REDIRECT = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectNotEqualTo(String value) {
+            addCriterion("MENU_REDIRECT <>", value, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectNotEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_REDIRECT <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectGreaterThan(String value) {
+            addCriterion("MENU_REDIRECT >", value, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectGreaterThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_REDIRECT > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectGreaterThanOrEqualTo(String value) {
+            addCriterion("MENU_REDIRECT >=", value, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectGreaterThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_REDIRECT >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectLessThan(String value) {
+            addCriterion("MENU_REDIRECT <", value, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectLessThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_REDIRECT < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectLessThanOrEqualTo(String value) {
+            addCriterion("MENU_REDIRECT <=", value, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectLessThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_REDIRECT <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectLike(String value) {
+            addCriterion("MENU_REDIRECT like", value, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectNotLike(String value) {
+            addCriterion("MENU_REDIRECT not like", value, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectIn(List<String> values) {
+            addCriterion("MENU_REDIRECT in", values, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectNotIn(List<String> values) {
+            addCriterion("MENU_REDIRECT not in", values, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectBetween(String value1, String value2) {
+            addCriterion("MENU_REDIRECT between", value1, value2, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuRedirectNotBetween(String value1, String value2) {
+            addCriterion("MENU_REDIRECT not between", value1, value2, "menuRedirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataIsNull() {
+            addCriterion("MENU_METADATA is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataIsNotNull() {
+            addCriterion("MENU_METADATA is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataEqualTo(String value) {
+            addCriterion("MENU_METADATA =", value, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_METADATA = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataNotEqualTo(String value) {
+            addCriterion("MENU_METADATA <>", value, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataNotEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_METADATA <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataGreaterThan(String value) {
+            addCriterion("MENU_METADATA >", value, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataGreaterThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_METADATA > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataGreaterThanOrEqualTo(String value) {
+            addCriterion("MENU_METADATA >=", value, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataGreaterThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_METADATA >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataLessThan(String value) {
+            addCriterion("MENU_METADATA <", value, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataLessThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_METADATA < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataLessThanOrEqualTo(String value) {
+            addCriterion("MENU_METADATA <=", value, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataLessThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_METADATA <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataLike(String value) {
+            addCriterion("MENU_METADATA like", value, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataNotLike(String value) {
+            addCriterion("MENU_METADATA not like", value, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataIn(List<String> values) {
+            addCriterion("MENU_METADATA in", values, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataNotIn(List<String> values) {
+            addCriterion("MENU_METADATA not in", values, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataBetween(String value1, String value2) {
+            addCriterion("MENU_METADATA between", value1, value2, "menuMetadata");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuMetadataNotBetween(String value1, String value2) {
+            addCriterion("MENU_METADATA not between", value1, value2, "menuMetadata");
             return (Criteria) this;
         }
 

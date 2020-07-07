@@ -15,7 +15,7 @@ public class OfpOfferPriceDto {
      * 制造商ID
 
      */
-    private String manId;
+    private Integer manId;
 
     /**
      * 价格有效期开始时间
@@ -72,8 +72,7 @@ public class OfpOfferPriceDto {
      * 更新人
 
      */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date lastUpdateBy;
+    private String lastUpdateBy;
 
     /**
      * 更新时间
@@ -119,11 +118,11 @@ public class OfpOfferPriceDto {
         this.ofpId = ofpId;
     }
 
-    public String getManId() {
+    public Integer getManId() {
         return manId;
     }
 
-    public void setManId(String manId) {
+    public void setManId(Integer manId) {
         this.manId = manId;
     }
 
@@ -191,11 +190,11 @@ public class OfpOfferPriceDto {
         this.creationDate = creationDate;
     }
 
-    public Date getLastUpdateBy() {
+    public String getLastUpdateBy() {
         return lastUpdateBy;
     }
 
-    public void setLastUpdateBy(Date lastUpdateBy) {
+    public void setLastUpdateBy(String lastUpdateBy) {
         this.lastUpdateBy = lastUpdateBy;
     }
 

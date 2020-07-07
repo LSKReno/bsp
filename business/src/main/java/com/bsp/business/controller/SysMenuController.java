@@ -38,14 +38,16 @@ public class SysMenuController {
     @PostMapping("/save")
     public ResponseDto save(@RequestBody SysMenuDto sysMenuDto) {
         // 保存校验
-        ValidatorUtil.require(sysMenuDto.getMenuId(), "");
-        ValidatorUtil.require(sysMenuDto.getMenuName(), "");
-        ValidatorUtil.length(sysMenuDto.getMenuName(), "", 1, 255);
-        ValidatorUtil.length(sysMenuDto.getMenuUrl(), "", 1, 255);
-        ValidatorUtil.length(sysMenuDto.getParentId(), "", 1, 100);
-        ValidatorUtil.length(sysMenuDto.getMenuOrder(), "", 1, 100);
-        ValidatorUtil.length(sysMenuDto.getMenuIcon(), "", 1, 30);
-        ValidatorUtil.length(sysMenuDto.getMenuType(), "", 1, 10);
+        ValidatorUtil.require(sysMenuDto.getMenuId(), "主键");
+        ValidatorUtil.length(sysMenuDto.getMenuTitle(), "菜单title", 1, 255);
+        ValidatorUtil.length(sysMenuDto.getMenuName(), "菜单name", 1, 255);
+        ValidatorUtil.length(sysMenuDto.getMenuUrl(), "路径", 1, 255);
+        ValidatorUtil.length(sysMenuDto.getParentId(), "父类ID ", 1, 100);
+        ValidatorUtil.length(sysMenuDto.getMenuOrder(), "排序标识 ", 1, 100);
+        ValidatorUtil.length(sysMenuDto.getMenuIcon(), "菜单图标样式 ", 1, 30);
+        ValidatorUtil.length(sysMenuDto.getMenuType(), "菜单类型 ", 1, 10);
+        ValidatorUtil.length(sysMenuDto.getMenuRedirect(), "菜单重定向", 1, 255);
+        ValidatorUtil.length(sysMenuDto.getMenuMetadata(), "菜单元数据", 1, 255);
 
         ResponseDto responseDto = new ResponseDto();
         sysMenuService.save(sysMenuDto);

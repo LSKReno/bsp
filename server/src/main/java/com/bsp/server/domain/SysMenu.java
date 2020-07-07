@@ -6,6 +6,8 @@ import java.util.Arrays;
 public class SysMenu {
     private Integer menuId;
 
+    private String menuTitle;
+
     private String menuName;
 
     private String menuUrl;
@@ -18,6 +20,10 @@ public class SysMenu {
 
     private String menuType;
 
+    private String menuRedirect;
+
+    private String menuMetadata;
+
     private Boolean deleted;
 
     public Integer getMenuId() {
@@ -26,6 +32,14 @@ public class SysMenu {
 
     public void setMenuId(Integer menuId) {
         this.menuId = menuId;
+    }
+
+    public String getMenuTitle() {
+        return menuTitle;
+    }
+
+    public void setMenuTitle(String menuTitle) {
+        this.menuTitle = menuTitle;
     }
 
     public String getMenuName() {
@@ -76,6 +90,22 @@ public class SysMenu {
         this.menuType = menuType;
     }
 
+    public String getMenuRedirect() {
+        return menuRedirect;
+    }
+
+    public void setMenuRedirect(String menuRedirect) {
+        this.menuRedirect = menuRedirect;
+    }
+
+    public String getMenuMetadata() {
+        return menuMetadata;
+    }
+
+    public void setMenuMetadata(String menuMetadata) {
+        this.menuMetadata = menuMetadata;
+    }
+
     public Boolean getDeleted() {
         return deleted;
     }
@@ -91,12 +121,15 @@ public class SysMenu {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", menuId=").append(menuId);
+        sb.append(", menuTitle=").append(menuTitle);
         sb.append(", menuName=").append(menuName);
         sb.append(", menuUrl=").append(menuUrl);
         sb.append(", parentId=").append(parentId);
         sb.append(", menuOrder=").append(menuOrder);
         sb.append(", menuIcon=").append(menuIcon);
         sb.append(", menuType=").append(menuType);
+        sb.append(", menuRedirect=").append(menuRedirect);
+        sb.append(", menuMetadata=").append(menuMetadata);
         sb.append(", deleted=").append(deleted);
         sb.append("]");
         return sb.toString();
@@ -115,12 +148,15 @@ public class SysMenu {
         }
         SysMenu other = (SysMenu) that;
         return (this.getMenuId() == null ? other.getMenuId() == null : this.getMenuId().equals(other.getMenuId()))
+            && (this.getMenuTitle() == null ? other.getMenuTitle() == null : this.getMenuTitle().equals(other.getMenuTitle()))
             && (this.getMenuName() == null ? other.getMenuName() == null : this.getMenuName().equals(other.getMenuName()))
             && (this.getMenuUrl() == null ? other.getMenuUrl() == null : this.getMenuUrl().equals(other.getMenuUrl()))
             && (this.getParentId() == null ? other.getParentId() == null : this.getParentId().equals(other.getParentId()))
             && (this.getMenuOrder() == null ? other.getMenuOrder() == null : this.getMenuOrder().equals(other.getMenuOrder()))
             && (this.getMenuIcon() == null ? other.getMenuIcon() == null : this.getMenuIcon().equals(other.getMenuIcon()))
             && (this.getMenuType() == null ? other.getMenuType() == null : this.getMenuType().equals(other.getMenuType()))
+            && (this.getMenuRedirect() == null ? other.getMenuRedirect() == null : this.getMenuRedirect().equals(other.getMenuRedirect()))
+            && (this.getMenuMetadata() == null ? other.getMenuMetadata() == null : this.getMenuMetadata().equals(other.getMenuMetadata()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
     }
 
@@ -129,24 +165,30 @@ public class SysMenu {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getMenuId() == null) ? 0 : getMenuId().hashCode());
+        result = prime * result + ((getMenuTitle() == null) ? 0 : getMenuTitle().hashCode());
         result = prime * result + ((getMenuName() == null) ? 0 : getMenuName().hashCode());
         result = prime * result + ((getMenuUrl() == null) ? 0 : getMenuUrl().hashCode());
         result = prime * result + ((getParentId() == null) ? 0 : getParentId().hashCode());
         result = prime * result + ((getMenuOrder() == null) ? 0 : getMenuOrder().hashCode());
         result = prime * result + ((getMenuIcon() == null) ? 0 : getMenuIcon().hashCode());
         result = prime * result + ((getMenuType() == null) ? 0 : getMenuType().hashCode());
+        result = prime * result + ((getMenuRedirect() == null) ? 0 : getMenuRedirect().hashCode());
+        result = prime * result + ((getMenuMetadata() == null) ? 0 : getMenuMetadata().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         return result;
     }
 
     public enum Column {
         menuId("MENU_ID", "menuId", "INTEGER", false),
+        menuTitle("MENU_TITLE", "menuTitle", "VARCHAR", false),
         menuName("MENU_NAME", "menuName", "VARCHAR", false),
         menuUrl("MENU_URL", "menuUrl", "VARCHAR", false),
         parentId("PARENT_ID", "parentId", "VARCHAR", false),
         menuOrder("MENU_ORDER", "menuOrder", "VARCHAR", false),
         menuIcon("MENU_ICON", "menuIcon", "VARCHAR", false),
         menuType("MENU_TYPE", "menuType", "VARCHAR", false),
+        menuRedirect("MENU_REDIRECT", "menuRedirect", "VARCHAR", false),
+        menuMetadata("MENU_METADATA", "menuMetadata", "VARCHAR", false),
         deleted("deleted", "deleted", "BIT", false);
 
         private static final String BEGINNING_DELIMITER = "`";
