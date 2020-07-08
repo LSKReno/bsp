@@ -48,8 +48,8 @@ public class DsrDropshipperService {
     /**
      * select by primary key
      */
-    public DsrDropshipper selectByPrimaryKey(Integer dsrId){
-        return dsrDropshipperMapper.selectByPrimaryKey(dsrId);
+    public DsrDropshipperDto selectByPrimaryKey(Integer dsrId){
+        return CopyUtil.copy(dsrDropshipperMapper.selectByPrimaryKey(dsrId), DsrDropshipperDto.class);
     }
     /**
      * 新增

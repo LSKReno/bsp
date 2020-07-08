@@ -48,4 +48,6 @@ public interface SaoSalesOrderMapper {
     List<SaoSalesOrder> selectByManID(Integer manBuyerId, String ORDER_STS);
 
     int changeToSHIPPED(Integer saoId);
+
+    List<SaoSalesOrder> selectByStoId(Integer stoId);
 }

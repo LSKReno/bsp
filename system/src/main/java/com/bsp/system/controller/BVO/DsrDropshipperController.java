@@ -28,12 +28,13 @@ public class DsrDropshipperController {
     public ResponseDto getBVOInfo(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
         SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
-        DsrDropshipper dsrDropshipper = dsrDropshipperService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
-        if(dsrDropshipper == null){
+        DsrDropshipperDto dsrDropshipperDto = dsrDropshipperService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
+
+        if(dsrDropshipperDto == null){
             responseDto.setSuccess(false);
         }else {
             responseDto.setSuccess(true);
-            responseDto.setContent(dsrDropshipper);
+            responseDto.setContent(dsrDropshipperDto);
         }
         return responseDto;
     }
@@ -66,7 +67,6 @@ public class DsrDropshipperController {
                 responseDto.setContent(dsrDropshipperDto);
             }
         }
-
         return responseDto;
     }
 }

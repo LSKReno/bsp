@@ -2,16 +2,17 @@ package com.bsp.system.controller.Order;
 
 import com.alibaba.fastjson.JSON;
 import com.bsp.server.domain.SaoSalesOrder;
+import com.bsp.server.domain.StrStore;
 import com.bsp.server.domain.SysUser;
-import com.bsp.server.dto.ResponseDto;
-import com.bsp.server.dto.SaoSalesOrderDto;
-import com.bsp.server.dto.SysUserDto;
-import com.bsp.server.service.SaoSalesOrderService;
+import com.bsp.server.dto.*;
+import com.bsp.server.service.*;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +21,16 @@ import java.util.Map;
 public class SaoSalesOrderController {
     @Resource
     private SaoSalesOrderService saoSalesOrderService;
+    @Resource
+    private DsrDropshipperService dsrDropshipperService;
+    @Resource
+    private SysUserService sysUserService;
+    @Resource
+    private StrStoreService strStoreService;
+    @Resource
+    private StoStoreOrderService stoStoreOrderService;
 
-    @RequestMapping("/getSaoSalesOrderList")
+    @PostMapping("/getSaoSalesOrderList")
     public ResponseDto getSaoSalesOrderList(@RequestBody Map<String, Object> request){
         ResponseDto responseDto = new ResponseDto();
         SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
@@ -31,7 +40,7 @@ public class SaoSalesOrderController {
         responseDto.setContent(saoSalesOrderDtos);
         return responseDto;
     }
-    @RequestMapping("/changeToSHIPPED")
+    @PostMapping("/changeToSHIPPED")
     public ResponseDto changeToSHIPPED(@RequestBody SaoSalesOrderDto saoSalesOrderDto){
         ResponseDto responseDto = new ResponseDto();
         SaoSalesOrderDto saoSalesOrderDto1 = saoSalesOrderService.selectByPrimaryKey(saoSalesOrderDto.getSaoId());
@@ -43,6 +52,36 @@ public class SaoSalesOrderController {
             }
         }else{
             responseDto.setSuccess(false);
+        }
+        return responseDto;
+    }
+    @PostMapping("/getBVOOrderList")
+    public ResponseDto getBVOOrderList(@RequestBody Map<String,Object> request){
+        ResponseDto responseDto = new ResponseDto();
+        SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
+        String ORDER_STS = JSON.parseObject(JSON.toJSONString(request.get("ORDER_STS")), String.class);
+        SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
+        DsrDropshipperDto dsrDropshipperDto = dsrDropshipperService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
+        if(dsrDropshipperDto == null){
+            responseDto.setSuccess(false);
+        }else {
+            List<StrStoreDto> strStoreDtos = strStoreService.selectByDSRId(dsrDropshipperDto.getDsrId());
+            List<StrWithOrderDto> strWithOrderDtos = new ArrayList<>();
+            for(int i=0; i< strStoreDtos.size();i++){
+                StrStoreDto strStoreDto = strStoreDtos.get(i);
+                List<StoStoreOrderDto> stoStoreOrderDtos = stoStoreOrderService.selectByStrId(strStoreDto.getStrId());
+                List<SaoSalesOrderDto> saoSalesOrderDtoList = new ArrayList<>();
+                for(int j=0; j<stoStoreOrderDtos.size();j++){
+                    List<SaoSalesOrderDto> saoSalesOrderDtos = saoSalesOrderService.selectByStoId(stoStoreOrderDtos.get(j).getStoId(), ORDER_STS);
+                    saoSalesOrderDtoList.addAll(saoSalesOrderDtos);
+                }
+                StrWithOrderDto strWithOrderDto = new StrWithOrderDto();
+                strWithOrderDto.setStrStoreDto(strStoreDto);
+                strWithOrderDto.setSaoSalesOrderDtos(saoSalesOrderDtoList);
+                strWithOrderDtos.add(strWithOrderDto);
+            }
+            responseDto.setSuccess(true);
+            responseDto.setContent(strWithOrderDtos);
         }
         return responseDto;
     }

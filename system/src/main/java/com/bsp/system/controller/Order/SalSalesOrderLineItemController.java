@@ -3,6 +3,7 @@ package com.bsp.system.controller.Order;
 import com.bsp.server.dto.*;
 import com.bsp.server.service.ProProductService;
 import com.bsp.server.service.SalSalesOrderLineItemService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ public class SalSalesOrderLineItemController {
     private SalSalesOrderLineItemService salSalesOrderLineItemService;
     @Resource
     private ProProductService proProductService;
-    @RequestMapping("/getSalSalesOrderLineItemControllerList")
+    @PostMapping("/getSalSalesOrderLineItemControllerList")
     public ResponseDto getSalSalesOrderLineItemControllerList(@RequestBody SaoSalesOrderDto saoSalesOrderDto){
         ResponseDto responseDto = new ResponseDto();
         List<SalSalesOrderLineItemDto> salSalesOrderLineItemDtoList = salSalesOrderLineItemService.selectBySaoId(saoSalesOrderDto.getSaoId());

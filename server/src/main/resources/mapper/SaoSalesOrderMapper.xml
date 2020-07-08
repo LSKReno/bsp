@@ -175,6 +175,14 @@
     from sao_sales_order
     where MAN_ID = #{manBuyerId,jdbcType=INTEGER} and ORDER_STS = #{ORDER_STS, jdbcType=VARCHAR}
   </select>
+  <select id="selectByStoId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sao_sales_order
+    where STO_ID = #{stoId,jdbcType=INTEGER} and ORDER_STS = #{ORDER_STS, jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="ResultMapWithBLOBs">
     select
     <choose>

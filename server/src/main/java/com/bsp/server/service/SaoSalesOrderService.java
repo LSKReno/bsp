@@ -84,4 +84,8 @@ public class SaoSalesOrderService {
         salesOrder.setOrderSts("SHIPPED");
         return saoSalesOrderMapper.updateByPrimaryKeySelective(salesOrder);
     }
+
+    public List<SaoSalesOrderDto> selectByStoId(Integer stoId, String ORDER_STS) {
+        return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId, ORDER_STS), SaoSalesOrderDto.class);
+    }
 }
