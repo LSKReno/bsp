@@ -11,8 +11,9 @@ Content-Type: application/json
 
 {
   "manId": "1",
-   "title": "title"
-
+  "title": "title",
+  "page": "0",
+  "size": "10"
 }
 
 ###

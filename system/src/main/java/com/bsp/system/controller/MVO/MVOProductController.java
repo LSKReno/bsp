@@ -32,8 +32,11 @@ public class MVOProductController {
      * 商品信息
      */
     @PostMapping("/list")
-    public ResponseDto list(PageDto pageDto, @RequestBody Map<String,Object> mp) {
+    public ResponseDto list(@RequestBody Map<String,Object> mp) {
         ResponseDto responseDto = new ResponseDto();
+        PageDto pageDto=new PageDto();
+        pageDto.setPage((int)mp.get("page"));
+        pageDto.setSize((int)mp.get("size"));
         proProductService.list(pageDto,mp);
         if(pageDto.getTotal()==0){
             responseDto.setSuccess(false);

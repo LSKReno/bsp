@@ -23,6 +23,17 @@ public class WitWishlistService {
     /**
      * 列表查询
      */
+    public void list(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
+        WitWishlistExample witWishlistExample = new WitWishlistExample();
+        List<WitWishlist> witWishlistList = witWishlistMapper.selectByExample(witWishlistExample);
+        PageInfo<WitWishlist> pageInfo = new PageInfo<>(witWishlistList);
+        pageDto.setTotal(pageInfo.getTotal());
+        List<WitWishlistDto> witWishlistDtoList = CopyUtil.copyList(witWishlistList, WitWishlistDto.class);
+        pageDto.setList(witWishlistDtoList);
+    }
+
+
     public void list(PageDto pageDto, int dsrId) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         WitWishlistExample witWishlistExample = new WitWishlistExample();
@@ -64,7 +75,7 @@ public class WitWishlistService {
     private void update(WitWishlist witWishlist) {
         witWishlistMapper.updateByPrimaryKey(witWishlist);
     }
-    public int updateSelective(WitWishlist witWishlist) {
+    public int updateByPrimaryKeySelective(WitWishlist witWishlist) {
         return witWishlistMapper.updateByPrimaryKeySelective(witWishlist);
     }
     /**

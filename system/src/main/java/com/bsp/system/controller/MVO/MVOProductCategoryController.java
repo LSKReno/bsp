@@ -29,8 +29,11 @@ public class MVOProductCategoryController {
      * 商品分类&主图
      */
     @PostMapping("/list")
-    public ResponseDto list(PageDto pageDto, @RequestBody Map<String,Object> mp) {
+    public ResponseDto list(@RequestBody Map<String,Object> mp) {
         ResponseDto responseDto = new ResponseDto();
+        PageDto pageDto=new PageDto();
+        pageDto.setPage((int)mp.get("page"));
+        pageDto.setSize((int)mp.get("size"));
         prcProductCategoryService.list(pageDto,mp);
         if(pageDto.getTotal()==0){
             responseDto.setSuccess(false);
@@ -82,6 +85,7 @@ public class MVOProductCategoryController {
 
     /**
      *逻辑删除分类&主图
+     * 不可以将商品信息连带删除
      */
     @PostMapping("/delete")
     public ResponseDto delete(@RequestBody Map<String,Object> mp){

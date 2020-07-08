@@ -22,7 +22,7 @@ public class BVOProductController {
      * 列表查询pro状态为A的商品
      */
     @PostMapping("/listA")
-    public ResponseDto listA(PageDto pageDto) {
+    public ResponseDto listA(@RequestBody PageDto pageDto) {
         ResponseDto responseDto = new ResponseDto();
         proProductService.listA(pageDto);
         if(pageDto.getTotal()==0){
@@ -33,5 +33,6 @@ public class BVOProductController {
         responseDto.setContent(pageDto);
         return responseDto;
     }
+
 
 }

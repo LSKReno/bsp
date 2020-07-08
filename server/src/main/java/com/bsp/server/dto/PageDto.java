@@ -12,7 +12,7 @@ public class PageDto<T> {
     /**
      * 每页条数
      */
-    protected int size=10;
+    protected int size;
 
     /**
      * 总条数

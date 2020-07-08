@@ -164,7 +164,8 @@
       #{stsCd,jdbcType=CHAR}, #{shelfStock,jdbcType=INTEGER}, #{preferDate,jdbcType=TIMESTAMP}, 
       #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.SdiStoreDropshipItem">
+<!--  com.bsp.server.domain.SdiStoreDropshipItem-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into sdi_store_dropship_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="dilId != null">

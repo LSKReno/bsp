@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/bvo/wishlist")
@@ -26,9 +27,12 @@ public class BVOWishlistController {
      * 列表查询
      */
     @PostMapping("/list")
-    public ResponseDto list(PageDto pageDto, @RequestBody DsrDropshipper dsrDropshipper) {
+    public ResponseDto list(@RequestBody Map<String,Object> mp) {
         ResponseDto responseDto = new ResponseDto();
-        witWishlistService.list(pageDto,dsrDropshipper.getDsrId());
+        PageDto pageDto=new PageDto();
+        pageDto.setPage((int)mp.get("page"));
+        pageDto.setSize((int)mp.get("size"));
+        witWishlistService.list(pageDto,(int)mp.get("dsrId"));
         responseDto.setContent(pageDto);
         return responseDto;
     }
@@ -38,7 +42,7 @@ public class BVOWishlistController {
         ResponseDto responseDto = new ResponseDto();
         WitWishlist witWishlist = CopyUtil.copy(witWishlistDto, WitWishlist.class);
         witWishlist.setDeleted(true);
-        int f=witWishlistService.updateSelective(witWishlist);
+        int f=witWishlistService.updateByPrimaryKeySelective(witWishlist);
         if (f > 0 ) {
             responseDto.setCode("200");
         } else {

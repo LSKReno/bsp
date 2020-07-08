@@ -10,7 +10,9 @@ POST http://127.0.0.1:9001/system/bvo/wishlist/list
 Content-Type: application/json
 
 {
-"dsrId": "1"
+"dsrId": "1",
+  "page": "0",
+  "size": "10"
 }
 
 ###
