@@ -77,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    BUYER_ID, ACCOUNT_NAME, EMAIL, `PASSWORD`, ACTIVE_TIME, IS_ACTIVE, `STATUS`, CREATE_BY, 
-    CREATE_TIME, LAST_UPDATE_BY, LAST_UPDATE_TIME, ACCOUNT_TYPE, HOLD_ORDER_TIME, AUTO_PAY_STATUS, 
+    BUYER_ID, ACCOUNT_NAME, EMAIL, `PASSWORD`, ACTIVE_TIME, IS_ACTIVE, `STATUS`, CREATE_BY,
+    CREATE_TIME, LAST_UPDATE_BY, LAST_UPDATE_TIME, ACCOUNT_TYPE, HOLD_ORDER_TIME, AUTO_PAY_STATUS,
     deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.WaaWalletAccountExample" resultMap="BaseResultMap">
@@ -119,10 +119,16 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from waa_wallet_account
     where BUYER_ID = #{buyerId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from waa_wallet_account
+    where ACCOUNT_NAME = #{username,jdbcType=VARCHAR}
   </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
@@ -150,16 +156,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.WaaWalletAccount">
-    insert into waa_wallet_account (BUYER_ID, ACCOUNT_NAME, EMAIL, 
-      `PASSWORD`, ACTIVE_TIME, IS_ACTIVE, 
-      `STATUS`, CREATE_BY, CREATE_TIME, 
-      LAST_UPDATE_BY, LAST_UPDATE_TIME, ACCOUNT_TYPE, 
+    insert into waa_wallet_account (BUYER_ID, ACCOUNT_NAME, EMAIL,
+      `PASSWORD`, ACTIVE_TIME, IS_ACTIVE,
+      `STATUS`, CREATE_BY, CREATE_TIME,
+      LAST_UPDATE_BY, LAST_UPDATE_TIME, ACCOUNT_TYPE,
       HOLD_ORDER_TIME, AUTO_PAY_STATUS, deleted
       )
-    values (#{buyerId,jdbcType=INTEGER}, #{accountName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{activeTime,jdbcType=TIMESTAMP}, #{isActive,jdbcType=CHAR}, 
-      #{status,jdbcType=TINYINT}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{accountType,jdbcType=INTEGER}, 
+    values (#{buyerId,jdbcType=INTEGER}, #{accountName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR}, #{activeTime,jdbcType=TIMESTAMP}, #{isActive,jdbcType=CHAR},
+      #{status,jdbcType=TINYINT}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{accountType,jdbcType=INTEGER},
       #{holdOrderTime,jdbcType=CHAR}, #{autoPayStatus,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}
       )
   </insert>

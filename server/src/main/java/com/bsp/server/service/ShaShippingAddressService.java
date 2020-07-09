@@ -65,4 +65,8 @@ public class ShaShippingAddressService {
     public void delete(Integer id) {
         shaShippingAddressMapper.deleteByPrimaryKey(id);
     }
+
+    public ShaShippingAddressDto selectByStoId(Integer stoId) {
+        return CopyUtil.copy(shaShippingAddressMapper.selectByStoId(stoId), ShaShippingAddressDto.class);
+    }
 }

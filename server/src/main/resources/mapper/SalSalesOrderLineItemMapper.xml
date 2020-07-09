@@ -155,7 +155,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.SalSalesOrderLineItem">
+  <insert id="insert" parameterType="com.bsp.server.domain.SalSalesOrderLineItem" useGeneratedKeys="true" keyProperty="salId" keyColumn="salId">
     insert into sal_sales_order_line_item (SAL_ID, CREATED_BY, CREATION_DATE,
       LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT,
       REMARK, STS_CD, SAO_ID,

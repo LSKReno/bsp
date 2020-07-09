@@ -35,4 +35,6 @@ public interface ShaShippingAddressMapper {
     int updateByPrimaryKeySelective(ShaShippingAddress record);
 
     int updateByPrimaryKey(ShaShippingAddress record);
+
+    ShaShippingAddress selectByStoId(Integer stoId);
 }

@@ -36,4 +36,6 @@ public interface WaaWalletAccountMapper {
     int updateByPrimaryKeySelective(WaaWalletAccount record);
 
     int updateByPrimaryKey(WaaWalletAccount record);
+
+    WaaWalletAccount selectByName(String username);
 }

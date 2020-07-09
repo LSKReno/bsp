@@ -36,27 +36,28 @@ public class WafWalletAccountFundService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(WafWalletAccountFundDto wafWalletAccountFundDto) {
+    public int save(WafWalletAccountFundDto wafWalletAccountFundDto) {
         WafWalletAccountFund wafWalletAccountFund = CopyUtil.copy(wafWalletAccountFundDto, WafWalletAccountFund.class);
         if (StringUtils.isEmpty(wafWalletAccountFundDto.getBuyerId())) {
             this.insert(wafWalletAccountFund);
         } else {
             this.update(wafWalletAccountFund);
         }
+        return wafWalletAccountFund.getBuyerId();
     }
 
     /**
      * 新增
      */
-    private void insert(WafWalletAccountFund wafWalletAccountFund) {
-        wafWalletAccountFundMapper.insert(wafWalletAccountFund);
+    private int insert(WafWalletAccountFund wafWalletAccountFund) {
+        return wafWalletAccountFundMapper.insert(wafWalletAccountFund);
     }
 
     /**
      * 更新
      */
-    private void update(WafWalletAccountFund wafWalletAccountFund) {
-        wafWalletAccountFundMapper.updateByPrimaryKey(wafWalletAccountFund);
+    private int update(WafWalletAccountFund wafWalletAccountFund) {
+        return wafWalletAccountFundMapper.updateByPrimaryKey(wafWalletAccountFund);
     }
 
     /**
@@ -64,5 +65,9 @@ public class WafWalletAccountFundService {
      */
     public void delete(Integer id) {
         wafWalletAccountFundMapper.deleteByPrimaryKey(id);
+    }
+
+    public WafWalletAccountFundDto selectByPrimaryKey(Integer buyerId) {
+        return CopyUtil.copy(wafWalletAccountFundMapper.selectByPrimaryKey(buyerId), WafWalletAccountFundDto.class);
     }
 }

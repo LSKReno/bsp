@@ -70,4 +70,8 @@ public class StoStoreOrderService {
     public List<StoStoreOrderDto> selectByStrId(Integer strId) {
         return CopyUtil.copyList(stoStoreOrderMapper.selectByStrId(strId), StoStoreOrderDto.class);
     }
+
+    public StoStoreOrderDto selectByPrimaryKey(Integer stoId) {
+        return CopyUtil.copy(stoStoreOrderMapper.selectByPrimaryKey(stoId), StoStoreOrderDto.class);
+    }
 }

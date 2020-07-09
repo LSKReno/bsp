@@ -1,5 +1,6 @@
 package com.bsp.system.controller.Order;
 
+import com.bsp.server.domain.SalSalesOrderLineItem;
 import com.bsp.server.dto.*;
 import com.bsp.server.service.ProProductService;
 import com.bsp.server.service.SalSalesOrderLineItemService;
@@ -34,6 +35,14 @@ public class SalSalesOrderLineItemController {
         }
         responseDto.setSuccess(true);
         responseDto.setContent(orderItemWithProductDtos);
+        return responseDto;
+    }
+    @PostMapping("/addItem")
+    public ResponseDto addItem(@RequestBody SalSalesOrderLineItemDto salSalesOrderLineItemDto){
+        ResponseDto responseDto = new ResponseDto();
+        int id = salSalesOrderLineItemService.save(salSalesOrderLineItemDto);
+        salSalesOrderLineItemDto.setSalId(id);
+        responseDto.setContent(salSalesOrderLineItemDto);
         return responseDto;
     }
 }

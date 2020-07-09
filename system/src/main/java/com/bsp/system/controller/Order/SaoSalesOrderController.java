@@ -85,4 +85,12 @@ public class SaoSalesOrderController {
         }
         return responseDto;
     }
+    @PostMapping("/addSaoSalesOrder")
+    public ResponseDto addSaoSalesOrder(@RequestBody SaoSalesOrderDto saoSalesOrderDto){
+        ResponseDto responseDto = new ResponseDto();
+        int saoId = saoSalesOrderService.save(saoSalesOrderDto);
+        saoSalesOrderDto.setSaoId(saoId);
+        responseDto.setContent(saoSalesOrderDto);
+        return responseDto;
+    }
 }
