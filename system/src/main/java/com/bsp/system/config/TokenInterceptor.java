@@ -25,7 +25,12 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
                              Object handler) throws SignatureException {
         /** 地址过滤 */
         String uri = request.getRequestURI();
-        if (uri.contains("/login") || uri.contains("/signup") || uri.contains("/kaptcha/image-code")) {
+
+        Boolean flag = uri.contains("/login") || uri.contains("/signup")
+                || uri.contains("/kaptcha/image-code")
+                || uri.contains("/auth/menu"); //该路径/auth/menu的过滤 只是为了调试方便
+
+        if (flag) {
             return true;
         }
 

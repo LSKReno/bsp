@@ -13,16 +13,17 @@
 #}
 
 # 注册测试
-#POST  http://127.0.0.1:9000/system/signup
-#Content-Type: application/json
-#
-## roleId 暂时设计为 1, 2, 3 分别代表admin，MVO，BVO
-#{
-#  "username": "LSKReno3",
-#  "password": "lskreno",
-#  "roleId": "1"
-#}
+POST  http://127.0.0.1:9000/system/signup
+Content-Type: application/json
 
+# roleId 暂时设计为 1, 2, 3 分别代表admin，MVO，BVO
+{
+  "username": "LSKReno3",
+  "password": "lskreno",
+  "roleId": "1"
+}
+
+###
 
 # 登录测试
 POST  http://127.0.0.1:9000/system/login
@@ -36,24 +37,17 @@ Content-Type: application/json
 ###
 
 # 登出测试
-#POST  http://127.0.0.1:9000/system/logout
-#Content-Type: application/json
-#Authorization:
-#
-#{
-#"username": "LSKReno",
-#"password": "lskreno"
-#}
+POST  http://127.0.0.1:9000/system/logout
+Content-Type: application/json
+Authorization:
+
+{
+"username": "LSKReno",
+"password": "lskreno"
+}
 
 ###
 
-#POST  http://127.0.0.1:9000/business/manManufacturer/list
-#Content-Type: application/json
-#Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJ1c2VySWRcIjoxLFwidXNlcm5hbWVcIjpcIkxTS1Jlbm9cIn0iLCJpYXQiOjE1OTQwODk2MDAsImV4cCI6MTU5NDA5MzIwMH0.J7qEUE1nZE5LgrgoyYmttvQKvqbx4RdFqjkZ5rYQamWc1es1sn8TCSf115g4cpF3EWXRZWCoPtNCBIZLovSU3A
-#
-#{
-#
-#}
 
 
 

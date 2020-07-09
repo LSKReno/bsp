@@ -92,6 +92,8 @@
         <!--<table tableName="sys_andorra" domainObjectName="SysAndorra"/>-->
         <!--<table tableName="sys_menu" domainObjectName="SysMenu"/>-->
         <!--<table tableName="sys_user" domainObjectName="SysUser"/>-->
+        <!--<table tableName="sys_role" domainObjectName="SysRole"/>-->
+        <!--<table tableName="sys_role_menu" domainObjectName="SysRoleMenu"/>-->
         <!--<table tableName="ull_user_login_logout_log" domainObjectName="UllUserLoginLogoutLog"/>-->
         <!--<table tableName="par_parameter" domainObjectName="ParParameter"/>-->
         <!--<table tableName="waa_wallet_account" domainObjectName="WaaWalletAccount"/>-->
