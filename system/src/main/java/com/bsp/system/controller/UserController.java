@@ -11,6 +11,7 @@ import com.bsp.server.util.ValidatorUtil;
 import com.bsp.system.config.JwtConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +38,9 @@ public class UserController {
 
     @Resource
     private UllUserLoginLogoutLogService ullUserLoginLogoutLogService;
+
+    @Resource
+    private RedisTemplate redisTemplate;
 
     /**
      * 注册
@@ -66,7 +70,28 @@ public class UserController {
         // 保存校验
         ValidatorUtil.length(sysUserDto.getUsername(), "用户名，唯一", 1, 255);
         ValidatorUtil.length(sysUserDto.getPassword(), "密码", 1, 255);
+
         ResponseDto responseDto = new ResponseDto();
+
+//        // 根据验证码token去获取缓存中的验证码，和用户输入的验证码是否一致
+//        String imageCode = (String) redisTemplate.opsForValue().get(sysUserDto.getImageCodeToken());
+//        LOG.info("从redis中获取到的验证码：{}", imageCode);
+//        if (StringUtils.isEmpty(imageCode)) {
+//            responseDto.setSuccess(false);
+//            responseDto.setMessage("验证码已过期");
+//            LOG.info("用户登录失败，验证码已过期");
+//            return responseDto;
+//        }
+//        if (!imageCode.toLowerCase().equals(sysUserDto.getImageCode().toLowerCase())) {
+//            responseDto.setSuccess(false);
+//            responseDto.setMessage("验证码不对");
+//            LOG.info("用户登录失败，验证码不对");
+//            return responseDto;
+//        } else {
+//            // 验证通过后，移除验证码
+//            redisTemplate.delete(sysUserDto.getImageCodeToken());
+//        }
+
         SysUserDto loginSysUserDto = sysUserService.login(sysUserDto);
 
         JSONObject json = (JSONObject) JSONObject.toJSON(loginSysUserDto);
@@ -106,7 +131,7 @@ public class UserController {
     }
 
     // 记录login
-    private void ullUserLoginLog(SysUserDto sysUserDto, String token){
+    private void ullUserLoginLog(SysUserDto sysUserDto, String token) {
         //  登录log记录, 由于token的生成位置，只能将记录放在controller
         Timestamp currentTime = new Timestamp(System.currentTimeMillis());
         UllUserLoginLogoutLogDto ullUserLoginLogoutLogDto = new UllUserLoginLogoutLogDto();
@@ -125,7 +150,7 @@ public class UserController {
     }
 
     // 记录logout
-    private void ullUserLogoutLog(HttpServletRequest request){
+    private void ullUserLogoutLog(HttpServletRequest request) {
         String token = request.getHeader(jwtConfig.getHeader());
         String jsonStringToken = jwtConfig.getSubjectFromToken(token);
         JSONObject jsonToken = JSON.parseObject(jsonStringToken);

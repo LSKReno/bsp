@@ -40,7 +40,7 @@ public class UllUserLoginLogoutLogController {
         // 保存校验
         ValidatorUtil.require(ullUserLoginLogoutLogDto.getUllId(), "");
         ValidatorUtil.length(ullUserLoginLogoutLogDto.getUsiId(), "", 1, 255);
-        ValidatorUtil.length(ullUserLoginLogoutLogDto.getToken(), "", 1, 255);
+        ValidatorUtil.length(ullUserLoginLogoutLogDto.getToken(), "", 1, 500);
         ValidatorUtil.length(ullUserLoginLogoutLogDto.getTerminalType(), "", 1, 255);
         ValidatorUtil.length(ullUserLoginLogoutLogDto.getOperatingType(), "", 1, 255);
         ValidatorUtil.length(ullUserLoginLogoutLogDto.getCreatedBy(), "", 1, 255);
