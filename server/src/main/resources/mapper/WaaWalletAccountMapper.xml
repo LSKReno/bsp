@@ -164,6 +164,9 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.WaaWalletAccount">
+    <selectKey keyColumn="buyer_id" keyProperty="buyerId" resultType="java.lang.Integer" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into waa_wallet_account
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="buyerId != null">

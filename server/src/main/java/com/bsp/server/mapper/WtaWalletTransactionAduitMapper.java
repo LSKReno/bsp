@@ -4,6 +4,8 @@ import com.bsp.server.domain.WtaWalletTransactionAduit;
 import com.bsp.server.domain.WtaWalletTransactionAduitExample;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface WtaWalletTransactionAduitMapper {
@@ -16,6 +18,8 @@ public interface WtaWalletTransactionAduitMapper {
     int insert(WtaWalletTransactionAduit record);
 
     int insertSelective(WtaWalletTransactionAduit record);
+
+    int insertSelective(Map<String,Object> mp);
 
     WtaWalletTransactionAduit selectOneByExample(WtaWalletTransactionAduitExample example);
 

@@ -14,12 +14,14 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Date;
+import java.util.Map;
 
 @Service
 public class WaaWalletAccountService {
 
     @Resource
     private WaaWalletAccountMapper waaWalletAccountMapper;
+
 
     /**
      * 列表查询
@@ -34,6 +36,20 @@ public class WaaWalletAccountService {
         pageDto.setList(waaWalletAccountDtoList);
     }
 
+    /**
+     *查询钱包账户&密码校验
+     */
+    public WaaWalletAccount find(String accountName,String pwd) {
+        WaaWalletAccountExample waaWalletAccountExample = new WaaWalletAccountExample();
+        WaaWalletAccountExample.Criteria criteria=waaWalletAccountExample.createCriteria();
+        criteria.andAccountNameEqualTo(accountName);
+        criteria.andIsActiveEqualTo("1");
+        criteria.andStatusEqualTo(new Byte("7"));
+        if(!StringUtils.isEmpty(pwd)){
+            criteria.andPasswordEqualTo(pwd);
+        }
+        return waaWalletAccountMapper.selectOneByExample(waaWalletAccountExample);
+    }
     /**
      * 保存，id有值时更新，无值时新增
      */
@@ -53,6 +69,11 @@ public class WaaWalletAccountService {
         Date now = new Date();
         waaWalletAccountMapper.insert(waaWalletAccount);
     }
+
+    public int insertSelective(WaaWalletAccount waaWalletAccount){
+        return waaWalletAccountMapper.insertSelective(waaWalletAccount);
+    }
+
 
     /**
      * 更新

@@ -4,6 +4,8 @@ import com.bsp.server.domain.WafWalletAccountFund;
 import com.bsp.server.domain.WafWalletAccountFundExample;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface WafWalletAccountFundMapper {
@@ -35,5 +37,9 @@ public interface WafWalletAccountFundMapper {
 
     int updateByPrimaryKeySelective(WafWalletAccountFund record);
 
+    int updateByPrimaryKeySelective(Map<String,Object> mp);
+
     int updateByPrimaryKey(WafWalletAccountFund record);
+
+    Map<String,Object> getBeforeValue(Map<String,Object> mp);
 }

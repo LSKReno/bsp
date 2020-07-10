@@ -192,7 +192,11 @@
       #{transactionDesc,jdbcType=VARCHAR}, #{foreignExchangeFee,jdbcType=DECIMAL}, #{withdrawFee,jdbcType=DECIMAL}, 
       #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.WtrWalletTransactionRecord">
+<!--  com.bsp.server.domain.WtrWalletTransactionRecord-->
+  <insert id="insertSelective" parameterType="java.util.Map">
+    <selectKey keyColumn="transaction_id" keyProperty="transactionId" resultType="int" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into wtr_wallet_transaction_record
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="transactionId != null">

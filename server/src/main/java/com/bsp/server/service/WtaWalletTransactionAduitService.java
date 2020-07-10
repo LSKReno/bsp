@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WtaWalletTransactionAduitService {
@@ -50,6 +51,10 @@ public class WtaWalletTransactionAduitService {
      */
     private void insert(WtaWalletTransactionAduit wtaWalletTransactionAduit) {
         wtaWalletTransactionAduitMapper.insert(wtaWalletTransactionAduit);
+    }
+
+    public int insertSelective(Map<String,Object> mp){
+        return wtaWalletTransactionAduitMapper.insertSelective(mp);
     }
 
     /**

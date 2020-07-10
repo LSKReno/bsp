@@ -1,5 +1,6 @@
 package com.bsp.server.service;
 
+import com.bsp.server.domain.WaaWalletAccount;
 import com.bsp.server.domain.WafWalletAccountFund;
 import com.bsp.server.domain.WafWalletAccountFundExample;
 import com.bsp.server.dto.PageDto;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WafWalletAccountFundService {
@@ -20,9 +23,10 @@ public class WafWalletAccountFundService {
     @Resource
     private WafWalletAccountFundMapper wafWalletAccountFundMapper;
 
-    /**
-     * 列表查询
-     */
+    public Map<String,Object> getBeforeValue(Map<String,Object> mp){
+        return wafWalletAccountFundMapper.getBeforeValue(mp);
+    }
+
     public void list(PageDto pageDto) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         WafWalletAccountFundExample wafWalletAccountFundExample = new WafWalletAccountFundExample();
@@ -31,6 +35,13 @@ public class WafWalletAccountFundService {
         pageDto.setTotal(pageInfo.getTotal());
         List<WafWalletAccountFundDto> wafWalletAccountFundDtoList = CopyUtil.copyList(wafWalletAccountFundList, WafWalletAccountFundDto.class);
         pageDto.setList(wafWalletAccountFundDtoList);
+    }
+
+    /**
+     * 列表查询
+     */
+    public WafWalletAccountFund list(Integer id) {
+        return wafWalletAccountFundMapper.selectByPrimaryKey(id);
     }
 
     /**
@@ -52,11 +63,20 @@ public class WafWalletAccountFundService {
         wafWalletAccountFundMapper.insert(wafWalletAccountFund);
     }
 
+    public int insertSelective(WafWalletAccountFund wafWalletAccountFund){
+        return wafWalletAccountFundMapper.insertSelective(wafWalletAccountFund);
+    }
+
     /**
      * 更新
      */
     private void update(WafWalletAccountFund wafWalletAccountFund) {
         wafWalletAccountFundMapper.updateByPrimaryKey(wafWalletAccountFund);
+    }
+
+    public int updateByPrimaryKeySelective(Map<String,Object> mp){
+
+        return wafWalletAccountFundMapper.updateByPrimaryKeySelective(mp);
     }
 
     /**
