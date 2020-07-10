@@ -1,5 +1,7 @@
 package com.bsp.system.controller.Order;
 
+import com.bsp.server.domain.SaoSalesOrder;
+import com.bsp.server.domain.ShaShippingAddress;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.dto.SaoSalesOrderDto;
 import com.bsp.server.dto.ShaShippingAddressDto;
@@ -39,5 +41,12 @@ public class ShaShippingAddressController {
 
         return responseDto;
     }
-
+    @PostMapping("/addAddress")
+    public ResponseDto addAddress(@RequestBody ShaShippingAddressDto shaShippingAddressDto){
+        ResponseDto responseDto = new ResponseDto();
+        int id = shaShippingAddressService.save(shaShippingAddressDto);
+        shaShippingAddressDto.setId(id);
+        responseDto.setContent(shaShippingAddressDto);
+        return responseDto;
+    }
 }

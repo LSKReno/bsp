@@ -28,7 +28,7 @@ public class SaoSalesOrderController {
     @Resource
     private StrStoreService strStoreService;
     @Resource
-    private StoStoreOrderService stoStoreOrderService;
+        private StoStoreOrderService stoStoreOrderService;
 
     @PostMapping("/getSaoSalesOrderList")
     public ResponseDto getSaoSalesOrderList(@RequestBody Map<String, Object> request){

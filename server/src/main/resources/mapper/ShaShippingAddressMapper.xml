@@ -165,7 +165,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.ShaShippingAddress">
+  <insert id="insert" parameterType="com.bsp.server.domain.ShaShippingAddress" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
     insert into sha_shipping_address (id, CREATED_BY, CREATION_DATE,
       LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT,
       REMARK, STS_CD, FAMILY_NAME,

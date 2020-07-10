@@ -79,7 +79,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    SOL_ID, ORDER_ITEM_ID, STO_ID, SALES_PRICE, QTY, SKU_NO, CREATED_BY, CREATION_DATE, 
+    SOL_ID, ORDER_ITEM_ID, STO_ID, SALES_PRICE, QTY, SKU_NO, CREATED_BY, CREATION_DATE,
     LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, REMARK, STS_CD, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -141,7 +141,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -175,17 +175,17 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.SolStoreOrderLineItem">
-    insert into sol_store_order_line_item (SOL_ID, ORDER_ITEM_ID, STO_ID, 
-      SALES_PRICE, QTY, SKU_NO, 
-      CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, 
-      LAST_UPDATE_DATE, CALL_CNT, REMARK, 
+  <insert id="insert" parameterType="com.bsp.server.domain.SolStoreOrderLineItem" useGeneratedKeys="true" keyProperty="solId" keyColumn="solId">
+    insert into sol_store_order_line_item (SOL_ID, ORDER_ITEM_ID, STO_ID,
+      SALES_PRICE, QTY, SKU_NO,
+      CREATED_BY, CREATION_DATE, LAST_UPDATE_BY,
+      LAST_UPDATE_DATE, CALL_CNT, REMARK,
       STS_CD, deleted, BUYER_CHECKOUT_MESSAGE
       )
-    values (#{solId,jdbcType=INTEGER}, #{orderItemId,jdbcType=VARCHAR}, #{stoId,jdbcType=INTEGER}, 
-      #{salesPrice,jdbcType=DECIMAL}, #{qty,jdbcType=INTEGER}, #{skuNo,jdbcType=VARCHAR}, 
-      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
-      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+    values (#{solId,jdbcType=INTEGER}, #{orderItemId,jdbcType=VARCHAR}, #{stoId,jdbcType=INTEGER},
+      #{salesPrice,jdbcType=DECIMAL}, #{qty,jdbcType=INTEGER}, #{skuNo,jdbcType=VARCHAR},
+      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR},
+      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
       #{stsCd,jdbcType=CHAR}, #{deleted,jdbcType=BIT}, #{buyerCheckoutMessage,jdbcType=LONGVARCHAR}
       )
   </insert>

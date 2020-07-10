@@ -37,13 +37,14 @@ public class StoStoreOrderService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(StoStoreOrderDto stoStoreOrderDto) {
+    public int save(StoStoreOrderDto stoStoreOrderDto) {
         StoStoreOrder stoStoreOrder = CopyUtil.copy(stoStoreOrderDto, StoStoreOrder.class);
         if (StringUtils.isEmpty(stoStoreOrderDto.getStoId())) {
             this.insert(stoStoreOrder);
         } else {
             this.update(stoStoreOrder);
         }
+        return stoStoreOrder.getStoId();
     }
 
     /**

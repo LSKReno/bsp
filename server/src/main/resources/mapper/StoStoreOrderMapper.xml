@@ -156,7 +156,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.StoStoreOrder">
+  <insert id="insert" parameterType="com.bsp.server.domain.StoStoreOrder" useGeneratedKeys="true" keyProperty="stoId" keyColumn="stoId">
     insert into sto_store_order (STO_ID, STR_ID, ORDER_ID,
       ORDER_CREATED_TIME, PAID_TIME, LAST_MODIFIED_TIME,
       CREATED_BY, CREATION_DATE, LAST_UPDATE_BY,
