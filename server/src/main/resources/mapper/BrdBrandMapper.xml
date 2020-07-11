@@ -74,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    BRD_ID, MAN_ID, NAME_EN, NAME_CN, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
+    BRD_ID, MAN_ID, NAME_EN, NAME_CN, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,
     CALL_CNT, REMARK, STS_CD, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.BrdBrandExample" resultMap="BaseResultMap">
@@ -115,7 +115,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from brd_brand
     where BRD_ID = #{brdId,jdbcType=INTEGER}
@@ -135,6 +135,12 @@
     from brd_brand
     where BRD_ID = #{brdId,jdbcType=INTEGER}
   </select>
+  <select id="selectByCompanyId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+      from brd_brand
+      where MAN_ID = #{manId, jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from brd_brand
     where BRD_ID = #{brdId,jdbcType=INTEGER}
@@ -146,13 +152,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.BrdBrand">
-    insert into brd_brand (BRD_ID, MAN_ID, NAME_EN, 
-      NAME_CN, CREATED_BY, CREATION_DATE, 
-      LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, 
+    insert into brd_brand (BRD_ID, MAN_ID, NAME_EN,
+      NAME_CN, CREATED_BY, CREATION_DATE,
+      LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT,
       REMARK, STS_CD, deleted)
-    values (#{brdId,jdbcType=INTEGER}, #{manId,jdbcType=INTEGER}, #{nameEn,jdbcType=VARCHAR}, 
-      #{nameCn,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, 
-      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, 
+    values (#{brdId,jdbcType=INTEGER}, #{manId,jdbcType=INTEGER}, #{nameEn,jdbcType=VARCHAR},
+      #{nameCn,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP},
+      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER},
       #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.BrdBrand">
@@ -350,11 +356,11 @@
       CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
       LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
-      CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      CALL_CNT = CALL_CNT+1,
       REMARK = #{remark,jdbcType=VARCHAR},
       STS_CD = #{stsCd,jdbcType=CHAR},
       deleted = #{deleted,jdbcType=BIT}
-    where BRD_ID = #{brdId,jdbcType=INTEGER}
+    where BRD_ID = #{brdId,jdbcType=INTEGER} and CALL_CNT = #{callCnt,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.bsp.server.domain.BrdBrandExample" resultMap="BaseResultMap">
     select

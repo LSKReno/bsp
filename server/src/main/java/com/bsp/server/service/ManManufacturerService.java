@@ -32,31 +32,36 @@ public class ManManufacturerService {
         List<ManManufacturerDto> manManufacturerDtoList = CopyUtil.copyList(manManufacturerList, ManManufacturerDto.class);
         pageDto.setList(manManufacturerDtoList);
     }
-
+    /**
+     * query by primary key
+     */
+    public ManManufacturer selectByPrimaryKey(Integer primaryKey){
+        return manManufacturerMapper.selectByPrimaryKey(primaryKey);
+    }
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(ManManufacturerDto manManufacturerDto) {
+    public int save(ManManufacturerDto manManufacturerDto) {
         ManManufacturer manManufacturer = CopyUtil.copy(manManufacturerDto, ManManufacturer.class);
         if (StringUtils.isEmpty(manManufacturerDto.getManId())) {
-            this.insert(manManufacturer);
+            return this.insert(manManufacturer);
         } else {
-            this.update(manManufacturer);
+            return this.update(manManufacturer);
         }
     }
 
     /**
      * 新增
      */
-    private void insert(ManManufacturer manManufacturer) {
-        manManufacturerMapper.insert(manManufacturer);
+    private int insert(ManManufacturer manManufacturer) {
+        return manManufacturerMapper.insert(manManufacturer);
     }
 
     /**
      * 更新
      */
-    private void update(ManManufacturer manManufacturer) {
-        manManufacturerMapper.updateByPrimaryKey(manManufacturer);
+    private int update(ManManufacturer manManufacturer) {
+        return manManufacturerMapper.updateByPrimaryKey(manManufacturer);
     }
 
     /**

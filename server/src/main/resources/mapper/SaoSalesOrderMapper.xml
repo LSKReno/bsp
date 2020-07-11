@@ -95,10 +95,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    SAO_ID, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, REMARK, 
-    STS_CD, MAN_ID, WAR_ID, SYNC_DATE, PAYMENT_DATE, PUSH_DATE, TRACK_NO_DATE, FULFILLMENT_DATE, 
-    SETTLEMENT_DATE, PRODUCT_AMOUNT, FREIGHT_COST, HANDLING_FEE, CUSTOMER_REMARK, ORDER_NO, 
-    ORDER_STS, REFUND_STS, DELIVERY_STS, STO_ID, LAST_FREIGHT_COST, CANCLE_TIME, AUTO_PAY_STATUS, 
+    SAO_ID, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, REMARK,
+    STS_CD, MAN_ID, WAR_ID, SYNC_DATE, PAYMENT_DATE, PUSH_DATE, TRACK_NO_DATE, FULFILLMENT_DATE,
+    SETTLEMENT_DATE, PRODUCT_AMOUNT, FREIGHT_COST, HANDLING_FEE, CUSTOMER_REMARK, ORDER_NO,
+    ORDER_STS, REFUND_STS, DELIVERY_STS, STO_ID, LAST_FREIGHT_COST, CANCLE_TIME, AUTO_PAY_STATUS,
     AUTO_PAY_TIME, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -160,12 +160,28 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from sao_sales_order
     where SAO_ID = #{saoId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByManID" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sao_sales_order
+    where MAN_ID = #{manBuyerId,jdbcType=INTEGER} and ORDER_STS = #{ORDER_STS, jdbcType=VARCHAR}
+  </select>
+  <select id="selectByStoId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sao_sales_order
+    where STO_ID = #{stoId,jdbcType=INTEGER} and ORDER_STS = #{ORDER_STS, jdbcType=VARCHAR}
   </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="ResultMapWithBLOBs">
     select
@@ -195,27 +211,27 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.SaoSalesOrder">
-    insert into sao_sales_order (SAO_ID, CREATED_BY, CREATION_DATE, 
-      LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, 
-      REMARK, STS_CD, MAN_ID, 
-      WAR_ID, SYNC_DATE, PAYMENT_DATE, 
-      PUSH_DATE, TRACK_NO_DATE, FULFILLMENT_DATE, 
-      SETTLEMENT_DATE, PRODUCT_AMOUNT, FREIGHT_COST, 
-      HANDLING_FEE, CUSTOMER_REMARK, ORDER_NO, 
-      ORDER_STS, REFUND_STS, DELIVERY_STS, 
-      STO_ID, LAST_FREIGHT_COST, CANCLE_TIME, 
-      AUTO_PAY_STATUS, AUTO_PAY_TIME, deleted, 
+    insert into sao_sales_order (SAO_ID, CREATED_BY, CREATION_DATE,
+      LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT,
+      REMARK, STS_CD, MAN_ID,
+      WAR_ID, SYNC_DATE, PAYMENT_DATE,
+      PUSH_DATE, TRACK_NO_DATE, FULFILLMENT_DATE,
+      SETTLEMENT_DATE, PRODUCT_AMOUNT, FREIGHT_COST,
+      HANDLING_FEE, CUSTOMER_REMARK, ORDER_NO,
+      ORDER_STS, REFUND_STS, DELIVERY_STS,
+      STO_ID, LAST_FREIGHT_COST, CANCLE_TIME,
+      AUTO_PAY_STATUS, AUTO_PAY_TIME, deleted,
       BUYER_CHECKOUT_MESSAGE)
-    values (#{saoId,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, 
-      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, 
-      #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, #{manId,jdbcType=INTEGER}, 
-      #{warId,jdbcType=INTEGER}, #{syncDate,jdbcType=TIMESTAMP}, #{paymentDate,jdbcType=TIMESTAMP}, 
-      #{pushDate,jdbcType=TIMESTAMP}, #{trackNoDate,jdbcType=TIMESTAMP}, #{fulfillmentDate,jdbcType=TIMESTAMP}, 
-      #{settlementDate,jdbcType=TIMESTAMP}, #{productAmount,jdbcType=DECIMAL}, #{freightCost,jdbcType=DECIMAL}, 
-      #{handlingFee,jdbcType=DECIMAL}, #{customerRemark,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
-      #{orderSts,jdbcType=VARCHAR}, #{refundSts,jdbcType=VARCHAR}, #{deliverySts,jdbcType=VARCHAR}, 
-      #{stoId,jdbcType=INTEGER}, #{lastFreightCost,jdbcType=DECIMAL}, #{cancleTime,jdbcType=TIMESTAMP}, 
-      #{autoPayStatus,jdbcType=CHAR}, #{autoPayTime,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}, 
+    values (#{saoId,jdbcType=INTEGER}, #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP},
+      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER},
+      #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, #{manId,jdbcType=INTEGER},
+      #{warId,jdbcType=INTEGER}, #{syncDate,jdbcType=TIMESTAMP}, #{paymentDate,jdbcType=TIMESTAMP},
+      #{pushDate,jdbcType=TIMESTAMP}, #{trackNoDate,jdbcType=TIMESTAMP}, #{fulfillmentDate,jdbcType=TIMESTAMP},
+      #{settlementDate,jdbcType=TIMESTAMP}, #{productAmount,jdbcType=DECIMAL}, #{freightCost,jdbcType=DECIMAL},
+      #{handlingFee,jdbcType=DECIMAL}, #{customerRemark,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR},
+      #{orderSts,jdbcType=VARCHAR}, #{refundSts,jdbcType=VARCHAR}, #{deliverySts,jdbcType=VARCHAR},
+      #{stoId,jdbcType=INTEGER}, #{lastFreightCost,jdbcType=DECIMAL}, #{cancleTime,jdbcType=TIMESTAMP},
+      #{autoPayStatus,jdbcType=CHAR}, #{autoPayTime,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT},
       #{buyerCheckoutMessage,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.SaoSalesOrder">

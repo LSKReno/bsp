@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    DSR_ID, `NAME`, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, 
+    DSR_ID, `NAME`, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT,
     REMARK, STS_CD, REGISTER_DATE, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.DsrDropshipperExample" resultMap="BaseResultMap">
@@ -114,7 +114,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from dsr_dropshipper
     where DSR_ID = #{dsrId,jdbcType=INTEGER}
@@ -145,13 +145,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.DsrDropshipper">
-    insert into dsr_dropshipper (DSR_ID, `NAME`, CREATED_BY, 
-      CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
-      CALL_CNT, REMARK, STS_CD, 
+    insert into dsr_dropshipper (DSR_ID, `NAME`, CREATED_BY,
+      CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,
+      CALL_CNT, REMARK, STS_CD,
       REGISTER_DATE, deleted)
-    values (#{dsrId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
-      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
-      #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, 
+    values (#{dsrId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR},
+      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP},
+      #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR},
       #{registerDate,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.DsrDropshipper">
@@ -334,12 +334,12 @@
       CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
       LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
-      CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      CALL_CNT = CALL_CNT+1,
       REMARK = #{remark,jdbcType=VARCHAR},
       STS_CD = #{stsCd,jdbcType=CHAR},
       REGISTER_DATE = #{registerDate,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT}
-    where DSR_ID = #{dsrId,jdbcType=INTEGER}
+    where DSR_ID = #{dsrId,jdbcType=INTEGER} and CALL_CNT = #{callCnt,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.bsp.server.domain.DsrDropshipperExample" resultMap="BaseResultMap">
     select

@@ -65,4 +65,27 @@ public class SaoSalesOrderService {
     public void delete(Integer id) {
         saoSalesOrderMapper.deleteByPrimaryKey(id);
     }
+
+
+
+    public List<SaoSalesOrderDto> selectByManID(Integer manBuyerId, String ORDER_STS) {
+        List<SaoSalesOrder> saoSalesOrders = saoSalesOrderMapper.selectByManID(manBuyerId, ORDER_STS);
+        List<SaoSalesOrderDto> saoSalesOrderDtos = CopyUtil.copyList(saoSalesOrders, SaoSalesOrderDto.class);
+        return saoSalesOrderDtos;
+    }
+
+    public SaoSalesOrderDto selectByPrimaryKey(Integer saoId) {
+        return CopyUtil.copy(saoSalesOrderMapper.selectByPrimaryKey(saoId), SaoSalesOrderDto.class);
+    }
+
+    public int changeToSHIPPED(Integer saoId) {
+        SaoSalesOrder salesOrder = new SaoSalesOrder();
+        salesOrder.setSaoId(saoId);
+        salesOrder.setOrderSts("SHIPPED");
+        return saoSalesOrderMapper.updateByPrimaryKeySelective(salesOrder);
+    }
+
+    public List<SaoSalesOrderDto> selectByStoId(Integer stoId, String ORDER_STS) {
+        return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId, ORDER_STS), SaoSalesOrderDto.class);
+    }
 }

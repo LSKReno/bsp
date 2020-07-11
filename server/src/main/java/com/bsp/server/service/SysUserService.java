@@ -42,27 +42,36 @@ public class SysUserService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(SysUserDto sysUserDto) {
+    public int save(SysUserDto sysUserDto) {
         SysUser sysUser = CopyUtil.copy(sysUserDto, SysUser.class);
         if (StringUtils.isEmpty(sysUserDto.getUserId())) {
-            this.insert(sysUser);
+            return this.insert(sysUser);
         } else {
-            this.update(sysUser);
+            return this.update(sysUser);
         }
     }
 
     /**
      * 新增
      */
-    private void insert(SysUser sysUser) {
-        sysUserMapper.insert(sysUser);
+    private int insert(SysUser sysUser) {
+        return sysUserMapper.insert(sysUser);
     }
 
     /**
      * 更新
      */
-    private void update(SysUser sysUser) {
-        sysUserMapper.updateByPrimaryKey(sysUser);
+    private int update(SysUser sysUser) {
+
+        return sysUserMapper.updateByPrimaryKey(sysUser);
+    }
+
+    /**
+     * update by selective
+     */
+    private int updateByPrimaryKeySelective(SysUserDto sysUserDto){
+        SysUser sysUser = CopyUtil.copy(sysUserDto, SysUser.class);
+        return sysUserMapper.updateByPrimaryKeySelective(sysUser);
     }
 
     /**
@@ -70,6 +79,11 @@ public class SysUserService {
      */
     public void delete(Integer id) {
         sysUserMapper.deleteByPrimaryKey(id);
+    }
+
+
+    public SysUserDto selectByPrimaryKey(Integer userId) {
+        return CopyUtil.copy(sysUserMapper.selectByPrimaryKey(userId), SysUserDto.class);
     }
 
     /**

@@ -65,4 +65,10 @@ public class SalSalesOrderLineItemService {
     public void delete(Integer id) {
         salSalesOrderLineItemMapper.deleteByPrimaryKey(id);
     }
+
+    public List<SalSalesOrderLineItemDto> selectBySaoId(Integer saoId) {
+        List<SalSalesOrderLineItem> salSalesOrderLineItems = salSalesOrderLineItemMapper.selectBySaoId(saoId);
+        List<SalSalesOrderLineItemDto> salSalesOrderLineItemDtos = CopyUtil.copyList(salSalesOrderLineItems, SalSalesOrderLineItemDto.class);
+        return salSalesOrderLineItemDtos;
+    }
 }

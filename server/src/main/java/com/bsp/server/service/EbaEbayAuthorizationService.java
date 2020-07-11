@@ -37,28 +37,28 @@ public class EbaEbayAuthorizationService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(EbaEbayAuthorizationDto ebaEbayAuthorizationDto) {
+    public int save(EbaEbayAuthorizationDto ebaEbayAuthorizationDto) {
         EbaEbayAuthorization ebaEbayAuthorization = CopyUtil.copy(ebaEbayAuthorizationDto, EbaEbayAuthorization.class);
         if (StringUtils.isEmpty(ebaEbayAuthorizationDto.getEbaId())) {
-            this.insert(ebaEbayAuthorization);
+            return this.insert(ebaEbayAuthorization);
         } else {
-            this.update(ebaEbayAuthorization);
+            return this.update(ebaEbayAuthorization);
         }
     }
 
     /**
      * 新增
      */
-    private void insert(EbaEbayAuthorization ebaEbayAuthorization) {
+    private int insert(EbaEbayAuthorization ebaEbayAuthorization) {
         Date now = new Date();
-        ebaEbayAuthorizationMapper.insert(ebaEbayAuthorization);
+        return ebaEbayAuthorizationMapper.insert(ebaEbayAuthorization);
     }
 
     /**
      * 更新
      */
-    private void update(EbaEbayAuthorization ebaEbayAuthorization) {
-        ebaEbayAuthorizationMapper.updateByPrimaryKey(ebaEbayAuthorization);
+    private int update(EbaEbayAuthorization ebaEbayAuthorization) {
+        return ebaEbayAuthorizationMapper.updateByPrimaryKey(ebaEbayAuthorization);
     }
 
     /**

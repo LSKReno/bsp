@@ -36,4 +36,6 @@ public interface SalSalesOrderLineItemMapper {
     int updateByPrimaryKeySelective(SalSalesOrderLineItem record);
 
     int updateByPrimaryKey(SalSalesOrderLineItem record);
+
+    List<SalSalesOrderLineItem> selectBySaoId(Integer saoId);
 }

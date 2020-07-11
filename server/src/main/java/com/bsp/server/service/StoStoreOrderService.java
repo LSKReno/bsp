@@ -3,6 +3,7 @@ package com.bsp.server.service;
 import com.bsp.server.domain.StoStoreOrder;
 import com.bsp.server.domain.StoStoreOrderExample;
 import com.bsp.server.dto.PageDto;
+import com.bsp.server.dto.SaoSalesOrderDto;
 import com.bsp.server.dto.StoStoreOrderDto;
 import com.bsp.server.util.CopyUtil;
 import com.bsp.server.mapper.StoStoreOrderMapper;
@@ -64,5 +65,9 @@ public class StoStoreOrderService {
      */
     public void delete(Integer id) {
         stoStoreOrderMapper.deleteByPrimaryKey(id);
+    }
+
+    public List<StoStoreOrderDto> selectByStrId(Integer strId) {
+        return CopyUtil.copyList(stoStoreOrderMapper.selectByStrId(strId), StoStoreOrderDto.class);
     }
 }
