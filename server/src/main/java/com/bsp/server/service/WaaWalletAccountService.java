@@ -67,4 +67,8 @@ public class WaaWalletAccountService {
     public void delete(Integer id) {
         waaWalletAccountMapper.deleteByPrimaryKey(id);
     }
+
+    public WaaWalletAccountDto selectByName(String username) {
+        return CopyUtil.copy(waaWalletAccountMapper.selectByName(username), WaaWalletAccountDto.class);
+    }
 }

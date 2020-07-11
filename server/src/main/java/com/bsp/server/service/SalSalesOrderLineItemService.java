@@ -36,13 +36,14 @@ public class SalSalesOrderLineItemService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(SalSalesOrderLineItemDto salSalesOrderLineItemDto) {
+    public int save(SalSalesOrderLineItemDto salSalesOrderLineItemDto) {
         SalSalesOrderLineItem salSalesOrderLineItem = CopyUtil.copy(salSalesOrderLineItemDto, SalSalesOrderLineItem.class);
         if (StringUtils.isEmpty(salSalesOrderLineItemDto.getSalId())) {
             this.insert(salSalesOrderLineItem);
         } else {
             this.update(salSalesOrderLineItem);
         }
+        return salSalesOrderLineItem.getSalId();
     }
 
     /**

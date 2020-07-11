@@ -36,13 +36,14 @@ public class SolStoreOrderLineItemService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(SolStoreOrderLineItemDto solStoreOrderLineItemDto) {
+    public int save(SolStoreOrderLineItemDto solStoreOrderLineItemDto) {
         SolStoreOrderLineItem solStoreOrderLineItem = CopyUtil.copy(solStoreOrderLineItemDto, SolStoreOrderLineItem.class);
         if (StringUtils.isEmpty(solStoreOrderLineItemDto.getSolId())) {
             this.insert(solStoreOrderLineItem);
         } else {
             this.update(solStoreOrderLineItem);
         }
+        return solStoreOrderLineItem.getSolId();
     }
 
     /**

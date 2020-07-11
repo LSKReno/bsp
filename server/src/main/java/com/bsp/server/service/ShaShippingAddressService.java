@@ -36,13 +36,14 @@ public class ShaShippingAddressService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(ShaShippingAddressDto shaShippingAddressDto) {
+    public int save(ShaShippingAddressDto shaShippingAddressDto) {
         ShaShippingAddress shaShippingAddress = CopyUtil.copy(shaShippingAddressDto, ShaShippingAddress.class);
         if (StringUtils.isEmpty(shaShippingAddressDto.getId())) {
             this.insert(shaShippingAddress);
         } else {
             this.update(shaShippingAddress);
         }
+        return shaShippingAddress.getId();
     }
 
     /**
@@ -64,5 +65,9 @@ public class ShaShippingAddressService {
      */
     public void delete(Integer id) {
         shaShippingAddressMapper.deleteByPrimaryKey(id);
+    }
+
+    public ShaShippingAddressDto selectByStoId(Integer stoId) {
+        return CopyUtil.copy(shaShippingAddressMapper.selectByStoId(stoId), ShaShippingAddressDto.class);
     }
 }

@@ -36,27 +36,27 @@ public class WtaWalletTransactionAduitService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(WtaWalletTransactionAduitDto wtaWalletTransactionAduitDto) {
+    public int save(WtaWalletTransactionAduitDto wtaWalletTransactionAduitDto) {
         WtaWalletTransactionAduit wtaWalletTransactionAduit = CopyUtil.copy(wtaWalletTransactionAduitDto, WtaWalletTransactionAduit.class);
         if (StringUtils.isEmpty(wtaWalletTransactionAduitDto.getTransactionAuditId())) {
-            this.insert(wtaWalletTransactionAduit);
+            return this.insert(wtaWalletTransactionAduit);
         } else {
-            this.update(wtaWalletTransactionAduit);
+            return this.update(wtaWalletTransactionAduit);
         }
     }
 
     /**
      * 新增
      */
-    private void insert(WtaWalletTransactionAduit wtaWalletTransactionAduit) {
-        wtaWalletTransactionAduitMapper.insert(wtaWalletTransactionAduit);
+    private int insert(WtaWalletTransactionAduit wtaWalletTransactionAduit) {
+        return wtaWalletTransactionAduitMapper.insert(wtaWalletTransactionAduit);
     }
 
     /**
      * 更新
      */
-    private void update(WtaWalletTransactionAduit wtaWalletTransactionAduit) {
-        wtaWalletTransactionAduitMapper.updateByPrimaryKey(wtaWalletTransactionAduit);
+    private int update(WtaWalletTransactionAduit wtaWalletTransactionAduit) {
+        return wtaWalletTransactionAduitMapper.updateByPrimaryKey(wtaWalletTransactionAduit);
     }
 
     /**

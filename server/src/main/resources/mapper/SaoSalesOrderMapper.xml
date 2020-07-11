@@ -210,7 +210,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.SaoSalesOrder">
+  <insert id="insert" parameterType="com.bsp.server.domain.SaoSalesOrder" useGeneratedKeys="true" keyProperty="saoId" keyColumn="saoId">
     insert into sao_sales_order (SAO_ID, CREATED_BY, CREATION_DATE,
       LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT,
       REMARK, STS_CD, MAN_ID,

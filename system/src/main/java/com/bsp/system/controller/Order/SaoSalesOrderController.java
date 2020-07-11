@@ -28,7 +28,7 @@ public class SaoSalesOrderController {
     @Resource
     private StrStoreService strStoreService;
     @Resource
-    private StoStoreOrderService stoStoreOrderService;
+        private StoStoreOrderService stoStoreOrderService;
 
     @PostMapping("/getSaoSalesOrderList")
     public ResponseDto getSaoSalesOrderList(@RequestBody Map<String, Object> request){
@@ -83,6 +83,14 @@ public class SaoSalesOrderController {
             responseDto.setSuccess(true);
             responseDto.setContent(strWithOrderDtos);
         }
+        return responseDto;
+    }
+    @PostMapping("/addSaoSalesOrder")
+    public ResponseDto addSaoSalesOrder(@RequestBody SaoSalesOrderDto saoSalesOrderDto){
+        ResponseDto responseDto = new ResponseDto();
+        int saoId = saoSalesOrderService.save(saoSalesOrderDto);
+        saoSalesOrderDto.setSaoId(saoId);
+        responseDto.setContent(saoSalesOrderDto);
         return responseDto;
     }
 }

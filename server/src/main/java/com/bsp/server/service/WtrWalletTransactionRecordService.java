@@ -37,28 +37,28 @@ public class WtrWalletTransactionRecordService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(WtrWalletTransactionRecordDto wtrWalletTransactionRecordDto) {
+    public int save(WtrWalletTransactionRecordDto wtrWalletTransactionRecordDto) {
         WtrWalletTransactionRecord wtrWalletTransactionRecord = CopyUtil.copy(wtrWalletTransactionRecordDto, WtrWalletTransactionRecord.class);
         if (StringUtils.isEmpty(wtrWalletTransactionRecordDto.getTransactionId())) {
-            this.insert(wtrWalletTransactionRecord);
+            return this.insert(wtrWalletTransactionRecord);
         } else {
-            this.update(wtrWalletTransactionRecord);
+            return this.update(wtrWalletTransactionRecord);
         }
     }
 
     /**
      * 新增
      */
-    private void insert(WtrWalletTransactionRecord wtrWalletTransactionRecord) {
+    private int insert(WtrWalletTransactionRecord wtrWalletTransactionRecord) {
         Date now = new Date();
-        wtrWalletTransactionRecordMapper.insert(wtrWalletTransactionRecord);
+        return wtrWalletTransactionRecordMapper.insert(wtrWalletTransactionRecord);
     }
 
     /**
      * 更新
      */
-    private void update(WtrWalletTransactionRecord wtrWalletTransactionRecord) {
-        wtrWalletTransactionRecordMapper.updateByPrimaryKey(wtrWalletTransactionRecord);
+    private int update(WtrWalletTransactionRecord wtrWalletTransactionRecord) {
+        return wtrWalletTransactionRecordMapper.updateByPrimaryKey(wtrWalletTransactionRecord);
     }
 
     /**

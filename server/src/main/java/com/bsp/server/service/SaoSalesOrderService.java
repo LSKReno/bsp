@@ -2,6 +2,7 @@ package com.bsp.server.service;
 
 import com.bsp.server.domain.SaoSalesOrder;
 import com.bsp.server.domain.SaoSalesOrderExample;
+import com.bsp.server.domain.SysUser;
 import com.bsp.server.dto.PageDto;
 import com.bsp.server.dto.SaoSalesOrderDto;
 import com.bsp.server.util.CopyUtil;
@@ -36,27 +37,28 @@ public class SaoSalesOrderService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(SaoSalesOrderDto saoSalesOrderDto) {
+    public int save(SaoSalesOrderDto saoSalesOrderDto) {
         SaoSalesOrder saoSalesOrder = CopyUtil.copy(saoSalesOrderDto, SaoSalesOrder.class);
         if (StringUtils.isEmpty(saoSalesOrderDto.getSaoId())) {
             this.insert(saoSalesOrder);
         } else {
             this.update(saoSalesOrder);
         }
+        return saoSalesOrder.getSaoId();
     }
 
     /**
      * 新增
      */
-    private void insert(SaoSalesOrder saoSalesOrder) {
-        saoSalesOrderMapper.insert(saoSalesOrder);
+    private int insert(SaoSalesOrder saoSalesOrder) {
+        return saoSalesOrderMapper.insert(saoSalesOrder);
     }
 
     /**
      * 更新
      */
-    private void update(SaoSalesOrder saoSalesOrder) {
-        saoSalesOrderMapper.updateByPrimaryKey(saoSalesOrder);
+    private int update(SaoSalesOrder saoSalesOrder) {
+        return saoSalesOrderMapper.updateByPrimaryKey(saoSalesOrder);
     }
 
     /**
@@ -86,6 +88,6 @@ public class SaoSalesOrderService {
     }
 
     public List<SaoSalesOrderDto> selectByStoId(Integer stoId, String ORDER_STS) {
-        return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId, ORDER_STS), SaoSalesOrderDto.class);
+        return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId), SaoSalesOrderDto.class);
     }
 }
