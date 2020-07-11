@@ -78,7 +78,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    MAN_ID, NAME_EN, NAME_CN, GMC_REPORT_TYPE, GMC_REPORT_URL, CREATED_BY, CREATION_DATE, 
+    MAN_ID, NAME_EN, NAME_CN, GMC_REPORT_TYPE, GMC_REPORT_URL, CREATED_BY, CREATION_DATE,
     LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, REMARK, STS_CD, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -140,7 +140,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -175,15 +175,15 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.ManManufacturer">
-    insert into man_manufacturer (MAN_ID, NAME_EN, NAME_CN, 
-      GMC_REPORT_TYPE, GMC_REPORT_URL, CREATED_BY, 
-      CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
-      CALL_CNT, REMARK, STS_CD, 
+    insert into man_manufacturer (MAN_ID, NAME_EN, NAME_CN,
+      GMC_REPORT_TYPE, GMC_REPORT_URL, CREATED_BY,
+      CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,
+      CALL_CNT, REMARK, STS_CD,
       deleted, DESCRIPTION)
-    values (#{manId,jdbcType=INTEGER}, #{nameEn,jdbcType=VARCHAR}, #{nameCn,jdbcType=VARCHAR}, 
-      #{gmcReportType,jdbcType=VARCHAR}, #{gmcReportUrl,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
-      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
-      #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, 
+    values (#{manId,jdbcType=INTEGER}, #{nameEn,jdbcType=VARCHAR}, #{nameCn,jdbcType=VARCHAR},
+      #{gmcReportType,jdbcType=VARCHAR}, #{gmcReportUrl,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR},
+      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP},
+      #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR},
       #{deleted,jdbcType=BIT}, #{description,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.ManManufacturer">
@@ -444,11 +444,11 @@
       CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
       LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
-      CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      CALL_CNT = CALL_CNT+1,
       REMARK = #{remark,jdbcType=VARCHAR},
       STS_CD = #{stsCd,jdbcType=CHAR},
       deleted = #{deleted,jdbcType=BIT}
-    where MAN_ID = #{manId,jdbcType=INTEGER}
+    where MAN_ID = #{manId,jdbcType=INTEGER} and CALL_CNT = #{callCnt,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.bsp.server.domain.ManManufacturerExample" resultMap="BaseResultMap">
     select

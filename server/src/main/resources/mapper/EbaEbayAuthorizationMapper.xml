@@ -80,7 +80,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    EBA_ID, STR_ID, APP_ID, SECRET_KEY, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
+    EBA_ID, STR_ID, APP_ID, SECRET_KEY, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,
     CALL_CNT, REMARK, STS_CD, EXP_DATE, CANCLE_DATE, ACCOUNT_ID, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -142,7 +142,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -177,17 +177,17 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.EbaEbayAuthorization">
-    insert into eba_ebay_authorization (EBA_ID, STR_ID, APP_ID, 
-      SECRET_KEY, CREATED_BY, CREATION_DATE, 
-      LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, 
-      REMARK, STS_CD, EXP_DATE, 
-      CANCLE_DATE, ACCOUNT_ID, deleted, 
+    insert into eba_ebay_authorization (EBA_ID, STR_ID, APP_ID,
+      SECRET_KEY, CREATED_BY, CREATION_DATE,
+      LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT,
+      REMARK, STS_CD, EXP_DATE,
+      CANCLE_DATE, ACCOUNT_ID, deleted,
       TOKEN)
-    values (#{ebaId,jdbcType=INTEGER}, #{strId,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, 
-      #{secretKey,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, 
-      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, 
-      #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, #{expDate,jdbcType=TIMESTAMP}, 
-      #{cancleDate,jdbcType=TIMESTAMP}, #{accountId,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}, 
+    values (#{ebaId,jdbcType=INTEGER}, #{strId,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR},
+      #{secretKey,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP},
+      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER},
+      #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, #{expDate,jdbcType=TIMESTAMP},
+      #{cancleDate,jdbcType=TIMESTAMP}, #{accountId,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT},
       #{token,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.EbaEbayAuthorization">
@@ -477,14 +477,14 @@
       CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
       LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
-      CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      CALL_CNT = CALL_CNT+1,
       REMARK = #{remark,jdbcType=VARCHAR},
       STS_CD = #{stsCd,jdbcType=CHAR},
       EXP_DATE = #{expDate,jdbcType=TIMESTAMP},
       CANCLE_DATE = #{cancleDate,jdbcType=TIMESTAMP},
       ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
       deleted = #{deleted,jdbcType=BIT}
-    where EBA_ID = #{ebaId,jdbcType=INTEGER}
+    where EBA_ID = #{ebaId,jdbcType=INTEGER} and CALL_CNT = #{callCnt,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.bsp.server.domain.EbaEbayAuthorizationExample" resultMap="BaseResultMap">
     select

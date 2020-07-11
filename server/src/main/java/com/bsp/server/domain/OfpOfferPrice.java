@@ -7,7 +7,7 @@ import java.util.Date;
 public class OfpOfferPrice {
     private Integer ofpId;
 
-    private String manId;
+    private Integer manId;
 
     private Date effetiveStartDate;
 
@@ -25,7 +25,7 @@ public class OfpOfferPrice {
 
     private Date creationDate;
 
-    private Date lastUpdateBy;
+    private String lastUpdateBy;
 
     private Date lastUpdateDate;
 
@@ -47,11 +47,11 @@ public class OfpOfferPrice {
         this.ofpId = ofpId;
     }
 
-    public String getManId() {
+    public Integer getManId() {
         return manId;
     }
 
-    public void setManId(String manId) {
+    public void setManId(Integer manId) {
         this.manId = manId;
     }
 
@@ -119,11 +119,11 @@ public class OfpOfferPrice {
         this.creationDate = creationDate;
     }
 
-    public Date getLastUpdateBy() {
+    public String getLastUpdateBy() {
         return lastUpdateBy;
     }
 
-    public void setLastUpdateBy(Date lastUpdateBy) {
+    public void setLastUpdateBy(String lastUpdateBy) {
         this.lastUpdateBy = lastUpdateBy;
     }
 
@@ -259,7 +259,7 @@ public class OfpOfferPrice {
 
     public enum Column {
         ofpId("OFP_ID", "ofpId", "INTEGER", false),
-        manId("MAN_ID", "manId", "VARCHAR", false),
+        manId("MAN_ID", "manId", "INTEGER", false),
         effetiveStartDate("EFFETIVE_START_DATE", "effetiveStartDate", "TIMESTAMP", false),
         effectiveEndDate("EFFECTIVE_END_DATE", "effectiveEndDate", "TIMESTAMP", false),
         proId("PRO_ID", "proId", "VARCHAR", false),
@@ -268,7 +268,7 @@ public class OfpOfferPrice {
         dsrId("DSR_ID", "dsrId", "VARCHAR", false),
         createdBy("CREATED_BY", "createdBy", "VARCHAR", false),
         creationDate("CREATION_DATE", "creationDate", "TIMESTAMP", false),
-        lastUpdateBy("LAST_UPDATE_BY", "lastUpdateBy", "TIMESTAMP", false),
+        lastUpdateBy("LAST_UPDATE_BY", "lastUpdateBy", "VARCHAR", false),
         lastUpdateDate("LAST_UPDATE_DATE", "lastUpdateDate", "TIMESTAMP", false),
         callCnt("CALL_CNT", "callCnt", "VARCHAR", false),
         remark("REMARK", "remark", "VARCHAR", false),

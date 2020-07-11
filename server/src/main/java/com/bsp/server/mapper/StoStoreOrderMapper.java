@@ -36,4 +36,6 @@ public interface StoStoreOrderMapper {
     int updateByPrimaryKeySelective(StoStoreOrder record);
 
     int updateByPrimaryKey(StoStoreOrder record);
+
+    List<StoStoreOrder> selectByStrId(Integer strId);
 }

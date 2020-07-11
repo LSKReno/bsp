@@ -2,13 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bsp.server.mapper.SysMenuMapper">
   <resultMap id="BaseResultMap" type="com.bsp.server.domain.SysMenu">
-    <result column="MENU_ID" jdbcType="INTEGER" property="menuId" />
+    <id column="MENU_ID" jdbcType="INTEGER" property="menuId" />
+    <result column="MENU_TITLE" jdbcType="VARCHAR" property="menuTitle" />
     <result column="MENU_NAME" jdbcType="VARCHAR" property="menuName" />
     <result column="MENU_URL" jdbcType="VARCHAR" property="menuUrl" />
     <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
     <result column="MENU_ORDER" jdbcType="VARCHAR" property="menuOrder" />
     <result column="MENU_ICON" jdbcType="VARCHAR" property="menuIcon" />
     <result column="MENU_TYPE" jdbcType="VARCHAR" property="menuType" />
+    <result column="MENU_REDIRECT" jdbcType="VARCHAR" property="menuRedirect" />
+    <result column="MENU_METADATA" jdbcType="VARCHAR" property="menuMetadata" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    MENU_ID, MENU_NAME, MENU_URL, PARENT_ID, MENU_ORDER, MENU_ICON, MENU_TYPE, deleted
+    MENU_ID, MENU_TITLE, MENU_NAME, MENU_URL, PARENT_ID, MENU_ORDER, MENU_ICON, MENU_TYPE, 
+    MENU_REDIRECT, MENU_METADATA, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.SysMenuExample" resultMap="BaseResultMap">
     select
@@ -109,6 +113,31 @@
       order by ${example.orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_menu
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
+    select
+    <choose>
+      <when test="selective != null and selective.length > 0">
+        <foreach collection="selective" item="column" separator=",">
+          ${column.aliasedEscapedColumnName}
+        </foreach>
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from sys_menu
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_menu
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="com.bsp.server.domain.SysMenuExample">
     delete from sys_menu
     <if test="_parameter != null">
@@ -116,18 +145,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.SysMenu">
-    insert into sys_menu (MENU_ID, MENU_NAME, MENU_URL, 
-      PARENT_ID, MENU_ORDER, MENU_ICON, 
-      MENU_TYPE, deleted)
-    values (#{menuId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR}, 
-      #{parentId,jdbcType=VARCHAR}, #{menuOrder,jdbcType=VARCHAR}, #{menuIcon,jdbcType=VARCHAR}, 
-      #{menuType,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT})
+    insert into sys_menu (MENU_ID, MENU_TITLE, MENU_NAME, 
+      MENU_URL, PARENT_ID, MENU_ORDER, 
+      MENU_ICON, MENU_TYPE, MENU_REDIRECT, 
+      MENU_METADATA, deleted)
+    values (#{menuId,jdbcType=INTEGER}, #{menuTitle,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{menuUrl,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{menuOrder,jdbcType=VARCHAR}, 
+      #{menuIcon,jdbcType=VARCHAR}, #{menuType,jdbcType=VARCHAR}, #{menuRedirect,jdbcType=VARCHAR}, 
+      #{menuMetadata,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.SysMenu">
     insert into sys_menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="menuId != null">
         MENU_ID,
+      </if>
+      <if test="menuTitle != null">
+        MENU_TITLE,
       </if>
       <if test="menuName != null">
         MENU_NAME,
@@ -147,6 +181,12 @@
       <if test="menuType != null">
         MENU_TYPE,
       </if>
+      <if test="menuRedirect != null">
+        MENU_REDIRECT,
+      </if>
+      <if test="menuMetadata != null">
+        MENU_METADATA,
+      </if>
       <if test="deleted != null">
         deleted,
       </if>
@@ -154,6 +194,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="menuId != null">
         #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="menuTitle != null">
+        #{menuTitle,jdbcType=VARCHAR},
       </if>
       <if test="menuName != null">
         #{menuName,jdbcType=VARCHAR},
@@ -173,6 +216,12 @@
       <if test="menuType != null">
         #{menuType,jdbcType=VARCHAR},
       </if>
+      <if test="menuRedirect != null">
+        #{menuRedirect,jdbcType=VARCHAR},
+      </if>
+      <if test="menuMetadata != null">
+        #{menuMetadata,jdbcType=VARCHAR},
+      </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
       </if>
@@ -189,6 +238,9 @@
     <set>
       <if test="record.menuId != null">
         MENU_ID = #{record.menuId,jdbcType=INTEGER},
+      </if>
+      <if test="record.menuTitle != null">
+        MENU_TITLE = #{record.menuTitle,jdbcType=VARCHAR},
       </if>
       <if test="record.menuName != null">
         MENU_NAME = #{record.menuName,jdbcType=VARCHAR},
@@ -208,6 +260,12 @@
       <if test="record.menuType != null">
         MENU_TYPE = #{record.menuType,jdbcType=VARCHAR},
       </if>
+      <if test="record.menuRedirect != null">
+        MENU_REDIRECT = #{record.menuRedirect,jdbcType=VARCHAR},
+      </if>
+      <if test="record.menuMetadata != null">
+        MENU_METADATA = #{record.menuMetadata,jdbcType=VARCHAR},
+      </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
       </if>
@@ -219,16 +277,69 @@
   <update id="updateByExample" parameterType="map">
     update sys_menu
     set MENU_ID = #{record.menuId,jdbcType=INTEGER},
+      MENU_TITLE = #{record.menuTitle,jdbcType=VARCHAR},
       MENU_NAME = #{record.menuName,jdbcType=VARCHAR},
       MENU_URL = #{record.menuUrl,jdbcType=VARCHAR},
       PARENT_ID = #{record.parentId,jdbcType=VARCHAR},
       MENU_ORDER = #{record.menuOrder,jdbcType=VARCHAR},
       MENU_ICON = #{record.menuIcon,jdbcType=VARCHAR},
       MENU_TYPE = #{record.menuType,jdbcType=VARCHAR},
+      MENU_REDIRECT = #{record.menuRedirect,jdbcType=VARCHAR},
+      MENU_METADATA = #{record.menuMetadata,jdbcType=VARCHAR},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.SysMenu">
+    update sys_menu
+    <set>
+      <if test="menuTitle != null">
+        MENU_TITLE = #{menuTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null">
+        MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuOrder != null">
+        MENU_ORDER = #{menuOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="menuIcon != null">
+        MENU_ICON = #{menuIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null">
+        MENU_TYPE = #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRedirect != null">
+        MENU_REDIRECT = #{menuRedirect,jdbcType=VARCHAR},
+      </if>
+      <if test="menuMetadata != null">
+        MENU_METADATA = #{menuMetadata,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.SysMenu">
+    update sys_menu
+    set MENU_TITLE = #{menuTitle,jdbcType=VARCHAR},
+      MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      MENU_URL = #{menuUrl,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      MENU_ORDER = #{menuOrder,jdbcType=VARCHAR},
+      MENU_ICON = #{menuIcon,jdbcType=VARCHAR},
+      MENU_TYPE = #{menuType,jdbcType=VARCHAR},
+      MENU_REDIRECT = #{menuRedirect,jdbcType=VARCHAR},
+      MENU_METADATA = #{menuMetadata,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=BIT}
+    where MENU_ID = #{menuId,jdbcType=INTEGER}
   </update>
   <select id="selectOneByExample" parameterType="com.bsp.server.domain.SysMenuExample" resultMap="BaseResultMap">
     select

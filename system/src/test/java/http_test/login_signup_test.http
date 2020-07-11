@@ -1,0 +1,58 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+# 验证码测试
+#GET  http://127.0.0.1:9000/system/kaptcha/image-code/12745623
+#Content-Type: application/json
+#
+#{
+#}
+
+# 注册测试
+POST  http://127.0.0.1:9000/system/signup
+Content-Type: application/json
+
+# roleId 暂时设计为 1, 2, 3 分别代表admin，MVO，BVO
+{
+  "username": "LSKReno3",
+  "password": "lskreno",
+  "roleId": "1"
+}
+
+###
+
+# 登录测试
+POST  http://127.0.0.1:9000/system/login
+Content-Type: application/json
+
+{
+  "username": "LSKReno",
+  "password": "lskreno"
+}
+
+###
+
+# 登出测试
+POST  http://127.0.0.1:9000/system/logout
+Content-Type: application/json
+Authorization:
+
+{
+"username": "LSKReno",
+"password": "lskreno"
+}
+
+###
+
+
+
+
+
+
+
+
+

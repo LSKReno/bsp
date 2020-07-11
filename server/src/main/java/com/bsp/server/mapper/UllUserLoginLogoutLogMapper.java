@@ -2,7 +2,6 @@ package com.bsp.server.mapper;
 
 import com.bsp.server.domain.UllUserLoginLogoutLog;
 import com.bsp.server.domain.UllUserLoginLogoutLogExample;
-
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

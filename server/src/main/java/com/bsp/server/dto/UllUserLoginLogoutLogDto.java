@@ -49,8 +49,7 @@ public class UllUserLoginLogoutLogDto {
     /**
      * 
      */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date lastUpdateBy;
+    private String lastUpdateBy;
 
     /**
      * 
@@ -142,11 +141,11 @@ public class UllUserLoginLogoutLogDto {
         this.creationDate = creationDate;
     }
 
-    public Date getLastUpdateBy() {
+    public String getLastUpdateBy() {
         return lastUpdateBy;
     }
 
-    public void setLastUpdateBy(Date lastUpdateBy) {
+    public void setLastUpdateBy(String lastUpdateBy) {
         this.lastUpdateBy = lastUpdateBy;
     }
 

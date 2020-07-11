@@ -44,4 +44,10 @@ public interface SaoSalesOrderMapper {
     int updateByPrimaryKeyWithBLOBs(SaoSalesOrder record);
 
     int updateByPrimaryKey(SaoSalesOrder record);
+
+    List<SaoSalesOrder> selectByManID(Integer manBuyerId, String ORDER_STS);
+
+    int changeToSHIPPED(Integer saoId);
+
+    List<SaoSalesOrder> selectByStoId(Integer stoId);
 }

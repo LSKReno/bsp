@@ -53,7 +53,7 @@
 
         <!-- domain类的位置 -->
         <javaModelGenerator targetProject="src\main\java"
-                            targetPackage="com.course.server.domain"/>
+                            targetPackage="com.bsp.server.domain"/>
 
         <!-- mapper xml的位置 -->
         <sqlMapGenerator targetProject="src\main\resources"
@@ -61,42 +61,44 @@
 
         <!-- mapper类的位置 -->
         <javaClientGenerator targetProject="src\main\java"
-                             targetPackage="com.course.server.mapper"
+                             targetPackage="com.bsp.server.mapper"
                              type="XMLMAPPER" />
 
-        <table tableName="man_manufacturer" domainObjectName="ManManufacturer"/>
-        <table tableName="brd_brand" domainObjectName="BrdBrand"/>
-        <table tableName="sto_store_order" domainObjectName="StoStoreOrder"/>
-        <table tableName="sha_shipping_address" domainObjectName="ShaShippingAddress"/>
-        <table tableName="sol_store_order_line_item" domainObjectName="SolStoreOrderLineItem"/>
-        <table tableName="sal_sales_order_line_item" domainObjectName="SalSalesOrderLineItem"/>
-        <table tableName="sao_sales_order" domainObjectName="SaoSalesOrder"/>
-        <table tableName="dsr_dropshipper" domainObjectName="DsrDropshipper"/>
-        <table tableName="eba_ebay_authorization" domainObjectName="EbaEbayAuthorization"/>
-        <table tableName="str_store" domainObjectName="StrStore"/>
-        <table tableName="drp_dropship_price" domainObjectName="DrpDropshipPrice"/>
-        <table tableName="sdi_store_dropship_item" domainObjectName="SdiStoreDropshipItem"/>
-        <table tableName="wit_wishlist" domainObjectName="WitWishlist"/>
-        <table tableName="cdm_code_master" domainObjectName="CdmCodeMaster"/>
-        <table tableName="goa_government_area" domainObjectName="GoaGovernmentArea"/>
-        <table tableName="img_image" domainObjectName="ImgImage"/>
-        <table tableName="mor_monitor_result" domainObjectName="MorMonitorResult"/>
-        <table tableName="ofp_offer_price" domainObjectName="OfpOfferPrice"/>
-        <table tableName="pck_package_info" domainObjectName="PckPackageInfo"/>
-        <table tableName="pdn_product_descrition" domainObjectName="PdnProductDescrition"/>
-        <table tableName="prc_product_category" domainObjectName="PrcProductCategory"/>
-        <table tableName="pro_product" domainObjectName="ProProduct"/>
-        <table tableName="spa_specific_attribute" domainObjectName="SpaSpecificAttribute"/>
-        <table tableName="spv_specific_attribute_value" domainObjectName="SpvSpecificAttributeValue"/>
-        <table tableName="sequence" domainObjectName="Sequence"/>
-        <table tableName="sys_andorra" domainObjectName="SysAndorra"/>
-        <table tableName="sys_menu" domainObjectName="SysMenu"/>
-        <table tableName="sys_user" domainObjectName="SysUser"/>
-        <table tableName="ull_user_login_logout_log" domainObjectName="UllUserLoginLogoutLog"/>
-        <table tableName="par_parameter" domainObjectName="ParParameter"/>
-        <table tableName="waa_wallet_account" domainObjectName="WaaWalletAccount"/>
-        <table tableName="waf_wallet_account_fund" domainObjectName="WafWalletAccountFund"/>
-        <table tableName="wta_wallet_transaction_aduit" domainObjectName="WtaWalletTransactionAduit"/>
-        <table tableName="wtr_wallet_transaction_record" domainObjectName="WtrWalletTransactionRecord"/>
+        <!--<table tableName="man_manufacturer" domainObjectName="ManManufacturer"/>-->
+        <!--<table tableName="brd_brand" domainObjectName="BrdBrand"/>-->
+        <!--<table tableName="sto_store_order" domainObjectName="StoStoreOrder"/>-->
+        <!--<table tableName="sha_shipping_address" domainObjectName="ShaShippingAddress"/>-->
+        <!--<table tableName="sol_store_order_line_item" domainObjectName="SolStoreOrderLineItem"/>-->
+        <!--<table tableName="sal_sales_order_line_item" domainObjectName="SalSalesOrderLineItem"/>-->
+        <!--<table tableName="sao_sales_order" domainObjectName="SaoSalesOrder"/>-->
+        <!--<table tableName="dsr_dropshipper" domainObjectName="DsrDropshipper"/>-->
+        <!--<table tableName="eba_ebay_authorization" domainObjectName="EbaEbayAuthorization"/>-->
+        <!--<table tableName="str_store" domainObjectName="StrStore"/>-->
+        <!--<table tableName="drp_dropship_price" domainObjectName="DrpDropshipPrice"/>-->
+        <!--<table tableName="sdi_store_dropship_item" domainObjectName="SdiStoreDropshipItem"/>-->
+        <!--<table tableName="wit_wishlist" domainObjectName="WitWishlist"/>-->
+        <!--<table tableName="cdm_code_master" domainObjectName="CdmCodeMaster"/>-->
+        <!--<table tableName="goa_government_area" domainObjectName="GoaGovernmentArea"/>-->
+        <!--<table tableName="img_image" domainObjectName="ImgImage"/>-->
+        <!--<table tableName="mor_monitor_result" domainObjectName="MorMonitorResult"/>-->
+        <!--<table tableName="ofp_offer_price" domainObjectName="OfpOfferPrice"/>-->
+        <!--<table tableName="pck_package_info" domainObjectName="PckPackageInfo"/>-->
+        <!--<table tableName="pdn_product_descrition" domainObjectName="PdnProductDescrition"/>-->
+        <!--<table tableName="prc_product_category" domainObjectName="PrcProductCategory"/>-->
+        <!--<table tableName="pro_product" domainObjectName="ProProduct"/>-->
+        <!--<table tableName="spa_specific_attribute" domainObjectName="SpaSpecificAttribute"/>-->
+        <!--<table tableName="spv_specific_attribute_value" domainObjectName="SpvSpecificAttributeValue"/>-->
+        <!--<table tableName="sequence" domainObjectName="Sequence"/>-->
+        <!--<table tableName="sys_andorra" domainObjectName="SysAndorra"/>-->
+        <!--<table tableName="sys_menu" domainObjectName="SysMenu"/>-->
+        <!--<table tableName="sys_user" domainObjectName="SysUser"/>-->
+        <!--<table tableName="sys_role" domainObjectName="SysRole"/>-->
+        <!--<table tableName="sys_role_menu" domainObjectName="SysRoleMenu"/>-->
+        <!--<table tableName="ull_user_login_logout_log" domainObjectName="UllUserLoginLogoutLog"/>-->
+        <!--<table tableName="par_parameter" domainObjectName="ParParameter"/>-->
+        <!--<table tableName="waa_wallet_account" domainObjectName="WaaWalletAccount"/>-->
+        <!--<table tableName="waf_wallet_account_fund" domainObjectName="WafWalletAccountFund"/>-->
+        <!--<table tableName="wta_wallet_transaction_aduit" domainObjectName="WtaWalletTransactionAduit"/>-->
+        <!--<table tableName="wtr_wallet_transaction_record" domainObjectName="WtrWalletTransactionRecord"/>-->
     </context>
 </generatorConfiguration>

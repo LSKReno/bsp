@@ -97,4 +97,10 @@ public class ProProductService {
     public void delete(Integer id) {
         proProductMapper.deleteByPrimaryKey(id);
     }
+
+    public ProProductDto selectByPrimaryKey(Integer proId) {
+        ProProduct proProduct = proProductMapper.selectByPrimaryKey(proId);
+        ProProductDto proProductDto = CopyUtil.copy(proProduct, ProProductDto.class);
+        return proProductDto;
+    }
 }

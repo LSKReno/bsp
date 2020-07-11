@@ -1,12 +1,12 @@
-package com.course.server.service;
+package com.bsp.server.service;
 
-import com.course.server.domain.${Domain};
-import com.course.server.domain.${Domain}Example;
-import com.course.server.dto.${Domain}Dto;
-import com.course.server.dto.PageDto;
-import com.course.server.mapper.${Domain}Mapper;
-import com.course.server.util.CopyUtil;
-import com.course.server.util.UuidUtil;
+import com.bsp.server.domain.${Domain};
+import com.bsp.server.domain.${Domain}Example;
+import com.bsp.server.dto.${Domain}Dto;
+import com.bsp.server.dto.PageDto;
+import com.bsp.server.mapper.${Domain}Mapper;
+import com.bsp.server.util.CopyUtil;
+import com.bsp.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;

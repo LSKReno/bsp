@@ -3,7 +3,7 @@
 <mapper namespace="com.bsp.server.mapper.OfpOfferPriceMapper">
   <resultMap id="BaseResultMap" type="com.bsp.server.domain.OfpOfferPrice">
     <id column="OFP_ID" jdbcType="INTEGER" property="ofpId" />
-    <result column="MAN_ID" jdbcType="VARCHAR" property="manId" />
+    <result column="MAN_ID" jdbcType="INTEGER" property="manId" />
     <result column="EFFETIVE_START_DATE" jdbcType="TIMESTAMP" property="effetiveStartDate" />
     <result column="EFFECTIVE_END_DATE" jdbcType="TIMESTAMP" property="effectiveEndDate" />
     <result column="PRO_ID" jdbcType="VARCHAR" property="proId" />
@@ -12,7 +12,7 @@
     <result column="DSR_ID" jdbcType="VARCHAR" property="dsrId" />
     <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
     <result column="CREATION_DATE" jdbcType="TIMESTAMP" property="creationDate" />
-    <result column="LAST_UPDATE_BY" jdbcType="TIMESTAMP" property="lastUpdateBy" />
+    <result column="LAST_UPDATE_BY" jdbcType="VARCHAR" property="lastUpdateBy" />
     <result column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" property="lastUpdateDate" />
     <result column="CALL_CNT" jdbcType="VARCHAR" property="callCnt" />
     <result column="REMARK" jdbcType="VARCHAR" property="remark" />
@@ -158,10 +158,10 @@
       CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
       CALL_CNT, REMARK, STS_CD, 
       PERIOD, deleted)
-    values (#{ofpId,jdbcType=INTEGER}, #{manId,jdbcType=VARCHAR}, #{effetiveStartDate,jdbcType=TIMESTAMP}, 
+    values (#{ofpId,jdbcType=INTEGER}, #{manId,jdbcType=INTEGER}, #{effetiveStartDate,jdbcType=TIMESTAMP}, 
       #{effectiveEndDate,jdbcType=TIMESTAMP}, #{proId,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, 
       #{typeCd,jdbcType=VARCHAR}, #{dsrId,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
-      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=TIMESTAMP}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, 
       #{callCnt,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=VARCHAR}, 
       #{period,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT})
   </insert>
@@ -226,7 +226,7 @@
         #{ofpId,jdbcType=INTEGER},
       </if>
       <if test="manId != null">
-        #{manId,jdbcType=VARCHAR},
+        #{manId,jdbcType=INTEGER},
       </if>
       <if test="effetiveStartDate != null">
         #{effetiveStartDate,jdbcType=TIMESTAMP},
@@ -288,7 +288,7 @@
         OFP_ID = #{record.ofpId,jdbcType=INTEGER},
       </if>
       <if test="record.manId != null">
-        MAN_ID = #{record.manId,jdbcType=VARCHAR},
+        MAN_ID = #{record.manId,jdbcType=INTEGER},
       </if>
       <if test="record.effetiveStartDate != null">
         EFFETIVE_START_DATE = #{record.effetiveStartDate,jdbcType=TIMESTAMP},
@@ -315,7 +315,7 @@
         CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.lastUpdateBy != null">
-        LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=TIMESTAMP},
+        LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
       </if>
       <if test="record.lastUpdateDate != null">
         LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
@@ -343,7 +343,7 @@
   <update id="updateByExample" parameterType="map">
     update ofp_offer_price
     set OFP_ID = #{record.ofpId,jdbcType=INTEGER},
-      MAN_ID = #{record.manId,jdbcType=VARCHAR},
+      MAN_ID = #{record.manId,jdbcType=INTEGER},
       EFFETIVE_START_DATE = #{record.effetiveStartDate,jdbcType=TIMESTAMP},
       EFFECTIVE_END_DATE = #{record.effectiveEndDate,jdbcType=TIMESTAMP},
       PRO_ID = #{record.proId,jdbcType=VARCHAR},
@@ -352,7 +352,7 @@
       DSR_ID = #{record.dsrId,jdbcType=VARCHAR},
       CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
       CREATION_DATE = #{record.creationDate,jdbcType=TIMESTAMP},
-      LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{record.lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{record.lastUpdateDate,jdbcType=TIMESTAMP},
       CALL_CNT = #{record.callCnt,jdbcType=VARCHAR},
       REMARK = #{record.remark,jdbcType=VARCHAR},
@@ -368,7 +368,7 @@
     update ofp_offer_price
     <set>
       <if test="manId != null">
-        MAN_ID = #{manId,jdbcType=VARCHAR},
+        MAN_ID = #{manId,jdbcType=INTEGER},
       </if>
       <if test="effetiveStartDate != null">
         EFFETIVE_START_DATE = #{effetiveStartDate,jdbcType=TIMESTAMP},
@@ -395,7 +395,7 @@
         CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
       </if>
       <if test="lastUpdateBy != null">
-        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=TIMESTAMP},
+        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       </if>
       <if test="lastUpdateDate != null">
         LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
@@ -421,7 +421,7 @@
 <!--  OFP_ID = #{ofpId,jdbcType=INTEGER}-->
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.OfpOfferPrice">
     update ofp_offer_price
-    set MAN_ID = #{manId,jdbcType=VARCHAR},
+    set MAN_ID = #{manId,jdbcType=INTEGER},
       EFFETIVE_START_DATE = #{effetiveStartDate,jdbcType=TIMESTAMP},
       EFFECTIVE_END_DATE = #{effectiveEndDate,jdbcType=TIMESTAMP},
       PRO_ID = #{proId,jdbcType=VARCHAR},
@@ -430,7 +430,7 @@
       DSR_ID = #{dsrId,jdbcType=VARCHAR},
       CREATED_BY = #{createdBy,jdbcType=VARCHAR},
       CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
-      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=TIMESTAMP},
+      LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
       LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
       CALL_CNT = #{callCnt,jdbcType=VARCHAR},
       REMARK = #{remark,jdbcType=VARCHAR},

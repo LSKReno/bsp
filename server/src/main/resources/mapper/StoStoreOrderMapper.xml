@@ -78,8 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    STO_ID, STR_ID, ORDER_ID, ORDER_CREATED_TIME, PAID_TIME, LAST_MODIFIED_TIME, CREATED_BY, 
-    CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, REMARK, STS_CD, PLATEFORM_TYPE, 
+    STO_ID, STR_ID, ORDER_ID, ORDER_CREATED_TIME, PAID_TIME, LAST_MODIFIED_TIME, CREATED_BY,
+    CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, REMARK, STS_CD, PLATEFORM_TYPE,
     CANCEL_COMPLETE_DATE, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.StoStoreOrderExample" resultMap="BaseResultMap">
@@ -120,10 +120,16 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from sto_store_order
     where STO_ID = #{stoId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByStrId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sto_store_order
+    where STR_ID = #{strId,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
@@ -151,17 +157,17 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.StoStoreOrder">
-    insert into sto_store_order (STO_ID, STR_ID, ORDER_ID, 
-      ORDER_CREATED_TIME, PAID_TIME, LAST_MODIFIED_TIME, 
-      CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, 
-      LAST_UPDATE_DATE, CALL_CNT, REMARK, 
-      STS_CD, PLATEFORM_TYPE, CANCEL_COMPLETE_DATE, 
+    insert into sto_store_order (STO_ID, STR_ID, ORDER_ID,
+      ORDER_CREATED_TIME, PAID_TIME, LAST_MODIFIED_TIME,
+      CREATED_BY, CREATION_DATE, LAST_UPDATE_BY,
+      LAST_UPDATE_DATE, CALL_CNT, REMARK,
+      STS_CD, PLATEFORM_TYPE, CANCEL_COMPLETE_DATE,
       deleted)
-    values (#{stoId,jdbcType=INTEGER}, #{strId,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, 
-      #{orderCreatedTime,jdbcType=VARCHAR}, #{paidTime,jdbcType=VARCHAR}, #{lastModifiedTime,jdbcType=VARCHAR}, 
-      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
-      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
-      #{stsCd,jdbcType=CHAR}, #{plateformType,jdbcType=VARCHAR}, #{cancelCompleteDate,jdbcType=VARCHAR}, 
+    values (#{stoId,jdbcType=INTEGER}, #{strId,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR},
+      #{orderCreatedTime,jdbcType=VARCHAR}, #{paidTime,jdbcType=VARCHAR}, #{lastModifiedTime,jdbcType=VARCHAR},
+      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR},
+      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
+      #{stsCd,jdbcType=CHAR}, #{plateformType,jdbcType=VARCHAR}, #{cancelCompleteDate,jdbcType=VARCHAR},
       #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.StoStoreOrder">

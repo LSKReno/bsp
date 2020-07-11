@@ -243,7 +243,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andManIdEqualTo(String value) {
+        public Criteria andManIdEqualTo(Integer value) {
             addCriterion("MAN_ID =", value, "manId");
             return (Criteria) this;
         }
@@ -253,7 +253,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andManIdNotEqualTo(String value) {
+        public Criteria andManIdNotEqualTo(Integer value) {
             addCriterion("MAN_ID <>", value, "manId");
             return (Criteria) this;
         }
@@ -263,7 +263,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andManIdGreaterThan(String value) {
+        public Criteria andManIdGreaterThan(Integer value) {
             addCriterion("MAN_ID >", value, "manId");
             return (Criteria) this;
         }
@@ -273,7 +273,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andManIdGreaterThanOrEqualTo(String value) {
+        public Criteria andManIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("MAN_ID >=", value, "manId");
             return (Criteria) this;
         }
@@ -283,7 +283,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andManIdLessThan(String value) {
+        public Criteria andManIdLessThan(Integer value) {
             addCriterion("MAN_ID <", value, "manId");
             return (Criteria) this;
         }
@@ -293,7 +293,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andManIdLessThanOrEqualTo(String value) {
+        public Criteria andManIdLessThanOrEqualTo(Integer value) {
             addCriterion("MAN_ID <=", value, "manId");
             return (Criteria) this;
         }
@@ -303,32 +303,22 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andManIdLike(String value) {
-            addCriterion("MAN_ID like", value, "manId");
-            return (Criteria) this;
-        }
-
-        public Criteria andManIdNotLike(String value) {
-            addCriterion("MAN_ID not like", value, "manId");
-            return (Criteria) this;
-        }
-
-        public Criteria andManIdIn(List<String> values) {
+        public Criteria andManIdIn(List<Integer> values) {
             addCriterion("MAN_ID in", values, "manId");
             return (Criteria) this;
         }
 
-        public Criteria andManIdNotIn(List<String> values) {
+        public Criteria andManIdNotIn(List<Integer> values) {
             addCriterion("MAN_ID not in", values, "manId");
             return (Criteria) this;
         }
 
-        public Criteria andManIdBetween(String value1, String value2) {
+        public Criteria andManIdBetween(Integer value1, Integer value2) {
             addCriterion("MAN_ID between", value1, value2, "manId");
             return (Criteria) this;
         }
 
-        public Criteria andManIdNotBetween(String value1, String value2) {
+        public Criteria andManIdNotBetween(Integer value1, Integer value2) {
             addCriterion("MAN_ID not between", value1, value2, "manId");
             return (Criteria) this;
         }
@@ -1113,7 +1103,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByEqualTo(Date value) {
+        public Criteria andLastUpdateByEqualTo(String value) {
             addCriterion("LAST_UPDATE_BY =", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -1123,7 +1113,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByNotEqualTo(Date value) {
+        public Criteria andLastUpdateByNotEqualTo(String value) {
             addCriterion("LAST_UPDATE_BY <>", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -1133,7 +1123,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByGreaterThan(Date value) {
+        public Criteria andLastUpdateByGreaterThan(String value) {
             addCriterion("LAST_UPDATE_BY >", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -1143,7 +1133,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByGreaterThanOrEqualTo(Date value) {
+        public Criteria andLastUpdateByGreaterThanOrEqualTo(String value) {
             addCriterion("LAST_UPDATE_BY >=", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -1153,7 +1143,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByLessThan(Date value) {
+        public Criteria andLastUpdateByLessThan(String value) {
             addCriterion("LAST_UPDATE_BY <", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -1163,7 +1153,7 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByLessThanOrEqualTo(Date value) {
+        public Criteria andLastUpdateByLessThanOrEqualTo(String value) {
             addCriterion("LAST_UPDATE_BY <=", value, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -1173,22 +1163,32 @@ public class OfpOfferPriceExample {
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByIn(List<Date> values) {
+        public Criteria andLastUpdateByLike(String value) {
+            addCriterion("LAST_UPDATE_BY like", value, "lastUpdateBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastUpdateByNotLike(String value) {
+            addCriterion("LAST_UPDATE_BY not like", value, "lastUpdateBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastUpdateByIn(List<String> values) {
             addCriterion("LAST_UPDATE_BY in", values, "lastUpdateBy");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByNotIn(List<Date> values) {
+        public Criteria andLastUpdateByNotIn(List<String> values) {
             addCriterion("LAST_UPDATE_BY not in", values, "lastUpdateBy");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByBetween(Date value1, Date value2) {
+        public Criteria andLastUpdateByBetween(String value1, String value2) {
             addCriterion("LAST_UPDATE_BY between", value1, value2, "lastUpdateBy");
             return (Criteria) this;
         }
 
-        public Criteria andLastUpdateByNotBetween(Date value1, Date value2) {
+        public Criteria andLastUpdateByNotBetween(String value1, String value2) {
             addCriterion("LAST_UPDATE_BY not between", value1, value2, "lastUpdateBy");
             return (Criteria) this;
         }
@@ -1907,6 +1907,6 @@ public class OfpOfferPriceExample {
     }
 
     public interface IExampleWhen {
-        void example(OfpOfferPriceExample example);
+        void example(com.bsp.server.domain.OfpOfferPriceExample example);
     }
 }

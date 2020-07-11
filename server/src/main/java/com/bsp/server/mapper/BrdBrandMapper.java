@@ -25,6 +25,8 @@ public interface BrdBrandMapper {
 
     List<BrdBrand> selectByExample(BrdBrandExample example);
 
+    List<BrdBrand> selectByCompanyId(Integer manId);
+
     BrdBrand selectByPrimaryKeySelective(@Param("brdId") Integer brdId, @Param("selective") BrdBrand.Column ... selective);
 
     BrdBrand selectByPrimaryKey(Integer brdId);

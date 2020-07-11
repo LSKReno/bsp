@@ -1,0 +1,106 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+# 菜单测试
+
+# 根据角色获取 menu
+POST  http://127.0.0.1:9000/system/auth/menu
+Content-Type: application/json
+#Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJyb2xlSWRcIjpcIjFcIixcInVzZXJJZFwiOjEsXCJ1c2VybmFtZVwiOlwiTFNLUmVub1wifSIsImlhdCI6MTU5NDExMzU1NywiZXhwIjoxNTk0MTE3MTU3fQ.Pz1xsGoj9AxJ6KmqyCQCig-T-I4TcwZtgJVbVMEtOdGUlF9j_5FXzrZtSL27ELCm1AhqTUeKSy57MwIM6E5dvw
+
+{
+  "userId": "4"
+}
+
+//[
+//  {
+//    "path": "/bvo",
+//    "menuOrder": "3000",
+//    "name": "BVOMenu",
+//    "icon": "setting",
+//    "title": "BVOMenuTitle",
+//    "parentId": "3000"
+//  },
+//  {
+//    "path": "/bvo/sub1",
+//    "menuOrder": "3001",
+//    "name": "BVOSubMenu1",
+//    "icon": "setting",
+//    "title": "BVOSubMenu1Title",
+//    "parentId": "3000"
+//  },
+//  {
+//    "path": "/bvo/sub2",
+//    "menuOrder": "3002",
+//    "name": "BVOSubMenu2",
+//    "icon": "setting",
+//    "title": "BVOSubMenu2Title",
+//    "parentId": "3000"
+//  },
+//  {
+//    "path": "/bvo/sub3",
+//    "menuOrder": "3003",
+//    "meta": "{“metadata_test”:\"i am metadata\"}",
+//    "name": "BVOSubMenu3",
+//    "icon": "setting",
+//    "title": "BVOSubMenu3Title",
+//    "parentId": "3000"
+//  }
+//]
+
+
+
+
+
+
+
+
+
+###
+
+# 分页获取
+POST  http://127.0.0.1:9000/business/sysMenu/list
+Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJyb2xlSWRcIjpcIjFcIixcInVzZXJJZFwiOjEsXCJ1c2VybmFtZVwiOlwiTFNLUmVub1wifSIsImlhdCI6MTU5NDI4MTc4NSwiZXhwIjoxNTk0Mjg1Mzg1fQ.XhRMBBR8OCtZzq8Car5pAzpwZqCRhPdSWuxZihYa1AvdaHFqDDK5s-1GBRrITwPIP5yR_GSEglhg1yGHJAWFvQ
+
+{
+//  "page": 2,
+//  "size": 2
+}
+
+###
+
+# 添加
+POST  http://127.0.0.1:9000/business/sysMenu/save
+Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJyb2xlSWRcIjpcIjFcIixcInVzZXJJZFwiOjEsXCJ1c2VybmFtZVwiOlwiTFNLUmVub1wifSIsImlhdCI6MTU5NDI4MTc4NSwiZXhwIjoxNTk0Mjg1Mzg1fQ.XhRMBBR8OCtZzq8Car5pAzpwZqCRhPdSWuxZihYa1AvdaHFqDDK5s-1GBRrITwPIP5yR_GSEglhg1yGHJAWFvQ
+
+{
+  "menuName": "xxxMenu"
+}
+
+###
+
+# 更新
+POST  http://127.0.0.1:9000/business/sysMenu/save
+Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJyb2xlSWRcIjpcIjFcIixcInVzZXJJZFwiOjEsXCJ1c2VybmFtZVwiOlwiTFNLUmVub1wifSIsImlhdCI6MTU5NDI4MTc4NSwiZXhwIjoxNTk0Mjg1Mzg1fQ.XhRMBBR8OCtZzq8Car5pAzpwZqCRhPdSWuxZihYa1AvdaHFqDDK5s-1GBRrITwPIP5yR_GSEglhg1yGHJAWFvQ
+
+{
+  "id": 4,
+  "roleName": "superAdmin",
+  "deleted": 0
+}
+
+###
+# 删除
+DELETE  http://127.0.0.1:9000/business/sysMenu/delete/5
+Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJyb2xlSWRcIjpcIjFcIixcInVzZXJJZFwiOjEsXCJ1c2VybmFtZVwiOlwiTFNLUmVub1wifSIsImlhdCI6MTU5NDI4MTc4NSwiZXhwIjoxNTk0Mjg1Mzg1fQ.XhRMBBR8OCtZzq8Car5pAzpwZqCRhPdSWuxZihYa1AvdaHFqDDK5s-1GBRrITwPIP5yR_GSEglhg1yGHJAWFvQ
+
+{
+}
