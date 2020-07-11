@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DrpDropshipPriceService {
@@ -50,6 +51,10 @@ public class DrpDropshipPriceService {
      */
     private void insert(DrpDropshipPrice drpDropshipPrice) {
         drpDropshipPriceMapper.insert(drpDropshipPrice);
+    }
+
+    public int insertSelective(Map<String,Object> mp) {
+        return drpDropshipPriceMapper.insertSelective(mp);
     }
 
     /**

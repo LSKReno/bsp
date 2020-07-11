@@ -4,6 +4,8 @@ import com.bsp.server.domain.ImgImage;
 import com.bsp.server.domain.ImgImageExample;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface ImgImageMapper {
@@ -16,6 +18,8 @@ public interface ImgImageMapper {
     int insert(ImgImage record);
 
     int insertSelective(ImgImage record);
+
+    int insertSelective(Map<String,Object> mp); //根据map插入
 
     ImgImage selectOneByExample(ImgImageExample example);
 
@@ -34,6 +38,8 @@ public interface ImgImageMapper {
     int updateByExample(@Param("record") ImgImage record, @Param("example") ImgImageExample example);
 
     int updateByPrimaryKeySelective(ImgImage record);
+
+    int updateSelective(Map<String,Object> mp); //根据map更新，mapper里直接改的updateByPrimaryKeySelective
 
     int updateByPrimaryKey(ImgImage record);
 }

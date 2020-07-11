@@ -4,6 +4,8 @@ import com.bsp.server.domain.SdiStoreDropshipItem;
 import com.bsp.server.domain.SdiStoreDropshipItemExample;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SdiStoreDropshipItemMapper {
@@ -16,6 +18,8 @@ public interface SdiStoreDropshipItemMapper {
     int insert(SdiStoreDropshipItem record);
 
     int insertSelective(SdiStoreDropshipItem record);
+
+    int insertSelective(Map<String,Object> mp); //根据map插入
 
     SdiStoreDropshipItem selectOneByExample(SdiStoreDropshipItemExample example);
 

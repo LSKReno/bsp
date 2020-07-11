@@ -155,7 +155,8 @@
       #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, 
       #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.DrpDropshipPrice">
+<!--  com.bsp.server.domain.DrpDropshipPrice-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into drp_dropship_price
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="drpId != null">

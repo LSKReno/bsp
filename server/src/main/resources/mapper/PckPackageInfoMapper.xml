@@ -168,7 +168,8 @@
       #{heavyCargo,jdbcType=VARCHAR}, #{logisticsCompany,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.PckPackageInfo">
+<!--  com.bsp.server.domain.PckPackageInfo-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into pck_package_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="pckId != null">
@@ -375,7 +376,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.PckPackageInfo">
+<!--  updateByPrimaryKeySelective com.bsp.server.domain.PckPackageInfo-->
+  <update id="updateSelective" parameterType="java.util.Map">
     update pck_package_info
     <set>
       <if test="warId != null">
@@ -430,8 +432,9 @@
         deleted = #{deleted,jdbcType=BIT},
       </if>
     </set>
-    where PCK_ID = #{pckId,jdbcType=INTEGER}
+    where PRO_ID = #{proId,jdbcType=INTEGER}
   </update>
+<!--  where PCK_ID = #{pckId,jdbcType=INTEGER}-->
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.PckPackageInfo">
     update pck_package_info
     set WAR_ID = #{warId,jdbcType=INTEGER},

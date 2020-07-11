@@ -3,7 +3,10 @@ package com.bsp.server.mapper;
 import com.bsp.server.domain.DrpDropshipPrice;
 import com.bsp.server.domain.DrpDropshipPriceExample;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface DrpDropshipPriceMapper {
@@ -16,6 +19,8 @@ public interface DrpDropshipPriceMapper {
     int insert(DrpDropshipPrice record);
 
     int insertSelective(DrpDropshipPrice record);
+
+    int insertSelective(Map<String,Object> mp); //根据map插入
 
     DrpDropshipPrice selectOneByExample(DrpDropshipPriceExample example);
 

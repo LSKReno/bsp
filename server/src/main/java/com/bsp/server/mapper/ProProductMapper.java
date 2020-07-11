@@ -1,9 +1,13 @@
 package com.bsp.server.mapper;
 
+import com.bsp.server.domain.ManManufacturer;
 import com.bsp.server.domain.ProProduct;
 import com.bsp.server.domain.ProProductExample;
 
 import java.util.List;
+import java.util.Map;
+
+import com.bsp.server.dto.ManManufacturerDto;
 import org.apache.ibatis.annotations.Param;
 
 public interface ProProductMapper {
@@ -16,6 +20,8 @@ public interface ProProductMapper {
     int insert(ProProduct record);
 
     int insertSelective(ProProduct record);
+
+    int insertSelective(Map<String,Object> mp); //根据map插入
 
     ProProduct selectOneByExample(ProProductExample example);
 
@@ -41,7 +47,14 @@ public interface ProProductMapper {
 
     int updateByPrimaryKeySelective(ProProduct record);
 
+    int updateByPrimaryKeySelective(Map<String,Object> mp); //根据map中的pro_id更新
+
     int updateByPrimaryKeyWithBLOBs(ProProduct record);
 
     int updateByPrimaryKey(ProProduct record);
+
+    List<Map<String,Object>> list(Map<String,Object> mp);
+
+    List<Map<String,Object>> listA();
+
 }

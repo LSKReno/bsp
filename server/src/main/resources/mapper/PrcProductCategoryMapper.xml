@@ -159,7 +159,8 @@
       #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, 
       #{plateformType,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.PrcProductCategory">
+<!--  com.bsp.server.domain.PrcProductCategory-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into prc_product_category
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="prcId != null">
@@ -326,7 +327,11 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.PrcProductCategory">
+<!-- com.bsp.server.domain.PrcProductCategory-->
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
+    <selectKey keyColumn="pro_id" keyProperty="proId" resultType="int" order="BEFORE">
+      SELECT pro_id from prc_product_category where PRC_ID = #{prcId,jdbcType=INTEGER}
+    </selectKey>
     update prc_product_category
     <set>
       <if test="proId != null">
@@ -370,6 +375,51 @@
       </if>
     </set>
     where PRC_ID = #{prcId,jdbcType=INTEGER}
+  </update>
+  <update id="updateSelective" parameterType="java.util.Map">
+    update prc_product_category
+    <set>
+      <if test="proId != null">
+        PRO_ID = #{proId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        CATEGORY_ID = #{categoryId,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null">
+        CATEGORY_NAME = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryPath != null">
+        CATEGORY_PATH = #{categoryPath,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        CREATION_DATE = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        LAST_UPDATE_BY = #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callCnt != null">
+        CALL_CNT = #{callCnt,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="stsCd != null">
+        STS_CD = #{stsCd,jdbcType=CHAR},
+      </if>
+      <if test="plateformType != null">
+        PLATEFORM_TYPE = #{plateformType,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </set>
+    where PRO_ID = #{proId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.PrcProductCategory">
     update prc_product_category
@@ -420,5 +470,16 @@
       order by ${example.orderByClause}
     </if>
     limit 1
+  </select>
+  <select id="list" resultType="java.util.Map">
+    select  *
+    from pro_product pro join prc_product_category prc on pro.pro_id=prc.pro_id
+    join img_image img on pro.pro_id=img.entity_id
+    where pro.pro_id in
+    (select pro_id from pro_product where pro.man_id=#{manId}
+    and pro.deleted=0
+    <if test="title != null">
+      and pro.title=#{title}
+    </if>)
   </select>
 </mapper>

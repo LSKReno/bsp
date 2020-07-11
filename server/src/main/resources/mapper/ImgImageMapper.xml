@@ -125,6 +125,7 @@
     from img_image
     where IMG_ID = #{imgId,jdbcType=INTEGER}
   </select>
+
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
     <choose>
@@ -164,7 +165,8 @@
       #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{stsCd,jdbcType=CHAR}, 
       #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.ImgImage">
+<!--  com.bsp.server.domain.ImgImage-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into img_image
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="imgId != null">
@@ -227,10 +229,10 @@
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="width != null">
-        #{width,jdbcType=INTEGER},
+        #{imgWidth,jdbcType=INTEGER},
       </if>
       <if test="height != null">
-        #{height,jdbcType=INTEGER},
+        #{imgHeight,jdbcType=INTEGER},
       </if>
       <if test="uri != null">
         #{uri,jdbcType=VARCHAR},
@@ -361,17 +363,18 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.ImgImage">
+<!--  updateByPrimaryKeySelective com.bsp.server.domain.ImgImage-->
+  <update id="updateSelective" parameterType="java.util.Map">
     update img_image
     <set>
       <if test="name != null">
         `NAME` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="width != null">
-        WIDTH = #{width,jdbcType=INTEGER},
+        WIDTH = #{imgWidth,jdbcType=INTEGER},
       </if>
       <if test="height != null">
-        HEIGHT = #{height,jdbcType=INTEGER},
+        HEIGHT = #{imgHeight,jdbcType=INTEGER},
       </if>
       <if test="uri != null">
         URI = #{uri,jdbcType=VARCHAR},
@@ -413,8 +416,9 @@
         deleted = #{deleted,jdbcType=BIT},
       </if>
     </set>
-    where IMG_ID = #{imgId,jdbcType=INTEGER}
+    where ENTITY_ID = #{entityId,jdbcType=INTEGER}
   </update>
+<!--  where IMG_ID = #{imgId,jdbcType=INTEGER}-->
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.ImgImage">
     update img_image
     set `NAME` = #{name,jdbcType=VARCHAR},

@@ -15,6 +15,7 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Date;
+import java.util.Map;
 
 @Service
 public class OfpOfferPriceService {
@@ -55,11 +56,19 @@ public class OfpOfferPriceService {
         ofpOfferPriceMapper.insert(ofpOfferPrice);
     }
 
+    public int insertSelective(Map<String,Object> mp) {
+        return ofpOfferPriceMapper.insertSelective(mp);
+    }
+
     /**
      * 更新
      */
     private void update(OfpOfferPrice ofpOfferPrice) {
         ofpOfferPriceMapper.updateByPrimaryKey(ofpOfferPrice);
+    }
+
+    public int updateSelective(Map<String,Object> mp) {
+        return ofpOfferPriceMapper.updateSelective(mp);
     }
 
     /**

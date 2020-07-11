@@ -3,6 +3,8 @@ package com.bsp.server.mapper;
 import com.bsp.server.domain.OfpOfferPrice;
 import com.bsp.server.domain.OfpOfferPriceExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OfpOfferPriceMapper {
@@ -15,6 +17,8 @@ public interface OfpOfferPriceMapper {
     int insert(OfpOfferPrice record);
 
     int insertSelective(OfpOfferPrice record);
+
+    int insertSelective(Map<String,Object> mp); //根据map插入
 
     OfpOfferPrice selectOneByExample(OfpOfferPriceExample example);
 
@@ -33,6 +37,8 @@ public interface OfpOfferPriceMapper {
     int updateByExample(@Param("record") OfpOfferPrice record, @Param("example") OfpOfferPriceExample example);
 
     int updateByPrimaryKeySelective(OfpOfferPrice record);
+
+    int updateSelective(Map<String,Object> mp); //根据map更新，mapper里直接改的updateByPrimaryKeySelective
 
     int updateByPrimaryKey(OfpOfferPrice record);
 }

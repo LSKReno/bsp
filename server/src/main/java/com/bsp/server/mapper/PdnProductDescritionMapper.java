@@ -4,6 +4,8 @@ import com.bsp.server.domain.PdnProductDescrition;
 import com.bsp.server.domain.PdnProductDescritionExample;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface PdnProductDescritionMapper {
@@ -16,6 +18,8 @@ public interface PdnProductDescritionMapper {
     int insert(PdnProductDescrition record);
 
     int insertSelective(PdnProductDescrition record);
+
+    int insertSelective(Map<String,Object> mp); //根据map插入
 
     PdnProductDescrition selectOneByExample(PdnProductDescritionExample example);
 
@@ -33,6 +37,8 @@ public interface PdnProductDescritionMapper {
 
     PdnProductDescrition selectByPrimaryKey(Integer pdnId);
 
+    Map<String,Object> selectByProduct(Integer proId); //根据product id选择
+
     int updateByExampleSelective(@Param("record") PdnProductDescrition record, @Param("example") PdnProductDescritionExample example);
 
     int updateByExampleWithBLOBs(@Param("record") PdnProductDescrition record, @Param("example") PdnProductDescritionExample example);
@@ -40,6 +46,8 @@ public interface PdnProductDescritionMapper {
     int updateByExample(@Param("record") PdnProductDescrition record, @Param("example") PdnProductDescritionExample example);
 
     int updateByPrimaryKeySelective(PdnProductDescrition record);
+
+    int updateSelective(Map<String,Object> mp); //根据map更新，mapper里直接改的updateByPrimaryKeySelective
 
     int updateByPrimaryKeyWithBLOBs(PdnProductDescrition record);
 

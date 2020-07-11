@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ImgImageService {
@@ -52,11 +53,19 @@ public class ImgImageService {
         imgImageMapper.insert(imgImage);
     }
 
+    public int insertSelective(Map<String,Object> mp) {
+        return imgImageMapper.insertSelective(mp);
+    }
+
     /**
      * 更新
      */
     private void update(ImgImage imgImage) {
         imgImageMapper.updateByPrimaryKey(imgImage);
+    }
+
+    public int updateSelective(Map<String,Object> mp) {
+        return imgImageMapper.updateSelective(mp);
     }
 
     /**

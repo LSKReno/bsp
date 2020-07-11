@@ -33,6 +33,20 @@ public class WitWishlistService {
         pageDto.setList(witWishlistDtoList);
     }
 
+
+    public void list(PageDto pageDto, int dsrId) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
+        WitWishlistExample witWishlistExample = new WitWishlistExample();
+        WitWishlistExample.Criteria criteria= witWishlistExample.createCriteria();
+        criteria.andDeletedEqualTo(false);
+        criteria.andDsrIdEqualTo(dsrId);
+        List<WitWishlist> witWishlistList = witWishlistMapper.selectByExample(witWishlistExample);
+        PageInfo<WitWishlist> pageInfo = new PageInfo<>(witWishlistList);
+        pageDto.setTotal(pageInfo.getTotal());
+        List<WitWishlistDto> witWishlistDtoList = CopyUtil.copyList(witWishlistList, WitWishlistDto.class);
+        pageDto.setList(witWishlistDtoList);
+    }
+
     /**
      * 保存，id有值时更新，无值时新增
      */
@@ -52,13 +66,18 @@ public class WitWishlistService {
         witWishlistMapper.insert(witWishlist);
     }
 
+    public int insertSelective(WitWishlist witWishlist) {
+        return witWishlistMapper.insertSelective(witWishlist);
+    }
     /**
      * 更新
      */
     private void update(WitWishlist witWishlist) {
         witWishlistMapper.updateByPrimaryKey(witWishlist);
     }
-
+    public int updateByPrimaryKeySelective(WitWishlist witWishlist) {
+        return witWishlistMapper.updateByPrimaryKeySelective(witWishlist);
+    }
     /**
      * 删除
      */
