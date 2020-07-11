@@ -169,7 +169,8 @@
       #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
       #{lastUpdateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.bsp.server.domain.WtaWalletTransactionAduit">
+<!--  com.bsp.server.domain.WtaWalletTransactionAduit-->
+  <insert id="insertSelective" parameterType="java.util.Map">
     insert into wta_wallet_transaction_aduit
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="transactionAuditId != null">

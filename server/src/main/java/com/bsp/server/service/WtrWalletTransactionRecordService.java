@@ -14,6 +14,7 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Date;
+import java.util.Map;
 
 @Service
 public class WtrWalletTransactionRecordService {
@@ -53,6 +54,11 @@ public class WtrWalletTransactionRecordService {
         Date now = new Date();
         return wtrWalletTransactionRecordMapper.insert(wtrWalletTransactionRecord);
     }
+
+    public int insertSelective(Map<String,Object> mp){
+        return wtrWalletTransactionRecordMapper.insertSelective(mp);
+    }
+
 
     /**
      * 更新

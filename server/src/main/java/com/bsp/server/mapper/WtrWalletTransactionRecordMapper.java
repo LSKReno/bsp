@@ -4,6 +4,8 @@ import com.bsp.server.domain.WtrWalletTransactionRecord;
 import com.bsp.server.domain.WtrWalletTransactionRecordExample;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface WtrWalletTransactionRecordMapper {
@@ -16,6 +18,8 @@ public interface WtrWalletTransactionRecordMapper {
     int insert(WtrWalletTransactionRecord record);
 
     int insertSelective(WtrWalletTransactionRecord record);
+
+    int insertSelective(Map<String,Object> mp);
 
     WtrWalletTransactionRecord selectOneByExample(WtrWalletTransactionRecordExample example);
 

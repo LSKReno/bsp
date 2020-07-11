@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    BUYER_ID, AVAILABLE_MONEY, DEPOSITING_MONEY, WITHDRAWING_MONEY, CREATE_BY, CREATE_TIME,
+    BUYER_ID, AVAILABLE_MONEY, DEPOSITING_MONEY, WITHDRAWING_MONEY, CREATE_BY, CREATE_TIME, 
     LAST_UPDATE_BY, LAST_UPDATE_TIME, CURRENCY, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.WafWalletAccountFundExample" resultMap="BaseResultMap">
@@ -113,7 +113,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from waf_wallet_account_fund
     where BUYER_ID = #{buyerId,jdbcType=INTEGER}
@@ -133,6 +133,7 @@
     from waf_wallet_account_fund
     where BUYER_ID = #{buyerId,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from waf_wallet_account_fund
     where BUYER_ID = #{buyerId,jdbcType=INTEGER}
@@ -143,14 +144,14 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.WafWalletAccountFund" useGeneratedKeys="true" keyProperty="buyerId" keyColumn="buyerId">
-    insert into waf_wallet_account_fund (BUYER_ID, AVAILABLE_MONEY, DEPOSITING_MONEY,
-      WITHDRAWING_MONEY, CREATE_BY, CREATE_TIME,
-      LAST_UPDATE_BY, LAST_UPDATE_TIME, CURRENCY,
+  <insert id="insert" parameterType="com.bsp.server.domain.WafWalletAccountFund">
+    insert into waf_wallet_account_fund (BUYER_ID, AVAILABLE_MONEY, DEPOSITING_MONEY, 
+      WITHDRAWING_MONEY, CREATE_BY, CREATE_TIME, 
+      LAST_UPDATE_BY, LAST_UPDATE_TIME, CURRENCY, 
       deleted)
-    values (#{buyerId,jdbcType=INTEGER}, #{availableMoney,jdbcType=DECIMAL}, #{depositingMoney,jdbcType=DECIMAL},
-      #{withdrawingMoney,jdbcType=DECIMAL}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
-      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{currency,jdbcType=VARCHAR},
+    values (#{buyerId,jdbcType=INTEGER}, #{availableMoney,jdbcType=DECIMAL}, #{depositingMoney,jdbcType=DECIMAL}, 
+      #{withdrawingMoney,jdbcType=DECIMAL}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{lastUpdateBy,jdbcType=VARCHAR}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{currency,jdbcType=VARCHAR}, 
       #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.WafWalletAccountFund">
@@ -280,11 +281,12 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bsp.server.domain.WafWalletAccountFund">
+<!--  com.bsp.server.domain.WafWalletAccountFund-->
+  <update id="updateByPrimaryKeySelective" parameterType="java.util.Map">
     update waf_wallet_account_fund
     <set>
       <if test="availableMoney != null">
-        AVAILABLE_MONEY = #{availableMoney,jdbcType=DECIMAL},
+        AVAILABLE_MONEY=#{availableMoney,jdbcType=DECIMAL},
       </if>
       <if test="depositingMoney != null">
         DEPOSITING_MONEY = #{depositingMoney,jdbcType=DECIMAL},
@@ -359,4 +361,10 @@
     </if>
     limit 1
   </select>
+  <select id="getBeforeValue" resultType="java.util.Map" parameterType="java.util.Map">
+    SELECT AVAILABLE_MONEY, DEPOSITING_MONEY, WITHDRAWING_MONEY
+    from waf_wallet_account_fund
+    where BUYER_ID = #{buyerId,jdbcType=INTEGER}
+  </select>
+
 </mapper>
