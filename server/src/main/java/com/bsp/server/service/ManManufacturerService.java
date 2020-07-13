@@ -35,8 +35,8 @@ public class ManManufacturerService {
     /**
      * query by primary key
      */
-    public ManManufacturer selectByPrimaryKey(Integer primaryKey){
-        return manManufacturerMapper.selectByPrimaryKey(primaryKey);
+    public ManManufacturerDto selectByPrimaryKey(Integer primaryKey){
+        return CopyUtil.copy(manManufacturerMapper.selectByPrimaryKey(primaryKey),ManManufacturerDto.class);
     }
     /**
      * 保存，id有值时更新，无值时新增

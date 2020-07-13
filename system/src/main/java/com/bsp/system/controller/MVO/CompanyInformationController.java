@@ -31,10 +31,10 @@ public class CompanyInformationController {
         if (sysUserDto.getManBuyerId() == null){
             responseDto.setSuccess(false);
         }else{
-            ManManufacturer manManufacturer = manManufacturerService.selectByPrimaryKey(sysUserDto.getManBuyerId());
-            if(manManufacturer != null){
+            ManManufacturerDto manManufacturerDto = manManufacturerService.selectByPrimaryKey(sysUserDto.getManBuyerId());
+            if(manManufacturerDto != null){
                 responseDto.setSuccess(true);
-                responseDto.setContent(manManufacturer);
+                responseDto.setContent(manManufacturerDto);
             }else{
                 responseDto.setSuccess(false);
             }
