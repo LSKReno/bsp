@@ -50,7 +50,7 @@ public class DsrDropshipperController {
                 responseDto.setSuccess(false);
             }else{
                 sysUserDto1.setManBuyerId(result1);
-                if(sysUserService.save(sysUserDto1) != 0){
+                if(sysUserService.save(sysUserDto1) != 0){ //update sysuser
                     responseDto.setSuccess(true);
                     responseDto.setContent(dsrDropshipperDto);
                 }else{

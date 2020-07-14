@@ -36,13 +36,14 @@ public class ParParameterService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(ParParameterDto parParameterDto) {
+    public int save(ParParameterDto parParameterDto) {
         ParParameter parParameter = CopyUtil.copy(parParameterDto, ParParameter.class);
         if (StringUtils.isEmpty(parParameterDto.getParId())) {
             this.insert(parParameter);
         } else {
             this.update(parParameter);
         }
+        return parParameter.getParId();
     }
 
     /**
@@ -62,7 +63,11 @@ public class ParParameterService {
     /**
      * 删除
      */
-    public void delete(Integer id) {
-        parParameterMapper.deleteByPrimaryKey(id);
+    public int delete(Integer id) {
+        return parParameterMapper.deleteByPrimaryKey(id);
+    }
+
+    public List<ParParameterDto> selectAll() {
+        return CopyUtil.copyList(parParameterMapper.selectAll(), ParParameterDto.class);
     }
 }
