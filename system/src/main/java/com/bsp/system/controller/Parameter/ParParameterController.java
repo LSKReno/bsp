@@ -1,24 +1,23 @@
-package com.bsp.system.controller.parameter;
+package com.bsp.system.controller.Parameter;
 
-import com.bsp.server.domain.ParParameter;
 import com.bsp.server.dto.ParParameterDto;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.dto.SysUserDto;
 import com.bsp.server.service.ParParameterService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/parameterController")
 public class ParParameterController {
     @Resource
     private ParParameterService parParameterService;
-    @RequestMapping("/getParameterList")
+    @PostMapping("/getParameterList")
     public ResponseDto getParameterList(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
         if(sysUserDto.getRights().equals("1")){
@@ -30,7 +29,7 @@ public class ParParameterController {
         }
         return responseDto;
     }
-    @RequestMapping("/saveParameter")
+    @PostMapping("/saveParameter")
     public ResponseDto saveParameter(@RequestBody ParParameterDto parParameterDto){
         ResponseDto responseDto = new ResponseDto();
         int result = parParameterService.save(parParameterDto);
@@ -41,7 +40,7 @@ public class ParParameterController {
         }
         return responseDto;
     }
-    @RequestMapping("/removeParameter")
+    @PostMapping("/removeParameter")
     public ResponseDto removeParameter(@RequestBody ParParameterDto parParameterDto){
         ResponseDto responseDto = new ResponseDto();
         int result = parParameterService.delete(parParameterDto.getParId());

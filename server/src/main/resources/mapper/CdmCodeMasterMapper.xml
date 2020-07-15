@@ -76,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    CDM_ID, CODE_TYPE, DESCRIPTION, TYPE_CD, CODE_VAL, SEQ_NO, CREATED_BY, CREATION_DATE, 
+    CDM_ID, CODE_TYPE, DESCRIPTION, TYPE_CD, CODE_VAL, SEQ_NO, CREATED_BY, CREATION_DATE,
     LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT, REMARK, STS_CD, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.CdmCodeMasterExample" resultMap="BaseResultMap">
@@ -117,10 +117,15 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from cdm_code_master
     where CDM_ID = #{cdmId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from cdm_code_master
   </select>
   <select id="selectByPrimaryKeySelective" parameterType="map" resultMap="BaseResultMap">
     select
@@ -147,16 +152,16 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.CdmCodeMaster">
-    insert into cdm_code_master (CDM_ID, CODE_TYPE, DESCRIPTION, 
-      TYPE_CD, CODE_VAL, SEQ_NO, 
-      CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, 
-      LAST_UPDATE_DATE, CALL_CNT, REMARK, 
+  <insert id="insert" parameterType="com.bsp.server.domain.CdmCodeMaster" useGeneratedKeys="true" keyProperty="cdmId" keyColumn="cdmId">
+    insert into cdm_code_master (CDM_ID, CODE_TYPE, DESCRIPTION,
+      TYPE_CD, CODE_VAL, SEQ_NO,
+      CREATED_BY, CREATION_DATE, LAST_UPDATE_BY,
+      LAST_UPDATE_DATE, CALL_CNT, REMARK,
       STS_CD, deleted)
-    values (#{cdmId,jdbcType=INTEGER}, #{codeType,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{typeCd,jdbcType=VARCHAR}, #{codeVal,jdbcType=VARCHAR}, #{seqNo,jdbcType=INTEGER}, 
-      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
-      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+    values (#{cdmId,jdbcType=INTEGER}, #{codeType,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+      #{typeCd,jdbcType=VARCHAR}, #{codeVal,jdbcType=VARCHAR}, #{seqNo,jdbcType=INTEGER},
+      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR},
+      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
       #{stsCd,jdbcType=CHAR}, #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.CdmCodeMaster">
