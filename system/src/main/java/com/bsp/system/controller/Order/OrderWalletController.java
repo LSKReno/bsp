@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/wallerController")
-public class walletController {
+public class OrderWalletController {
     @Resource
     private WaaWalletAccountService waaWalletAccountService;
     @Resource
