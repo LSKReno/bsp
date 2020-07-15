@@ -179,4 +179,19 @@ public class WalletController {
         return responseDto;
     }
 
+    /**
+     *修改密码
+     */
+    @RequestMapping("/changepwd")
+    public ResponseDto changePassword(@RequestBody Map<String,Object> mp){
+        ResponseDto responseDto = new ResponseDto();
+        int f=waaWalletAccountService.changePassword(mp);
+        if(f>0){
+            responseDto.setCode("200");
+        }else{
+            responseDto.setSuccess(false);
+        }
+        return responseDto;
+    }
+
 }
