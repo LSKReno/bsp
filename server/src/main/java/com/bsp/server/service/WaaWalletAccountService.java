@@ -83,6 +83,21 @@ public class WaaWalletAccountService {
     }
 
     /**
+     * 更新对应账户名的密码
+     */
+    public int changePassword(Map<String,Object> mp){
+        WaaWalletAccountExample waaWalletAccountExample = new WaaWalletAccountExample();
+        WaaWalletAccountExample.Criteria criteria=waaWalletAccountExample.createCriteria();
+        criteria.andAccountNameEqualTo(mp.get("accountName").toString());
+        criteria.andPasswordEqualTo(mp.get("old_password").toString());
+        WaaWalletAccount waaWalletAccount=new WaaWalletAccount();
+        waaWalletAccount.setPassword(mp.get("new_password").toString());
+        return waaWalletAccountMapper.updateByExampleSelective(waaWalletAccount,waaWalletAccountExample);
+    }
+
+
+
+    /**
      * 删除
      */
     public void delete(Integer id) {
