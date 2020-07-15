@@ -36,13 +36,14 @@ public class CdmCodeMasterService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(CdmCodeMasterDto cdmCodeMasterDto) {
+    public int save(CdmCodeMasterDto cdmCodeMasterDto) {
         CdmCodeMaster cdmCodeMaster = CopyUtil.copy(cdmCodeMasterDto, CdmCodeMaster.class);
         if (StringUtils.isEmpty(cdmCodeMasterDto.getCdmId())) {
             this.insert(cdmCodeMaster);
         } else {
             this.update(cdmCodeMaster);
         }
+        return cdmCodeMaster.getCdmId();
     }
 
     /**
@@ -62,7 +63,11 @@ public class CdmCodeMasterService {
     /**
      * 删除
      */
-    public void delete(Integer id) {
-        cdmCodeMasterMapper.deleteByPrimaryKey(id);
+    public int delete(Integer id) {
+        return cdmCodeMasterMapper.deleteByPrimaryKey(id);
+    }
+
+    public List<CdmCodeMasterDto> selectAll() {
+        return CopyUtil.copyList(cdmCodeMasterMapper.selectAll(), CdmCodeMasterDto.class);
     }
 }

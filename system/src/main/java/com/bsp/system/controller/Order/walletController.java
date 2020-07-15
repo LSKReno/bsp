@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class walletController {
         ResponseDto responseDto = new ResponseDto();
         SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
         String passwd = JSON.parseObject(JSON.toJSONString(request.get("password")), String.class);
-        SaoSalesOrderDto saoSalesOrderDto = JSON.parseObject(JSON.toJSONString("SaoSalesOrderDto"), SaoSalesOrderDto.class);
+        SaoSalesOrderDto saoSalesOrderDto = JSON.parseObject(JSON.toJSONString(request.get("SaoSalesOrderDto")), SaoSalesOrderDto.class);
         WaaWalletAccountDto waaWalletAccountDto = waaWalletAccountService.selectByName(sysUserDto.getUsername());
         //check password
         if(waaWalletAccountDto.getPassword().equals(passwd)){
@@ -51,17 +52,17 @@ public class walletController {
                     wtrWalletTransactionRecordDto.setTransactionNumber(null); //unfinish
                     wtrWalletTransactionRecordDto.setTransactionType(3);
                     wtrWalletTransactionRecordDto.setTransactionMoney(saoSalesOrderDto.getProductAmount());
-                    wtrWalletTransactionRecordDto.setCommission(null); //unfinish
-                    wtrWalletTransactionRecordDto.setDiscountCommission(null); //unfinish
+                    wtrWalletTransactionRecordDto.setCommission(new BigDecimal(0));
+                    wtrWalletTransactionRecordDto.setDiscountCommission(new BigDecimal(0));
                     wtrWalletTransactionRecordDto.setTransactionMethod(3); //unfinish
                     wtrWalletTransactionRecordDto.setCompleteTime(new Date());
-                    wtrWalletTransactionRecordDto.setActualMoney(null); //unfinish
-                    wtrWalletTransactionRecordDto.setActualCommission(null); //unfinish
-                    wtrWalletTransactionRecordDto.setActualDiscountCommission(null); //unfinish
+                    wtrWalletTransactionRecordDto.setActualMoney(saoSalesOrderDto.getProductAmount());
+                    wtrWalletTransactionRecordDto.setActualCommission(new BigDecimal(0));
+                    wtrWalletTransactionRecordDto.setActualDiscountCommission(new BigDecimal(0));
                     wtrWalletTransactionRecordDto.setBalance(wafWalletAccountFundDto.getAvailableMoney());
                     wtrWalletTransactionRecordDto.setBusinessId(saoSalesOrderDto.getSaoId());
                     wtrWalletTransactionRecordDto.setFinanceType(2);
-                    wtrWalletTransactionRecordDto.setNote("none");
+                    wtrWalletTransactionRecordDto.setNote(null);
                     wtrWalletTransactionRecordDto.setOperatorName(sysUserDto.getName());
                     wtrWalletTransactionRecordDto.setOperatorIp(sysUserDto.getIp());
                     wtrWalletTransactionRecordDto.setCreateBy(sysUserDto.getName());
@@ -78,13 +79,13 @@ public class walletController {
                         wtaWalletTransactionAduitDto.setBuyerId(waaWalletAccountDto.getBuyerId());
                         wtaWalletTransactionAduitDto.setTransactionId(wtrWalletTransactionRecordDto.getTransactionId());
                         wtaWalletTransactionAduitDto.setAvailableMoneyAfter(wafWalletAccountFundDto.getAvailableMoney());
-                        wtaWalletTransactionAduitDto.setDepositingMoneyAfter(null); //unfinish
-                        wtaWalletTransactionAduitDto.setWithdrawingMoneyAfter(null); //unfinish
+                        wtaWalletTransactionAduitDto.setDepositingMoneyAfter(new BigDecimal(0));
+                        wtaWalletTransactionAduitDto.setWithdrawingMoneyAfter(new BigDecimal(0));
                         wtaWalletTransactionAduitDto.setOperateMoney(saoSalesOrderDto.getProductAmount());
                         wtaWalletTransactionAduitDto.setOperateType(3);
                         wtaWalletTransactionAduitDto.setAvailableMoneyBefore(wafWalletAccountFundDto.getAvailableMoney().add(saoSalesOrderDto.getProductAmount()));
-                        wtaWalletTransactionAduitDto.setDepositingMoneyBefore(null); //unfinish
-                        wtaWalletTransactionAduitDto.setWithdrawingMoneyBefore(null); //unfinish
+                        wtaWalletTransactionAduitDto.setDepositingMoneyBefore(new BigDecimal(0));
+                        wtaWalletTransactionAduitDto.setWithdrawingMoneyBefore(new BigDecimal(0));
                         wtaWalletTransactionAduitDto.setOperateBy(sysUserDto.getName());
                         wtaWalletTransactionAduitDto.setStatus(4);
                         wtaWalletTransactionAduitDto.setCreateBy(sysUserDto.getName());

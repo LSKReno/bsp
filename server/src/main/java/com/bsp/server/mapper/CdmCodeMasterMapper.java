@@ -36,4 +36,6 @@ public interface CdmCodeMasterMapper {
     int updateByPrimaryKeySelective(CdmCodeMaster record);
 
     int updateByPrimaryKey(CdmCodeMaster record);
+
+    List<CdmCodeMaster> selectAll();
 }

@@ -76,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    PAR_ID, PARAM_CD, PARAM_VALUE, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE, 
+    PAR_ID, PARAM_CD, PARAM_VALUE, CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,
     CALL_CNT, REMARK, STS_CD, deleted
   </sql>
   <sql id="Blob_Column_List">
@@ -138,7 +138,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -162,6 +162,11 @@
     from par_parameter
     where PAR_ID = #{parId,jdbcType=INTEGER}
   </select>
+  <select id="selectAll" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    from par_parameter
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from par_parameter
     where PAR_ID = #{parId,jdbcType=INTEGER}
@@ -172,15 +177,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.ParParameter">
-    insert into par_parameter (PAR_ID, PARAM_CD, PARAM_VALUE, 
-      CREATED_BY, CREATION_DATE, LAST_UPDATE_BY, 
-      LAST_UPDATE_DATE, CALL_CNT, REMARK, 
+  <insert id="insert" parameterType="com.bsp.server.domain.ParParameter" useGeneratedKeys="true" keyProperty="parId" keyColumn="parId">
+    insert into par_parameter (PAR_ID, PARAM_CD, PARAM_VALUE,
+      CREATED_BY, CREATION_DATE, LAST_UPDATE_BY,
+      LAST_UPDATE_DATE, CALL_CNT, REMARK,
       STS_CD, deleted, DESCRIPTION
       )
-    values (#{parId,jdbcType=INTEGER}, #{paramCd,jdbcType=VARCHAR}, #{paramValue,jdbcType=VARCHAR}, 
-      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
-      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+    values (#{parId,jdbcType=INTEGER}, #{paramCd,jdbcType=VARCHAR}, #{paramValue,jdbcType=VARCHAR},
+      #{createdBy,jdbcType=VARCHAR}, #{creationDate,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR},
+      #{lastUpdateDate,jdbcType=TIMESTAMP}, #{callCnt,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR},
       #{stsCd,jdbcType=CHAR}, #{deleted,jdbcType=BIT}, #{description,jdbcType=LONGVARCHAR}
       )
   </insert>

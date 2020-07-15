@@ -44,4 +44,6 @@ public interface ParParameterMapper {
     int updateByPrimaryKeyWithBLOBs(ParParameter record);
 
     int updateByPrimaryKey(ParParameter record);
+
+    List<ParParameter> selectAll();
 }
