@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -43,7 +44,9 @@ public class ManManufacturerService {
      */
     public int save(ManManufacturerDto manManufacturerDto) {
         ManManufacturer manManufacturer = CopyUtil.copy(manManufacturerDto, ManManufacturer.class);
+        manManufacturer.setLastUpdateDate(new Date());
         if (StringUtils.isEmpty(manManufacturerDto.getManId())) {
+            manManufacturer.setCreationDate(new Date());
             return this.insert(manManufacturer);
         } else {
             return this.update(manManufacturer);

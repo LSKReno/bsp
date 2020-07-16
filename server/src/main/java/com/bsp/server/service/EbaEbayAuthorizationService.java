@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Date;
 
@@ -39,7 +41,15 @@ public class EbaEbayAuthorizationService {
      */
     public int save(EbaEbayAuthorizationDto ebaEbayAuthorizationDto) {
         EbaEbayAuthorization ebaEbayAuthorization = CopyUtil.copy(ebaEbayAuthorizationDto, EbaEbayAuthorization.class);
+        Date date = new Date();
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH, 3);
+        ebaEbayAuthorization.setLastUpdateDate(date);
+        ebaEbayAuthorization.setExpDate(calendar.getTime());
+        ebaEbayAuthorization.setCancleDate(calendar.getTime());
         if (StringUtils.isEmpty(ebaEbayAuthorizationDto.getEbaId())) {
+            ebaEbayAuthorization.setCreationDate(date);
             return this.insert(ebaEbayAuthorization);
         } else {
             return this.update(ebaEbayAuthorization);
@@ -58,7 +68,7 @@ public class EbaEbayAuthorizationService {
      * 更新
      */
     private int update(EbaEbayAuthorization ebaEbayAuthorization) {
-        return ebaEbayAuthorizationMapper.updateByPrimaryKey(ebaEbayAuthorization);
+        return ebaEbayAuthorizationMapper.updateByPrimaryKeySelective(ebaEbayAuthorization);
     }
 
     /**

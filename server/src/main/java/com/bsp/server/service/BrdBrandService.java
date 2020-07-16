@@ -1,6 +1,7 @@
 package com.bsp.server.service;
 
 import com.bsp.server.domain.BrdBrandExample;
+import com.bsp.server.domain.SysUser;
 import com.bsp.server.dto.BrdBrandDto;
 import com.bsp.server.dto.PageDto;
 import com.bsp.server.util.CopyUtil;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,7 +40,10 @@ public class BrdBrandService {
      */
     public int save(BrdBrandDto brdBrandDto) {
         BrdBrand brdBrand = CopyUtil.copy(brdBrandDto, BrdBrand.class);
+        brdBrand.setLastUpdateDate(new Date());
+        System.out.println(brdBrand.toString());
         if (StringUtils.isEmpty(brdBrandDto.getBrdId())) {
+            brdBrand.setCreationDate(new Date());
             return this.insert(brdBrand);
         } else {
             return this.update(brdBrand);
@@ -56,7 +61,7 @@ public class BrdBrandService {
      * 更新
      */
     private int update(BrdBrand brdBrand) {
-        return brdBrandMapper.updateByPrimaryKey(brdBrand);
+        return brdBrandMapper.updateByPrimaryKeySelective(brdBrand);
     }
 
     /**

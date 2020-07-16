@@ -28,43 +28,57 @@ public class DsrDropshipperController {
     public ResponseDto getBVOInfo(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
         SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
-        DsrDropshipperDto dsrDropshipperDto = dsrDropshipperService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
+//        DsrDropshipperDto dsrDropshipperDto = dsrDropshipperService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
 
-        if(dsrDropshipperDto == null){
+        if(sysUserDto1 == null){
             responseDto.setSuccess(false);
         }else {
             responseDto.setSuccess(true);
-            responseDto.setContent(dsrDropshipperDto);
+            responseDto.setContent(sysUserDto1);
         }
         return responseDto;
     }
     @PostMapping("/saveBVOInfo")
     public ResponseDto saveBVOInfo(@RequestBody Map<String, Object> request){
-        DsrDropshipperDto dsrDropshipperDto = JSON.parseObject(JSON.toJSONString(request.get("DsrDropshipperDto")), DsrDropshipperDto.class);
+//        DsrDropshipperDto dsrDropshipperDto = JSON.parseObject(JSON.toJSONString(request.get("DsrDropshipperDto")), DsrDropshipperDto.class);
         SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
-        SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
+//        SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
         ResponseDto responseDto = new ResponseDto();
-        if(sysUserDto1.getManBuyerId() == null){
-            int result1 = dsrDropshipperService.save(dsrDropshipperDto);
-            if(result1 == 0){
-                responseDto.setSuccess(false);
-            }else{
-                sysUserDto1.setManBuyerId(result1);
-                if(sysUserService.save(sysUserDto1) != 0){ //update sysuser
+        if(sysUserDto.getManBuyerId() == null){
+//            DsrDropshipperDto dsrDropshipperDto = new DsrDropshipperDto();
+//            dsrDropshipperDto.setName(sysUserDto.getName());
+//            dsrDropshipperDto.setRemark(null);
+//            dsrDropshipperDto.setStsCd("0");
+//            dsrDropshipperDto.setCallCnt(0);
+//            dsrDropshipperDto.setDeleted(0);
+//            dsrDropshipperDto.setLastUpdateBy(sysUserDto.getName());
+//            dsrDropshipperDto.setCreatedBy(sysUserDto.getName());
+//            int result1 = dsrDropshipperService.save(dsrDropshipperDto);
+//            if(result1 == 0){
+//                responseDto.setSuccess(false);
+//            }else{
+//                sysUserDto.setManBuyerId(result1);
+                if(sysUserService.save(sysUserDto) != 0){ //update sysuser
                     responseDto.setSuccess(true);
-                    responseDto.setContent(dsrDropshipperDto);
+                    responseDto.setContent(sysUserDto);
                 }else{
                     responseDto.setSuccess(false);
                 }
-            }
+//            }
 
         }else{
+            DsrDropshipperDto dsrDropshipperDto = dsrDropshipperService.selectByPrimaryKey(sysUserDto.getManBuyerId());
+            dsrDropshipperDto.setName(sysUserDto.getUsername());
             int result = dsrDropshipperService.save(dsrDropshipperDto);
             if(result == 0){
                 responseDto.setSuccess(false);
             }else{
-                responseDto.setSuccess(true);
-                responseDto.setContent(dsrDropshipperDto);
+                if(sysUserService.save(sysUserDto) != 0){ //update sysuser
+                    responseDto.setSuccess(true);
+                    responseDto.setContent(sysUserDto);
+                }else{
+                    responseDto.setSuccess(false);
+                }
             }
         }
         return responseDto;

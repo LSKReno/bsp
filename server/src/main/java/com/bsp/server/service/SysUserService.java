@@ -57,7 +57,7 @@ public class SysUserService {
      */
     private int update(SysUser sysUser) {
 
-        return sysUserMapper.updateByPrimaryKey(sysUser);
+        return sysUserMapper.updateByPrimaryKeySelective(sysUser);
     }
     /**
      * update by selective

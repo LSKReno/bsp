@@ -8,10 +8,12 @@ import com.bsp.server.domain.DsrDropshipperExample;
 import com.bsp.server.mapper.DsrDropshipperMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.jhlabs.composite.DarkenComposite;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,7 +40,10 @@ public class DsrDropshipperService {
      */
     public int save(DsrDropshipperDto dsrDropshipperDto) {
         DsrDropshipper dsrDropshipper = CopyUtil.copy(dsrDropshipperDto, DsrDropshipper.class);
+        dsrDropshipper.setLastUpdateDate(new Date());
+        dsrDropshipper.setRegisterDate(new Date());
         if (StringUtils.isEmpty(dsrDropshipperDto.getDsrId())) {
+            dsrDropshipper.setCreationDate(new Date());
             return this.insert(dsrDropshipper);
         } else {
             return this.update(dsrDropshipper);
@@ -62,7 +67,7 @@ public class DsrDropshipperService {
      * 更新
      */
     private int update(DsrDropshipper dsrDropshipper) {
-        return dsrDropshipperMapper.updateByPrimaryKey(dsrDropshipper);
+        return dsrDropshipperMapper.updateByPrimaryKeySelective(dsrDropshipper);
     }
 
     /**

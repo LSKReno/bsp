@@ -47,15 +47,15 @@ public class CompanyInformationController {
     @PostMapping("/saveCompanyInfo")
     public ResponseDto saveCompanyInfo(@RequestBody Map<String,Object> request) throws ParseException {
         SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
+        System.out.println(sysUserDto.toString());
         SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
+        System.out.println(sysUserDto1.toString());
         ManManufacturerDto manManufacturerDto = JSON.parseObject(JSON.toJSONString(request.get("ManManufacturerDto")), ManManufacturerDto.class);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ResponseDto responseDto = new ResponseDto();
-        if(sysUserDto1.getManBuyerId() == null){
+        if(sysUserDto1.getManBuyerId() != null){
+            manManufacturerDto.setManId(sysUserDto1.getManBuyerId());
             manManufacturerDto.setCreatedBy(sysUserDto1.getName());
-            manManufacturerDto.setCreationDate(simpleDateFormat.format(new Date()));
             manManufacturerDto.setLastUpdateBy(sysUserDto1.getName());
-            manManufacturerDto.setLastUpdateDate(simpleDateFormat.format(new Date()));
             manManufacturerDto.setCallCnt(0);
             manManufacturerDto.setStsCd("0");
             int result = manManufacturerService.save(manManufacturerDto); // save for the first time
@@ -71,11 +71,10 @@ public class CompanyInformationController {
                 }
             }
         }else{
-            ManManufacturerDto manManufacturerDto1 = manManufacturerService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
-            manManufacturerDto.setManId(manManufacturerDto1.getManId());
+//            ManManufacturerDto manManufacturerDto1 = manManufacturerService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
+//            manManufacturerDto.setManId(manManufacturerDto1.getManId());
             System.out.println(manManufacturerDto.toString());
             manManufacturerDto.setLastUpdateBy(sysUserDto1.getName());
-            manManufacturerDto.setLastUpdateDate(simpleDateFormat.format(new Date()));
             int result = manManufacturerService.save(manManufacturerDto);
             if(result == 0){
                 responseDto.setSuccess(false);
