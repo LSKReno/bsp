@@ -152,7 +152,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.StrStore">
+  <insert id="insert" parameterType="com.bsp.server.domain.StrStore" useGeneratedKeys="true" keyProperty="strId" keyColumn="strId">
     insert into str_store (STR_ID, DSR_ID, PLATAEFORM_TYPE,
       STORE_NAME, STORE_STS_CD, CREATED_BY,
       CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,
@@ -363,7 +363,7 @@
     </set>
     where STR_ID = #{strId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.StrStore">
+  <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.StrStore" useGeneratedKeys="true" keyProperty="strId" keyColumn="strId">
     update str_store
     set DSR_ID = #{dsrId,jdbcType=INTEGER},
       PLATAEFORM_TYPE = #{plataeformType,jdbcType=VARCHAR},

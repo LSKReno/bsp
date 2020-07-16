@@ -176,7 +176,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.EbaEbayAuthorization">
+  <insert id="insert" parameterType="com.bsp.server.domain.EbaEbayAuthorization" useGeneratedKeys="true" keyProperty="ebaId" keyColumn="ebaId">
     insert into eba_ebay_authorization (EBA_ID, STR_ID, APP_ID,
       SECRET_KEY, CREATED_BY, CREATION_DATE,
       LAST_UPDATE_BY, LAST_UPDATE_DATE, CALL_CNT,

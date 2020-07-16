@@ -61,7 +61,7 @@ public class ManManufacturerService {
      * 更新
      */
     private int update(ManManufacturer manManufacturer) {
-        return manManufacturerMapper.updateByPrimaryKey(manManufacturer);
+        return manManufacturerMapper.updateByPrimaryKeySelective(manManufacturer);
     }
 
     /**

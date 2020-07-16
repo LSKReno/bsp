@@ -39,10 +39,11 @@ public class StrStoreService {
     public int save(StrStoreDto strStoreDto) {
         StrStore strStore = CopyUtil.copy(strStoreDto, StrStore.class);
         if (StringUtils.isEmpty(strStoreDto.getStrId())) {
-            return this.insert(strStore);
+            this.insert(strStore);
         } else {
-            return this.update(strStore);
+            this.update(strStore);
         }
+        return strStore.getStrId();
     }
 
     /**

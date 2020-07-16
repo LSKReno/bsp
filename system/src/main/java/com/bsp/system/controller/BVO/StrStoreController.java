@@ -57,11 +57,11 @@ public class StrStoreController {
             if(result5 != 0){
                 EbaEbayAuthorizationDto ebaEbayAuthorizationDto = new EbaEbayAuthorizationDto();
                 ebaEbayAuthorizationDto.setAccountId(Integer.toString(sysUserDto.getUserId()));
-                ebaEbayAuthorizationDto.setAppId("");
-                ebaEbayAuthorizationDto.setToken("");
+                ebaEbayAuthorizationDto.setAppId(""); //unfinish
+                ebaEbayAuthorizationDto.setToken(""); //unfinish
                 ebaEbayAuthorizationDto.setStsCd("0");
-                ebaEbayAuthorizationDto.setStrId(strStoreDto.getStrId());
-                ebaEbayAuthorizationDto.setSecretKey("");
+                ebaEbayAuthorizationDto.setStrId(result5);
+                ebaEbayAuthorizationDto.setSecretKey(""); //unfinish
                 ebaEbayAuthorizationDto.setRemark("none");
                 ebaEbayAuthorizationDto.setLastUpdateDate(simpleDateFormat.format(new Date()));
                 ebaEbayAuthorizationDto.setLastUpdateBy(sysUserDto.getUsername());

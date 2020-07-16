@@ -72,7 +72,7 @@ public class SaoSalesOrderController {
                 List<StoStoreOrderDto> stoStoreOrderDtos = stoStoreOrderService.selectByStrId(strStoreDto.getStrId());
                 List<SaoSalesOrderDto> saoSalesOrderDtoList = new ArrayList<>();
                 for(int j=0; j<stoStoreOrderDtos.size();j++){
-                    List<SaoSalesOrderDto> saoSalesOrderDtos = saoSalesOrderService.selectByStoId(stoStoreOrderDtos.get(j).getStoId(), ORDER_STS);
+                    List<SaoSalesOrderDto> saoSalesOrderDtos = saoSalesOrderService.selectByStoId(stoStoreOrderDtos.get(j).getStoId(), ORDER_STS); // order_no can be update
                     saoSalesOrderDtoList.addAll(saoSalesOrderDtos);
                 }
                 StrWithOrderDto strWithOrderDto = new StrWithOrderDto();
