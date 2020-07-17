@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,7 +39,9 @@ public class WafWalletAccountFundService {
      */
     public int save(WafWalletAccountFundDto wafWalletAccountFundDto) {
         WafWalletAccountFund wafWalletAccountFund = CopyUtil.copy(wafWalletAccountFundDto, WafWalletAccountFund.class);
+        wafWalletAccountFund.setLastUpdateTime(new Date());
         if (StringUtils.isEmpty(wafWalletAccountFundDto.getBuyerId())) {
+            wafWalletAccountFund.setCreateTime(new Date());
             this.insert(wafWalletAccountFund);
         } else {
             this.update(wafWalletAccountFund);
@@ -68,6 +71,7 @@ public class WafWalletAccountFundService {
     }
 
     public WafWalletAccountFundDto selectByPrimaryKey(Integer buyerId) {
+        System.out.println(wafWalletAccountFundMapper.selectByPrimaryKey(buyerId).toString());
         return CopyUtil.copy(wafWalletAccountFundMapper.selectByPrimaryKey(buyerId), WafWalletAccountFundDto.class);
     }
 }

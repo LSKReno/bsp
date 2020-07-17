@@ -30,3 +30,11 @@ select * from `sto_store_order`;
 select * from par_parameter;
 
 select * from cdm_code_master;
+
+select * from waa_wallet_account;
+
+select * from waf_wallet_account_fund;
+
+select * from wtr_wallet_transaction_record;
+
+select * from wta_wallet_transaction_aduit;

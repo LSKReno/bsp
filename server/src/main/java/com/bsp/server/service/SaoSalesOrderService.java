@@ -88,6 +88,6 @@ public class SaoSalesOrderService {
     }
 
     public List<SaoSalesOrderDto> selectByStoId(Integer stoId, String ORDER_STS) {
-        return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId), SaoSalesOrderDto.class);
+        return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId, ORDER_STS), SaoSalesOrderDto.class);
     }
 }

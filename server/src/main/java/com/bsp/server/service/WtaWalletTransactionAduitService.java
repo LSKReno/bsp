@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,7 +39,9 @@ public class WtaWalletTransactionAduitService {
      */
     public int save(WtaWalletTransactionAduitDto wtaWalletTransactionAduitDto) {
         WtaWalletTransactionAduit wtaWalletTransactionAduit = CopyUtil.copy(wtaWalletTransactionAduitDto, WtaWalletTransactionAduit.class);
+        wtaWalletTransactionAduit.setLastUpdateTime(new Date());
         if (StringUtils.isEmpty(wtaWalletTransactionAduitDto.getTransactionAuditId())) {
+            wtaWalletTransactionAduit.setCreateTime(new Date());
             return this.insert(wtaWalletTransactionAduit);
         } else {
             return this.update(wtaWalletTransactionAduit);
