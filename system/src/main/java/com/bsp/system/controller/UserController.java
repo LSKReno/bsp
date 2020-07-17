@@ -7,12 +7,14 @@ import com.bsp.server.dto.SysUserDto;
 import com.bsp.server.dto.UllUserLoginLogoutLogDto;
 import com.bsp.server.service.SysUserService;
 import com.bsp.server.service.UllUserLoginLogoutLogService;
+import com.bsp.server.util.CopyUtil;
 import com.bsp.server.util.ValidatorUtil;
 import com.bsp.system.config.JwtConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +43,25 @@ public class UserController {
 
     @Resource
     private RedisTemplate redisTemplate;
+
+
+    /**
+     * 用户信息查询
+     */
+    @GetMapping("/user/info")
+    public ResponseDto list(HttpServletRequest request) {
+        ResponseDto responseDto = new ResponseDto();
+        String token = request.getHeader(jwtConfig.getHeader());
+        String tokenJSONString = jwtConfig.getSubjectFromToken(token);
+
+        JSONObject userInfo = JSONObject.parseObject(tokenJSONString);
+
+        SysUserDto sysUserDtoRes = CopyUtil.copy(
+                sysUserService.selectByUserName(
+                        String.valueOf(userInfo.get("username"))), SysUserDto.class);
+        responseDto.setContent(sysUserDtoRes);
+        return responseDto;
+    }
 
     /**
      * 注册

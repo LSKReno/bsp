@@ -5,6 +5,7 @@
     <id column="USER_ID" jdbcType="INTEGER" property="userId" />
     <result column="USERNAME" jdbcType="VARCHAR" property="username" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="AVATAR" jdbcType="VARCHAR" property="avatar" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="RIGHTS" jdbcType="VARCHAR" property="rights" />
     <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
@@ -78,7 +79,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    USER_ID, USERNAME, `PASSWORD`, `NAME`, RIGHTS, ROLE_ID, LAST_LOGIN, IP, `STATUS`, 
+    USER_ID, USERNAME, `PASSWORD`, AVATAR, `NAME`, RIGHTS, ROLE_ID, LAST_LOGIN, IP, `STATUS`, 
     BZ, SKIN, EMAIL, `NUMBER`, PHONE, MAN_BUYER_ID, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.SysUserExample" resultMap="BaseResultMap">
@@ -151,17 +152,17 @@
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.SysUser">
     insert into sys_user (USER_ID, USERNAME, `PASSWORD`, 
-      `NAME`, RIGHTS, ROLE_ID, 
-      LAST_LOGIN, IP, `STATUS`, 
-      BZ, SKIN, EMAIL, `NUMBER`, 
-      PHONE, MAN_BUYER_ID, deleted
-      )
+      AVATAR, `NAME`, RIGHTS, 
+      ROLE_ID, LAST_LOGIN, IP, 
+      `STATUS`, BZ, SKIN, EMAIL, 
+      `NUMBER`, PHONE, MAN_BUYER_ID, 
+      deleted)
     values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{rights,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
-      #{lastLogin,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{bz,jdbcType=VARCHAR}, #{skin,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{manBuyerId,jdbcType=INTEGER}, #{deleted,jdbcType=BIT}
-      )
+      #{avatar,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{rights,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=VARCHAR}, #{lastLogin,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR}, #{skin,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{number,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{manBuyerId,jdbcType=INTEGER}, 
+      #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.SysUser">
     insert into sys_user
@@ -174,6 +175,9 @@
       </if>
       <if test="password != null">
         `PASSWORD`,
+      </if>
+      <if test="avatar != null">
+        AVATAR,
       </if>
       <if test="name != null">
         `NAME`,
@@ -224,6 +228,9 @@
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
@@ -284,6 +291,9 @@
       <if test="record.password != null">
         `PASSWORD` = #{record.password,jdbcType=VARCHAR},
       </if>
+      <if test="record.avatar != null">
+        AVATAR = #{record.avatar,jdbcType=VARCHAR},
+      </if>
       <if test="record.name != null">
         `NAME` = #{record.name,jdbcType=VARCHAR},
       </if>
@@ -333,6 +343,7 @@
     set USER_ID = #{record.userId,jdbcType=INTEGER},
       USERNAME = #{record.username,jdbcType=VARCHAR},
       `PASSWORD` = #{record.password,jdbcType=VARCHAR},
+      AVATAR = #{record.avatar,jdbcType=VARCHAR},
       `NAME` = #{record.name,jdbcType=VARCHAR},
       RIGHTS = #{record.rights,jdbcType=VARCHAR},
       ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
@@ -358,6 +369,9 @@
       </if>
       <if test="password != null">
         `PASSWORD` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        AVATAR = #{avatar,jdbcType=VARCHAR},
       </if>
       <if test="name != null">
         `NAME` = #{name,jdbcType=VARCHAR},
@@ -405,6 +419,7 @@
     update sys_user
     set USERNAME = #{username,jdbcType=VARCHAR},
       `PASSWORD` = #{password,jdbcType=VARCHAR},
+      AVATAR = #{avatar,jdbcType=VARCHAR},
       `NAME` = #{name,jdbcType=VARCHAR},
       RIGHTS = #{rights,jdbcType=VARCHAR},
       ROLE_ID = #{roleId,jdbcType=VARCHAR},

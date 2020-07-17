@@ -12,21 +12,23 @@
 #{
 #}
 
-# 注册测试
-POST  http://127.0.0.1:9000/system/signup
+# 注册测试47.94.15.109
+#POST  http://127.0.0.1:9000/system/signup
+POST  http://47.94.15.109:9000/system/signup
 Content-Type: application/json
 
 # roleId 暂时设计为 1, 2, 3 分别代表admin，MVO，BVO
 {
-  "username": "LSKReno3",
-  "password": "lskreno",
+  "username": "mk",
+  "password": "mk123",
   "roleId": "1"
 }
 
 ###
 
 # 登录测试
-POST  http://127.0.0.1:9000/system/login
+#POST  http://127.0.0.1:9000/system/login
+POST  http://47.94.15.109:9000/system/login
 Content-Type: application/json
 
 {

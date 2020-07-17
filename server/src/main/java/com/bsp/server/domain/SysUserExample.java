@@ -432,6 +432,106 @@ public class SysUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andAvatarIsNull() {
+            addCriterion("AVATAR is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarIsNotNull() {
+            addCriterion("AVATAR is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarEqualTo(String value) {
+            addCriterion("AVATAR =", value, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("AVATAR = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarNotEqualTo(String value) {
+            addCriterion("AVATAR <>", value, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("AVATAR <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarGreaterThan(String value) {
+            addCriterion("AVATAR >", value, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("AVATAR > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarGreaterThanOrEqualTo(String value) {
+            addCriterion("AVATAR >=", value, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("AVATAR >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarLessThan(String value) {
+            addCriterion("AVATAR <", value, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("AVATAR < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarLessThanOrEqualTo(String value) {
+            addCriterion("AVATAR <=", value, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("AVATAR <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarLike(String value) {
+            addCriterion("AVATAR like", value, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarNotLike(String value) {
+            addCriterion("AVATAR not like", value, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarIn(List<String> values) {
+            addCriterion("AVATAR in", values, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarNotIn(List<String> values) {
+            addCriterion("AVATAR not in", values, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarBetween(String value1, String value2) {
+            addCriterion("AVATAR between", value1, value2, "avatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatarNotBetween(String value1, String value2) {
+            addCriterion("AVATAR not between", value1, value2, "avatar");
+            return (Criteria) this;
+        }
+
         public Criteria andNameIsNull() {
             addCriterion("`NAME` is null");
             return (Criteria) this;

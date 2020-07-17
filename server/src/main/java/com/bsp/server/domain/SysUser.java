@@ -10,6 +10,8 @@ public class SysUser {
 
     private String password;
 
+    private String avatar;
+
     private String name;
 
     private String rights;
@@ -58,6 +60,14 @@ public class SysUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getName() {
@@ -173,6 +183,7 @@ public class SysUser {
         sb.append(", userId=").append(userId);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
+        sb.append(", avatar=").append(avatar);
         sb.append(", name=").append(name);
         sb.append(", rights=").append(rights);
         sb.append(", roleId=").append(roleId);
@@ -205,6 +216,7 @@ public class SysUser {
         return (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
             && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
             && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+            && (this.getAvatar() == null ? other.getAvatar() == null : this.getAvatar().equals(other.getAvatar()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getRights() == null ? other.getRights() == null : this.getRights().equals(other.getRights()))
             && (this.getRoleId() == null ? other.getRoleId() == null : this.getRoleId().equals(other.getRoleId()))
@@ -227,6 +239,7 @@ public class SysUser {
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
         result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
         result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        result = prime * result + ((getAvatar() == null) ? 0 : getAvatar().hashCode());
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         result = prime * result + ((getRights() == null) ? 0 : getRights().hashCode());
         result = prime * result + ((getRoleId() == null) ? 0 : getRoleId().hashCode());
@@ -247,6 +260,7 @@ public class SysUser {
         userId("USER_ID", "userId", "INTEGER", false),
         username("USERNAME", "username", "VARCHAR", false),
         password("PASSWORD", "password", "VARCHAR", true),
+        avatar("AVATAR", "avatar", "VARCHAR", false),
         name("NAME", "name", "VARCHAR", true),
         rights("RIGHTS", "rights", "VARCHAR", false),
         roleId("ROLE_ID", "roleId", "VARCHAR", false),
