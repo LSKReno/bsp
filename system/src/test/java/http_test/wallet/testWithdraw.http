@@ -10,9 +10,9 @@ POST http://127.0.0.1:9001/system/wallet/withdraw
 Content-Type: application/json
 
 {
-  "accountName": "MMM",
-  "password": "bbb",
-  "withdrawingMoney": "100.00",
+  "accountName": "LSKReno2",
+  "password": "123456",
+  "withdrawingMoney": "66.6",
   "currency": "USD"
 
 }

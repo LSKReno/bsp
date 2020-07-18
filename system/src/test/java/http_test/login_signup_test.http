@@ -30,8 +30,8 @@ POST  http://127.0.0.1:9000/system/login
 Content-Type: application/json
 
 {
-  "username": "LSKReno",
-  "password": "lskreno"
+  "username": "Rain",
+  "password": "rain123"
 }
 
 ###

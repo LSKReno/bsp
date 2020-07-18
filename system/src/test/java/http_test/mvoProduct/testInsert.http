@@ -5,24 +5,24 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST  http://127.0.0.1:9001/system/mvo/product/insert
+POST  http://127.0.0.1:9000/system/mvo/product/insert
 Content-Type: application/json
 
 {
-  "title": "orggg",
-  "skuCd": "sekura4",
-  "upc": "unpvccc",
-  "ean": "e112345",
-  "model": "232r0x",
-  "warrantyDay": "20200705",
-  "descrition": "hbbbbuul",
-  "price": "99",
-  "length": "7.3",
-  "weight": "45",
-  "height": "5.00",
-  "width": "23.0",
-  "manId": "1",
-  "createdBy": "zeraaa",
+  "title": "table",
+  "skuCd": "biofds",
+  "upc": "93822",
+  "ean": "fsds345",
+  "model": "2sdsx",
+  "warrantyDay": "20200715",
+  "descrition": "nononoononoononono",
+  "retailPrice": "220.3",
+  "length": "7.44",
+  "weight": "5.55",
+  "height": "8",
+  "width": "20",
+  "userId": "3",
+  "createdBy": "Sum",
   "stsCd": "A"
 }
 

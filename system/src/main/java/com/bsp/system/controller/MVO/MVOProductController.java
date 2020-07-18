@@ -1,11 +1,16 @@
 package com.bsp.system.controller.MVO;
 
+import com.alibaba.fastjson.JSONObject;
+import com.bsp.server.domain.SysUser;
 import com.bsp.server.dto.PageDto;
 import com.bsp.server.dto.ResponseDto;
+import com.bsp.server.dto.SysUserDto;
 import com.bsp.server.service.*;
+import com.bsp.system.config.JwtConfig;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.Map;
 
@@ -26,27 +31,36 @@ public class MVOProductController {
     private PdnProductDescritionService pdnProductDescritionService;
     @Resource
     private PrcProductCategoryService prcProductCategoryService;
+    @Resource
+    private SysUserService sysUserService;
 
+    private JwtConfig jwtConfig;
     /**
      * 列表查询，根据man_id, (title)
      * 商品信息
      */
     @PostMapping("/list")
-    public ResponseDto list(@RequestBody Map<String,Object> mp) {
+    public ResponseDto list(@RequestBody Map<String,Object> mp, HttpServletRequest request) {
         ResponseDto responseDto = new ResponseDto();
         PageDto pageDto=new PageDto();
         pageDto.setPage((int)mp.get("page"));
         pageDto.setSize((int)mp.get("size"));
+
+        //通过jwt获取用户id
+//        String token = request.getHeader(jwtConfig.getHeader());
+//        String tokenJSONString = jwtConfig.getSubjectFromToken(token);
+//        JSONObject userInfo = JSONObject.parseObject(tokenJSONString);
+//        System.out.println(tokenJSONString);
+//        System.out.println(userInfo);
+        SysUserDto sysUserDto=sysUserService.selectByPrimaryKey(Integer.parseInt(mp.get("userId").toString()));
+        mp.put("manId",sysUserDto.getManBuyerId());
         proProductService.list(pageDto,mp);
         if(pageDto.getTotal()==0){
             responseDto.setSuccess(false);
-        }else{
-            responseDto.setCode("200");
         }
         responseDto.setContent(pageDto);
         return responseDto;
     }
-
 
 
     /**
@@ -61,9 +75,7 @@ public class MVOProductController {
         int f2=ofpOfferPriceService.updateSelective(mp);
         int f3=pckPackageInfoService.updateSelective(mp);
         int f4=pdnProductDescritionService.updateSelective(mp);
-        if(f1>0&&f2>0&&f3>0&&f4>0){
-            responseDto.setCode("200");
-        }else{
+        if(f1==0&&f2==0&&f3==0&&f4==0){
             responseDto.setSuccess(false);
         }
         return responseDto;
@@ -85,9 +97,7 @@ public class MVOProductController {
         int f3=pckPackageInfoService.updateSelective(mp);
         int f4=pdnProductDescritionService.updateSelective(mp);
         int f5=prcProductCategoryService.updateSelective(mp);
-        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
-            responseDto.setCode("200");
-        }else{
+        if(f1==0||f2==0||f3==0||f4==0||f5==0){
             responseDto.setSuccess(false);
         }
         return responseDto;
@@ -103,14 +113,15 @@ public class MVOProductController {
         ResponseDto responseDto = new ResponseDto();
         mp.put("creationDate",new Date());
         mp.put("deleted","0");
+        mp.put("price",mp.get("retailPrice")); // 售价等于建议零售价
+        SysUserDto sysUserDto=sysUserService.selectByPrimaryKey(Integer.parseInt(mp.get("userId").toString()));
+        mp.put("manId",sysUserDto.getManBuyerId());
         int f1=proProductService.insertSelective(mp);
         int f2=ofpOfferPriceService.insertSelective(mp);
         int f3=pckPackageInfoService.insertSelective(mp);
         int f4=pdnProductDescritionService.insertSelective(mp);
         int f5=prcProductCategoryService.insertSelective(mp);
-        if(f1>0&&f2>0&&f3>0&&f4>0&&f5>0){
-            responseDto.setCode("200");
-        }else{
+        if(f1==0||f2==0||f3==0||f4==0||f5==0){
             responseDto.setSuccess(false);
         }
         return responseDto;

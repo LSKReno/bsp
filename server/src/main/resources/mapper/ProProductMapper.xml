@@ -685,9 +685,9 @@
   </select>
 
   <select id="list" resultType="java.util.Map">
-    select  *
-    from pro_product pro join ofp_offer_price ofp on pro.pro_id=ofp.pro_id
-    join pck_package_info pck on pro.pro_id=pck.pro_id
+    select distinct pro.pro_id,pro.title,sku_cd,upc,ean,model,warranty_day,retail_price,pro.sts_cd,
+    pck_id,width,height,`length`,weight,pdn_id,descrition
+    from pro_product pro join pck_package_info pck on pro.pro_id=pck.pro_id
     join pdn_product_descrition pdn on pro.pro_id=pdn.pro_id
     where pro.pro_id in
     (select pro_id from pro_product where pro.man_id=#{manId}
@@ -698,12 +698,10 @@
   </select>
 
   <select id="listA" resultType="java.util.Map">
-    select *
-    from pro_product pro join ofp_offer_price ofp on pro.pro_id=ofp.pro_id
-    join pck_package_info pck on pro.pro_id=pck.pro_id
+    select distinct pro.pro_id,pro.title,sku_cd,upc,ean,model,warranty_day,retail_price,pro.sts_cd,
+    pck_id,width,height,`length`,weight,pdn_id,descrition
+    from pro_product pro join pck_package_info pck on pro.pro_id=pck.pro_id
     join pdn_product_descrition pdn on pro.pro_id=pdn.pro_id
-    join prc_product_category prc on pro.pro_id=prc.pro_id
-    join img_image img on pro.pro_id=img.entity_id
     where pro.sts_cd='A'
   </select>
 
