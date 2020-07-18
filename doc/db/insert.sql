@@ -1,9 +1,9 @@
 use bsp;
 truncate table `sys_user`;
-INSERT INTO `sys_user` VALUES (null, 'north_horse','123','mk',null, null, null,null,null,null, null,null,null,null,null,'0');
-INSERT INTO `sys_user` VALUES (null, 'root','root','adim',null, null, null,null,null,null, null,null,null,null,null,'0');
-INSERT INTO `sys_user` VALUES (null, 'BVO','BVO','BVO',null, null, null,null,null,null, null,null,null,null,1,'0');
-INSERT INTO `sys_user` VALUES (null, 'MVO','MVO','MVO',null, null, null,null,null,null, null,null,null,null,1,'0');
+INSERT INTO `sys_user` VALUES (null, 'north_horse',null,'123','mk',null, null, null,null,null,null, null,null,null,null,null,'0');
+INSERT INTO `sys_user` VALUES (null, 'root','root',null,'adim',null, null, null,null,null,null, null,null,null,null,null,'0');
+INSERT INTO `sys_user` VALUES (null, 'BVO','BVO',null,'BVO',null, null, null,null,null,null, null,null,null,null,1,'0');
+INSERT INTO `sys_user` VALUES (null, 'MVO','MVO',null,'MVO',null, null, null,null,null,null, null,null,null,null,1,'0');
 
 truncate table `dsr_dropshipper`;
 insert into `dsr_dropshipper` values (null, 'nike', 'BVO', '2020-7-7', '2020-7-7', NULL, '0', 'none', '1', '2020-7-7', NULL);
