@@ -22,6 +22,11 @@ public class SysUserDto {
     private String password;
 
     /**
+     * 头像
+     */
+    private String avatar;
+
+    /**
      * 昵称（可重复）
 
      */
@@ -120,6 +125,14 @@ public class SysUserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getName() {
@@ -236,6 +249,7 @@ public class SysUserDto {
         sb.append(", userId=").append(userId);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
+        sb.append(", avatar=").append(avatar);
         sb.append(", name=").append(name);
         sb.append(", rights=").append(rights);
         sb.append(", roleId=").append(roleId);
