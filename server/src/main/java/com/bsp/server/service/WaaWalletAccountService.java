@@ -1,6 +1,5 @@
 package com.bsp.server.service;
 
-import com.bsp.server.domain.SysUser;
 import com.bsp.server.domain.WaaWalletAccount;
 import com.bsp.server.domain.WaaWalletAccountExample;
 import com.bsp.server.dto.PageDto;
@@ -106,9 +105,6 @@ public class WaaWalletAccountService {
     }
 
     public WaaWalletAccountDto selectByName(String username) {
-        WaaWalletAccount waaWalletAccount = waaWalletAccountMapper.selectByName(username);
-        WaaWalletAccountDto waaWalletAccountDto = CopyUtil.copy(waaWalletAccountMapper.selectByName(username), WaaWalletAccountDto.class);
-        waaWalletAccountDto.setStatus(new Integer(waaWalletAccount.getStatus()));
-        return waaWalletAccountDto;
+        return CopyUtil.copy(waaWalletAccountMapper.selectByName(username), WaaWalletAccountDto.class);
     }
 }
