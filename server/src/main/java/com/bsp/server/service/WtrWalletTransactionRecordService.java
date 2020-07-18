@@ -36,6 +36,19 @@ public class WtrWalletTransactionRecordService {
     }
 
     /**
+     * 查询流水
+     */
+    public void list(PageDto pageDto,Integer id) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
+        WtrWalletTransactionRecordExample wtrWalletTransactionRecordExample = new WtrWalletTransactionRecordExample();
+        List<WtrWalletTransactionRecord> wtrWalletTransactionRecordList = wtrWalletTransactionRecordMapper.selectByExample(wtrWalletTransactionRecordExample);
+        PageInfo<WtrWalletTransactionRecord> pageInfo = new PageInfo<>(wtrWalletTransactionRecordList);
+        pageDto.setTotal(pageInfo.getTotal());
+        pageDto.setList(wtrWalletTransactionRecordList);
+    }
+
+
+    /**
      * 保存，id有值时更新，无值时新增
      */
     public int save(WtrWalletTransactionRecordDto wtrWalletTransactionRecordDto) {

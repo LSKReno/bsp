@@ -9,11 +9,12 @@ POST  http://127.0.0.1:9001/system/mvo/productCategory/insert
 Content-Type: application/json
 
 {
-  "title": "orange",
-"categoryName": "electronic",
+  "title": "reno",
+  "categoryName": "electronic",
   "createdBy": "naultilss",
-  "uri": "somimg.com",
-  "stsCd": "I"
+  "uri": "https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png",
+  "stsCd": "I",
+  "userId": 3
 }
 
 ###

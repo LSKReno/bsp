@@ -6,19 +6,18 @@ import com.bsp.server.dto.PageDto;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.dto.WaaWalletAccountDto;
 import com.bsp.server.dto.WafWalletAccountFundDto;
-import com.bsp.server.service.WaaWalletAccountService;
-import com.bsp.server.service.WafWalletAccountFundService;
-import com.bsp.server.service.WtaWalletTransactionAduitService;
-import com.bsp.server.service.WtrWalletTransactionRecordService;
+import com.bsp.server.service.*;
 import com.bsp.server.util.CopyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -37,10 +36,13 @@ public class WalletController {
     private WtaWalletTransactionAduitService wtaWalletTransactionAduitService;
     @Resource
     private WtrWalletTransactionRecordService wtrWalletTransactionRecordService;
+    @Resource
+    private TrackingNumberService trackingNumberService;
 
     /**
      *判断该用户名有没有钱包
-     * 若有，返回钱包信息
+     * 若有，直接跳转到账户信息
+     * 否则显示注册页面
      */
     @RequestMapping("/querylist")
     public ResponseDto queryList(@RequestBody WaaWalletAccountDto waaWalletAccountdto){
@@ -50,10 +52,9 @@ public class WalletController {
             WafWalletAccountFund wafWalletAccountFund=wafWalletAccountFundService.list(waaWalletAccount.getBuyerId());
             WafWalletAccountFundDto wafWalletAccountFundDto=CopyUtil.copy(wafWalletAccountFund, WafWalletAccountFundDto.class);
             responseDto.setContent(wafWalletAccountFundDto);
-            responseDto.setCode("200");
         }else{
-            responseDto.setCode("404");
             responseDto.setMessage("Account Not Found");
+            responseDto.setSuccess(false);
         }
         return responseDto;
 
@@ -82,9 +83,7 @@ public class WalletController {
         wafWalletAccountFund.setDepositingMoney(new BigDecimal(0));
         wafWalletAccountFund.setWithdrawingMoney(new BigDecimal(0));
         int f2=wafWalletAccountFundService.insertSelective(wafWalletAccountFund);
-        if(f1>0&&f2>0){
-            responseDto.setCode("200");
-        }else{
+        if(f1==0||f2==0){
             responseDto.setSuccess(false);
         }
         return responseDto;
@@ -121,11 +120,10 @@ public class WalletController {
         mp.put("status",2); //状态：申请
         mp.put("financeType",1); //入款
         mp.put("transactionType",1); //业务类型：充值
+        mp.put("transactionNumber", trackingNumberService.getId(new SimpleDateFormat("yyyyMMdd").format(dt))); // reids生成流水号
         int f2=wtrWalletTransactionRecordService.insertSelective(mp); //获取transaction_id
         int f3=wtaWalletTransactionAduitService.insertSelective(mp);
-        if(f1>0&&f2>0&&f3>0){
-            responseDto.setCode("200");
-        }else{
+        if(f1==0||f2==0||f3==0){
             responseDto.setSuccess(false);
         }
         return responseDto;
@@ -165,10 +163,12 @@ public class WalletController {
         mp.remove("lastUpdateBy");
         mp.put("transactionMoney",mp.get("withdrawingMoney"));
         mp.put("createTime",dt);
+        mp.put("createBy",mp.get("accountName"));
         mp.put("deleted","0");
         mp.put("status",2); //状态：申请
         mp.put("financeType",2); //出款
         mp.put("transactionType",2); //业务类型：提现
+
         int f2=wtrWalletTransactionRecordService.insertSelective(mp); //获取transaction_id
         int f3=wtaWalletTransactionAduitService.insertSelective(mp);
         if(f1>0&&f2>0&&f3>0){
@@ -186,11 +186,24 @@ public class WalletController {
     public ResponseDto changePassword(@RequestBody Map<String,Object> mp){
         ResponseDto responseDto = new ResponseDto();
         int f=waaWalletAccountService.changePassword(mp);
-        if(f>0){
-            responseDto.setCode("200");
-        }else{
+        if(f==0){
             responseDto.setSuccess(false);
         }
+        return responseDto;
+    }
+
+    @RequestMapping("/queryrecord")
+    public ResponseDto queryRecord(@RequestBody Map<String,Object> mp){
+        ResponseDto responseDto = new ResponseDto();
+        PageDto pageDto=new PageDto();
+        pageDto.setPage((int)mp.get("page"));
+        pageDto.setSize((int)mp.get("size"));
+        WaaWalletAccount waaWalletAccount=waaWalletAccountService.find(mp.get("accountName").toString(),null);
+        wtrWalletTransactionRecordService.list(pageDto, waaWalletAccount.getBuyerId());
+        if(pageDto.getTotal()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(pageDto);
         return responseDto;
     }
 

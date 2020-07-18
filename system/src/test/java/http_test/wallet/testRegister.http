@@ -9,9 +9,9 @@ POST http://127.0.0.1:9001/system/wallet/register
 Content-Type: application/json
 
 {
-  "accountName": "ZZJ",
-  "email": "2o3u9928489",
-  "password": "987654321"
+  "accountName": "LSKReno3",
+  "email": "2390543893",
+  "password": "123456"
 }
 
 ###

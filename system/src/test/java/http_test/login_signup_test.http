@@ -32,8 +32,8 @@ POST  http://47.94.15.109:9000/system/login
 Content-Type: application/json
 
 {
-  "username": "LSKReno",
-  "password": "lskreno"
+  "username": "Rain",
+  "password": "rain123"
 }
 
 ###

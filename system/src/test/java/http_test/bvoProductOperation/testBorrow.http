@@ -10,16 +10,16 @@ POST http://127.0.0.1:9001/system/bvo/borrow
 Content-Type: application/json
 
 {
-  "dsrId": "1",
-  "proId": "6",
+  "userId": "4",
+  "proId": "1",
   "strId": "1",
   "ofpId": "5",
   "dropshipPrice": "12",
   "dropshipStatus": "A",
-  "createdBy": "bobo",
+  "createdBy": "ccc",
   "shelfStock": "99",
-  "preferDate": "2020-07-10 00:00:00",
-  "witId": "1"
+  "preferDate": "2020-07-19 00:00:00",
+  "witId": "2"
 }
 
 ###

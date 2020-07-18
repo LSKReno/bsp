@@ -9,7 +9,7 @@ POST http://127.0.0.1:9001/system/wallet/changepwd
 Content-Type: application/json
 
 {
-  "accountName":"ZZJ",
+  "accountName":"LSKReno3",
   "old_password":"987654321",
   "new_password": "123456789"
 }

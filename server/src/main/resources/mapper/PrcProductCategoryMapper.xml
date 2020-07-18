@@ -472,7 +472,7 @@
     limit 1
   </select>
   <select id="list" resultType="java.util.Map">
-    select  *
+    select distinct prc_id,category_name,prc.sts_cd,pro.pro_id,pro.title,img_id,uri,entity_id
     from pro_product pro join prc_product_category prc on pro.pro_id=prc.pro_id
     join img_image img on pro.pro_id=img.entity_id
     where pro.pro_id in

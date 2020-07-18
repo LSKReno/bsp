@@ -6,11 +6,11 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST http://127.0.0.1:9001/system/bvo/product/listA
+POST http://127.0.0.1:9000/system/bvo/product/listA
 Content-Type: application/json
 
 {
-"page": "0",
-"size": "10"}
+"page": 0,
+"size": 10}
 
 ###

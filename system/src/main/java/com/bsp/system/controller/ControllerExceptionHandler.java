@@ -35,14 +35,14 @@ public class ControllerExceptionHandler {
         return responseDto;
     }
 
-    @ExceptionHandler(value = SignatureException.class)
-    @ResponseBody
-    public ResponseDto signatureExceptionHandler(SignatureException e) {
-        ResponseDto responseDto = new ResponseDto();
-        responseDto.setSuccess(false);
-        LOG.error("Token校验异常：{}", e.getMessage());
-        responseDto.setMessage(e.getMessage());
-        return responseDto;
-    }
+//    @ExceptionHandler(value = SignatureException.class)
+//    @ResponseBody
+//    public ResponseDto signatureExceptionHandler(SignatureException e) {
+//        ResponseDto responseDto = new ResponseDto();
+//        responseDto.setSuccess(false);
+//        LOG.error("Token校验异常：{}", e.getMessage());
+//        responseDto.setMessage(e.getMessage());
+//        return responseDto;
+//    }
 
 }

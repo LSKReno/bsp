@@ -5,11 +5,11 @@
 # * 'gtrp' and 'gtr' create a GET request with or without query parameters;
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
-POST http://127.0.0.1:9001/system/wallet/querylist
+POST http://127.0.0.1:9000/system/wallet/querylist
 Content-Type: application/json
 
 {
-  "accountName": "MMM"
+  "accountName": "LSKReno2"
 }
 
 ###

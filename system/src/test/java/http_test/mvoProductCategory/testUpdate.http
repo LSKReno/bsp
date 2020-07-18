@@ -6,13 +6,13 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST  http://127.0.0.1:9001/system/mvo/productCategory/update
+POST  http://127.0.0.1:9000/system/mvo/productCategory/update
 Content-Type: application/json
 
 {
-  "prcId": "1",
-  "categoryName": "furniture",
-  "uri": "wwwhttpswww",
+  "prcId": "7",
   "stsCd": "A",
-  "lastUpdateBy": "nemo"
+  "lastUpdateBy": "Sum"
 }
+
+###
