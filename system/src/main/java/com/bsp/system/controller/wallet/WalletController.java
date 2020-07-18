@@ -168,7 +168,7 @@ public class WalletController {
         mp.put("status",2); //状态：申请
         mp.put("financeType",2); //出款
         mp.put("transactionType",2); //业务类型：提现
-
+        mp.put("transactionNumber", trackingNumberService.getId(new SimpleDateFormat("yyyyMMdd").format(dt))); // reids生成流水号
         int f2=wtrWalletTransactionRecordService.insertSelective(mp); //获取transaction_id
         int f3=wtaWalletTransactionAduitService.insertSelective(mp);
         if(f1>0&&f2>0&&f3>0){
