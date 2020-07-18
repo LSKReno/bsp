@@ -45,9 +45,9 @@ public interface SaoSalesOrderMapper {
 
     int updateByPrimaryKey(SaoSalesOrder record);
 
-    List<SaoSalesOrder> selectByManID(Integer manBuyerId, String ORDER_STS);
+    List<SaoSalesOrder> selectByManID(@Param("manBuyerId") Integer manBuyerId, @Param("ORDER_STS") String ORDER_STS);
 
     int changeToSHIPPED(Integer saoId);
 
-    List<SaoSalesOrder> selectByStoId(Integer stoId);
+    List<SaoSalesOrder> selectByStoId(@Param("stoId") Integer stoId, @Param("ORDER_STS") String ORDER_STS);
 }

@@ -6,6 +6,7 @@ import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.dto.SaoSalesOrderDto;
 import com.bsp.server.dto.ShaShippingAddressDto;
 import com.bsp.server.dto.StoStoreOrderDto;
+import com.bsp.server.service.SaoSalesOrderService;
 import com.bsp.server.service.ShaShippingAddressService;
 import com.bsp.server.service.StoStoreOrderService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,11 +23,13 @@ public class ShaShippingAddressController {
     private ShaShippingAddressService shaShippingAddressService;
     @Resource
     private StoStoreOrderService stoStoreOrderService;
-
+    @Resource
+    private SaoSalesOrderService saoSalesOrderService;
     @PostMapping("/getAddress")
     public ResponseDto getAddress(@RequestBody SaoSalesOrderDto saoSalesOrderDto){
         ResponseDto responseDto = new ResponseDto();
-        StoStoreOrderDto stoStoreOrderDto = stoStoreOrderService.selectByPrimaryKey(saoSalesOrderDto.getStoId());
+        SaoSalesOrderDto saoSalesOrderDto1 = saoSalesOrderService.selectByPrimaryKey(saoSalesOrderDto.getSaoId());
+        StoStoreOrderDto stoStoreOrderDto = stoStoreOrderService.selectByPrimaryKey(saoSalesOrderDto1.getStoId());
         if(stoStoreOrderDto != null){
             ShaShippingAddressDto shaShippingAddressDto = shaShippingAddressService.selectByStoId(stoStoreOrderDto.getStoId());
             if(shaShippingAddressDto.getId() != null){

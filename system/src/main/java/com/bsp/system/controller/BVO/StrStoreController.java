@@ -35,10 +35,11 @@ public class StrStoreController {
     @PostMapping("/getOnlineStores")
     public ResponseDto getOnlineStores(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
-        if(sysUserDto.getManBuyerId() == null){ // check if the user has input online Store
+        SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
+        if(sysUserDto1.getManBuyerId() == null){ // check if the user has input online Store
             responseDto.setSuccess(false);
         }else{
-            List<StrStoreDto> strStoreDtoList = strStoreService.selectByDSRId(sysUserDto.getManBuyerId());
+            List<StrStoreDto> strStoreDtoList = strStoreService.selectByDSRId(sysUserDto1.getManBuyerId());
             responseDto.setSuccess(true);
             responseDto.setContent(strStoreDtoList);
         }
@@ -48,33 +49,42 @@ public class StrStoreController {
     public ResponseDto addOnlineStore(@RequestBody Map<String, Object> request){
         SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
         StrStoreDto strStoreDto = JSON.parseObject(JSON.toJSONString(request.get("StrStoreDto")), StrStoreDto.class);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String token = JSON.parseObject(JSON.toJSONString(request.get("token")), String.class);
+        String APPId = JSON.parseObject(JSON.toJSONString(request.get("APPId")), String.class);
+        String key = JSON.parseObject(JSON.toJSONString(request.get("key")), String.class);
+
+        SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
         ResponseDto responseDto = new ResponseDto();
-        if(sysUserDto.getManBuyerId() == null){
+        if(sysUserDto1.getManBuyerId() == null){
             responseDto.setSuccess(false);
         }else{
+            strStoreDto.setDsrId(sysUserDto1.getManBuyerId());
+            strStoreDto.setStoreStsCd("INI");
+            strStoreDto.setCreatedBy(sysUserDto1.getUsername());
+            strStoreDto.setLastUpdateBy(sysUserDto1.getUsername());
+            strStoreDto.setCallCnt(0);
+            strStoreDto.setStsCd("0");
+            strStoreDto.setRemark("none");
+            strStoreDto.setDeleted(0);
             int result5 = strStoreService.save(strStoreDto);
             if(result5 != 0){
                 EbaEbayAuthorizationDto ebaEbayAuthorizationDto = new EbaEbayAuthorizationDto();
-                ebaEbayAuthorizationDto.setAccountId(Integer.toString(sysUserDto.getUserId()));
-                ebaEbayAuthorizationDto.setAppId("");
-                ebaEbayAuthorizationDto.setToken("");
+                ebaEbayAuthorizationDto.setAccountId(Integer.toString(sysUserDto1.getUserId()));
+                ebaEbayAuthorizationDto.setAppId(APPId); //unfinish
+                ebaEbayAuthorizationDto.setToken(token); //unfinish
                 ebaEbayAuthorizationDto.setStsCd("0");
-                ebaEbayAuthorizationDto.setStrId(strStoreDto.getStrId());
-                ebaEbayAuthorizationDto.setSecretKey("");
+                ebaEbayAuthorizationDto.setStrId(result5);
+                ebaEbayAuthorizationDto.setSecretKey(key); //unfinish
                 ebaEbayAuthorizationDto.setRemark("none");
-                ebaEbayAuthorizationDto.setLastUpdateDate(simpleDateFormat.format(new Date()));
-                ebaEbayAuthorizationDto.setLastUpdateBy(sysUserDto.getUsername());
-                ebaEbayAuthorizationDto.setExpDate(new Date());
+                ebaEbayAuthorizationDto.setLastUpdateBy(sysUserDto1.getUsername());
                 ebaEbayAuthorizationDto.setDeleted(0);
-                ebaEbayAuthorizationDto.setCreationDate(simpleDateFormat.format(new Date()));
-                ebaEbayAuthorizationDto.setCreatedBy(sysUserDto.getUsername());
+                ebaEbayAuthorizationDto.setCreatedBy(sysUserDto1.getUsername());
                 ebaEbayAuthorizationDto.setCancleDate(new Date());
                 ebaEbayAuthorizationDto.setCallCnt(0);
                 int result6 = ebaEbayAuthorizationService.save(ebaEbayAuthorizationDto);
                 if(result6 != 0){
                     responseDto.setSuccess(true);
-                    responseDto.setContent(sysUserDto);
+                    responseDto.setContent(sysUserDto1);
                 }else {
                     responseDto.setSuccess(false);
                 }

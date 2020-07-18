@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,11 +39,14 @@ public class StrStoreService {
      */
     public int save(StrStoreDto strStoreDto) {
         StrStore strStore = CopyUtil.copy(strStoreDto, StrStore.class);
+        strStore.setLastUpdateDate(new Date());
         if (StringUtils.isEmpty(strStoreDto.getStrId())) {
-            return this.insert(strStore);
+            strStore.setCreationDate(new Date());
+            this.insert(strStore);
         } else {
-            return this.update(strStore);
+            this.update(strStore);
         }
+        return strStore.getStrId();
     }
 
     /**

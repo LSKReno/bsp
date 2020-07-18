@@ -34,8 +34,9 @@ public class SaoSalesOrderController {
     public ResponseDto getSaoSalesOrderList(@RequestBody Map<String, Object> request){
         ResponseDto responseDto = new ResponseDto();
         SysUserDto sysUserDto = JSON.parseObject(JSON.toJSONString(request.get("SysUserDto")), SysUserDto.class);
+        SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
         String ORDER_STS = JSON.parseObject(JSON.toJSONString(request.get("ORDER_STS")), String.class);
-        List<SaoSalesOrderDto> saoSalesOrderDtos = saoSalesOrderService.selectByManID(sysUserDto.getManBuyerId(), ORDER_STS);
+        List<SaoSalesOrderDto> saoSalesOrderDtos = saoSalesOrderService.selectByManID(sysUserDto1.getManBuyerId(), ORDER_STS);
         responseDto.setSuccess(true);
         responseDto.setContent(saoSalesOrderDtos);
         return responseDto;
@@ -52,6 +53,7 @@ public class SaoSalesOrderController {
             }
         }else{
             responseDto.setSuccess(false);
+            responseDto.setMessage("the sao sales order is not in awaiting shipment state");
         }
         return responseDto;
     }
@@ -72,7 +74,7 @@ public class SaoSalesOrderController {
                 List<StoStoreOrderDto> stoStoreOrderDtos = stoStoreOrderService.selectByStrId(strStoreDto.getStrId());
                 List<SaoSalesOrderDto> saoSalesOrderDtoList = new ArrayList<>();
                 for(int j=0; j<stoStoreOrderDtos.size();j++){
-                    List<SaoSalesOrderDto> saoSalesOrderDtos = saoSalesOrderService.selectByStoId(stoStoreOrderDtos.get(j).getStoId(), ORDER_STS);
+                    List<SaoSalesOrderDto> saoSalesOrderDtos = saoSalesOrderService.selectByStoId(stoStoreOrderDtos.get(j).getStoId(), ORDER_STS); // order_no can be update
                     saoSalesOrderDtoList.addAll(saoSalesOrderDtos);
                 }
                 StrWithOrderDto strWithOrderDto = new StrWithOrderDto();

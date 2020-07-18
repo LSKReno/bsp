@@ -142,6 +142,13 @@ url:  /BrdBrandController/removeBrand
 
 return content type: null
 
+```
+describe:
+	前端发送一个BrdBrandDto到后端，后端调用数据库并返回结果到前端
+```
+
+
+
 ## 获取公司信息（MVO信息）
 
 url: /CompanyInformationController/getCompanyInfo
@@ -228,7 +235,7 @@ url: /SaOSalesOrderController/getBVOOrderList
 
 return content type: List<StrWithOrderDto>
 
-## 销售销售订单
+## 获取销售订单
 
 url: /SaOSalesOrderController/getSaoSalesOrderList
 

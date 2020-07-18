@@ -93,11 +93,11 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    TRANSACTION_ID, BUYER_ID, BANK_CARD_ID, TRANSACTION_NUMBER, TRANSACTION_TYPE, ACCOUNT_NAME, 
-    TRANSACTION_MONEY, COMMISSION, DISCOUNT_COMMISSION, TRANSACTION_METHOD, COMPLETE_TIME, 
-    `STATUS`, ACTUAL_MONEY, ACTUAL_COMMISSION, ACTUAL_DISCOUNT_COMMISSION, BALANCE, BUSINESS_ID, 
-    FINANCE_TYPE, NOTE, OPERATOR_NAME, OPERATOR_IP, CREATE_BY, CREATE_TIME, LAST_UPDATE_BY, 
-    LAST_UPDATE_TIME, BANK_RECEIPT_URL, EXCHANGE_RATE, TRANSACTION_DESC, FOREIGN_EXCHANGE_FEE, 
+    TRANSACTION_ID, BUYER_ID, BANK_CARD_ID, TRANSACTION_NUMBER, TRANSACTION_TYPE, ACCOUNT_NAME,
+    TRANSACTION_MONEY, COMMISSION, DISCOUNT_COMMISSION, TRANSACTION_METHOD, COMPLETE_TIME,
+    `STATUS`, ACTUAL_MONEY, ACTUAL_COMMISSION, ACTUAL_DISCOUNT_COMMISSION, BALANCE, BUSINESS_ID,
+    FINANCE_TYPE, NOTE, OPERATOR_NAME, OPERATOR_IP, CREATE_BY, CREATE_TIME, LAST_UPDATE_BY,
+    LAST_UPDATE_TIME, BANK_RECEIPT_URL, EXCHANGE_RATE, TRANSACTION_DESC, FOREIGN_EXCHANGE_FEE,
     WITHDRAW_FEE, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.WtrWalletTransactionRecordExample" resultMap="BaseResultMap">
@@ -138,7 +138,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from wtr_wallet_transaction_record
     where TRANSACTION_ID = #{transactionId,jdbcType=INTEGER}
@@ -168,28 +168,28 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.WtrWalletTransactionRecord">
-    insert into wtr_wallet_transaction_record (TRANSACTION_ID, BUYER_ID, BANK_CARD_ID, 
-      TRANSACTION_NUMBER, TRANSACTION_TYPE, ACCOUNT_NAME, 
-      TRANSACTION_MONEY, COMMISSION, DISCOUNT_COMMISSION, 
-      TRANSACTION_METHOD, COMPLETE_TIME, `STATUS`, 
-      ACTUAL_MONEY, ACTUAL_COMMISSION, ACTUAL_DISCOUNT_COMMISSION, 
-      BALANCE, BUSINESS_ID, FINANCE_TYPE, 
-      NOTE, OPERATOR_NAME, OPERATOR_IP, 
-      CREATE_BY, CREATE_TIME, LAST_UPDATE_BY, 
-      LAST_UPDATE_TIME, BANK_RECEIPT_URL, EXCHANGE_RATE, 
-      TRANSACTION_DESC, FOREIGN_EXCHANGE_FEE, WITHDRAW_FEE, 
+  <insert id="insert" parameterType="com.bsp.server.domain.WtrWalletTransactionRecord" useGeneratedKeys="true" keyProperty="transactionId" keyColumn="transactionId">
+    insert into wtr_wallet_transaction_record (TRANSACTION_ID, BUYER_ID, BANK_CARD_ID,
+      TRANSACTION_NUMBER, TRANSACTION_TYPE, ACCOUNT_NAME,
+      TRANSACTION_MONEY, COMMISSION, DISCOUNT_COMMISSION,
+      TRANSACTION_METHOD, COMPLETE_TIME, `STATUS`,
+      ACTUAL_MONEY, ACTUAL_COMMISSION, ACTUAL_DISCOUNT_COMMISSION,
+      BALANCE, BUSINESS_ID, FINANCE_TYPE,
+      NOTE, OPERATOR_NAME, OPERATOR_IP,
+      CREATE_BY, CREATE_TIME, LAST_UPDATE_BY,
+      LAST_UPDATE_TIME, BANK_RECEIPT_URL, EXCHANGE_RATE,
+      TRANSACTION_DESC, FOREIGN_EXCHANGE_FEE, WITHDRAW_FEE,
       deleted)
-    values (#{transactionId,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, #{bankCardId,jdbcType=INTEGER}, 
-      #{transactionNumber,jdbcType=VARCHAR}, #{transactionType,jdbcType=TINYINT}, #{accountName,jdbcType=VARCHAR}, 
-      #{transactionMoney,jdbcType=DECIMAL}, #{commission,jdbcType=DECIMAL}, #{discountCommission,jdbcType=DECIMAL}, 
-      #{transactionMethod,jdbcType=TINYINT}, #{completeTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, 
-      #{actualMoney,jdbcType=DECIMAL}, #{actualCommission,jdbcType=DECIMAL}, #{actualDiscountCommission,jdbcType=DECIMAL}, 
-      #{balance,jdbcType=DECIMAL}, #{businessId,jdbcType=INTEGER}, #{financeType,jdbcType=TINYINT}, 
-      #{note,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{operatorIp,jdbcType=VARCHAR}, 
-      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR}, 
-      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{bankReceiptUrl,jdbcType=VARCHAR}, #{exchangeRate,jdbcType=DECIMAL}, 
-      #{transactionDesc,jdbcType=VARCHAR}, #{foreignExchangeFee,jdbcType=DECIMAL}, #{withdrawFee,jdbcType=DECIMAL}, 
+    values (#{transactionId,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, #{bankCardId,jdbcType=INTEGER},
+      #{transactionNumber,jdbcType=VARCHAR}, #{transactionType,jdbcType=TINYINT}, #{accountName,jdbcType=VARCHAR},
+      #{transactionMoney,jdbcType=DECIMAL}, #{commission,jdbcType=DECIMAL}, #{discountCommission,jdbcType=DECIMAL},
+      #{transactionMethod,jdbcType=TINYINT}, #{completeTime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT},
+      #{actualMoney,jdbcType=DECIMAL}, #{actualCommission,jdbcType=DECIMAL}, #{actualDiscountCommission,jdbcType=DECIMAL},
+      #{balance,jdbcType=DECIMAL}, #{businessId,jdbcType=INTEGER}, #{financeType,jdbcType=TINYINT},
+      #{note,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, #{operatorIp,jdbcType=VARCHAR},
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastUpdateBy,jdbcType=VARCHAR},
+      #{lastUpdateTime,jdbcType=TIMESTAMP}, #{bankReceiptUrl,jdbcType=VARCHAR}, #{exchangeRate,jdbcType=DECIMAL},
+      #{transactionDesc,jdbcType=VARCHAR}, #{foreignExchangeFee,jdbcType=DECIMAL}, #{withdrawFee,jdbcType=DECIMAL},
       #{deleted,jdbcType=BIT})
   </insert>
 <!--  com.bsp.server.domain.WtrWalletTransactionRecord-->

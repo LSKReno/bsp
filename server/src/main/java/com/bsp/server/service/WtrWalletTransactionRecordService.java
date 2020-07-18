@@ -40,11 +40,14 @@ public class WtrWalletTransactionRecordService {
      */
     public int save(WtrWalletTransactionRecordDto wtrWalletTransactionRecordDto) {
         WtrWalletTransactionRecord wtrWalletTransactionRecord = CopyUtil.copy(wtrWalletTransactionRecordDto, WtrWalletTransactionRecord.class);
+        wtrWalletTransactionRecord.setLastUpdateTime(new Date());
         if (StringUtils.isEmpty(wtrWalletTransactionRecordDto.getTransactionId())) {
-            return this.insert(wtrWalletTransactionRecord);
+            wtrWalletTransactionRecord.setCreateTime(new Date());
+            this.insert(wtrWalletTransactionRecord);
         } else {
-            return this.update(wtrWalletTransactionRecord);
+            this.update(wtrWalletTransactionRecord);
         }
+        return wtrWalletTransactionRecord.getTransactionId();
     }
 
     /**
