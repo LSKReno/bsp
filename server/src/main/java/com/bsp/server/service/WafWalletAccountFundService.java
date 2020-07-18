@@ -1,5 +1,6 @@
 package com.bsp.server.service;
 
+import com.bsp.server.domain.WaaWalletAccount;
 import com.bsp.server.domain.WafWalletAccountFund;
 import com.bsp.server.domain.WafWalletAccountFundExample;
 import com.bsp.server.dto.PageDto;
@@ -12,8 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WafWalletAccountFundService {
@@ -21,9 +23,10 @@ public class WafWalletAccountFundService {
     @Resource
     private WafWalletAccountFundMapper wafWalletAccountFundMapper;
 
-    /**
-     * 列表查询
-     */
+    public Map<String,Object> getBeforeValue(Map<String,Object> mp){
+        return wafWalletAccountFundMapper.getBeforeValue(mp);
+    }
+
     public void list(PageDto pageDto) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         WafWalletAccountFundExample wafWalletAccountFundExample = new WafWalletAccountFundExample();
@@ -35,13 +38,18 @@ public class WafWalletAccountFundService {
     }
 
     /**
+     * 列表查询
+     */
+    public WafWalletAccountFund list(Integer id) {
+        return wafWalletAccountFundMapper.selectByPrimaryKey(id);
+    }
+
+    /**
      * 保存，id有值时更新，无值时新增
      */
     public int save(WafWalletAccountFundDto wafWalletAccountFundDto) {
         WafWalletAccountFund wafWalletAccountFund = CopyUtil.copy(wafWalletAccountFundDto, WafWalletAccountFund.class);
-        wafWalletAccountFund.setLastUpdateTime(new Date());
         if (StringUtils.isEmpty(wafWalletAccountFundDto.getBuyerId())) {
-            wafWalletAccountFund.setCreateTime(new Date());
             this.insert(wafWalletAccountFund);
         } else {
             this.update(wafWalletAccountFund);
@@ -56,11 +64,20 @@ public class WafWalletAccountFundService {
         return wafWalletAccountFundMapper.insert(wafWalletAccountFund);
     }
 
+    public int insertSelective(WafWalletAccountFund wafWalletAccountFund){
+        return wafWalletAccountFundMapper.insertSelective(wafWalletAccountFund);
+    }
+
     /**
      * 更新
      */
     private int update(WafWalletAccountFund wafWalletAccountFund) {
         return wafWalletAccountFundMapper.updateByPrimaryKey(wafWalletAccountFund);
+    }
+
+    public int updateByPrimaryKeySelective(Map<String,Object> mp){
+
+        return wafWalletAccountFundMapper.updateByPrimaryKeySelective(mp);
     }
 
     /**
@@ -71,7 +88,6 @@ public class WafWalletAccountFundService {
     }
 
     public WafWalletAccountFundDto selectByPrimaryKey(Integer buyerId) {
-        System.out.println(wafWalletAccountFundMapper.selectByPrimaryKey(buyerId).toString());
         return CopyUtil.copy(wafWalletAccountFundMapper.selectByPrimaryKey(buyerId), WafWalletAccountFundDto.class);
     }
 }
