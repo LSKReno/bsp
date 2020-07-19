@@ -10,6 +10,10 @@ public class SysMenu {
 
     private String menuName;
 
+    private String permissionId;
+
+    private String permissionName;
+
     private String menuUrl;
 
     private String parentId;
@@ -48,6 +52,22 @@ public class SysMenu {
 
     public void setMenuName(String menuName) {
         this.menuName = menuName;
+    }
+
+    public String getPermissionId() {
+        return permissionId;
+    }
+
+    public void setPermissionId(String permissionId) {
+        this.permissionId = permissionId;
+    }
+
+    public String getPermissionName() {
+        return permissionName;
+    }
+
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
     }
 
     public String getMenuUrl() {
@@ -123,6 +143,8 @@ public class SysMenu {
         sb.append(", menuId=").append(menuId);
         sb.append(", menuTitle=").append(menuTitle);
         sb.append(", menuName=").append(menuName);
+        sb.append(", permissionId=").append(permissionId);
+        sb.append(", permissionName=").append(permissionName);
         sb.append(", menuUrl=").append(menuUrl);
         sb.append(", parentId=").append(parentId);
         sb.append(", menuOrder=").append(menuOrder);
@@ -150,6 +172,8 @@ public class SysMenu {
         return (this.getMenuId() == null ? other.getMenuId() == null : this.getMenuId().equals(other.getMenuId()))
             && (this.getMenuTitle() == null ? other.getMenuTitle() == null : this.getMenuTitle().equals(other.getMenuTitle()))
             && (this.getMenuName() == null ? other.getMenuName() == null : this.getMenuName().equals(other.getMenuName()))
+            && (this.getPermissionId() == null ? other.getPermissionId() == null : this.getPermissionId().equals(other.getPermissionId()))
+            && (this.getPermissionName() == null ? other.getPermissionName() == null : this.getPermissionName().equals(other.getPermissionName()))
             && (this.getMenuUrl() == null ? other.getMenuUrl() == null : this.getMenuUrl().equals(other.getMenuUrl()))
             && (this.getParentId() == null ? other.getParentId() == null : this.getParentId().equals(other.getParentId()))
             && (this.getMenuOrder() == null ? other.getMenuOrder() == null : this.getMenuOrder().equals(other.getMenuOrder()))
@@ -167,6 +191,8 @@ public class SysMenu {
         result = prime * result + ((getMenuId() == null) ? 0 : getMenuId().hashCode());
         result = prime * result + ((getMenuTitle() == null) ? 0 : getMenuTitle().hashCode());
         result = prime * result + ((getMenuName() == null) ? 0 : getMenuName().hashCode());
+        result = prime * result + ((getPermissionId() == null) ? 0 : getPermissionId().hashCode());
+        result = prime * result + ((getPermissionName() == null) ? 0 : getPermissionName().hashCode());
         result = prime * result + ((getMenuUrl() == null) ? 0 : getMenuUrl().hashCode());
         result = prime * result + ((getParentId() == null) ? 0 : getParentId().hashCode());
         result = prime * result + ((getMenuOrder() == null) ? 0 : getMenuOrder().hashCode());
@@ -182,6 +208,8 @@ public class SysMenu {
         menuId("MENU_ID", "menuId", "INTEGER", false),
         menuTitle("MENU_TITLE", "menuTitle", "VARCHAR", false),
         menuName("MENU_NAME", "menuName", "VARCHAR", false),
+        permissionId("PERMISSION_ID", "permissionId", "VARCHAR", false),
+        permissionName("PERMISSION_NAME", "permissionName", "VARCHAR", false),
         menuUrl("MENU_URL", "menuUrl", "VARCHAR", false),
         parentId("PARENT_ID", "parentId", "VARCHAR", false),
         menuOrder("MENU_ORDER", "menuOrder", "VARCHAR", false),

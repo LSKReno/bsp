@@ -20,6 +20,16 @@ public class SysMenuDto {
     private String menuName;
 
     /**
+     * PERMISSION_ID
+     */
+    private String permissionId;
+
+    /**
+     * PERMISSION_NAME
+     */
+    private String permissionName;
+
+    /**
      * 路径
 
      */
@@ -86,6 +96,22 @@ public class SysMenuDto {
 
     public void setMenuName(String menuName) {
         this.menuName = menuName;
+    }
+
+    public String getPermissionId() {
+        return permissionId;
+    }
+
+    public void setPermissionId(String permissionId) {
+        this.permissionId = permissionId;
+    }
+
+    public String getPermissionName() {
+        return permissionName;
+    }
+
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
     }
 
     public String getMenuUrl() {
@@ -162,6 +188,8 @@ public class SysMenuDto {
         sb.append(", menuId=").append(menuId);
         sb.append(", menuTitle=").append(menuTitle);
         sb.append(", menuName=").append(menuName);
+        sb.append(", permissionId=").append(permissionId);
+        sb.append(", permissionName=").append(permissionName);
         sb.append(", menuUrl=").append(menuUrl);
         sb.append(", parentId=").append(parentId);
         sb.append(", menuOrder=").append(menuOrder);

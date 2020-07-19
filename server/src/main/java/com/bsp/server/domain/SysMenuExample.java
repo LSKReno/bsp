@@ -432,6 +432,206 @@ public class SysMenuExample {
             return (Criteria) this;
         }
 
+        public Criteria andPermissionIdIsNull() {
+            addCriterion("PERMISSION_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdIsNotNull() {
+            addCriterion("PERMISSION_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdEqualTo(String value) {
+            addCriterion("PERMISSION_ID =", value, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_ID = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdNotEqualTo(String value) {
+            addCriterion("PERMISSION_ID <>", value, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdNotEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_ID <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdGreaterThan(String value) {
+            addCriterion("PERMISSION_ID >", value, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdGreaterThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_ID > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdGreaterThanOrEqualTo(String value) {
+            addCriterion("PERMISSION_ID >=", value, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdGreaterThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_ID >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdLessThan(String value) {
+            addCriterion("PERMISSION_ID <", value, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdLessThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_ID < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdLessThanOrEqualTo(String value) {
+            addCriterion("PERMISSION_ID <=", value, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdLessThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_ID <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdLike(String value) {
+            addCriterion("PERMISSION_ID like", value, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdNotLike(String value) {
+            addCriterion("PERMISSION_ID not like", value, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdIn(List<String> values) {
+            addCriterion("PERMISSION_ID in", values, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdNotIn(List<String> values) {
+            addCriterion("PERMISSION_ID not in", values, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdBetween(String value1, String value2) {
+            addCriterion("PERMISSION_ID between", value1, value2, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionIdNotBetween(String value1, String value2) {
+            addCriterion("PERMISSION_ID not between", value1, value2, "permissionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameIsNull() {
+            addCriterion("PERMISSION_NAME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameIsNotNull() {
+            addCriterion("PERMISSION_NAME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameEqualTo(String value) {
+            addCriterion("PERMISSION_NAME =", value, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_NAME = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameNotEqualTo(String value) {
+            addCriterion("PERMISSION_NAME <>", value, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameNotEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_NAME <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameGreaterThan(String value) {
+            addCriterion("PERMISSION_NAME >", value, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameGreaterThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_NAME > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameGreaterThanOrEqualTo(String value) {
+            addCriterion("PERMISSION_NAME >=", value, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameGreaterThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_NAME >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameLessThan(String value) {
+            addCriterion("PERMISSION_NAME <", value, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameLessThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_NAME < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameLessThanOrEqualTo(String value) {
+            addCriterion("PERMISSION_NAME <=", value, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameLessThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("PERMISSION_NAME <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameLike(String value) {
+            addCriterion("PERMISSION_NAME like", value, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameNotLike(String value) {
+            addCriterion("PERMISSION_NAME not like", value, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameIn(List<String> values) {
+            addCriterion("PERMISSION_NAME in", values, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameNotIn(List<String> values) {
+            addCriterion("PERMISSION_NAME not in", values, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameBetween(String value1, String value2) {
+            addCriterion("PERMISSION_NAME between", value1, value2, "permissionName");
+            return (Criteria) this;
+        }
+
+        public Criteria andPermissionNameNotBetween(String value1, String value2) {
+            addCriterion("PERMISSION_NAME not between", value1, value2, "permissionName");
+            return (Criteria) this;
+        }
+
         public Criteria andMenuUrlIsNull() {
             addCriterion("MENU_URL is null");
             return (Criteria) this;

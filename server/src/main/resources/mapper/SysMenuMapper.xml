@@ -5,6 +5,8 @@
     <id column="MENU_ID" jdbcType="INTEGER" property="menuId" />
     <result column="MENU_TITLE" jdbcType="VARCHAR" property="menuTitle" />
     <result column="MENU_NAME" jdbcType="VARCHAR" property="menuName" />
+    <result column="PERMISSION_ID" jdbcType="VARCHAR" property="permissionId" />
+    <result column="PERMISSION_NAME" jdbcType="VARCHAR" property="permissionName" />
     <result column="MENU_URL" jdbcType="VARCHAR" property="menuUrl" />
     <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
     <result column="MENU_ORDER" jdbcType="VARCHAR" property="menuOrder" />
@@ -73,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    MENU_ID, MENU_TITLE, MENU_NAME, MENU_URL, PARENT_ID, MENU_ORDER, MENU_ICON, MENU_TYPE, 
-    MENU_REDIRECT, MENU_METADATA, deleted
+    MENU_ID, MENU_TITLE, MENU_NAME, PERMISSION_ID, PERMISSION_NAME, MENU_URL, PARENT_ID, 
+    MENU_ORDER, MENU_ICON, MENU_TYPE, MENU_REDIRECT, MENU_METADATA, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.SysMenuExample" resultMap="BaseResultMap">
     select
@@ -146,13 +148,15 @@
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.SysMenu">
     insert into sys_menu (MENU_ID, MENU_TITLE, MENU_NAME, 
-      MENU_URL, PARENT_ID, MENU_ORDER, 
-      MENU_ICON, MENU_TYPE, MENU_REDIRECT, 
-      MENU_METADATA, deleted)
+      PERMISSION_ID, PERMISSION_NAME, MENU_URL, 
+      PARENT_ID, MENU_ORDER, MENU_ICON, 
+      MENU_TYPE, MENU_REDIRECT, MENU_METADATA, 
+      deleted)
     values (#{menuId,jdbcType=INTEGER}, #{menuTitle,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
-      #{menuUrl,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{menuOrder,jdbcType=VARCHAR}, 
-      #{menuIcon,jdbcType=VARCHAR}, #{menuType,jdbcType=VARCHAR}, #{menuRedirect,jdbcType=VARCHAR}, 
-      #{menuMetadata,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT})
+      #{permissionId,jdbcType=VARCHAR}, #{permissionName,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=VARCHAR}, #{menuOrder,jdbcType=VARCHAR}, #{menuIcon,jdbcType=VARCHAR}, 
+      #{menuType,jdbcType=VARCHAR}, #{menuRedirect,jdbcType=VARCHAR}, #{menuMetadata,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.SysMenu">
     insert into sys_menu
@@ -165,6 +169,12 @@
       </if>
       <if test="menuName != null">
         MENU_NAME,
+      </if>
+      <if test="permissionId != null">
+        PERMISSION_ID,
+      </if>
+      <if test="permissionName != null">
+        PERMISSION_NAME,
       </if>
       <if test="menuUrl != null">
         MENU_URL,
@@ -200,6 +210,12 @@
       </if>
       <if test="menuName != null">
         #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionId != null">
+        #{permissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionName != null">
+        #{permissionName,jdbcType=VARCHAR},
       </if>
       <if test="menuUrl != null">
         #{menuUrl,jdbcType=VARCHAR},
@@ -245,6 +261,12 @@
       <if test="record.menuName != null">
         MENU_NAME = #{record.menuName,jdbcType=VARCHAR},
       </if>
+      <if test="record.permissionId != null">
+        PERMISSION_ID = #{record.permissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.permissionName != null">
+        PERMISSION_NAME = #{record.permissionName,jdbcType=VARCHAR},
+      </if>
       <if test="record.menuUrl != null">
         MENU_URL = #{record.menuUrl,jdbcType=VARCHAR},
       </if>
@@ -279,6 +301,8 @@
     set MENU_ID = #{record.menuId,jdbcType=INTEGER},
       MENU_TITLE = #{record.menuTitle,jdbcType=VARCHAR},
       MENU_NAME = #{record.menuName,jdbcType=VARCHAR},
+      PERMISSION_ID = #{record.permissionId,jdbcType=VARCHAR},
+      PERMISSION_NAME = #{record.permissionName,jdbcType=VARCHAR},
       MENU_URL = #{record.menuUrl,jdbcType=VARCHAR},
       PARENT_ID = #{record.parentId,jdbcType=VARCHAR},
       MENU_ORDER = #{record.menuOrder,jdbcType=VARCHAR},
@@ -299,6 +323,12 @@
       </if>
       <if test="menuName != null">
         MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionId != null">
+        PERMISSION_ID = #{permissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionName != null">
+        PERMISSION_NAME = #{permissionName,jdbcType=VARCHAR},
       </if>
       <if test="menuUrl != null">
         MENU_URL = #{menuUrl,jdbcType=VARCHAR},
@@ -331,6 +361,8 @@
     update sys_menu
     set MENU_TITLE = #{menuTitle,jdbcType=VARCHAR},
       MENU_NAME = #{menuName,jdbcType=VARCHAR},
+      PERMISSION_ID = #{permissionId,jdbcType=VARCHAR},
+      PERMISSION_NAME = #{permissionName,jdbcType=VARCHAR},
       MENU_URL = #{menuUrl,jdbcType=VARCHAR},
       PARENT_ID = #{parentId,jdbcType=VARCHAR},
       MENU_ORDER = #{menuOrder,jdbcType=VARCHAR},

@@ -10,55 +10,11 @@
 # 根据角色获取 menu
 POST  http://127.0.0.1:9000/system/auth/menu
 Content-Type: application/json
-#Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ7XCJyb2xlSWRcIjpcIjFcIixcInVzZXJJZFwiOjEsXCJ1c2VybmFtZVwiOlwiTFNLUmVub1wifSIsImlhdCI6MTU5NDExMzU1NywiZXhwIjoxNTk0MTE3MTU3fQ.Pz1xsGoj9AxJ6KmqyCQCig-T-I4TcwZtgJVbVMEtOdGUlF9j_5FXzrZtSL27ELCm1AhqTUeKSy57MwIM6E5dvw
+#Authorization:
 
 {
-  "userId": "4"
+  "userId": "1"
 }
-
-//[
-//  {
-//    "path": "/bvo",
-//    "menuOrder": "3000",
-//    "name": "BVOMenu",
-//    "icon": "setting",
-//    "title": "BVOMenuTitle",
-//    "parentId": "3000"
-//  },
-//  {
-//    "path": "/bvo/sub1",
-//    "menuOrder": "3001",
-//    "name": "BVOSubMenu1",
-//    "icon": "setting",
-//    "title": "BVOSubMenu1Title",
-//    "parentId": "3000"
-//  },
-//  {
-//    "path": "/bvo/sub2",
-//    "menuOrder": "3002",
-//    "name": "BVOSubMenu2",
-//    "icon": "setting",
-//    "title": "BVOSubMenu2Title",
-//    "parentId": "3000"
-//  },
-//  {
-//    "path": "/bvo/sub3",
-//    "menuOrder": "3003",
-//    "meta": "{“metadata_test”:\"i am metadata\"}",
-//    "name": "BVOSubMenu3",
-//    "icon": "setting",
-//    "title": "BVOSubMenu3Title",
-//    "parentId": "3000"
-//  }
-//]
-
-
-
-
-
-
-
-
 
 ###
 

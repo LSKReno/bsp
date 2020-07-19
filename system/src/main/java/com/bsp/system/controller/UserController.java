@@ -49,7 +49,7 @@ public class UserController {
     /**
      * 用户信息查询
      */
-    @GetMapping("/user/info")
+    @PostMapping("/user/info")
     public ResponseDto list(HttpServletRequest request) {
         ResponseDto responseDto = new ResponseDto();
         String token = request.getHeader(jwtConfig.getHeader());
@@ -143,7 +143,7 @@ public class UserController {
      * 登出(必须有token)
      */
     @PostMapping("/logout")
-    public ResponseDto logout(@RequestBody SysUserDto sysUserDto, HttpServletRequest request) {
+    public ResponseDto logout(HttpServletRequest request) {
         LOG.info("用户登出开始");
         ResponseDto responseDto = new ResponseDto();
         // 记录
