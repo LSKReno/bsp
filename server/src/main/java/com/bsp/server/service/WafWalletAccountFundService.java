@@ -72,7 +72,7 @@ public class WafWalletAccountFundService {
      * 更新
      */
     private int update(WafWalletAccountFund wafWalletAccountFund) {
-        return wafWalletAccountFundMapper.updateByPrimaryKey(wafWalletAccountFund);
+        return wafWalletAccountFundMapper.updateByPrimaryKeySelective(wafWalletAccountFund);
     }
 
     public int updateByPrimaryKeySelective(Map<String,Object> mp){

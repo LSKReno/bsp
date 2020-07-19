@@ -56,7 +56,7 @@ public class WtaWalletTransactionAduitService {
         return wtaWalletTransactionAduitMapper.insert(wtaWalletTransactionAduit);
     }
 
-    public int insertSelective(Map<String,Object> mp){
+    public int insertSelective(Map<String, Object> mp) {
         return wtaWalletTransactionAduitMapper.insertSelective(mp);
     }
 
@@ -64,7 +64,7 @@ public class WtaWalletTransactionAduitService {
      * 更新
      */
     private int update(WtaWalletTransactionAduit wtaWalletTransactionAduit) {
-        return wtaWalletTransactionAduitMapper.updateByPrimaryKey(wtaWalletTransactionAduit);
+        return wtaWalletTransactionAduitMapper.updateByPrimaryKeySelective(wtaWalletTransactionAduit);
     }
 
     /**
@@ -73,4 +73,22 @@ public class WtaWalletTransactionAduitService {
     public void delete(Integer id) {
         wtaWalletTransactionAduitMapper.deleteByPrimaryKey(id);
     }
+
+
+    /**
+     * TransactionAudit审核  列表查询
+     */
+    public void getTransactionAudit(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
+        WtaWalletTransactionAduitExample wtaWalletTransactionAduitExample = new WtaWalletTransactionAduitExample();
+        wtaWalletTransactionAduitExample.createCriteria()
+                .andOperateTypeNotEqualTo(new Integer(3).byteValue());
+        List<WtaWalletTransactionAduit> wtaWalletTransactionAduitList =
+                wtaWalletTransactionAduitMapper.selectByExample(wtaWalletTransactionAduitExample);
+        PageInfo<WtaWalletTransactionAduit> pageInfo = new PageInfo<>(wtaWalletTransactionAduitList);
+        pageDto.setTotal(pageInfo.getTotal());
+        List<WtaWalletTransactionAduitDto> wtaWalletTransactionAduitDtoList = CopyUtil.copyList(wtaWalletTransactionAduitList, WtaWalletTransactionAduitDto.class);
+        pageDto.setList(wtaWalletTransactionAduitDtoList);
+    }
+
 }
