@@ -2,6 +2,7 @@ package com.bsp.system.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bsp.server.domain.SysUser;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.dto.SysUserDto;
 import com.bsp.server.dto.UllUserLoginLogoutLogDto;
@@ -56,9 +57,10 @@ public class UserController {
 
         JSONObject userInfo = JSONObject.parseObject(tokenJSONString);
 
-        SysUserDto sysUserDtoRes = CopyUtil.copy(
-                sysUserService.selectByUserName(
-                        String.valueOf(userInfo.get("username"))), SysUserDto.class);
+        SysUser sysUser = sysUserService.selectByUserName(
+                String.valueOf(userInfo.get("username")));
+        sysUser.setPassword("");
+        SysUserDto sysUserDtoRes = CopyUtil.copy(sysUser, SysUserDto.class);
         responseDto.setContent(sysUserDtoRes);
         return responseDto;
     }
