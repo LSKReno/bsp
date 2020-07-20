@@ -56,8 +56,19 @@ public class StrStoreController {
         SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
         ResponseDto responseDto = new ResponseDto();
         if(sysUserDto1.getManBuyerId() == null){
-            responseDto.setSuccess(false);
-        }else{
+            DsrDropshipperDto dsrDropshipperDto = new DsrDropshipperDto();
+            dsrDropshipperDto.setName(sysUserDto1.getUsername());
+            dsrDropshipperDto.setDeleted(0);
+            dsrDropshipperDto.setCallCnt(0);
+            dsrDropshipperDto.setStsCd("0");
+            dsrDropshipperDto.setCreatedBy(sysUserDto1.getUsername());
+            dsrDropshipperDto.setLastUpdateBy(sysUserDto1.getUsername());
+            dsrDropshipperDto.setCreatedBy(sysUserDto1.getUsername());
+            int dsrId = dsrDropshipperService.save(dsrDropshipperDto);
+            sysUserDto1.setManBuyerId(dsrId);
+            sysUserService.save(sysUserDto1);
+//            responseDto.setSuccess(false);
+        }
             strStoreDto.setDsrId(sysUserDto1.getManBuyerId());
             strStoreDto.setStoreStsCd("INI");
             strStoreDto.setCreatedBy(sysUserDto1.getUsername());
@@ -88,10 +99,9 @@ public class StrStoreController {
                 }else {
                     responseDto.setSuccess(false);
                 }
-            }else{
+            }else {
                 responseDto.setSuccess(false);
             }
-        }
         return responseDto;
     }
 }

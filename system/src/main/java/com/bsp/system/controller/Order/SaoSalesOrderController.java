@@ -57,6 +57,22 @@ public class SaoSalesOrderController {
         }
         return responseDto;
     }
+    @PostMapping("/cancelSHIPPED")
+    public ResponseDto cancelSHIPPED(@RequestBody SaoSalesOrderDto saoSalesOrderDto){
+        ResponseDto responseDto = new ResponseDto();
+        SaoSalesOrderDto saoSalesOrderDto1 = saoSalesOrderService.selectByPrimaryKey(saoSalesOrderDto.getSaoId());
+        if(saoSalesOrderDto1.getOrderSts().equals("SHIPPED")){
+            if(saoSalesOrderService.cancelSHIPPED(saoSalesOrderDto1.getSaoId()) != 0){
+                responseDto.setSuccess(true);
+            }else{
+                responseDto.setSuccess(false);
+            }
+        }else{
+            responseDto.setSuccess(false);
+            responseDto.setMessage("the sao sales order is not in awaiting shipment state");
+        }
+        return responseDto;
+    }
     @PostMapping("/getBVOOrderList")
     public ResponseDto getBVOOrderList(@RequestBody Map<String,Object> request){
         ResponseDto responseDto = new ResponseDto();

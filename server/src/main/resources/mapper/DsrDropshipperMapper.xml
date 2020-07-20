@@ -144,7 +144,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.DsrDropshipper">
+  <insert id="insert" parameterType="com.bsp.server.domain.DsrDropshipper" useGeneratedKeys="true" keyProperty="dsrId" keyColumn="dsrId">
     insert into dsr_dropshipper (DSR_ID, `NAME`, CREATED_BY,
       CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,
       CALL_CNT, REMARK, STS_CD,

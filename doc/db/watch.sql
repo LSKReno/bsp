@@ -11,6 +11,12 @@ select * from sal_sales_order_line_item;
 
 select * from str_store;
 
+select * from `drp_dropship_price`;
+
+select * from `sdi_store_dropship_item`;
+
+select * from `wit_wishlist`;
+
 select * from `eba_ebay_authorization`;
 
 select * from sys_user;
@@ -38,3 +44,9 @@ select * from waf_wallet_account_fund;
 select * from wtr_wallet_transaction_record;
 
 select * from wta_wallet_transaction_aduit;
+
+select * from `pro_product`;
+
+select * from `wit_wishlist`;
+
+select * from `prc_product_category`;

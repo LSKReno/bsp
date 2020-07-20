@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,7 +39,10 @@ public class ParParameterService {
      */
     public int save(ParParameterDto parParameterDto) {
         ParParameter parParameter = CopyUtil.copy(parParameterDto, ParParameter.class);
+        parParameter.setLastUpdateDate(new Date());
+        System.out.println(parParameter.toString());
         if (StringUtils.isEmpty(parParameterDto.getParId())) {
+            parParameter.setCreationDate(new Date());
             this.insert(parParameter);
         } else {
             this.update(parParameter);
@@ -57,7 +61,7 @@ public class ParParameterService {
      * 更新
      */
     private void update(ParParameter parParameter) {
-        parParameterMapper.updateByPrimaryKey(parParameter);
+        parParameterMapper.updateByPrimaryKeySelective(parParameter);
     }
 
     /**

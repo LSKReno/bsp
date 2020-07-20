@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,7 +39,10 @@ public class CdmCodeMasterService {
      */
     public int save(CdmCodeMasterDto cdmCodeMasterDto) {
         CdmCodeMaster cdmCodeMaster = CopyUtil.copy(cdmCodeMasterDto, CdmCodeMaster.class);
+        System.out.println(cdmCodeMaster.toString());
+        cdmCodeMaster.setLastUpdateDate(new Date());
         if (StringUtils.isEmpty(cdmCodeMasterDto.getCdmId())) {
+            cdmCodeMaster.setCreationDate(new Date());
             this.insert(cdmCodeMaster);
         } else {
             this.update(cdmCodeMaster);
@@ -57,7 +61,7 @@ public class CdmCodeMasterService {
      * 更新
      */
     private void update(CdmCodeMaster cdmCodeMaster) {
-        cdmCodeMasterMapper.updateByPrimaryKey(cdmCodeMaster);
+        cdmCodeMasterMapper.updateByPrimaryKeySelective(cdmCodeMaster);
     }
 
     /**
