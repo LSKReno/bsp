@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * 商品信息CRUD，不包括图片，图片在分类&主图中上传
- * 填写完商品信息应自动跳转到分类&主图界面
+ * 但是要先插入img，否则主图页面无法显示
  */
 @RestController
 @RequestMapping("/mvo/product")
@@ -31,6 +31,9 @@ public class MVOProductController {
     private PdnProductDescritionService pdnProductDescritionService;
     @Resource
     private PrcProductCategoryService prcProductCategoryService;
+    @Resource
+    private ImgImageService imgImageService;
+
     @Resource
     private SysUserService sysUserService;
 
@@ -71,6 +74,7 @@ public class MVOProductController {
     public ResponseDto update(@RequestBody Map<String,Object> mp){
         ResponseDto responseDto = new ResponseDto();
         mp.put("lastUpdateDate",new Date());
+        mp.put("price",mp.get("retailPrice")); // 售价等于建议零售价
         int f1=proProductService.updateByPrimaryKeySelective(mp);
         int f2=ofpOfferPriceService.updateSelective(mp);
         int f3=pckPackageInfoService.updateSelective(mp);
@@ -97,7 +101,8 @@ public class MVOProductController {
         int f3=pckPackageInfoService.updateSelective(mp);
         int f4=pdnProductDescritionService.updateSelective(mp);
         int f5=prcProductCategoryService.updateSelective(mp);
-        if(f1==0||f2==0||f3==0||f4==0||f5==0){
+        int f6=imgImageService.updateSelective(mp);
+        if(f1==0||f2==0||f3==0||f4==0||f5==0||f6==0){
             responseDto.setSuccess(false);
         }
         return responseDto;
@@ -121,7 +126,8 @@ public class MVOProductController {
         int f3=pckPackageInfoService.insertSelective(mp);
         int f4=pdnProductDescritionService.insertSelective(mp);
         int f5=prcProductCategoryService.insertSelective(mp);
-        if(f1==0||f2==0||f3==0||f4==0||f5==0){
+        int f6=imgImageService.insertSelective(mp);
+        if(f1==0||f2==0||f3==0||f4==0||f5==0||f6==0){
             responseDto.setSuccess(false);
         }
         return responseDto;

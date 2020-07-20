@@ -117,6 +117,7 @@ public class WalletController {
         mp.put("createTime",dt);
         mp.put("createBy",mp.get("accountName"));
         mp.put("deleted","0");
+        mp.put("operateType",1); // 操作类型：充值
         mp.put("status",2); //状态：申请
         mp.put("financeType",1); //入款
         mp.put("transactionType",1); //业务类型：充值
@@ -165,6 +166,7 @@ public class WalletController {
         mp.put("createTime",dt);
         mp.put("createBy",mp.get("accountName"));
         mp.put("deleted","0");
+        mp.put("operateType",2); // 操作类型：提现
         mp.put("status",2); //状态：申请
         mp.put("financeType",2); //出款
         mp.put("transactionType",2); //业务类型：提现

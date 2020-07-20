@@ -10,9 +10,10 @@ POST  http://127.0.0.1:9000/system/mvo/productCategory/update
 Content-Type: application/json
 
 {
-  "prcId": "7",
+  "prcId": "8",
+  "uri": "https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png",
   "stsCd": "A",
-  "lastUpdateBy": "Sum"
+  "lastUpdateBy": "LSKReno3"
 }
 
 ###
