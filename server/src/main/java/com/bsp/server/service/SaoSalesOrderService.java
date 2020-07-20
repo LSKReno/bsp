@@ -90,4 +90,11 @@ public class SaoSalesOrderService {
     public List<SaoSalesOrderDto> selectByStoId(Integer stoId, String ORDER_STS) {
         return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId, ORDER_STS), SaoSalesOrderDto.class);
     }
+
+    public int cancelSHIPPED(Integer saoId) {
+        SaoSalesOrder salesOrder = new SaoSalesOrder();
+        salesOrder.setSaoId(saoId);
+        salesOrder.setOrderSts("Canceled");
+        return saoSalesOrderMapper.updateByPrimaryKeySelective(salesOrder);
+    }
 }

@@ -44,10 +44,11 @@ public class DsrDropshipperService {
         dsrDropshipper.setRegisterDate(new Date());
         if (StringUtils.isEmpty(dsrDropshipperDto.getDsrId())) {
             dsrDropshipper.setCreationDate(new Date());
-            return this.insert(dsrDropshipper);
+            this.insert(dsrDropshipper);
         } else {
-            return this.update(dsrDropshipper);
+            this.update(dsrDropshipper);
         }
+        return dsrDropshipper.getDsrId();
     }
 
     /**
