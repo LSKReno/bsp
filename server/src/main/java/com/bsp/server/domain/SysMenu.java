@@ -8,7 +8,11 @@ public class SysMenu {
 
     private String menuTitle;
 
+    private String menuKey;
+
     private String menuName;
+
+    private String component;
 
     private String permissionId;
 
@@ -46,12 +50,28 @@ public class SysMenu {
         this.menuTitle = menuTitle;
     }
 
+    public String getMenuKey() {
+        return menuKey;
+    }
+
+    public void setMenuKey(String menuKey) {
+        this.menuKey = menuKey;
+    }
+
     public String getMenuName() {
         return menuName;
     }
 
     public void setMenuName(String menuName) {
         this.menuName = menuName;
+    }
+
+    public String getComponent() {
+        return component;
+    }
+
+    public void setComponent(String component) {
+        this.component = component;
     }
 
     public String getPermissionId() {
@@ -142,7 +162,9 @@ public class SysMenu {
         sb.append("Hash = ").append(hashCode());
         sb.append(", menuId=").append(menuId);
         sb.append(", menuTitle=").append(menuTitle);
+        sb.append(", menuKey=").append(menuKey);
         sb.append(", menuName=").append(menuName);
+        sb.append(", component=").append(component);
         sb.append(", permissionId=").append(permissionId);
         sb.append(", permissionName=").append(permissionName);
         sb.append(", menuUrl=").append(menuUrl);
@@ -171,7 +193,9 @@ public class SysMenu {
         SysMenu other = (SysMenu) that;
         return (this.getMenuId() == null ? other.getMenuId() == null : this.getMenuId().equals(other.getMenuId()))
             && (this.getMenuTitle() == null ? other.getMenuTitle() == null : this.getMenuTitle().equals(other.getMenuTitle()))
+            && (this.getMenuKey() == null ? other.getMenuKey() == null : this.getMenuKey().equals(other.getMenuKey()))
             && (this.getMenuName() == null ? other.getMenuName() == null : this.getMenuName().equals(other.getMenuName()))
+            && (this.getComponent() == null ? other.getComponent() == null : this.getComponent().equals(other.getComponent()))
             && (this.getPermissionId() == null ? other.getPermissionId() == null : this.getPermissionId().equals(other.getPermissionId()))
             && (this.getPermissionName() == null ? other.getPermissionName() == null : this.getPermissionName().equals(other.getPermissionName()))
             && (this.getMenuUrl() == null ? other.getMenuUrl() == null : this.getMenuUrl().equals(other.getMenuUrl()))
@@ -190,7 +214,9 @@ public class SysMenu {
         int result = 1;
         result = prime * result + ((getMenuId() == null) ? 0 : getMenuId().hashCode());
         result = prime * result + ((getMenuTitle() == null) ? 0 : getMenuTitle().hashCode());
+        result = prime * result + ((getMenuKey() == null) ? 0 : getMenuKey().hashCode());
         result = prime * result + ((getMenuName() == null) ? 0 : getMenuName().hashCode());
+        result = prime * result + ((getComponent() == null) ? 0 : getComponent().hashCode());
         result = prime * result + ((getPermissionId() == null) ? 0 : getPermissionId().hashCode());
         result = prime * result + ((getPermissionName() == null) ? 0 : getPermissionName().hashCode());
         result = prime * result + ((getMenuUrl() == null) ? 0 : getMenuUrl().hashCode());
@@ -207,7 +233,9 @@ public class SysMenu {
     public enum Column {
         menuId("MENU_ID", "menuId", "INTEGER", false),
         menuTitle("MENU_TITLE", "menuTitle", "VARCHAR", false),
+        menuKey("MENU_KEY", "menuKey", "VARCHAR", false),
         menuName("MENU_NAME", "menuName", "VARCHAR", false),
+        component("COMPONENT", "component", "VARCHAR", false),
         permissionId("PERMISSION_ID", "permissionId", "VARCHAR", false),
         permissionName("PERMISSION_NAME", "permissionName", "VARCHAR", false),
         menuUrl("MENU_URL", "menuUrl", "VARCHAR", false),

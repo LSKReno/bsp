@@ -332,6 +332,106 @@ public class SysMenuExample {
             return (Criteria) this;
         }
 
+        public Criteria andMenuKeyIsNull() {
+            addCriterion("MENU_KEY is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyIsNotNull() {
+            addCriterion("MENU_KEY is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyEqualTo(String value) {
+            addCriterion("MENU_KEY =", value, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_KEY = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyNotEqualTo(String value) {
+            addCriterion("MENU_KEY <>", value, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyNotEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_KEY <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyGreaterThan(String value) {
+            addCriterion("MENU_KEY >", value, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyGreaterThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_KEY > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyGreaterThanOrEqualTo(String value) {
+            addCriterion("MENU_KEY >=", value, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyGreaterThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_KEY >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyLessThan(String value) {
+            addCriterion("MENU_KEY <", value, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyLessThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_KEY < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyLessThanOrEqualTo(String value) {
+            addCriterion("MENU_KEY <=", value, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyLessThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("MENU_KEY <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyLike(String value) {
+            addCriterion("MENU_KEY like", value, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyNotLike(String value) {
+            addCriterion("MENU_KEY not like", value, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyIn(List<String> values) {
+            addCriterion("MENU_KEY in", values, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyNotIn(List<String> values) {
+            addCriterion("MENU_KEY not in", values, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyBetween(String value1, String value2) {
+            addCriterion("MENU_KEY between", value1, value2, "menuKey");
+            return (Criteria) this;
+        }
+
+        public Criteria andMenuKeyNotBetween(String value1, String value2) {
+            addCriterion("MENU_KEY not between", value1, value2, "menuKey");
+            return (Criteria) this;
+        }
+
         public Criteria andMenuNameIsNull() {
             addCriterion("MENU_NAME is null");
             return (Criteria) this;
@@ -429,6 +529,106 @@ public class SysMenuExample {
 
         public Criteria andMenuNameNotBetween(String value1, String value2) {
             addCriterion("MENU_NAME not between", value1, value2, "menuName");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentIsNull() {
+            addCriterion("COMPONENT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentIsNotNull() {
+            addCriterion("COMPONENT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentEqualTo(String value) {
+            addCriterion("COMPONENT =", value, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("COMPONENT = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentNotEqualTo(String value) {
+            addCriterion("COMPONENT <>", value, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentNotEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("COMPONENT <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentGreaterThan(String value) {
+            addCriterion("COMPONENT >", value, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentGreaterThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("COMPONENT > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentGreaterThanOrEqualTo(String value) {
+            addCriterion("COMPONENT >=", value, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentGreaterThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("COMPONENT >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentLessThan(String value) {
+            addCriterion("COMPONENT <", value, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentLessThanColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("COMPONENT < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentLessThanOrEqualTo(String value) {
+            addCriterion("COMPONENT <=", value, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentLessThanOrEqualToColumn(SysMenu.Column column) {
+            addCriterion(new StringBuilder("COMPONENT <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentLike(String value) {
+            addCriterion("COMPONENT like", value, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentNotLike(String value) {
+            addCriterion("COMPONENT not like", value, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentIn(List<String> values) {
+            addCriterion("COMPONENT in", values, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentNotIn(List<String> values) {
+            addCriterion("COMPONENT not in", values, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentBetween(String value1, String value2) {
+            addCriterion("COMPONENT between", value1, value2, "component");
+            return (Criteria) this;
+        }
+
+        public Criteria andComponentNotBetween(String value1, String value2) {
+            addCriterion("COMPONENT not between", value1, value2, "component");
             return (Criteria) this;
         }
 

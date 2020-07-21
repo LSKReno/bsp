@@ -36,7 +36,7 @@ public class MenuController {
     private SysMenuService sysMenuService;
 
     /**
-     * 获取菜单
+     * 动态获取菜单
      */
     @PostMapping("/menu")
     public ResponseDto getMenu(HttpServletRequest request) {

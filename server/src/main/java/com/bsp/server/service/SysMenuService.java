@@ -2,6 +2,7 @@ package com.bsp.server.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.bsp.server.constant.RoleConstant;
 import com.bsp.server.domain.*;
 import com.bsp.server.dto.SysMenuDto;
 import com.bsp.server.dto.PageDto;
@@ -9,12 +10,14 @@ import com.bsp.server.mapper.SysMenuMapper;
 import com.bsp.server.mapper.SysRoleMenuMapper;
 import com.bsp.server.mapper.SysUserMapper;
 import com.bsp.server.util.CopyUtil;
+import com.github.pagehelper.Constant;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -85,37 +88,75 @@ public class SysMenuService {
 
         String roleId = sysUser.getRoleId();
 
-        String permissionId = "";
-        if (roleId.equals("1")) {
-            permissionId = "admin";
-        } else if (roleId.equals("2")) {
-            permissionId = "bvo";
-        } else if (roleId.equals("3")) {
-            permissionId = "mvo";
-        } else if (roleId.equals("4")) {
-            permissionId = "superAdmin";
+        SysRoleMenuExample sysRoleMenuExample = new SysRoleMenuExample();
+        sysRoleMenuExample.createCriteria()
+                .andRoleIdEqualTo(Integer.valueOf(roleId))
+                .andDeletedEqualTo(false);
+        List<SysRoleMenu> sysRoleMenuList = sysRoleMenuMapper.selectByExample(sysRoleMenuExample);
+
+        // 拿到该角色所有的 menuId
+        List<Integer> menuIdList = new ArrayList<>();
+        for (SysRoleMenu sysRoleMenu : sysRoleMenuList) {
+            Integer menuId = sysRoleMenu.getMenuId();
+            menuIdList.add(menuId);
         }
 
         SysMenuExample sysMenuExample = new SysMenuExample();
-        sysMenuExample.createCriteria().andPermissionIdEqualTo(permissionId);
+        sysMenuExample.createCriteria().andMenuIdIn(menuIdList);
         List<SysMenu> sysMenuList = sysMenuMapper.selectByExample(sysMenuExample);
-        List<SysMenuDto> sysMenuDtoList = CopyUtil.copyList(sysMenuList, SysMenuDto.class);
 
         JSONArray jsonArray = new JSONArray();
 
-        // 遍历所有菜单
-        for (SysMenuDto sysMenuDto : sysMenuDtoList) {
-            JSONObject menuObject = new JSONObject();
-            menuObject.put("roleId", roleId);
-            menuObject.put("permissionName", sysMenuDto.getPermissionName());
-            menuObject.put("permissionId", sysMenuDto.getPermissionId());
+        SysMenu sysMenu404 = new SysMenu();
 
-            jsonArray.add(menuObject);
+
+        // 遍历所有菜单
+        for (SysMenu sysMenu : sysMenuList) {
+
+//            if (sysMenu.getMenuKey().equals("404")) {
+//                sysMenu404 = sysMenu;
+//            } else {
+//                JSONObject menuObject = new JSONObject();
+//                // 等于1则说明是dashboard，mvo，bvo的父级
+//                if (sysMenu.getParentId().equals("0")) {
+//                    menuObject = generateMenuJSONObject(sysMenu);
+//
+//                    Integer menuId = sysMenu.getMenuId();
+//                    JSONArray children = new JSONArray();
+//                    for (SysMenu sysMenuChild : sysMenuList) {
+////                        if (Integer.valueOf(sysMenuChild.getParentId()).equals(menuId)) {
+//                            JSONObject childMenuObject = generateMenuJSONObject(sysMenuChild);
+//                            children.add(childMenuObject);
+////                        }
+//                    }
+//                    menuObject.put("children", children);
+//                    jsonArray.add(menuObject);
+//                }
+//            }
+//            JSONObject menuObject = generateMenuJSONObject(sysMenu);
+
+            jsonArray.add(sysMenu.getMenuName());
+
         }
-        System.out.println(roleId);
-        System.out.println(permissionId);
-        System.out.println(jsonArray);
+//        jsonArray.add(sysMenu404);
 
         return jsonArray;
     }
+
+    public JSONObject generateMenuJSONObject(SysMenu sysMenu) {
+        JSONObject menuObject = new JSONObject();
+        menuObject.put("id", sysMenu.getMenuId());
+        menuObject.put("title", sysMenu.getMenuTitle());
+        menuObject.put("key", sysMenu.getMenuKey());
+        menuObject.put("name", sysMenu.getMenuName());
+        menuObject.put("component", sysMenu.getComponent());
+        menuObject.put("path", sysMenu.getMenuUrl());
+        menuObject.put("parentId", Integer.valueOf(sysMenu.getParentId()));
+        if (sysMenu.getMenuRedirect() != null) {
+            menuObject.put("redirect", sysMenu.getMenuRedirect());
+        }
+        menuObject.put("children", new JSONArray());
+        return menuObject;
+    }
+
 }
