@@ -36,6 +36,7 @@ public class StrStoreController {
     public ResponseDto getOnlineStores(@RequestBody SysUserDto sysUserDto){
         ResponseDto responseDto = new ResponseDto();
         SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
+        System.out.println(sysUserDto1.toString());
         if(sysUserDto1.getManBuyerId() == null){ // check if the user has input online Store
             responseDto.setSuccess(false);
         }else{
@@ -52,8 +53,9 @@ public class StrStoreController {
         String token = JSON.parseObject(JSON.toJSONString(request.get("token")), String.class);
         String APPId = JSON.parseObject(JSON.toJSONString(request.get("APPId")), String.class);
         String key = JSON.parseObject(JSON.toJSONString(request.get("key")), String.class);
-
+        System.out.println(request.toString());
         SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
+        System.out.println(sysUserDto1.toString());
         ResponseDto responseDto = new ResponseDto();
         if(sysUserDto1.getManBuyerId() == null){
             DsrDropshipperDto dsrDropshipperDto = new DsrDropshipperDto();
