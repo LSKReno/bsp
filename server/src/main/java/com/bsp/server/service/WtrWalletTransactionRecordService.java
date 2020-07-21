@@ -38,9 +38,11 @@ public class WtrWalletTransactionRecordService {
     /**
      * 查询流水
      */
-    public void list(PageDto pageDto,Integer id) {
+    public void list(PageDto pageDto,String name) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         WtrWalletTransactionRecordExample wtrWalletTransactionRecordExample = new WtrWalletTransactionRecordExample();
+        WtrWalletTransactionRecordExample.Criteria criteria=wtrWalletTransactionRecordExample.createCriteria();
+        criteria.andAccountNameEqualTo(name);
         List<WtrWalletTransactionRecord> wtrWalletTransactionRecordList = wtrWalletTransactionRecordMapper.selectByExample(wtrWalletTransactionRecordExample);
         PageInfo<WtrWalletTransactionRecord> pageInfo = new PageInfo<>(wtrWalletTransactionRecordList);
         pageDto.setTotal(pageInfo.getTotal());

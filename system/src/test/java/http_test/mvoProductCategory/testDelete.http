@@ -9,7 +9,7 @@ POST http://127.0.0.1:9001/system/mvo/productCategory/delete
 Content-Type: application/json
 
 {
-  "prcId": "8",
+  "prcId": "9",
   "lastUpdateBy": "LSKReno3"
 }
 

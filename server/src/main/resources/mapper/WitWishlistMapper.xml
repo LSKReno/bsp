@@ -374,4 +374,15 @@
     </if>
     limit 1
   </select>
+  <select id="list" parameterType="int" resultType="java.util.Map">
+    select distinct pro.pro_id,pro.title,sku_cd,upc,ean,model,warranty_day,retail_price,pro.sts_cd,
+    pck_id,pck.width,pck.height,`length`,weight,pdn_id,descrition,uri,brd.name_en,ofp.ofp_id,wit_id
+    from pro_product pro join pck_package_info pck on pro.pro_id=pck.pro_id
+    join pdn_product_descrition pdn on pro.pro_id=pdn.pro_id
+    join img_image on entity_id=pro.pro_id
+    join brd_brand brd on brd.man_id=pro.man_id
+    join ofp_offer_price ofp on ofp.pro_id=pro.pro_id
+    join wit_wishlist wit on wit.pro_id=pro.pro_id
+    where wit.dsr_id=#{dsrId} and wit.deleted=0
+  </select>
 </mapper>
