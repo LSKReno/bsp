@@ -10,7 +10,6 @@ POST http://127.0.0.1:9001/system/bvo/wishlist/insert
 Content-Type: application/json
 
 {
-
   "dsrId": "5",
   "proId":"3",
   "createdBy": "bobo"

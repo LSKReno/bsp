@@ -200,8 +200,7 @@ public class WalletController {
         PageDto pageDto=new PageDto();
         pageDto.setPage((int)mp.get("page"));
         pageDto.setSize((int)mp.get("size"));
-        WaaWalletAccount waaWalletAccount=waaWalletAccountService.find(mp.get("accountName").toString(),null);
-        wtrWalletTransactionRecordService.list(pageDto, waaWalletAccount.getBuyerId());
+        wtrWalletTransactionRecordService.list(pageDto, mp.get("accountName").toString());
         if(pageDto.getTotal()==0){
             responseDto.setSuccess(false);
         }

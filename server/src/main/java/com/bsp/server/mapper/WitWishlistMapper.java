@@ -4,6 +4,8 @@ import com.bsp.server.domain.WitWishlist;
 import com.bsp.server.domain.WitWishlistExample;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface WitWishlistMapper {
@@ -36,4 +38,6 @@ public interface WitWishlistMapper {
     int updateByPrimaryKeySelective(WitWishlist record);
 
     int updateByPrimaryKey(WitWishlist record);
+
+    List<Map<String,Object>> list(int id);
 }

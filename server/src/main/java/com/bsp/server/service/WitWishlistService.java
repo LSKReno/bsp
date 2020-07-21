@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WitWishlistService {
@@ -36,15 +37,10 @@ public class WitWishlistService {
 
     public void list(PageDto pageDto, int dsrId) {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
-        WitWishlistExample witWishlistExample = new WitWishlistExample();
-        WitWishlistExample.Criteria criteria= witWishlistExample.createCriteria();
-        criteria.andDeletedEqualTo(false);
-        criteria.andDsrIdEqualTo(dsrId);
-        List<WitWishlist> witWishlistList = witWishlistMapper.selectByExample(witWishlistExample);
-        PageInfo<WitWishlist> pageInfo = new PageInfo<>(witWishlistList);
+        List<Map<String,Object>> witWishlistList = witWishlistMapper.list(dsrId);
+        PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(witWishlistList);
         pageDto.setTotal(pageInfo.getTotal());
-        List<WitWishlistDto> witWishlistDtoList = CopyUtil.copyList(witWishlistList, WitWishlistDto.class);
-        pageDto.setList(witWishlistDtoList);
+        pageDto.setList(witWishlistList);
     }
 
     /**

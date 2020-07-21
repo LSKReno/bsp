@@ -10,8 +10,8 @@ POST http://127.0.0.1:9001/system/wallet/deposit
 Content-Type: application/json
 
 {
-  "accountName": "ZZJ",
-  "password": "987654321",
+  "accountName": "LSKReno3",
+  "password": "123456",
   "depositingMoney": "7.17",
   "currency": "USD"
 }
