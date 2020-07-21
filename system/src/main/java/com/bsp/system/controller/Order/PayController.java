@@ -146,7 +146,7 @@ public class PayController {
         SaoSalesOrderDto saoSalesOrderDto = saoSalesOrderService.selectByPrimaryKey(saoSalesOrderDto1.getSaoId());
         WaaWalletAccountDto waaWalletAccountDto = waaWalletAccountService.selectByName(sysUserDto1.getUsername());
         //check password
-        if(saoSalesOrderDto.getOrderSts().equals("Canceled")){
+        if(saoSalesOrderDto.getOrderSts().equals("SHIPPED")){
             if(waaWalletAccountDto.getPassword().equals(passwd)){
                 WafWalletAccountFundDto wafWalletAccountFundDto = wafWalletAccountFundService.selectByPrimaryKey(waaWalletAccountDto.getBuyerId());
                 System.out.println(waaWalletAccountDto.toString());
