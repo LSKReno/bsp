@@ -9,20 +9,20 @@ POST  http://127.0.0.1:9000/system/mvo/product/insert
 Content-Type: application/json
 
 {
-  "title": "table",
-  "skuCd": "biofds",
-  "upc": "93822",
-  "ean": "fsds345",
-  "model": "2sdsx",
-  "warrantyDay": "20200715",
-  "descrition": "nononoononoononono",
-  "retailPrice": "220.3",
+  "title": "iphone 11",
+  "skuCd": "sskkuu",
+  "upc": "upc95032",
+  "ean": "ean23233",
+  "model": "rx0000x",
+  "warrantyDay": "20220715",
+  "descrition": "very very expensive",
+  "retailPrice": "9999999",
   "length": "7.44",
   "weight": "5.55",
-  "height": "8",
-  "width": "20",
+  "height": "8.88",
+  "width": "3.14",
   "userId": "3",
-  "createdBy": "Sum",
+  "createdBy": "LSKReno3",
   "stsCd": "A"
 }
 

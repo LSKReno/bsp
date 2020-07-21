@@ -10,9 +10,20 @@ POST  http://127.0.0.1:9000/system/mvo/product/update
 Content-Type: application/json
 
 {
-  "proId": "6",
-  "retailPrice": "100",
-  "lastUpdateBy": "usssss"
+  "proId": "8",
+  "lastUpdateBy": "LSKReno3",
+  "title": "iphone 11",
+  "skuCd": "sskkuu",
+  "upc": "upc95032",
+  "ean": "ean23233",
+  "model": "rx0000x",
+  "warrantyDay": "20220715",
+  "descrition": "very expensive",
+  "retailPrice": "990909",
+  "length": "7.44",
+  "weight": "5.55",
+  "height": "8.88",
+  "width": "3.14159"
 }
 
 ###

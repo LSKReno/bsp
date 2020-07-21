@@ -9,11 +9,11 @@ POST  http://127.0.0.1:9001/system/mvo/productCategory/insert
 Content-Type: application/json
 
 {
-  "title": "reno",
+  "title": "OPPO",
   "categoryName": "electronic",
-  "createdBy": "naultilss",
+  "createdBy": "LSKReno3",
   "uri": "https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png",
-  "stsCd": "I",
+  "stsCd": "A",
   "userId": 3
 }
 

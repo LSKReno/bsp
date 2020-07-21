@@ -9,7 +9,7 @@ POST http://127.0.0.1:9000/system/wallet/querylist
 Content-Type: application/json
 
 {
-  "accountName": "LSKReno2"
+  "accountName": "ZZJ"
 }
 
 ###
