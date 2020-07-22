@@ -47,10 +47,11 @@ public class ManManufacturerService {
         manManufacturer.setLastUpdateDate(new Date());
         if (StringUtils.isEmpty(manManufacturerDto.getManId())) {
             manManufacturer.setCreationDate(new Date());
-            return this.insert(manManufacturer);
+            this.insert(manManufacturer);
         } else {
-            return this.update(manManufacturer);
+            this.update(manManufacturer);
         }
+        return manManufacturer.getManId();
     }
 
     /**
