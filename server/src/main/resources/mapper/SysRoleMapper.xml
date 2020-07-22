@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.bsp.server.domain.SysRole">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, role_name, deleted
+    id, role_name, description, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.SysRoleExample" resultMap="BaseResultMap">
     select
@@ -136,10 +137,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.bsp.server.domain.SysRole">
-    insert into sys_role (id, role_name, deleted
-      )
-    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}
-      )
+    insert into sys_role (id, role_name, description, 
+      deleted)
+    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.SysRole">
     insert into sys_role
@@ -149,6 +150,9 @@
       </if>
       <if test="roleName != null">
         role_name,
+      </if>
+      <if test="description != null">
+        description,
       </if>
       <if test="deleted != null">
         deleted,
@@ -160,6 +164,9 @@
       </if>
       <if test="roleName != null">
         #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -181,6 +188,9 @@
       <if test="record.roleName != null">
         role_name = #{record.roleName,jdbcType=VARCHAR},
       </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
       </if>
@@ -193,6 +203,7 @@
     update sys_role
     set id = #{record.id,jdbcType=INTEGER},
       role_name = #{record.roleName,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -204,6 +215,9 @@
       <if test="roleName != null">
         role_name = #{roleName,jdbcType=VARCHAR},
       </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
       </if>
@@ -213,6 +227,7 @@
   <update id="updateByPrimaryKey" parameterType="com.bsp.server.domain.SysRole">
     update sys_role
     set role_name = #{roleName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

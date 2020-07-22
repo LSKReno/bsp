@@ -1,11 +1,13 @@
 package com.bsp.system.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bsp.server.domain.SysUser;
 import com.bsp.server.dto.ResponseDto;
 import com.bsp.server.dto.SysUserDto;
 import com.bsp.server.dto.UllUserLoginLogoutLogDto;
+import com.bsp.server.service.SysMenuService;
 import com.bsp.server.service.SysUserService;
 import com.bsp.server.service.UllUserLoginLogoutLogService;
 import com.bsp.server.util.CopyUtil;
@@ -39,6 +41,9 @@ public class UserController {
     private SysUserService sysUserService;
 
     @Resource
+    private SysMenuService sysMenuService;
+
+    @Resource
     private UllUserLoginLogoutLogService ullUserLoginLogoutLogService;
 
     @Resource
@@ -56,11 +61,21 @@ public class UserController {
 
         JSONObject userInfo = JSONObject.parseObject(tokenJSONString);
 
+        // 获取用户信息
         SysUser sysUser = sysUserService.selectByUserName(
                 String.valueOf(userInfo.get("username")));
         sysUser.setPassword("");
         SysUserDto sysUserDtoRes = CopyUtil.copy(sysUser, SysUserDto.class);
-        responseDto.setContent(sysUserDtoRes);
+
+        // 获取菜单权限
+        Integer userId = (Integer) userInfo.get("userId");
+        JSONArray sysMenuList = sysMenuService.getMenuByRights(userId);
+
+        JSONObject responseUserInfo = new JSONObject();
+        responseUserInfo.put("info", sysUserDtoRes);
+        responseUserInfo.put("role", sysMenuList);
+
+        responseDto.setContent(responseUserInfo);
         return responseDto;
     }
 
@@ -69,14 +84,34 @@ public class UserController {
      */
     @PostMapping("/signup")
     public ResponseDto signup(@RequestBody SysUserDto sysUserDto) {
+        ResponseDto responseDto = new ResponseDto();
         LOG.info("用户注册开始");
+        System.out.println(sysUserDto);
         // 保存校验
+        ValidatorUtil.require(sysUserDto.getUsername(), "用户名");
         ValidatorUtil.length(sysUserDto.getUsername(), "用户名，唯一", 1, 255);
         ValidatorUtil.length(sysUserDto.getPassword(), "密码", 1, 255);
         ValidatorUtil.require(sysUserDto.getRoleId(), "角色ID");
         ValidatorUtil.length(sysUserDto.getRoleId(), "角色ID", 1, 100);
 
-        ResponseDto responseDto = new ResponseDto();
+//        // 根据验证码token去获取缓存中的验证码，和用户输入的验证码是否一致
+        String imageCode = (String) redisTemplate.opsForValue().get(sysUserDto.getImageCodeToken());
+        LOG.info("从redis中获取到的验证码：{}", imageCode);
+        if (StringUtils.isEmpty(imageCode)) {
+            responseDto.setSuccess(false);
+            responseDto.setMessage("验证码已过期");
+            LOG.info("用户注册失败，验证码已过期");
+            return responseDto;
+        }
+        if (!imageCode.toLowerCase().equals(sysUserDto.getImageCode().toLowerCase())) {
+            responseDto.setSuccess(false);
+            responseDto.setMessage("验证码不对");
+            LOG.info("用户注册失败，验证码不对");
+            return responseDto;
+        } else {
+            // 验证通过后，移除验证码
+            redisTemplate.delete(sysUserDto.getImageCodeToken());
+        }
         SysUserDto signUpSysUserDto = sysUserService.signup(sysUserDto);
 
         responseDto.setContent(signUpSysUserDto);
@@ -96,23 +131,23 @@ public class UserController {
         ResponseDto responseDto = new ResponseDto();
 
 //        // 根据验证码token去获取缓存中的验证码，和用户输入的验证码是否一致
-//        String imageCode = (String) redisTemplate.opsForValue().get(sysUserDto.getImageCodeToken());
-//        LOG.info("从redis中获取到的验证码：{}", imageCode);
-//        if (StringUtils.isEmpty(imageCode)) {
-//            responseDto.setSuccess(false);
-//            responseDto.setMessage("验证码已过期");
-//            LOG.info("用户登录失败，验证码已过期");
-//            return responseDto;
-//        }
-//        if (!imageCode.toLowerCase().equals(sysUserDto.getImageCode().toLowerCase())) {
-//            responseDto.setSuccess(false);
-//            responseDto.setMessage("验证码不对");
-//            LOG.info("用户登录失败，验证码不对");
-//            return responseDto;
-//        } else {
-//            // 验证通过后，移除验证码
-//            redisTemplate.delete(sysUserDto.getImageCodeToken());
-//        }
+        String imageCode = (String) redisTemplate.opsForValue().get(sysUserDto.getImageCodeToken());
+        LOG.info("从redis中获取到的验证码：{}", imageCode);
+        if (StringUtils.isEmpty(imageCode)) {
+            responseDto.setSuccess(false);
+            responseDto.setMessage("验证码已过期");
+            LOG.info("用户登录失败，验证码已过期");
+            return responseDto;
+        }
+        if (!imageCode.toLowerCase().equals(sysUserDto.getImageCode().toLowerCase())) {
+            responseDto.setSuccess(false);
+            responseDto.setMessage("验证码不对");
+            LOG.info("用户登录失败，验证码不对");
+            return responseDto;
+        } else {
+            // 验证通过后，移除验证码
+            redisTemplate.delete(sysUserDto.getImageCodeToken());
+        }
 
         SysUserDto loginSysUserDto = sysUserService.login(sysUserDto);
 

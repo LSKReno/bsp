@@ -8,6 +8,8 @@ public class SysRole {
 
     private String roleName;
 
+    private String description;
+
     private Boolean deleted;
 
     public Integer getId() {
@@ -26,6 +28,14 @@ public class SysRole {
         this.roleName = roleName;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Boolean getDeleted() {
         return deleted;
     }
@@ -42,6 +52,7 @@ public class SysRole {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", roleName=").append(roleName);
+        sb.append(", description=").append(description);
         sb.append(", deleted=").append(deleted);
         sb.append("]");
         return sb.toString();
@@ -61,6 +72,7 @@ public class SysRole {
         SysRole other = (SysRole) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getRoleName() == null ? other.getRoleName() == null : this.getRoleName().equals(other.getRoleName()))
+            && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
     }
 
@@ -70,6 +82,7 @@ public class SysRole {
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getRoleName() == null) ? 0 : getRoleName().hashCode());
+        result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         return result;
     }
@@ -77,6 +90,7 @@ public class SysRole {
     public enum Column {
         id("id", "id", "INTEGER", false),
         roleName("role_name", "roleName", "VARCHAR", false),
+        description("description", "description", "VARCHAR", false),
         deleted("deleted", "deleted", "BIT", false);
 
         private static final String BEGINNING_DELIMITER = "`";

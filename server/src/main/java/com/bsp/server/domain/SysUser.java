@@ -36,6 +36,10 @@ public class SysUser {
 
     private Integer manBuyerId;
 
+    private String imageCode;
+
+    private String imageCodeToken;
+
     private Boolean deleted;
 
     public Integer getUserId() {
@@ -166,6 +170,22 @@ public class SysUser {
         this.manBuyerId = manBuyerId;
     }
 
+    public String getImageCode() {
+        return imageCode;
+    }
+
+    public void setImageCode(String imageCode) {
+        this.imageCode = imageCode;
+    }
+
+    public String getImageCodeToken() {
+        return imageCodeToken;
+    }
+
+    public void setImageCodeToken(String imageCodeToken) {
+        this.imageCodeToken = imageCodeToken;
+    }
+
     public Boolean getDeleted() {
         return deleted;
     }
@@ -196,6 +216,8 @@ public class SysUser {
         sb.append(", number=").append(number);
         sb.append(", phone=").append(phone);
         sb.append(", manBuyerId=").append(manBuyerId);
+        sb.append(", imageCode=").append(imageCode);
+        sb.append(", imageCodeToken=").append(imageCodeToken);
         sb.append(", deleted=").append(deleted);
         sb.append("]");
         return sb.toString();
@@ -229,6 +251,8 @@ public class SysUser {
             && (this.getNumber() == null ? other.getNumber() == null : this.getNumber().equals(other.getNumber()))
             && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
             && (this.getManBuyerId() == null ? other.getManBuyerId() == null : this.getManBuyerId().equals(other.getManBuyerId()))
+            && (this.getImageCode() == null ? other.getImageCode() == null : this.getImageCode().equals(other.getImageCode()))
+            && (this.getImageCodeToken() == null ? other.getImageCodeToken() == null : this.getImageCodeToken().equals(other.getImageCodeToken()))
             && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
     }
 
@@ -252,6 +276,8 @@ public class SysUser {
         result = prime * result + ((getNumber() == null) ? 0 : getNumber().hashCode());
         result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
         result = prime * result + ((getManBuyerId() == null) ? 0 : getManBuyerId().hashCode());
+        result = prime * result + ((getImageCode() == null) ? 0 : getImageCode().hashCode());
+        result = prime * result + ((getImageCodeToken() == null) ? 0 : getImageCodeToken().hashCode());
         result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         return result;
     }
@@ -273,6 +299,8 @@ public class SysUser {
         number("NUMBER", "number", "VARCHAR", true),
         phone("PHONE", "phone", "VARCHAR", false),
         manBuyerId("MAN_BUYER_ID", "manBuyerId", "INTEGER", false),
+        imageCode("IMAGE_CODE", "imageCode", "VARCHAR", false),
+        imageCodeToken("IMAGE_CODE_TOKEN", "imageCodeToken", "VARCHAR", false),
         deleted("deleted", "deleted", "BIT", false);
 
         private static final String BEGINNING_DELIMITER = "`";

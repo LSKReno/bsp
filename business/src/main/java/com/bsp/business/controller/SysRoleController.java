@@ -24,13 +24,13 @@ public class SysRoleController {
     /**
      * 列表查询
      */
-    @PostMapping("/list")
-    public ResponseDto list(@RequestBody PageDto pageDto) {
-        ResponseDto responseDto = new ResponseDto();
-        sysRoleService.list(pageDto);
-        responseDto.setContent(pageDto);
-        return responseDto;
-    }
+//    @PostMapping("/list")
+//    public ResponseDto list(@RequestBody PageDto pageDto) {
+//        ResponseDto responseDto = new ResponseDto();
+//        sysRoleService.list(pageDto);
+//        responseDto.setContent(pageDto);
+//        return responseDto;
+//    }
 
     /**
      * 保存，id有值时更新，无值时新增

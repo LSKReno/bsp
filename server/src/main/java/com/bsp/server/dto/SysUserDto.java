@@ -99,6 +99,16 @@ public class SysUserDto {
     private Integer manBuyerId;
 
     /**
+     * 
+     */
+    private String imageCode;
+
+    /**
+     * 
+     */
+    private String imageCodeToken;
+
+    /**
      * 逻辑删除
      */
     private Integer deleted;
@@ -231,6 +241,22 @@ public class SysUserDto {
         this.manBuyerId = manBuyerId;
     }
 
+    public String getImageCode() {
+        return imageCode;
+    }
+
+    public void setImageCode(String imageCode) {
+        this.imageCode = imageCode;
+    }
+
+    public String getImageCodeToken() {
+        return imageCodeToken;
+    }
+
+    public void setImageCodeToken(String imageCodeToken) {
+        this.imageCodeToken = imageCodeToken;
+    }
+
     public Integer getDeleted() {
         return deleted;
     }
@@ -262,6 +288,8 @@ public class SysUserDto {
         sb.append(", number=").append(number);
         sb.append(", phone=").append(phone);
         sb.append(", manBuyerId=").append(manBuyerId);
+        sb.append(", imageCode=").append(imageCode);
+        sb.append(", imageCodeToken=").append(imageCodeToken);
         sb.append(", deleted=").append(deleted);
         sb.append("]");
         return sb.toString();

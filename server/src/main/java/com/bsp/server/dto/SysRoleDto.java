@@ -14,6 +14,11 @@ public class SysRoleDto {
     private String roleName;
 
     /**
+     * 角色描述
+     */
+    private String description;
+
+    /**
      * 逻辑删除
      */
     private Integer deleted;
@@ -34,6 +39,14 @@ public class SysRoleDto {
         this.roleName = roleName;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Integer getDeleted() {
         return deleted;
     }
@@ -51,6 +64,7 @@ public class SysRoleDto {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", roleName=").append(roleName);
+        sb.append(", description=").append(description);
         sb.append(", deleted=").append(deleted);
         sb.append("]");
         return sb.toString();

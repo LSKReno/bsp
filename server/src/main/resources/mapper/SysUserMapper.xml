@@ -18,6 +18,8 @@
     <result column="NUMBER" jdbcType="VARCHAR" property="number" />
     <result column="PHONE" jdbcType="VARCHAR" property="phone" />
     <result column="MAN_BUYER_ID" jdbcType="INTEGER" property="manBuyerId" />
+    <result column="IMAGE_CODE" jdbcType="VARCHAR" property="imageCode" />
+    <result column="IMAGE_CODE_TOKEN" jdbcType="VARCHAR" property="imageCodeToken" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -80,7 +82,7 @@
   </sql>
   <sql id="Base_Column_List">
     USER_ID, USERNAME, `PASSWORD`, AVATAR, `NAME`, RIGHTS, ROLE_ID, LAST_LOGIN, IP, `STATUS`, 
-    BZ, SKIN, EMAIL, `NUMBER`, PHONE, MAN_BUYER_ID, deleted
+    BZ, SKIN, EMAIL, `NUMBER`, PHONE, MAN_BUYER_ID, IMAGE_CODE, IMAGE_CODE_TOKEN, deleted
   </sql>
   <select id="selectByExample" parameterType="com.bsp.server.domain.SysUserExample" resultMap="BaseResultMap">
     select
@@ -156,13 +158,15 @@
       ROLE_ID, LAST_LOGIN, IP, 
       `STATUS`, BZ, SKIN, EMAIL, 
       `NUMBER`, PHONE, MAN_BUYER_ID, 
-      deleted)
+      IMAGE_CODE, IMAGE_CODE_TOKEN, deleted
+      )
     values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{avatar,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{rights,jdbcType=VARCHAR}, 
       #{roleId,jdbcType=VARCHAR}, #{lastLogin,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
       #{status,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR}, #{skin,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{number,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{manBuyerId,jdbcType=INTEGER}, 
-      #{deleted,jdbcType=BIT})
+      #{imageCode,jdbcType=VARCHAR}, #{imageCodeToken,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.bsp.server.domain.SysUser">
     insert into sys_user
@@ -214,6 +218,12 @@
       </if>
       <if test="manBuyerId != null">
         MAN_BUYER_ID,
+      </if>
+      <if test="imageCode != null">
+        IMAGE_CODE,
+      </if>
+      <if test="imageCodeToken != null">
+        IMAGE_CODE_TOKEN,
       </if>
       <if test="deleted != null">
         deleted,
@@ -267,6 +277,12 @@
       </if>
       <if test="manBuyerId != null">
         #{manBuyerId,jdbcType=INTEGER},
+      </if>
+      <if test="imageCode != null">
+        #{imageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="imageCodeToken != null">
+        #{imageCodeToken,jdbcType=VARCHAR},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
@@ -330,6 +346,12 @@
       <if test="record.manBuyerId != null">
         MAN_BUYER_ID = #{record.manBuyerId,jdbcType=INTEGER},
       </if>
+      <if test="record.imageCode != null">
+        IMAGE_CODE = #{record.imageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageCodeToken != null">
+        IMAGE_CODE_TOKEN = #{record.imageCodeToken,jdbcType=VARCHAR},
+      </if>
       <if test="record.deleted != null">
         deleted = #{record.deleted,jdbcType=BIT},
       </if>
@@ -356,6 +378,8 @@
       `NUMBER` = #{record.number,jdbcType=VARCHAR},
       PHONE = #{record.phone,jdbcType=VARCHAR},
       MAN_BUYER_ID = #{record.manBuyerId,jdbcType=INTEGER},
+      IMAGE_CODE = #{record.imageCode,jdbcType=VARCHAR},
+      IMAGE_CODE_TOKEN = #{record.imageCodeToken,jdbcType=VARCHAR},
       deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -409,6 +433,12 @@
       <if test="manBuyerId != null">
         MAN_BUYER_ID = #{manBuyerId,jdbcType=INTEGER},
       </if>
+      <if test="imageCode != null">
+        IMAGE_CODE = #{imageCode,jdbcType=VARCHAR},
+      </if>
+      <if test="imageCodeToken != null">
+        IMAGE_CODE_TOKEN = #{imageCodeToken,jdbcType=VARCHAR},
+      </if>
       <if test="deleted != null">
         deleted = #{deleted,jdbcType=BIT},
       </if>
@@ -432,6 +462,8 @@
       `NUMBER` = #{number,jdbcType=VARCHAR},
       PHONE = #{phone,jdbcType=VARCHAR},
       MAN_BUYER_ID = #{manBuyerId,jdbcType=INTEGER},
+      IMAGE_CODE = #{imageCode,jdbcType=VARCHAR},
+      IMAGE_CODE_TOKEN = #{imageCodeToken,jdbcType=VARCHAR},
       deleted = #{deleted,jdbcType=BIT}
     where USER_ID = #{userId,jdbcType=INTEGER}
   </update>

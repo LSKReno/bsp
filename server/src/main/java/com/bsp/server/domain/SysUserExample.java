@@ -1722,6 +1722,206 @@ public class SysUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andImageCodeIsNull() {
+            addCriterion("IMAGE_CODE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeIsNotNull() {
+            addCriterion("IMAGE_CODE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeEqualTo(String value) {
+            addCriterion("IMAGE_CODE =", value, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeNotEqualTo(String value) {
+            addCriterion("IMAGE_CODE <>", value, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeGreaterThan(String value) {
+            addCriterion("IMAGE_CODE >", value, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("IMAGE_CODE >=", value, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeLessThan(String value) {
+            addCriterion("IMAGE_CODE <", value, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeLessThanOrEqualTo(String value) {
+            addCriterion("IMAGE_CODE <=", value, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeLike(String value) {
+            addCriterion("IMAGE_CODE like", value, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeNotLike(String value) {
+            addCriterion("IMAGE_CODE not like", value, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeIn(List<String> values) {
+            addCriterion("IMAGE_CODE in", values, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeNotIn(List<String> values) {
+            addCriterion("IMAGE_CODE not in", values, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeBetween(String value1, String value2) {
+            addCriterion("IMAGE_CODE between", value1, value2, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeNotBetween(String value1, String value2) {
+            addCriterion("IMAGE_CODE not between", value1, value2, "imageCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenIsNull() {
+            addCriterion("IMAGE_CODE_TOKEN is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenIsNotNull() {
+            addCriterion("IMAGE_CODE_TOKEN is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenEqualTo(String value) {
+            addCriterion("IMAGE_CODE_TOKEN =", value, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE_TOKEN = ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenNotEqualTo(String value) {
+            addCriterion("IMAGE_CODE_TOKEN <>", value, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenNotEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE_TOKEN <> ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenGreaterThan(String value) {
+            addCriterion("IMAGE_CODE_TOKEN >", value, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenGreaterThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE_TOKEN > ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenGreaterThanOrEqualTo(String value) {
+            addCriterion("IMAGE_CODE_TOKEN >=", value, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenGreaterThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE_TOKEN >= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenLessThan(String value) {
+            addCriterion("IMAGE_CODE_TOKEN <", value, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenLessThanColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE_TOKEN < ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenLessThanOrEqualTo(String value) {
+            addCriterion("IMAGE_CODE_TOKEN <=", value, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenLessThanOrEqualToColumn(SysUser.Column column) {
+            addCriterion(new StringBuilder("IMAGE_CODE_TOKEN <= ").append(column.getEscapedColumnName()).toString());
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenLike(String value) {
+            addCriterion("IMAGE_CODE_TOKEN like", value, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenNotLike(String value) {
+            addCriterion("IMAGE_CODE_TOKEN not like", value, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenIn(List<String> values) {
+            addCriterion("IMAGE_CODE_TOKEN in", values, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenNotIn(List<String> values) {
+            addCriterion("IMAGE_CODE_TOKEN not in", values, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenBetween(String value1, String value2) {
+            addCriterion("IMAGE_CODE_TOKEN between", value1, value2, "imageCodeToken");
+            return (Criteria) this;
+        }
+
+        public Criteria andImageCodeTokenNotBetween(String value1, String value2) {
+            addCriterion("IMAGE_CODE_TOKEN not between", value1, value2, "imageCodeToken");
+            return (Criteria) this;
+        }
+
         public Criteria andDeletedIsNull() {
             addCriterion("deleted is null");
             return (Criteria) this;
