@@ -174,7 +174,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.bsp.server.domain.ManManufacturer">
+  <insert id="insert" parameterType="com.bsp.server.domain.ManManufacturer" useGeneratedKeys="true" keyProperty="manId" keyColumn="manId">
     insert into man_manufacturer (MAN_ID, NAME_EN, NAME_CN,
       GMC_REPORT_TYPE, GMC_REPORT_URL, CREATED_BY,
       CREATION_DATE, LAST_UPDATE_BY, LAST_UPDATE_DATE,

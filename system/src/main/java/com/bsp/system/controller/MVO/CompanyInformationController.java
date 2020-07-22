@@ -30,6 +30,7 @@ public class CompanyInformationController {
         ResponseDto responseDto = new ResponseDto();
 //        ManManufacturer manManufacturer = manManufacturerService.selectByPrimaryKey(manManufacturerDto);
         SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
+        System.out.println(sysUserDto1.toString());
         if (sysUserDto1.getManBuyerId() == null){
             responseDto.setSuccess(false);
         }else{
@@ -62,13 +63,7 @@ public class CompanyInformationController {
             if(result == 0){
                 responseDto.setSuccess(false);
             }else{
-                sysUserDto1.setManBuyerId(result); //update
-                if(sysUserService.save(sysUserDto1) != 0){
-                    responseDto.setSuccess(true);
-                    responseDto.setContent(sysUserDto1);
-                }else{
-                    responseDto.setSuccess(false);
-                }
+                responseDto.setContent(sysUserDto1);
             }
         }else{
 //            ManManufacturerDto manManufacturerDto1 = manManufacturerService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
@@ -78,9 +73,15 @@ public class CompanyInformationController {
             int result = manManufacturerService.save(manManufacturerDto);
             if(result == 0){
                 responseDto.setSuccess(false);
-                responseDto.setContent(sysUserDto1);
+//                responseDto.setContent(sysUserDto1);
             }else{
-                responseDto.setSuccess(true);
+                sysUserDto1.setManBuyerId(result);
+                if(sysUserService.save(sysUserDto1) != 0){
+                    responseDto.setSuccess(true);
+                    responseDto.setContent(sysUserDto1);
+                }else{
+                    responseDto.setSuccess(false);
+                }
             }
         }
 
