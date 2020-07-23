@@ -38,7 +38,7 @@ public class KaptchaController {
     public void imageCode(@PathVariable(value = "imageCodeToken") String imageCodeToken, HttpServletRequest request, HttpServletResponse httpServletResponse) throws Exception {
         ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
         try {
-            // 生成验证码字符串
+            // 生成验证码字符串 
             String createText = defaultKaptcha.createText();
 
             // 将生成的验证码放入redis缓存中，后续验证的时候用到

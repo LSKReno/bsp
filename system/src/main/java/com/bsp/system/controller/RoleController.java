@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -62,19 +64,29 @@ public class RoleController {
         System.out.println("=============");
         System.out.println(updatePermissionDto.getPermissions());
 
+        sysRoleService.updatePermissions(updatePermissionDto.getRoleId(), updatePermissionDto.getPermissions());
         responseDto.setContent("success");
         return responseDto;
     }
 
 
     class UpdatePermissionDto {
-        private String permissions;
+        private Integer roleId;
+        private ArrayList<Integer> permissions;
 
-        public String getPermissions() {
+        public Integer getRoleId() {
+            return roleId;
+        }
+
+        public void setRoleId(Integer roleId) {
+            this.roleId = roleId;
+        }
+
+        public ArrayList<Integer> getPermissions() {
             return permissions;
         }
 
-        public void setPermissions(String permissions) {
+        public void setPermissions(ArrayList<Integer> permissions) {
             this.permissions = permissions;
         }
     }

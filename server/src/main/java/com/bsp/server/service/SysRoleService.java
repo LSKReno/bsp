@@ -95,6 +95,23 @@ public class SysRoleService {
         resObject.put("list", resArray);
     }
 
+
+    /**
+     * 更新角色的菜单对应权限
+     */
+    public void updatePermissions(Integer roleId, ArrayList<Integer> permissions) {
+        SysRoleMenuExample sysRoleMenuExample = new SysRoleMenuExample();
+        sysRoleMenuExample.createCriteria().andRoleIdEqualTo(roleId);
+        List<SysRoleMenu> sysRoleMenuList = sysRoleMenuMapper.selectByExample(sysRoleMenuExample);
+
+        for (SysRoleMenu sysRoleMenu:sysRoleMenuList) {
+            if(!permissions.contains(sysRoleMenu.getMenuId())){
+                sysRoleMenu.setDeleted(false);
+                sysRoleMenuMapper.updateByPrimaryKeySelective(sysRoleMenu);
+            }
+        }
+    }
+
     /**
      * 保存，id有值时更新，无值时新增
      */
