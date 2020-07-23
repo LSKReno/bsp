@@ -165,6 +165,8 @@
   <select id="selectAll" resultMap="ResultMapWithBLOBs">
     select
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from par_parameter
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

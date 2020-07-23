@@ -31,21 +31,24 @@ public class CompanyInformationController {
 //        ManManufacturer manManufacturer = manManufacturerService.selectByPrimaryKey(manManufacturerDto);
         SysUserDto sysUserDto1 = sysUserService.selectByPrimaryKey(sysUserDto.getUserId());
         System.out.println(sysUserDto1.toString());
-        if (sysUserDto1.getManBuyerId() == null){
-            responseDto.setSuccess(false);
-        }else{
-            ManManufacturerDto manManufacturerDto = manManufacturerService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
-            if(manManufacturerDto != null){
-                responseDto.setSuccess(true);
-                if(sysUserDto1.getRoleId().equals("3")){
+        if(sysUserDto1.getRoleId().equals("3")){
+            if (sysUserDto1.getManBuyerId() == null){
+                responseDto.setSuccess(false);
+            }else{
+                ManManufacturerDto manManufacturerDto = manManufacturerService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
+                if(manManufacturerDto != null){
+                    responseDto.setSuccess(true);
                     System.out.println(sysUserDto1.toString());
                     responseDto.setContent(manManufacturerDto);
+                }else{
+                    responseDto.setSuccess(false);
                 }
-            }else{
-                responseDto.setSuccess(false);
             }
-
+        } else {
+            responseDto.setSuccess(false);
+            responseDto.setCode("1");
         }
+
         return responseDto;
     }
     @PostMapping("/saveCompanyInfo")
