@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -72,7 +75,19 @@ public class SaoSalesOrderService {
 
     public List<SaoSalesOrderDto> selectByManID(Integer manBuyerId, String ORDER_STS) {
         List<SaoSalesOrder> saoSalesOrders = saoSalesOrderMapper.selectByManID(manBuyerId, ORDER_STS);
-        List<SaoSalesOrderDto> saoSalesOrderDtos = CopyUtil.copyList(saoSalesOrders, SaoSalesOrderDto.class);
+        List<SaoSalesOrderDto> saoSalesOrderDtos = new ArrayList<>();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        for(int i=0; i< saoSalesOrders.size(); i++){
+            SaoSalesOrderDto saoSalesOrderDto = CopyUtil.copy(saoSalesOrders.get(i), SaoSalesOrderDto.class);
+            saoSalesOrderDto.setLastUpdateDate(formatter.format(saoSalesOrders.get(i).getLastUpdateDate()));
+            saoSalesOrderDto.setCreationDate(formatter.format(saoSalesOrders.get(i).getCreationDate()));
+            if(saoSalesOrders.get(i).getPaymentDate() != null){
+                saoSalesOrderDto.setPaymentDate(formatter.format(saoSalesOrders.get(i).getPaymentDate()));
+            }
+            saoSalesOrderDtos.add(saoSalesOrderDto);
+        }
+        System.out.println(saoSalesOrderDtos);
+//        List<SaoSalesOrderDto> saoSalesOrderDtos = CopyUtil.copyList(saoSalesOrders, SaoSalesOrderDto.class);
         return saoSalesOrderDtos;
     }
 
@@ -84,17 +99,42 @@ public class SaoSalesOrderService {
         SaoSalesOrder salesOrder = new SaoSalesOrder();
         salesOrder.setSaoId(saoId);
         salesOrder.setOrderSts("SHIPPED");
+        salesOrder.setLastUpdateDate(new Date());
         return saoSalesOrderMapper.updateByPrimaryKeySelective(salesOrder);
     }
 
     public List<SaoSalesOrderDto> selectByStoId(Integer stoId, String ORDER_STS) {
-        return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId, ORDER_STS), SaoSalesOrderDto.class);
+        List<SaoSalesOrder> saoSalesOrders = saoSalesOrderMapper.selectByStoId(stoId, ORDER_STS);
+        List<SaoSalesOrderDto> saoSalesOrderDtos = new ArrayList<>();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        for(int i=0; i< saoSalesOrders.size(); i++){
+            SaoSalesOrderDto saoSalesOrderDto = CopyUtil.copy(saoSalesOrders.get(i), SaoSalesOrderDto.class);
+            saoSalesOrderDto.setLastUpdateDate(formatter.format(saoSalesOrders.get(i).getLastUpdateDate()));
+            saoSalesOrderDto.setCreationDate(formatter.format(saoSalesOrders.get(i).getCreationDate()));
+            if(saoSalesOrders.get(i).getPaymentDate() != null){
+                saoSalesOrderDto.setPaymentDate(formatter.format(saoSalesOrders.get(i).getPaymentDate()));
+            }
+            saoSalesOrderDtos.add(saoSalesOrderDto);
+        }
+        System.out.println(saoSalesOrderDtos);
+        return saoSalesOrderDtos;
+//        return CopyUtil.copyList(saoSalesOrderMapper.selectByStoId(stoId, ORDER_STS), SaoSalesOrderDto.class);
     }
 
     public int cancelSHIPPED(Integer saoId) {
         SaoSalesOrder salesOrder = new SaoSalesOrder();
         salesOrder.setSaoId(saoId);
         salesOrder.setOrderSts("Canceled");
+        salesOrder.setLastUpdateDate(new Date());
+        return saoSalesOrderMapper.updateByPrimaryKeySelective(salesOrder);
+    }
+
+    public int changeToWattingSHIPPED(Integer saoId) {
+        SaoSalesOrder salesOrder = new SaoSalesOrder();
+        salesOrder.setSaoId(saoId);
+        salesOrder.setOrderSts("AwaitingShipment");
+        salesOrder.setPaymentDate(new Date());
+        salesOrder.setLastUpdateDate(new Date());
         return saoSalesOrderMapper.updateByPrimaryKeySelective(salesOrder);
     }
 }

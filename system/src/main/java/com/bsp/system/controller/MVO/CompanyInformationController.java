@@ -37,7 +37,10 @@ public class CompanyInformationController {
             ManManufacturerDto manManufacturerDto = manManufacturerService.selectByPrimaryKey(sysUserDto1.getManBuyerId());
             if(manManufacturerDto != null){
                 responseDto.setSuccess(true);
-                responseDto.setContent(manManufacturerDto);
+                if(sysUserDto1.getRoleId().equals("3")){
+                    System.out.println(sysUserDto1.toString());
+                    responseDto.setContent(manManufacturerDto);
+                }
             }else{
                 responseDto.setSuccess(false);
             }

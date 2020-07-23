@@ -107,6 +107,7 @@ public class WaaWalletAccountService {
     public WaaWalletAccountDto selectByName(String username) {
         WaaWalletAccount waaWalletAccount = waaWalletAccountMapper.selectByName(username);
         WaaWalletAccountDto waaWalletAccountDto = CopyUtil.copy(waaWalletAccount, WaaWalletAccountDto.class);
+
         waaWalletAccountDto.setStatus(waaWalletAccount.getStatus().intValue());
         return waaWalletAccountDto;
     }
