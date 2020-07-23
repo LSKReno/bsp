@@ -49,6 +49,17 @@ public class WtaWalletTransactionAduitService {
         }
     }
 
+
+    public int saveWtaWalletTransactionAduit(WtaWalletTransactionAduit wtaWalletTransactionAduit) {
+        wtaWalletTransactionAduit.setLastUpdateTime(new Date());
+        if (StringUtils.isEmpty(wtaWalletTransactionAduit.getTransactionAuditId())) {
+            wtaWalletTransactionAduit.setCreateTime(new Date());
+            return this.insert(wtaWalletTransactionAduit);
+        } else {
+            return this.update(wtaWalletTransactionAduit);
+        }
+    }
+
     /**
      * 新增
      */
@@ -82,13 +93,14 @@ public class WtaWalletTransactionAduitService {
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         WtaWalletTransactionAduitExample wtaWalletTransactionAduitExample = new WtaWalletTransactionAduitExample();
         wtaWalletTransactionAduitExample.createCriteria()
-                .andOperateTypeNotEqualTo(new Integer(3).byteValue());
+                .andOperateTypeNotEqualTo(new Integer(3).byteValue())
+                .andStatusEqualTo(new Integer(2).byteValue());
         List<WtaWalletTransactionAduit> wtaWalletTransactionAduitList =
                 wtaWalletTransactionAduitMapper.selectByExample(wtaWalletTransactionAduitExample);
         PageInfo<WtaWalletTransactionAduit> pageInfo = new PageInfo<>(wtaWalletTransactionAduitList);
+
         pageDto.setTotal(pageInfo.getTotal());
-        List<WtaWalletTransactionAduitDto> wtaWalletTransactionAduitDtoList = CopyUtil.copyList(wtaWalletTransactionAduitList, WtaWalletTransactionAduitDto.class);
-        pageDto.setList(wtaWalletTransactionAduitDtoList);
+        pageDto.setList(wtaWalletTransactionAduitList);
     }
 
 }

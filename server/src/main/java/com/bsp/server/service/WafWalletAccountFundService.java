@@ -57,6 +57,15 @@ public class WafWalletAccountFundService {
         return wafWalletAccountFund.getBuyerId();
     }
 
+    public int saveWafWalletAccountFund(WafWalletAccountFund wafWalletAccountFund) {
+        if (StringUtils.isEmpty(wafWalletAccountFund.getBuyerId())) {
+            this.insert(wafWalletAccountFund);
+        } else {
+            this.update(wafWalletAccountFund);
+        }
+        return wafWalletAccountFund.getBuyerId();
+    }
+
     /**
      * 新增
      */

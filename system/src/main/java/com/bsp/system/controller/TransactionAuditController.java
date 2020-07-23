@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bsp.server.domain.WafWalletAccountFund;
 import com.bsp.server.domain.WafWalletAccountFundExample;
+import com.bsp.server.domain.WtaWalletTransactionAduit;
+import com.bsp.server.domain.WtrWalletTransactionRecord;
 import com.bsp.server.dto.*;
 import com.bsp.server.mapper.WafWalletAccountFundMapper;
 import com.bsp.server.service.WafWalletAccountFundService;
@@ -70,7 +72,7 @@ public class TransactionAuditController {
      * 通过审核
      */
     @PostMapping("/transactionAudit/pass")
-    public ResponseDto passTransactionAudit(@RequestBody WtaWalletTransactionAduitDto wtaWalletTransactionAduitDto) {
+    public ResponseDto passTransactionAudit(WtaWalletTransactionAduitDto wtaWalletTransactionAduitDto) {
         // 保存校验
         ValidatorUtil.require(wtaWalletTransactionAduitDto.getTransactionAuditId(), "主键");
         ValidatorUtil.length(wtaWalletTransactionAduitDto.getOperateBy(), "操作人", 1, 20);
@@ -96,22 +98,23 @@ public class TransactionAuditController {
         waf.setDepositingMoney(BigDecimal.valueOf(0));
         waf.setWithdrawingMoney(BigDecimal.valueOf(0));
 
+        WtaWalletTransactionAduit wtaWalletTransactionAduit = CopyUtil.copy(wtaWalletTransactionAduitDto,WtaWalletTransactionAduit.class);
 
         // 更新wta
         // 更改变更后充值中金额、变更后提现中金额
-        wtaWalletTransactionAduitDto.setDepositingMoneyAfter(BigDecimal.valueOf(0));
-        wtaWalletTransactionAduitDto.setWithdrawingMoneyAfter(BigDecimal.valueOf(0));
+        wtaWalletTransactionAduit.setDepositingMoneyAfter(BigDecimal.valueOf(0));
+        wtaWalletTransactionAduit.setWithdrawingMoneyAfter(BigDecimal.valueOf(0));
         // 更改状态为 成功
-        wtaWalletTransactionAduitDto.setStatus(4);
+        wtaWalletTransactionAduit.setStatus(new Integer(4).byteValue());
 
         // 更新wtr
-        WtrWalletTransactionRecordDto wtr = new WtrWalletTransactionRecordDto();
-        wtr.setTransactionId(wtaWalletTransactionAduitDto.getTransactionId());
-        wtr.setStatus(4);
+        WtrWalletTransactionRecord wtr = new WtrWalletTransactionRecord();
+        wtr.setTransactionId(wtaWalletTransactionAduit.getTransactionId());
+        wtr.setStatus(new Integer(4).byteValue());
 
-        wafWalletAccountFundService.save(CopyUtil.copy(waf, WafWalletAccountFundDto.class));
-        wtrWalletTransactionRecordService.save(wtr);
-        wtaWalletTransactionAduitService.save(wtaWalletTransactionAduitDto);
+        wafWalletAccountFundService.saveWafWalletAccountFund(waf);
+        wtrWalletTransactionRecordService.saveWtrWalletTransactionRecord(wtr);
+        wtaWalletTransactionAduitService.saveWtaWalletTransactionAduit(wtaWalletTransactionAduit);
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setContent("success");
@@ -122,7 +125,7 @@ public class TransactionAuditController {
      * 未通过审核
      */
     @PostMapping("/transactionAudit/fail")
-    public ResponseDto failTransactionAudit(@RequestBody WtaWalletTransactionAduitDto wtaWalletTransactionAduitDto) {
+    public ResponseDto failTransactionAudit(WtaWalletTransactionAduitDto wtaWalletTransactionAduitDto) {
         // 保存校验
         ValidatorUtil.require(wtaWalletTransactionAduitDto.getTransactionAuditId(), "主键");
         ValidatorUtil.length(wtaWalletTransactionAduitDto.getOperateBy(), "操作人", 1, 20);
@@ -148,22 +151,23 @@ public class TransactionAuditController {
         waf.setDepositingMoney(BigDecimal.valueOf(0));
         waf.setWithdrawingMoney(BigDecimal.valueOf(0));
 
+        WtaWalletTransactionAduit wtaWalletTransactionAduit = CopyUtil.copy(wtaWalletTransactionAduitDto,WtaWalletTransactionAduit.class);
 
         // 更新wta
         // 更改变更后充值中金额、变更后提现中金额
-        wtaWalletTransactionAduitDto.setDepositingMoneyAfter(BigDecimal.valueOf(0));
-        wtaWalletTransactionAduitDto.setWithdrawingMoneyAfter(BigDecimal.valueOf(0));
+        wtaWalletTransactionAduit.setDepositingMoneyAfter(BigDecimal.valueOf(0));
+        wtaWalletTransactionAduit.setWithdrawingMoneyAfter(BigDecimal.valueOf(0));
         // 更改状态为 失败
-        wtaWalletTransactionAduitDto.setStatus(-1);
+        wtaWalletTransactionAduit.setStatus(new Integer(-1).byteValue());
 
         // 更新wtr
-        WtrWalletTransactionRecordDto wtr = new WtrWalletTransactionRecordDto();
-        wtr.setTransactionId(wtaWalletTransactionAduitDto.getTransactionId());
-        wtr.setStatus(-1);
+        WtrWalletTransactionRecord wtr = new WtrWalletTransactionRecord();
+        wtr.setTransactionId(wtaWalletTransactionAduit.getTransactionId());
+        wtr.setStatus(new Integer(-1).byteValue());
 
-        wafWalletAccountFundService.save(CopyUtil.copy(waf, WafWalletAccountFundDto.class));
-        wtrWalletTransactionRecordService.save(wtr);
-        wtaWalletTransactionAduitService.save(wtaWalletTransactionAduitDto);
+        wafWalletAccountFundService.saveWafWalletAccountFund(waf);
+        wtrWalletTransactionRecordService.saveWtrWalletTransactionRecord(wtr);
+        wtaWalletTransactionAduitService.saveWtaWalletTransactionAduit(wtaWalletTransactionAduit);
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.setContent("success");

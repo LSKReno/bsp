@@ -65,6 +65,17 @@ public class WtrWalletTransactionRecordService {
         return wtrWalletTransactionRecord.getTransactionId();
     }
 
+    public int saveWtrWalletTransactionRecord(WtrWalletTransactionRecord wtrWalletTransactionRecord) {
+        wtrWalletTransactionRecord.setLastUpdateTime(new Date());
+        if (StringUtils.isEmpty(wtrWalletTransactionRecord.getTransactionId())) {
+            wtrWalletTransactionRecord.setCreateTime(new Date());
+            this.insert(wtrWalletTransactionRecord);
+        } else {
+            this.update(wtrWalletTransactionRecord);
+        }
+        return wtrWalletTransactionRecord.getTransactionId();
+    }
+
     /**
      * 新增
      */
