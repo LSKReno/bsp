@@ -57,6 +57,7 @@ public class MVOProductController {
 //        System.out.println(userInfo);
         SysUserDto sysUserDto=sysUserService.selectByPrimaryKey(Integer.parseInt(mp.get("userId").toString()));
         mp.put("manId",sysUserDto.getManBuyerId());
+        System.out.println(mp.get("manId"));
         proProductService.list(pageDto,mp);
         if(pageDto.getTotal()==0){
             responseDto.setSuccess(false);
@@ -118,6 +119,7 @@ public class MVOProductController {
         ResponseDto responseDto = new ResponseDto();
         mp.put("creationDate",new Date());
         mp.put("deleted","0");
+        mp.put("stsCd","A");
         mp.put("price",mp.get("retailPrice")); // 售价等于建议零售价
         SysUserDto sysUserDto=sysUserService.selectByPrimaryKey(Integer.parseInt(mp.get("userId").toString()));
         mp.put("manId",sysUserDto.getManBuyerId());
@@ -126,6 +128,7 @@ public class MVOProductController {
         int f3=pckPackageInfoService.insertSelective(mp);
         int f4=pdnProductDescritionService.insertSelective(mp);
         int f5=prcProductCategoryService.insertSelective(mp);
+        mp.put("entityId",mp.get("proId"));
         int f6=imgImageService.insertSelective(mp);
         if(f1==0||f2==0||f3==0||f4==0||f5==0||f6==0){
             responseDto.setSuccess(false);
