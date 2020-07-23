@@ -99,13 +99,42 @@ public class SysRoleService {
     /**
      * 更新角色的菜单对应权限
      */
-    public void updatePermissions(Integer roleId, ArrayList<Integer> permissions) {
+    public void updatePermissions(Integer roleId, ArrayList<String> permissions) {
         SysRoleMenuExample sysRoleMenuExample = new SysRoleMenuExample();
         sysRoleMenuExample.createCriteria().andRoleIdEqualTo(roleId);
         List<SysRoleMenu> sysRoleMenuList = sysRoleMenuMapper.selectByExample(sysRoleMenuExample);
 
-        for (SysRoleMenu sysRoleMenu:sysRoleMenuList) {
-            if(!permissions.contains(sysRoleMenu.getMenuId())){
+        List<Integer> constantMenuIdList = new ArrayList<>();
+        constantMenuIdList.add(1);
+        constantMenuIdList.add(2);
+        constantMenuIdList.add(3);
+        constantMenuIdList.add(4);
+        constantMenuIdList.add(38);
+        constantMenuIdList.add(39);
+        constantMenuIdList.add(40);
+        constantMenuIdList.add(41);
+        constantMenuIdList.add(42);
+        constantMenuIdList.add(43);
+        constantMenuIdList.add(44);
+        constantMenuIdList.add(45);
+        constantMenuIdList.add(46);
+        constantMenuIdList.add(47);
+        constantMenuIdList.add(48);
+        constantMenuIdList.add(49);
+
+        List<Integer> permissionsList = new ArrayList<>();
+        for (String permission : permissions) {
+            permissionsList.add(Integer.valueOf(permission));
+        }
+
+        for (SysRoleMenu sysRoleMenu : sysRoleMenuList) {
+            if (constantMenuIdList.contains(sysRoleMenu.getMenuId())) {
+                continue;
+            }
+            if (!permissionsList.contains(sysRoleMenu.getMenuId())) {
+                sysRoleMenu.setDeleted(true);
+                sysRoleMenuMapper.updateByPrimaryKeySelective(sysRoleMenu);
+            } else {
                 sysRoleMenu.setDeleted(false);
                 sysRoleMenuMapper.updateByPrimaryKeySelective(sysRoleMenu);
             }

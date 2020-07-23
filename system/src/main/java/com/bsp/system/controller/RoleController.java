@@ -11,7 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -59,35 +61,20 @@ public class RoleController {
      * 用户权限更新
      */
     @PostMapping("/permission/update")
-    public ResponseDto updatePermission(UpdatePermissionDto updatePermissionDto) {
+    public ResponseDto updatePermission(HttpServletRequest request) {
         ResponseDto responseDto = new ResponseDto();
-        System.out.println("=============");
-        System.out.println(updatePermissionDto.getPermissions());
+        String roleId = request.getParameter("roleId");
+        String permissions = request.getParameter("permissions");
 
-        sysRoleService.updatePermissions(updatePermissionDto.getRoleId(), updatePermissionDto.getPermissions());
+        permissions = permissions.replace("[", "");
+        permissions = permissions.replace("]", "");
+
+        ArrayList<String> permissionsList = new ArrayList(Arrays.asList(permissions.split(",")));
+
+        sysRoleService.updatePermissions(Integer.valueOf(roleId), permissionsList);
         responseDto.setContent("success");
         return responseDto;
     }
 
 
-    class UpdatePermissionDto {
-        private Integer roleId;
-        private ArrayList<Integer> permissions;
-
-        public Integer getRoleId() {
-            return roleId;
-        }
-
-        public void setRoleId(Integer roleId) {
-            this.roleId = roleId;
-        }
-
-        public ArrayList<Integer> getPermissions() {
-            return permissions;
-        }
-
-        public void setPermissions(ArrayList<Integer> permissions) {
-            this.permissions = permissions;
-        }
-    }
 }
