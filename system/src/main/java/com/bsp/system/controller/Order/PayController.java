@@ -44,6 +44,7 @@ public class PayController {
         SaoSalesOrderDto saoSalesOrderDto = saoSalesOrderService.selectByPrimaryKey(saoSalesOrderDto1.getSaoId());
         WaaWalletAccountDto waaWalletAccountDto = waaWalletAccountService.selectByName(sysUserDto1.getUsername());
         //check password
+        System.out.println(waaWalletAccountDto.toString());
         if(waaWalletAccountDto.getPassword().equals(passwd)){
             WafWalletAccountFundDto wafWalletAccountFundDto = wafWalletAccountFundService.selectByPrimaryKey(waaWalletAccountDto.getBuyerId());
             System.out.println(waaWalletAccountDto.toString());
@@ -105,7 +106,7 @@ public class PayController {
                                 wtaWalletTransactionAduitDto.setLastUpdateBy(sysUserDto1.getName());
 //                                wtaWalletTransactionAduitDto.setLastUpdateTime(simpleDateFormat.format(new Date()));
                                 if(wtaWalletTransactionAduitService.save(wtaWalletTransactionAduitDto)>0){
-                                    if(saoSalesOrderService.changeToSHIPPED(saoSalesOrderDto.getSaoId())>0){
+                                    if(saoSalesOrderService.changeToWattingSHIPPED(saoSalesOrderDto.getSaoId())>0){
                                         responseDto.setSuccess(true);
                                         responseDto.setMessage("success");
                                     }else {
@@ -127,12 +128,12 @@ public class PayController {
                     }
                 }else{
                     responseDto.setSuccess(false);
-                    responseDto.setMessage("password error");
-                }
-            }else{
-                responseDto.setSuccess(false);
                 responseDto.setMessage("the account has been fronzen");
-            }
+                }
+        }else{
+            responseDto.setSuccess(false);
+            responseDto.setMessage("password error");
+        }
         return responseDto;
     }
     @PostMapping("/cancel")
@@ -209,7 +210,7 @@ public class PayController {
                             wtaWalletTransactionAduitDto.setLastUpdateBy(sysUserDto1.getName());
 //                                wtaWalletTransactionAduitDto.setLastUpdateTime(simpleDateFormat.format(new Date()));
                             if(wtaWalletTransactionAduitService.save(wtaWalletTransactionAduitDto)>0){
-                                if(saoSalesOrderService.changeToSHIPPED(saoSalesOrderDto.getSaoId())>0){
+                                if(saoSalesOrderService.cancelSHIPPED(saoSalesOrderDto.getSaoId())>0){
                                     responseDto.setSuccess(true);
                                     responseDto.setMessage("success");
                                 }else {
@@ -231,11 +232,11 @@ public class PayController {
 //                }
                 }else{
                     responseDto.setSuccess(false);
-                    responseDto.setMessage("password error");
+                    responseDto.setMessage("the account has been fronzen");
                 }
             }else{
                 responseDto.setSuccess(false);
-                responseDto.setMessage("the account has been fronzen");
+                responseDto.setMessage("password error");
             }
         }else{
             responseDto.setSuccess(false);
