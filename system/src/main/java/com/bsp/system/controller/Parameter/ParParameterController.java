@@ -27,6 +27,7 @@ public class ParParameterController {
         ResponseDto responseDto = new ResponseDto();
         if(sysUserDto.getRights().equals("1")){
             List<ParParameterDto> parParameterDtoList = parParameterService.selectAll();
+            System.out.println(parParameterDtoList.toString());
             responseDto.setSuccess(true);
             responseDto.setContent(parParameterDtoList);
         }else{
