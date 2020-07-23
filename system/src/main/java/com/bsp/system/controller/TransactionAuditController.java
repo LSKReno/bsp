@@ -51,7 +51,8 @@ public class TransactionAuditController {
      * 获取审核流水
      */
     @PostMapping("/transactionAudit/list")
-    public ResponseDto getTransactionAudit(@RequestBody PageDto pageDto, HttpServletRequest request) {
+    public ResponseDto getTransactionAudit(HttpServletRequest request) {
+        PageDto pageDto = new PageDto();
         String token = request.getHeader(jwtConfig.getHeader());
         String tokenJSONString = jwtConfig.getSubjectFromToken(token);
         JSONObject userInfo = JSONObject.parseObject(tokenJSONString);
