@@ -141,7 +141,7 @@ public class SysUserService {
             SysUser signUpUser = selectByUserName(sysUserDto.getUsername());
             return CopyUtil.copy(signUpUser, SysUserDto.class);
         } else {
-            LOG.info("用户名不存在,可以进行注册 {}", sysUserDto.getUsername());
+            LOG.info("用户名已存在,不可以进行注册 {}", sysUserDto.getUsername());
             throw new BusinessException(BusinessExceptionCode.SIGNUP_USER_ERROR);
         }
     }

@@ -8,9 +8,7 @@ import com.bsp.server.util.ValidatorUtil;
 import com.bsp.system.config.JwtConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -59,12 +57,25 @@ public class RoleController {
      * 用户权限更新
      */
     @PostMapping("/permission/update")
-    public ResponseDto updatePermission(@RequestBody Map<String, String> params) {
+    public ResponseDto updatePermission(UpdatePermissionDto updatePermissionDto) {
         ResponseDto responseDto = new ResponseDto();
         System.out.println("=============");
-        System.out.println(params);
+        System.out.println(updatePermissionDto.getPermissions());
 
         responseDto.setContent("success");
         return responseDto;
+    }
+
+
+    class UpdatePermissionDto {
+        private String permissions;
+
+        public String getPermissions() {
+            return permissions;
+        }
+
+        public void setPermissions(String permissions) {
+            this.permissions = permissions;
+        }
     }
 }
